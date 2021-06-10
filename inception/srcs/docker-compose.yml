@@ -1,0 +1,17 @@
+#specifie to docker compose what version to used
+#3 is the most used at the moment
+version: '3'
+
+#all th contenairs have to be defined under the 'services' argument
+services:
+	mysql:
+		build: ./mariadb
+		#a database is a stateful service, volumes keeps the db persistent on local host
+		volumes:
+			- /data/mysql:/var/lib/mysql
+		restart: always
+		evironment:
+			MYSQL_ROOT_PASSWORD: mysql_root_password
+			MYSQL_DATABASE: db_name
+			MYSQL_USER: user_name
+			MYSQL_PASSWORD: user_password

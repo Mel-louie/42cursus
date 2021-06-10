@@ -1,23 +1,30 @@
-# To create the image of nginx:
-# - the image should have nginx pre-installed from source or package manager
-# - the image should start nginx automatically upon runing
-
-# Every valid Dockerfile start with a FROM instruction,
-# With alpine, all the tools like apk are installed
-# Alpine is lighter than debian
-FROM alpine:3.12.7
+#https://wiki.alpinelinux.org/wiki/Nginx
+FROM alpine:3.12
 
 # EXPOSE instruction is to indicate the port needs to be published
 # We still need to use the --publish option explicitly
 EXPOSE 443
 
-# RUN instruction in a Dockefile executes the a command inside the
-# container shell
-# --no-cache in Alpine allows to haven't a cache to rm and not have useless
-# baggage in the image
-RUN apk and update && \
-    apk add --no-cache nginx wget openssl -y
+# update && install (nginx, openssl)
+RUN apk update --no-cache \
+	&& apk upgrade --no-cache \
+	&& apk add nginx openssl \
+	&& rm -rf /var/cache/apk/*
 
+# create user && group for nginx
+RUN adduser -D -g 'www' www \
+	&& mkdir /www \
+	&& chown -R www:www /var/lib/nginx \
+	&& chown -R www:www /www \
+	&& mkdir -p /var/run/nginx
+
+# SSL
+#RUN mkdir -p /etc/nginx/ssl \
+#	&& openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
+#	   -out /etc/nginx/ssl/inception.pem -keyout /etc/nginx/ssl/inception.key \
+#	   -subj "/C=FR/ST=Paris/L=Paris/O=42/OU=IT/CN=inception"
+
+# nginx config
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 # The CMD instruction sets the default command for your image.

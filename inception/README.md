@@ -2,7 +2,7 @@
 
 ## Ressources
 
-<a href="https://alpinelinux.org/releases/">https://wiki.alpinelinux.org/wiki/Nginx</a> github user andreiglesias<br >
+<a href="https://wiki.alpinelinux.org/wiki/Nginx">Config nginx Alpine</a> github user andreiglesias<br >
 <a href="https://alpinelinux.org/releases/">Last Alpine Linux releases</a><br >
 <a href="https://www.freecodecamp.org/news/the-docker-handbook/">The Docker Handbook – 2021 Edition, freecodecamp</a><br >
 <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a>
