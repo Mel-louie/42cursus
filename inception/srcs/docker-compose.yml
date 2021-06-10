@@ -2,9 +2,9 @@
 #3 is the most used at the moment
 version: '3'
 
-#all th contenairs have to be defined under the 'services' argument
+#all th containers have to be defined under the 'services' argument
 services:
-	mysql:
+	mariadb:
 		build: ./mariadb
 		#a database is a stateful service, volumes keeps the db persistent on local host
 		volumes:
@@ -15,3 +15,35 @@ services:
 			MYSQL_DATABASE: db_name
 			MYSQL_USER: user_name
 			MYSQL_PASSWORD: user_password
+		expose:
+			- "3306"
+
+	wordpress:
+		depends_on:
+			- mariadb
+		build: ./wordpress
+		volumes:
+			- /data/html:/var/www/html
+		restart: always
+		#Make sure the WordPress environment variables MYSQL_ROOT_PASSWORD,
+		#WORDPRESS_DB_NAME, WORDPRESS_DB_USER, and WORDPRESS_DB_PASSWORD
+		#match exactly with the MariaDB environment variables MYSQL_ROOT_PASSWORD,
+		#MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD respectively.
+		#In case of any mismatch, the WordPress application would not be able to connect to the database.
+		evironment:
+			WORDPRESS_DB_HOST: mariadb
+			MYSQL_ROOT_PASSWORD: mysql_root_password
+			WORDPRESS_DB_NAME: db_name
+			WORDPRESS_DB_USER: user_name
+			WORDPRESS_DB_PASSWORD: user_password
+			WORDPRESS_TABLE_PREFIX: wp_
+		expose:
+			- "9000"		
+
+#	nginx:
+#		build: ./nginx
+#		volumes:
+#			- nginx:/etc/nginx/conf.d
+#			- /data/html:/var/www/html
+#		ports:
+#			- "443:443"
