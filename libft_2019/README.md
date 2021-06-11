@@ -1,4 +1,7 @@
 ‼️<b> EDIT 2021 : libft faite en 2019, n'est plus à la norme de l'école 42, ne sera pas mise à jour.<br /></b>
+
+<hr>
+
 <p>:ballot_box_with_check: Ajout de ft_printf</p>
 <p>:ballot_box_with_check: Update ft_printf en ft_dprintf</p><br/>
 <b> libft</b>
