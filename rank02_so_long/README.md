@@ -1,6 +1,6 @@
 # so_long...
 
-... et merci pour tous le poissons!
+... et merci pour le poissons !
 Projet de l'école 42 qui prend la forme d'un petit jeu 2D. Il est fait pour travailler avec des textures, des sprites et quelques éléments de gameplay très basiques.
 Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations, etc. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures, etc. Il est impératif d'utiliser la bibliothèque graphique minilibx.
 
@@ -39,7 +39,3 @@ pour avoir une précision de debug maximale.
 ```
 
 ## Textures et sprites
-
-
-````
-100/100
