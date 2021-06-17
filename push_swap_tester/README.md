@@ -4,7 +4,7 @@ __first:__
 	be sure that your checker's name is 'checker' and not 'checker_mac' or 'checker_linux' or else
 
 __second:__
-	put the push_swap_tester folder at the root of your push_swap's
+	put the push_swap_tester folder at the root of your push_swap
 	
 __third:__
 	launch 
