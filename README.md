@@ -1,2 +1,2 @@
 # 42cursus
-A repo that regroup my projects from 42
+A repo that regroups my projects from 42
