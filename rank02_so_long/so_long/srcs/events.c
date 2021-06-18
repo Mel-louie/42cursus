@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exits.c                                            :+:      :+:    :+:   */
+/*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 17:34:55 by user42           ###   ########.fr       */
+/*   Created: 2021/06/18 17:20:50 by user42            #+#    #+#             */
+/*   Updated: 2021/06/18 17:34:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	close_window(t_mlx *mlx)
+int	key_press(int key, t_mlx *mlx)
 {
-	mlx_destroy_window(mlx->ptr, mlx->win);
-	ft_putstr_fd(EXIT_OK, 1);
-	exit(0);
-	return (0);
-}
-
-int	red_cross(t_mlx *mlx)
-{
-	close_window(mlx);
+	if (key == KEY_ESC)
+		close_window(mlx);
 	return (0);
 }

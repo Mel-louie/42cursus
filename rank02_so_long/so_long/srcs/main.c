@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 16:50:38 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/18 17:28:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 	}
 	mlx.ptr = mlx_init();
 	mlx.win = mlx_new_window(mlx.ptr, 800, 600, WIN_NAME);
+	mlx_hook(mlx.win, 2, (1L << 0), key_press, &mlx);
 	mlx_hook(mlx.win, 33, (1L << 17), red_cross, &mlx);
 	mlx_loop(mlx.ptr);
 	(void)av;

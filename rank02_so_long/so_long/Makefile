@@ -1,13 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
+#    Updated: 2021/06/18 17:35:11 by user42           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
 
 SRCS	= srcs/main.c \
+			srcs/events.c \
 			srcs/exits.c \
 
 OBJS	= $(SRCS:%.c=%.o)
 
 # compiler
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror #-g3 #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 MLXFLAGS = -L./libs/mlx -lm -lmlx -lbsd -lX11 -lXext #linux 
 MLX = libmlx.a
@@ -46,6 +59,7 @@ norminette :
 	norminette --version
 	@echo
 	norminette ./srcs/*.c
+	norminette ./includes/*.h
 
 re : fclean all
 
