@@ -1,4 +1,4 @@
-# so_long...
+# so_long... WIP
 
 ... et merci pour le poissons !
 Projet de l'école 42 qui prend la forme d'un petit jeu 2D. Il est fait pour travailler avec des textures, des sprites et quelques éléments de gameplay très basiques.
