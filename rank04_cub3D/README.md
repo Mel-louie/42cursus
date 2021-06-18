@@ -1,6 +1,7 @@
 # cub3d
 
 Projet de l'école 42, inspiré du jeu Wolfenstein 3D. Considéré comme le premier FPS jamais développé, il vous permettra d’explorer la technique du raycasting. Votre objectif est de faire une vue dynamique au sein d’un labyrinthe.
+```❗compatible seulement avec linux```
 
 <img src="./capture.png"
      alt="image de mon projet, pikachu derrière un mur">
