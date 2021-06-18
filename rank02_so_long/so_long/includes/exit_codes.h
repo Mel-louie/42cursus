@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_codes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 11:58:24 by user42           ###   ########.fr       */
+/*   Created: 2021/06/18 11:53:16 by user42            #+#    #+#             */
+/*   Updated: 2021/06/18 11:58:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#ifndef EXIT_CODES_H
+# define EXIT_CODES_H
 
-int	main(int ac, char **av)
-{
-	if (ac < 2 || ac > 3)
-	{
-		ft_putstr_fd(ERR_ARG, 2);
-		return (1);
-	}
-	(void)av;
-	return (0);
-}
+# define ERR_ARG "Error\n\033[0;35mWrong number of arguments.\033[0;35m\n"
+
+#endif
