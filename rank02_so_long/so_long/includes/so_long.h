@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 17:35:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/18 20:05:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,23 @@ typedef struct s_mlx
 }				t_mlx;
 
 /*
+** CHECKS
+*/
+
+int		check_ext(char *file_ext, char *ext);
+
+/*
 ** EVENTS
 */
 
 int	key_press(int key, t_mlx *mlx);
 
 /*
-** FUNCTIONS TO EXIT
+** FUNCTIONS THAT EXIT
 */
 
 int	red_cross(t_mlx *mlx);
 int	close_window(t_mlx *mlx);
+int	close_error(t_mlx *mlx, char *error);
 
 #endif

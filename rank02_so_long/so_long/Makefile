@@ -6,13 +6,14 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/18 17:35:11 by user42           ###   ########.fr        #
+#    Updated: 2021/06/18 20:06:10 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS	= srcs/main.c \
+			srcs/checks.c \
 			srcs/events.c \
 			srcs/exits.c \
 
