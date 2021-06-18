@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_codes.h                                       :+:      :+:    :+:   */
+/*   exits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 11:53:16 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 15:57:55 by user42           ###   ########.fr       */
+/*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
+/*   Updated: 2021/06/18 16:48:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXIT_CODES_H
-# define EXIT_CODES_H
+#include <stdio.h>
+#include "../includes/so_long.h"
 
-# define ERR_ARG "Error\n\033[0;35mWrong number of arguments.\033[0m\n"
-# define EXIT_OK "\033[1;32mSo Long, and Thanks for All the Fish 🐟\033[0m\n"
+int	close_window(t_mlx *mlx)
+{
+//	if (mlx->save == 0)
+//	{
+	mlx_destroy_window(mlx->ptr, mlx->win);
+	//	clear_window(mlx);
+//	}
+	ft_putstr_fd(EXIT_OK, 1);
+	exit(0);
+	return (0);
+}
 
-#endif
+
+int	red_cross(t_mlx *mlx)
+{
+	close_window(mlx);
+	return (0);
+}

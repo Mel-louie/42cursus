@@ -1,7 +1,7 @@
-NAME			= so_long
+NAME = so_long
 
-SRCS		= srcs/main.c \
-			
+SRCS	= srcs/main.c \
+			srcs/exits.c \
 
 OBJS	= $(SRCS:%.c=%.o)
 
@@ -22,16 +22,14 @@ $(NAME) : $(OBJS)
 	@cp ./libs/mlx/$(MLX) ./
 	@cp ./libs/libft/$(LIBFT) ./
 	@$(CC) $(OBJS)  $(LIBFT) $(CFLAGS) $(MLXFLAGS) -I $(INCDIR) -o $(NAME)
-	@echo "\n\033[0;32mCompilation OK"
-	@echo "\033[0m"
+	@echo "\n\033[1;32mCompilation OK\n\033[0m"
 
 clean :
 	@echo "\033[0;36mCleaning..."
 	@cd ./libs/libft; make clean
 	@cd ./libs/mlx; make clean
 	@rm -f $(OBJS)
-	@echo "\033[0;36mCleaning done"
-	@echo "\033[0m"
+	@echo "\033[1;36m\nCleaning done\n\033[0m"
 
 fclean :
 	@echo "\033[0;36mFcleanig, remove all...\n"
@@ -41,12 +39,13 @@ fclean :
 	@rm -f $(NAME)
 	@rm -f $(LIBFT)
 	@rm -f $(MLX)
-	@echo "\033[0;36m\n\nCleaning done"
-	@echo "\033[0m"
+	@echo "\033[1;36m\n\nCleaning done\n\033[0m"
 
-normi :
+norminette :
 	@echo "Norming..."
-	norminette ./srcs/*.c ./includes/*.h
+	norminette --version
+	@echo
+	norminette ./srcs/*.c
 
 re : fclean all
 
