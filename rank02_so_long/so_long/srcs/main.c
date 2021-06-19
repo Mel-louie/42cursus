@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 20:04:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/19 13:02:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	set_game(t_mlx *mlx, char *filename)
 {
+	int	fd;
+
 	if (check_ext(filename, ".ber") == -1)
 		close_error(mlx, ER_BAD_EXT);
+	if ((fd = open(filename, O_RDONLY)) == -1)
+		close_error(mlx, ER_OPEN);
 	mlx->ptr = mlx_init();
 	mlx->win = mlx_new_window(mlx->ptr, 800, 600, WIN_NAME);
 }

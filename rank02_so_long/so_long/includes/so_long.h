@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 20:05:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/19 13:00:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "../libs/mlx/mlx.h"
 # include "exit_codes.h"
 # include "keys_codes.h"
+# include <fcntl.h>
 
 # define WIN_NAME "So Long!"
 
