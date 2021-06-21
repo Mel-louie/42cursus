@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/19 13:00:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:13:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "exit_codes.h"
 # include "keys_codes.h"
 # include <fcntl.h>
+# include <stdio.h>
 
 # define WIN_NAME "So Long!"
 # define BUFFER_SIZE 32 
@@ -34,6 +35,11 @@ typedef struct s_mlx
 {
 	void		*ptr;
 	void		*win;
+	int			p;
+	int			e;
+	int			map_x;
+	int			map_y;
+	char		**map;
 }				t_mlx;
 
 /*
@@ -41,19 +47,26 @@ typedef struct s_mlx
 */
 
 int		check_ext(char *file_ext, char *ext);
+int		is_ok_char(char c);
 
 /*
 ** EVENTS
 */
 
-int	key_press(int key, t_mlx *mlx);
+int		key_press(int key, t_mlx *mlx);
 
 /*
 ** FUNCTIONS THAT EXIT
 */
 
-int	red_cross(t_mlx *mlx);
-int	close_window(t_mlx *mlx);
-int	close_error(t_mlx *mlx, char *error);
+int		red_cross(t_mlx *mlx);
+int		close_window(t_mlx *mlx);
+int		close_error(t_mlx *mlx, char *error);
+
+/*
+** MAP
+*/
+
+void	check_map(char *line, t_mlx *mlx, int last);
 
 #endif

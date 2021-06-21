@@ -4,3 +4,4 @@
 :radio_button: clear window ?
 :radio_button: pimper regle make norminette
 :radio_button: faire des tests sur toutes les erreurs et sorties normales pour check les leaks
+:radio_button: faire un --help

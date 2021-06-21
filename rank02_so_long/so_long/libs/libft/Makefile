@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:17:57 by mdesfont          #+#    #+#              #
-#    Updated: 2021/06/11 15:49:50 by mdesfont         ###   ########.fr        #
+#    Updated: 2021/06/21 17:24:47 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC =	./srcs/ft_atoi.c \
 		./srcs/ft_strns.c \
 		./srcs/ft_strjoinfree.c \
 		./srcs/ft_swaps.c \
+		./srcs/ft_tab.c \
 		./srcs/get_next_line.c
 
 OBJ = $(SRC:.c=.o)

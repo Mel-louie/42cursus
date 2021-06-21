@@ -34,6 +34,7 @@ void		ft_putstr_fd(char *str, int fd);
 ** STRs
 */
 
+char		*ft_strdup(const char *s1);
 char		*ft_strndup(const char *s, size_t n);
 char		**ft_split(const char *str, char c);
 int			ft_strlen(char *str);
