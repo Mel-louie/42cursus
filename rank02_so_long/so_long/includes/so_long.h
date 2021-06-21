@@ -28,6 +28,7 @@
 # include <fcntl.h>
 
 # define WIN_NAME "So Long!"
+# define BUFFER_SIZE 32 
 
 typedef struct s_mlx
 {

@@ -27,6 +27,7 @@ int			ft_isdigit(char n);
 /*
 ** PUTS
 */
+
 void		ft_putstr_fd(char *str, int fd);
 
 /*
@@ -39,8 +40,10 @@ int			ft_strlen(char *str);
 char		*ft_strcpy(char *dest, const char *src);
 int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strjoinfree(char *dest, char *src);
 int			ft_strlen(char *str);
 char		*ft_strcpy(char *dest, const char *src);
+char		*ft_strncpy(char *dest, const char *src, size_t n);
 int			ft_strcmp(const char *s1, const char *s2);
 char		*ft_strjoin(char *s1, char *s2);
 
@@ -56,5 +59,11 @@ char		**ft_tabdup(char **tab);
 */
 
 void		simple_swap(int *a, int *b);
+
+/*
+** GNL
+*/
+
+int			get_next_line(int fd, char **line);
 
 #endif

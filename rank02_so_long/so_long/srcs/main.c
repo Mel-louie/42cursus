@@ -6,22 +6,25 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 11:22:38 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 14:44:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include <stdio.h>
 
 void	parse_file(int fd, t_mlx *mlx)
 {
 	char *line;
 	int ret;
 	
-	while ((ret = get_next_line(&line, fd)) > 0)
+	while ((ret = get_next_line(fd, &line)))
 	{
-		printf("lol\n");
+		printf("line: %s\n", line);
 		free(line);
 	}
+	printf("line: %s\n", line);
+	free(line);
 	(void)mlx;
 }
 
