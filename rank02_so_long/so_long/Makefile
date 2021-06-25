@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/25 13:09:10 by user42           ###   ########.fr        #
+#    Updated: 2021/06/25 15:53:14 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,10 @@ NAME = so_long
 
 SRCS	= srcs/main.c \
 			srcs/checks.c \
+			srcs/draw_n_update.c \
 			srcs/events.c \
 			srcs/exits.c \
+			srcs/get_data.c \
 			srcs/map.c \
 			srcs/screen.c \
 			srcs/utils.c
@@ -59,11 +61,15 @@ fclean :
 	@echo "\033[1;36m\n\nCleaning done\n\033[0m"
 
 norminette :
-	@echo "Norming..."
-	norminette --version
-	@echo
-	norminette ./srcs/*.c
-	norminette ./includes/*.h
+	@echo "\033[1;37m"
+	@norminette --version
+	@echo "\nNorming...\033[0m\n"
+	@echo "SRCS:"
+	@norminette ./srcs/*.c
+	@echo "\nINCLUDES:"
+	@norminette ./includes/*.h
+	@echo "\nLIBFT:"
+	@norminette ./libs/libft/includes/*.h ./libs/libft/srcs/*.c
 
 re : fclean all
 

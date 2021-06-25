@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 13:28:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 15:48:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define BUFFER_SIZE 32
 # define BLOCK 32
 
-
 /*
 ** STRUCTS
 */
@@ -56,11 +55,11 @@ typedef struct s_settings
 	char		*path_co;
 	char		*path_pl;
 	char		*path_en;
-	t_img		text_fl;
-	t_img		text_wa;
-	t_img		text_co;
-	t_img		text_pl;
-	t_img		text_en;
+	t_img		t_fl;
+	t_img		t_wa;
+	t_img		t_co;
+	t_img		t_pl;
+	t_img		t_en;
 }				t_settings;
 
 typedef struct s_mlx
@@ -104,11 +103,21 @@ int		close_error(t_mlx *mlx, char *error);
 */
 
 void	check_map(char *line, t_mlx *mlx, int last);
+void	parse_file(int fd, t_mlx *mlx);
+void	fill_map(int fd, char *filename, t_mlx *mlx, int i);
+void	draw_map(t_mlx *mlx);
 
 /*
 ** SCREEN
 */
 
 void	window_size(t_mlx *mlx);
+
+/*
+** TILES
+*/
+
+void	get_path(t_mlx *mlx);
+void	get_img_texture(t_mlx *mlx);
 
 #endif

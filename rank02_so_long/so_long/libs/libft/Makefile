@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:17:57 by mdesfont          #+#    #+#              #
-#    Updated: 2021/06/21 17:24:47 by user42           ###   ########.fr        #
+#    Updated: 2021/06/25 15:24:14 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC =	./srcs/ft_atoi.c \
 
 OBJ = $(SRC:.c=.o)
 
-Ctab = -Wall -Wextra -Werror -g3 -fsanitize=address
+Ctab = -Wall -Wextra -Werror #-g3 -fsanitize=address
 NAME = libft.a
 
 CC = gcc
