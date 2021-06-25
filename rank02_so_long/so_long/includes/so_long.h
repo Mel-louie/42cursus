@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 17:18:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 18:42:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,19 @@
 
 enum {UP, DOWN, RIGHT, LEFT};
 
-typedef struct s_positions
+typedef struct s_items
 {
 	int			exitx;
 	int			exity;
-}				t_positions;
+}				t_items;
 
 typedef struct s_player
 {
 	int			posx;
 	int			posy;
 	int			direction;
+	int			colec;
+	int			nb_to_colec;
 }				t_player;
 
 typedef struct s_img
@@ -90,7 +92,7 @@ typedef struct s_mlx
 	t_img		img;
 	t_settings	set;
 	t_player	pl;
-	t_positions	pos;
+	t_items	pos;
 }				t_mlx;
 
 /*
@@ -114,7 +116,7 @@ int		key_press(int key, t_mlx *mlx);
 */
 
 int		red_cross(t_mlx *mlx);
-int		close_window(t_mlx *mlx);
+int		close_window(t_mlx *mlx, char *str);
 int		close_error(t_mlx *mlx, char *error);
 
 /*
@@ -144,5 +146,6 @@ void	get_img_texture(t_mlx *mlx);
 */
 
 void	get_player_pos(t_mlx *mlx);
+void	move_player(t_mlx *mlx, int dy, int dx);
 
 #endif

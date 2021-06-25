@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:16 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 16:30:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:50:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@
 # define ER_TILES "Error\n\033[1;34mCan't open tiles.\033[0m\n"
 # define ER_WRONGCHAR "Error\n\033[1;34mMap contains wrong char.\033[0m\n"
 # define EXIT_OK "\033[1;32mSo Long, and Thanks for All the Fish 🐟\033[0m\n"
+# define WON "\033[1;32mCONGRATS YOU WON!1!!\nEnjoy the fish 🐟 🐟 🐟\033[0m\n"
 
 #endif

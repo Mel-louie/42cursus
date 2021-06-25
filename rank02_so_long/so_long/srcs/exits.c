@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/18 20:01:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:41:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ int	close_error(t_mlx *mlx, char *error)
 	return (0);
 }
 
-int	close_window(t_mlx *mlx)
+int	close_window(t_mlx *mlx, char *str)
 {
 	mlx_destroy_window(mlx->ptr, mlx->win);
-	ft_putstr_fd(EXIT_OK, 1);
+	ft_putstr_fd(str, 1);
 	exit(0);
 	return (0);
 }
 
 int	red_cross(t_mlx *mlx)
 {
-	close_window(mlx);
+	close_window(mlx, EXIT_OK);
 	return (0);
 }
