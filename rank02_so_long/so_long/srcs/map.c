@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:56:36 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 18:14:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 11:10:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	check_map(char *line, t_mlx *mlx, int num)
 		if ((num == -1 || num == 0) && line[i] != '1')
 			close_error(mlx, ER_NOTSURR);
 	}
-	mlx->map_x = i;
+	mlx->mapx = i;
 }

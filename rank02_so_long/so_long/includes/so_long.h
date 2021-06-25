@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 18:13:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 11:11:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_mlx
 	void		*win;
 	int			p;
 	int			e;
-	int			map_x;
-	int			map_y;
+	int			mapx;
+	int			mapy;
 	char		**map;
 }				t_mlx;
 
@@ -68,5 +68,11 @@ int		close_error(t_mlx *mlx, char *error);
 */
 
 void	check_map(char *line, t_mlx *mlx, int last);
+
+/*
+** SCREEN
+*/
+
+void	window_size(t_mlx *mlx);
 
 #endif

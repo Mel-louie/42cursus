@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 18:18:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 11:25:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@ void	fill_map(int fd, char *filename, t_mlx *mlx)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		close_error(mlx, ER_OPEN);
-	mlx->map = malloc(sizeof(char) * (mlx->map_y * mlx->map_x));
+	mlx->map = malloc(sizeof(char) * (mlx->mapy * mlx->mapx));
 	if (mlx->map == NULL)
 		close_error(mlx, ER_MEMORY);
 	i = 0;
-	if (mlx->map_x > 1 && mlx->map_y > 1)
+	if (mlx->mapx > 1 && mlx->mapy > 1)
 	{
 		ret = get_next_line(fd, &line);
 		while (ret)
 		{
 			mlx->map[i] = ft_strdup(line);
-			printf("mlx->map: %s\n", mlx->map[i]);
+	//		printf("mlx->map: %s\n", mlx->map[i]);
 			i++;
 			free(line);
 			ret = get_next_line(fd, &line);
 		}
 		mlx->map[i] = ft_strdup(line);
-		printf("mlx->map: %s\n", mlx->map[i]);
+	//	printf("mlx->map: %s\n", mlx->map[i]);
 		free(line);
 	}
 }
@@ -57,7 +57,7 @@ void	parse_file(int fd, t_mlx *mlx)
 		num++;
 		ret = get_next_line(fd, &line);
 	}
-	mlx->map_y = num + 1;
+	mlx->mapy = num + 1;
 	check_map(line, mlx, -1);
 	free(line);
 }
@@ -74,7 +74,8 @@ void	set_game(t_mlx *mlx, char *filename)
 	parse_file(fd, mlx);
 	fill_map(fd, filename, mlx);
 	mlx->ptr = mlx_init();
-	mlx->win = mlx_new_window(mlx->ptr, 800, 600, WIN_NAME);
+	window_size(mlx);
+	mlx->win = mlx_new_window(mlx->ptr, mlx->mapx, mlx->mapy, WIN_NAME);
 }
 
 int	main(int ac, char **av)
