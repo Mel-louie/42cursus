@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 16:20:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 16:47:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,11 @@ void	window_size(t_mlx *mlx);
 
 void	get_path(t_mlx *mlx);
 void	get_img_texture(t_mlx *mlx);
+
+/*
+** PLAYER MOVES
+*/
+
+void	get_player_pos(t_mlx *mlx);
 
 #endif

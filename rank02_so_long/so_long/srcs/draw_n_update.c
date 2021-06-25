@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 15:48:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:05:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	draw_map(t_mlx *mlx)
 			if (mlx->map[y][x] == '1')
 				mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_wa.ptr \
 				, mlx->set.t_wa.width * x, mlx->set.t_wa.height * y);
-			if (mlx->map[y][x] == 'P')
-				mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl.ptr \
-				, mlx->set.t_pl.width * x, mlx->set.t_pl.height * y);
 			if (mlx->map[y][x] == 'E')
 				mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_en.ptr \
 				, mlx->set.t_en.width * x, mlx->set.t_en.height * y);
 			if (mlx->map[y][x] == 'C')
 				mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_co.ptr \
 				, mlx->set.t_co.width * x, mlx->set.t_co.height * y);
+			if (y == mlx->pl.posy && x == mlx->pl.posx)
+				mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl.ptr \
+				, mlx->set.t_pl.width * x, mlx->set.t_pl.height * y);
 		}
 	}
 }

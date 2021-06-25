@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/25 15:53:14 by user42           ###   ########.fr        #
+#    Updated: 2021/06/25 16:49:35 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS	= srcs/main.c \
 			srcs/exits.c \
 			srcs/get_data.c \
 			srcs/map.c \
+			srcs/player.c \
 			srcs/screen.c \
 			srcs/utils.c
 
@@ -26,7 +27,7 @@ OBJS	= $(SRCS:%.c=%.o)
 
 # compiler
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 
 MLXFLAGS = -L./libs/mlx -lm -lmlx -lbsd -lX11 -lXext #linux 
 MLX = libmlx.a

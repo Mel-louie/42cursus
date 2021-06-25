@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 16:10:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:08:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	set_game(t_mlx *mlx, char *filename)
 	mlx->img.data = (int *)mlx_get_data_addr(mlx->img.ptr, &mlx->img.bpp, \
 		&mlx->img.s_l, &mlx->img.endian);
 	get_img_texture(mlx);
+	get_player_pos(mlx);
 	close(fd);
 }
 

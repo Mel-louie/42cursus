@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 17:20:50 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 17:06:28 by user42           ###   ########.fr       */
+/*   Created: 2021/06/25 16:45:56 by user42            #+#    #+#             */
+/*   Updated: 2021/06/25 16:46:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	key_press(int key, t_mlx *mlx)
+void	get_player_pos(t_mlx *mlx)
 {
-	if (key == KEY_ESC)
-		close_window(mlx);
-	if (key == KEY_W)
-		mlx->pl.posy -= 1;
-	if (key == KEY_S)
-		mlx->pl.posy += 1;
-	if (key == KEY_A)
-		mlx->pl.posx -= 1;
-	if (key == KEY_D)
-		mlx->pl.posx += 1;
-	return (0);
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < mlx->mapy / BLOCK)
+	{
+		x = -1;
+		while (++x < mlx->mapx / BLOCK)
+		{
+			if (mlx->map[y][x] == 'P')
+			{
+				mlx->pl.posx = x;
+				mlx->pl.posy = y;
+			}
+		}
+	}
 }
