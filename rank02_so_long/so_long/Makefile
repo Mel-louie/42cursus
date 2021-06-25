@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/25 11:07:58 by user42           ###   ########.fr        #
+#    Updated: 2021/06/25 13:09:10 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS	= srcs/main.c \
 			srcs/events.c \
 			srcs/exits.c \
 			srcs/map.c \
-			srcs/screen.c
+			srcs/screen.c \
+			srcs/utils.c
 
 OBJS	= $(SRCS:%.c=%.o)
 

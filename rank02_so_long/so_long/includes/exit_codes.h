@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:16 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 18:13:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 12:57:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define ER_MULTIC "Error\n\033[0;35mMulti 'P' or 'E' in the map.\033[0m\n"
 # define ER_NOTSURR "Error\n\033[0;35mWrong map's format.\033[0m\n"
 # define ER_OPEN "Error\n\033[0;35mCan't open the file map.\033[0m\n"
+# define ER_TILES "Error\n\033[0;35mCan't open tiles.\033[0m\n"
 # define ER_WRONGCHAR "Error\n\033[0;35mMap contains wrong char.\033[0m\n"
 # define EXIT_OK "\033[1;32mSo Long, and Thanks for All the Fish 🐟\033[0m\n"
 

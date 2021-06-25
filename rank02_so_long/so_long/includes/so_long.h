@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 11:11:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 13:28:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,39 @@
 # include <stdio.h>
 
 # define WIN_NAME "So Long!"
-# define BUFFER_SIZE 32 
+# define BUFFER_SIZE 32
+# define BLOCK 32
+
+
+/*
+** STRUCTS
+*/
+
+typedef struct s_img
+{
+	void		*ptr;
+	int			*data;
+	int			s_l;
+	int			bpp;
+	int			endian;
+	int			width;
+	int			height;
+	char		*name;
+}				t_img;
+
+typedef struct s_settings
+{
+	char		*path_fl;
+	char		*path_wa;
+	char		*path_co;
+	char		*path_pl;
+	char		*path_en;
+	t_img		text_fl;
+	t_img		text_wa;
+	t_img		text_co;
+	t_img		text_pl;
+	t_img		text_en;
+}				t_settings;
 
 typedef struct s_mlx
 {
@@ -40,6 +72,8 @@ typedef struct s_mlx
 	int			mapx;
 	int			mapy;
 	char		**map;
+	t_img		img;
+	t_settings	set;
 }				t_mlx;
 
 /*
@@ -48,6 +82,8 @@ typedef struct s_mlx
 
 int		check_ext(char *file_ext, char *ext);
 int		is_ok_char(char c);
+int		try_open(char *file);
+int		check_tiles(void);
 
 /*
 ** EVENTS
