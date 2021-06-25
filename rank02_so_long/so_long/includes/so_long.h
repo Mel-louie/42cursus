@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 16:47:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:18:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,19 @@
 ** STRUCTS
 */
 
+enum {UP, DOWN, RIGHT, LEFT};
+
+typedef struct s_positions
+{
+	int			exitx;
+	int			exity;
+}				t_positions;
+
 typedef struct s_player
 {
 	int			posx;
 	int			posy;
+	int			direction;
 }				t_player;
 
 typedef struct s_img
@@ -81,6 +90,7 @@ typedef struct s_mlx
 	t_img		img;
 	t_settings	set;
 	t_player	pl;
+	t_positions	pos;
 }				t_mlx;
 
 /*
