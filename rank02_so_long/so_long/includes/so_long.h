@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 15:48:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 16:20:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@
 /*
 ** STRUCTS
 */
+
+typedef struct s_player
+{
+	int			posx;
+	int			posy;
+}				t_player;
 
 typedef struct s_img
 {
@@ -68,11 +74,13 @@ typedef struct s_mlx
 	void		*win;
 	int			p;
 	int			e;
+	int			c;
 	int			mapx;
 	int			mapy;
 	char		**map;
 	t_img		img;
 	t_settings	set;
+	t_player	pl;
 }				t_mlx;
 
 /*
@@ -83,6 +91,7 @@ int		check_ext(char *file_ext, char *ext);
 int		is_ok_char(char c);
 int		try_open(char *file);
 int		check_tiles(void);
+void	check_char(t_mlx *mlx);
 
 /*
 ** EVENTS

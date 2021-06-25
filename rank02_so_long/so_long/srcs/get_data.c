@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:42:12 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 15:46:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 16:29:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,50 +54,27 @@ void	get_img_texture(t_mlx *mlx)
 	mlx->set.t_en.name = "end";
 }
 
-void	fill_map(int fd, char *filename, t_mlx *mlx, int i)
-{
-	char	*line;
-	int		ret;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		close_error(mlx, ER_OPEN);
-	mlx->map = malloc(sizeof(char) * (mlx->mapy * mlx->mapx));
-	if (mlx->map == NULL)
-		close_error(mlx, ER_MEMORY);
-	i = 0;
-	if (mlx->mapx > 1 && mlx->mapy > 1)
-	{
-		ret = get_next_line(fd, &line);
-		while (ret)
-		{
-			mlx->map[i] = ft_strdup(line);
-			i++;
-			free(line);
-			ret = get_next_line(fd, &line);
-		}
-		mlx->map[i] = ft_strdup(line);
-		free(line);
-	}
-	close(fd);
-}
-
 void	parse_file(int fd, t_mlx *mlx)
 {
 	char	*line;
 	int		ret;
 	int		num;
+	int		size;
 
 	num = 0;
 	ret = get_next_line(fd, &line);
 	while (ret)
 	{
+		size = ft_strlen(line);
 		check_map(line, mlx, num);
 		free(line);
 		num++;
 		ret = get_next_line(fd, &line);
+		if (ft_strlen(line) != size)
+			close_error(mlx, ER_REC);
 	}
 	mlx->mapy = num + 1;
 	check_map(line, mlx, -1);
 	free(line);
+	check_char(mlx);
 }
