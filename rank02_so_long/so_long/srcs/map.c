@@ -6,16 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:56:36 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 18:42:47 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 22:05:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	make_colectibles(t_mlx *mlx)
-{
-	mlx->pl.nb_to_colec = mlx->c;
-}
 
 void	check_map(char *line, t_mlx *mlx, int num)
 {
@@ -42,7 +37,6 @@ void	check_map(char *line, t_mlx *mlx, int num)
 			close_error(mlx, ER_NOTSURR);
 	}
 	mlx->mapx = i;
-	make_colectibles(mlx);
 }
 
 void	fill_map(int fd, char *filename, t_mlx *mlx, int i)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 18:10:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 22:06:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int	run_game(t_mlx *mlx)
 	draw_map(mlx);
 	mlx_do_sync(mlx->ptr);
 	return (0);
+}
+
+void	init_lst(t_lst_colec *lst)
+{
+	lst->first = NULL;
 }
 
 void	set_game(t_mlx *mlx, char *filename)
@@ -41,6 +46,7 @@ void	set_game(t_mlx *mlx, char *filename)
 		&mlx->img.s_l, &mlx->img.endian);
 	get_img_texture(mlx);
 	get_player_pos(mlx);
+	init_lst(&mlx->lst_colec);
 	close(fd);
 }
 
@@ -51,8 +57,6 @@ int	main(int ac, char **av)
 	mlx.p = 0;
 	mlx.e = 0;
 	mlx.c = 0;
-	mlx.pl.colec = 0;
-	mlx.pl.nb_to_colec = 0;
 	if (ac < 2 || ac > 3)
 	{
 		ft_putstr_fd(ERR_ARG, 2);

@@ -6,11 +6,17 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 16:45:56 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 18:42:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 21:58:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	update_pl_pos(t_mlx *mlx, int dy, int dx)
+{
+	mlx->pl.posy += dy;
+	mlx->pl.posx += dx;
+}
 
 int	can_player_move(t_mlx *mlx, int dy, int dx)
 {
@@ -37,21 +43,17 @@ void	move_player(t_mlx *mlx, int dy, int dx)
 		flag = 2;
 	if (flag == 0)
 	{
-		mlx->pl.posy += dy;
-		mlx->pl.posx += dx;
-		if (mlx->pos.exity == mlx->pl.posy && mlx->pos.exitx == mlx->pl.posx
-			&& mlx->pl.nb_to_colec <= mlx->pl.colec)
+		update_pl_pos(mlx, dy, dx);
+		if (mlx->pos.exity == mlx->pl.posy && mlx->pos.exitx == mlx->pl.posx)
 		{
-			mlx->pl.posy += dy;
-			mlx->pl.posx += dx;
-			close_window(mlx, WON);
+			if (colect_all(mlx) == 1)
+				close_window(mlx, WON);
 		}
 	}
 	if (flag == 2)
 	{
-		mlx->pl.posy += dy;
-		mlx->pl.posx += dx;
-		mlx->pl.colec += 1;
+		update_pl_pos(mlx, dy, dx);
+		collected(mlx);
 	}
 }
 
@@ -61,10 +63,10 @@ void	get_player_pos(t_mlx *mlx)
 	int	y;
 
 	y = -1;
-	while (++y < mlx->mapy / BLOCK)
+	while (++y < mlx->mapy / MULTIPLE)
 	{
 		x = -1;
-		while (++x < mlx->mapx / BLOCK)
+		while (++x < mlx->mapx / MULTIPLE)
 		{
 			if (mlx->map[y][x] == 'P')
 			{

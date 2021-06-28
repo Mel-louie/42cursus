@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 11:07:38 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 13:29:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 21:57:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	window_size(t_mlx *mlx)
 	int	screeny;
 
 	mlx_get_screen_size(mlx->ptr, &screenx, &screeny);
-	if (min_val(mlx->mapx * BLOCK, screenx) == 1)
-		mlx->mapx *= BLOCK;
+	if (min_val(mlx->mapx * MULTIPLE, screenx) == 1)
+		mlx->mapx *= MULTIPLE;
 	else
 		mlx->mapx = screenx;
-	if (min_val(mlx->mapy * BLOCK, screeny) == 1)
-		mlx->mapy *= BLOCK;
+	if (min_val(mlx->mapy * MULTIPLE, screeny) == 1)
+		mlx->mapy *= MULTIPLE;
 	else
 		mlx->mapy = screeny;
 }

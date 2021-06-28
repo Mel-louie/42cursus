@@ -6,14 +6,15 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/25 16:49:35 by user42           ###   ########.fr        #
+#    Updated: 2021/06/28 22:07:08 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS	= srcs/main.c \
+SRCS	= srcs/so_long.c \
 			srcs/checks.c \
+			srcs/collectibles.c \
 			srcs/draw_n_update.c \
 			srcs/events.c \
 			srcs/exits.c \
