@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/28 21:59:16 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 23:31:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,15 @@ void	draw_map(t_mlx *mlx)
 	int	y;
 
 	y = -1;
-	while (++y < mlx->mapy / MULTIPLE)
+	if (mlx->won != 42)
 	{
-		x = -1;
-		while (++x < mlx->mapx / MULTIPLE)
-			drawing(mlx, y, x);
+		while (++y < mlx->mapy / MULTIPLE)
+		{
+			x = -1;
+			while (++x < mlx->mapx / MULTIPLE)
+				drawing(mlx, y, x);
+		}
 	}
+	else
+		victory(mlx);
 }

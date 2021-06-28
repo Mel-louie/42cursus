@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 16:45:56 by user42            #+#    #+#             */
-/*   Updated: 2021/06/28 21:58:30 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 23:29:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@ int	can_player_move(t_mlx *mlx, int dy, int dx)
 	return (1);
 }
 
+void	display_moves(t_mlx *mlx)
+{
+	char	*str;
+
+	mlx->moves++;
+	str = ft_itoa(mlx->moves);
+	ft_putstr_fd("\033[1;37mSO_LONG 🐟 ", 1);
+	ft_putstr_fd("\033[0;37mmovement \033[1;37m#", 1);
+	ft_putstr_fd(str, 1);
+	ft_putstr_fd("\n", 1);
+	str = free_str(str);
+}
+
 void	move_player(t_mlx *mlx, int dy, int dx)
 {
 	int	flag;
@@ -47,13 +60,15 @@ void	move_player(t_mlx *mlx, int dy, int dx)
 		if (mlx->pos.exity == mlx->pl.posy && mlx->pos.exitx == mlx->pl.posx)
 		{
 			if (colect_all(mlx) == 1)
-				close_window(mlx, WON);
+				mlx->won = 42;
 		}
+		display_moves(mlx);
 	}
 	if (flag == 2)
 	{
 		update_pl_pos(mlx, dy, dx);
 		collected(mlx);
+		display_moves(mlx);
 	}
 }
 

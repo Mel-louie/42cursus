@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/28 22:06:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 23:46:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define WIN_NAME "So Long!"
 # define BUFFER_SIZE 32
 # define MULTIPLE 32
+
+int				run_game(t_mlx *mlx);
 
 /*
 ** CHECKS
@@ -48,6 +50,7 @@ int				red_cross(t_mlx *mlx);
 
 int				close_window(t_mlx *mlx, char *str);
 int				close_error(t_mlx *mlx, char *error);
+void			victory(t_mlx *mlx);
 
 /*
 ** MAP

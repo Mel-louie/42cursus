@@ -9,6 +9,7 @@
 
 long long	ft_great_atoi(const char *str);
 int			ft_atoi(const char *str);
+char		*ft_itoa(int n);
 
 /*
 ** FREEs

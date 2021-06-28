@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/28 22:07:08 by user42           ###   ########.fr        #
+#    Updated: 2021/06/28 23:49:43 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS	= $(SRCS:%.c=%.o)
 
 # compiler
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -O3 -g3 #-fsanitize=address
 
 MLXFLAGS = -L./libs/mlx -lm -lmlx -lbsd -lX11 -lXext #linux 
 MLX = libmlx.a

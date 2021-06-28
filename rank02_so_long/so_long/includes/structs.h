@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:01:17 by user42            #+#    #+#             */
-/*   Updated: 2021/06/28 22:05:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 23:21:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ typedef struct s_mlx
 	int			mapx;
 	int			mapy;
 	char		**map;
+	int			moves;
+	int			won;
 	t_img		img;
 	t_assets	set;
 	t_player	pl;

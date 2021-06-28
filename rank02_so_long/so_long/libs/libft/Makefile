@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:17:57 by mdesfont          #+#    #+#              #
-#    Updated: 2021/06/25 15:24:14 by user42           ###   ########.fr        #
+#    Updated: 2021/06/28 22:52:06 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC =	./srcs/ft_atoi.c \
 		./srcs/ft_bzero.c \
 		./srcs/ft_frees.c \
 		./srcs/ft_isdigit.c \
+		./srcs/ft_itoa.c  \
 		./srcs/ft_puts.c \
 		./srcs/ft_split.c \
 		./srcs/ft_strs.c \
