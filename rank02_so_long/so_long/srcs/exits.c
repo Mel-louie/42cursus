@@ -6,11 +6,26 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 00:53:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 01:04:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	free_assets(t_assets *set, t_mlx *mlx)
+{
+	if (set->path_co)
+		free(set->path_co);
+	if (set->path_en)
+		free(set->path_en);
+	if (set->path_fl)
+		free(set->path_fl);
+	if (set->path_pl)
+		free(set->path_pl);
+	if (set->path_wa)
+		free(set->path_wa);
+(void)mlx;
+}
 
 void	free_game(t_mlx *mlx)
 {
@@ -23,6 +38,8 @@ void	free_game(t_mlx *mlx)
 			free(mlx->map[i++]);
 		free(mlx->map);
 	}
+//	if (&mlx->set)
+		free_assets(&mlx->set, mlx);
 }
 
 int	close_error(t_mlx *mlx, char *error)
