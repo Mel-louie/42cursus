@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 17:54:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 18:14:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	drawing(t_mlx *mlx, int y, int x)
 	if (y == mlx->pl.posy && x == mlx->pl.posx)
 		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl.ptr \
 		, mlx->set.t_pl.width * x, mlx->set.t_pl.height * y);
+	display_moves(mlx);
 }
 
 void	draw_map(t_mlx *mlx)
