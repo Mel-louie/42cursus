@@ -6,19 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 11:07:38 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 16:09:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 23:38:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/so_long_bonus.h"
-
-int	min_val(int val1, int val2)
-{
-	if (val1 < val2)
-		return (1);
-	else
-		return (2);
-}
 
 void	window_size(t_mlx *mlx)
 {
@@ -26,12 +18,12 @@ void	window_size(t_mlx *mlx)
 	int	screeny;
 
 	mlx_get_screen_size(mlx->ptr, &screenx, &screeny);
-	if (min_val(mlx->mapx * MULTIPLE, screenx) == 1)
+	if (mlx->mapx * MULTIPLE > screenx)
+		close_error(mlx, "Error\n\033[1;34mThe map is to big for the screen.\n");
+	else
 		mlx->mapx *= MULTIPLE;
+	if (mlx->mapy * MULTIPLE > screeny)
+		close_error(mlx, "Error\n\033[1;34mThe map is to big for the screen.\n");
 	else
-		mlx->mapx = screenx;
-	if (min_val(mlx->mapy * MULTIPLE, screeny) == 1)
 		mlx->mapy *= MULTIPLE;
-	else
-		mlx->mapy = screeny;
 }

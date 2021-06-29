@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 17:47:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 22:43:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	init(t_mlx *mlx)
 	mlx->mapx = 0;
 	mlx->mapy = 0;
 	mlx->s = 0;
+	mlx->pl.direction = RIGHT;
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:01:17 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 17:46:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 22:48:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,19 @@ typedef struct s_assets
 	char		*path_fl;
 	char		*path_wa;
 	char		*path_co;
-	char		*path_pl;
+	char		*path_pl1;
+	char		*path_pl2;
+	char		*path_pl3;
+	char		*path_pl4;
 	char		*path_en;
 	char		*path_enem;
 	t_img		t_fl;
 	t_img		t_wa;
 	t_img		t_co;
-	t_img		t_pl;
+	t_img		t_pl1;
+	t_img		t_pl2;
+	t_img		t_pl3;
+	t_img		t_pl4;
 	t_img		t_en;
 	t_img		t_enem;
 }				t_assets;
@@ -113,7 +119,10 @@ typedef struct s_mlx
 	int			floor;
 	int			walls;
 	int			colect;
-	int			player;
+	int			player1;
+	int			player2;
+	int			player3;
+	int			player4;
 	int			end;
 	int			enemy;
 }				t_mlx;

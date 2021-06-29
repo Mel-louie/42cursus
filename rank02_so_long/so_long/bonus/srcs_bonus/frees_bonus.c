@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 18:06:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 23:04:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ void	free_assets(t_assets *set)
 		free(set->path_en);
 	if (set->path_fl)
 		free(set->path_fl);
-	if (set->path_pl)
-		free(set->path_pl);
+	if (set->path_pl1)
+		free(set->path_pl1);
+	if (set->path_pl2)
+		free(set->path_pl2);
+	if (set->path_pl3)
+		free(set->path_pl3);
+	if (set->path_pl4)
+		free(set->path_pl4);
 	if (set->path_wa)
 		free(set->path_wa);
 	if (set->path_enem)
@@ -85,8 +91,14 @@ void	free_game(t_mlx *mlx)
 		mlx_destroy_image(mlx->ptr, mlx->set.t_en.ptr);
 	if (mlx->set.t_fl.ptr)
 		mlx_destroy_image(mlx->ptr, mlx->set.t_fl.ptr);
-	if (mlx->set.t_pl.ptr)
-		mlx_destroy_image(mlx->ptr, mlx->set.t_pl.ptr);
+	if (mlx->set.t_pl1.ptr)
+		mlx_destroy_image(mlx->ptr, mlx->set.t_pl1.ptr);
+	if (mlx->set.t_pl2.ptr)
+		mlx_destroy_image(mlx->ptr, mlx->set.t_pl2.ptr);
+	if (mlx->set.t_pl3.ptr)
+		mlx_destroy_image(mlx->ptr, mlx->set.t_pl3.ptr);
+	if (mlx->set.t_pl4.ptr)
+		mlx_destroy_image(mlx->ptr, mlx->set.t_pl4.ptr);
 	if (mlx->set.t_wa.ptr)
 		mlx_destroy_image(mlx->ptr, mlx->set.t_wa.ptr);
 	if (mlx->set.t_enem.ptr)

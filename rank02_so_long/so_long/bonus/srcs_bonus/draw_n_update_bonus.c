@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 18:14:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 23:02:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ void	drawing_colec_n_enemies(t_mlx *mlx, int y, int x)
 	}
 }
 
+void	drawing_player(t_mlx *mlx, int y, int x)
+{
+	if (y == mlx->pl.posy && x == mlx->pl.posx && mlx->pl.direction == RIGHT)
+		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl1.ptr \
+		, mlx->set.t_pl1.width * x, mlx->set.t_pl1.height * y);
+	if (y == mlx->pl.posy && x == mlx->pl.posx && mlx->pl.direction == LEFT)
+		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl2.ptr \
+		, mlx->set.t_pl2.width * x, mlx->set.t_pl2.height * y);
+	if (y == mlx->pl.posy && x == mlx->pl.posx && mlx->pl.direction == UP)
+		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl3.ptr \
+		, mlx->set.t_pl3.width * x, mlx->set.t_pl3.height * y);
+	if (y == mlx->pl.posy && x == mlx->pl.posx && mlx->pl.direction == DOWN)
+		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl4.ptr \
+		, mlx->set.t_pl4.width * x, mlx->set.t_pl4.height * y);
+}
+
 void	drawing(t_mlx *mlx, int y, int x)
 {
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_fl.ptr \
@@ -50,9 +66,7 @@ void	drawing(t_mlx *mlx, int y, int x)
 		, mlx->set.t_en.width * x, mlx->set.t_en.height * y);
 	}
 	drawing_colec_n_enemies(mlx, y, x);
-	if (y == mlx->pl.posy && x == mlx->pl.posx)
-		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl.ptr \
-		, mlx->set.t_pl.width * x, mlx->set.t_pl.height * y);
+	drawing_player(mlx, y, x);
 	display_moves(mlx);
 }
 

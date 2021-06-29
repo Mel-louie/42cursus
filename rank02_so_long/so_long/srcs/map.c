@@ -6,11 +6,36 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:56:36 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 14:38:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 23:29:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	control_char(char c, t_mlx *mlx, char *line, int num)
+{
+	if (is_ok_char(c) == 0)
+	{
+		free(line);
+		close_error(mlx, ER_WRONGCHAR);
+	}
+	if (c == 'E')
+		mlx->e += 1;
+	if (c == 'P')
+		mlx->p += 1;
+	if (c == 'C')
+		mlx->c += 1;
+	if (mlx->e > 1 || mlx->p > 1)
+	{
+		free(line);
+		close_error(mlx, ER_MULTIC);
+	}
+	if ((num == -1 || num == 0) && c != '1')
+	{
+		free(line);
+		close_error(mlx, ER_NOTSURR);
+	}
+}
 
 void	check_map(char *line, t_mlx *mlx, int num, int i)
 {
@@ -21,23 +46,7 @@ void	check_map(char *line, t_mlx *mlx, int num, int i)
 	if (line[0] != '1' || line[len - 1] != '1')
 		close_error(mlx, ER_NOTSURR);
 	while (line[++i])
-	{
-		if (is_ok_char(line[i]) == 0)
-			close_error(mlx, ER_WRONGCHAR);
-		if (line[i] == 'E')
-			mlx->e += 1;
-		if (line[i] == 'P')
-			mlx->p += 1;
-		if (line[i] == 'C')
-			mlx->c += 1;
-		if (mlx->e > 1 || mlx->p > 1)
-			close_error(mlx, ER_MULTIC);
-		if ((num == -1 || num == 0) && line[i] != '1')
-		{
-			free(line);
-			close_error(mlx, ER_NOTSURR);
-		}
-	}
+		control_char(line[i], mlx, line, num);
 	mlx->mapx = i;
 }
 

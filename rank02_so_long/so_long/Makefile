@@ -6,12 +6,11 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/29 17:55:31 by user42           ###   ########.fr        #
+#    Updated: 2021/06/29 23:09:04 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-NAME_BONUS = so_long_bonus
 
 SRCS	= srcs/so_long.c \
 			srcs/checks.c \
@@ -64,14 +63,6 @@ $(NAME) : $(OBJS)
 	@$(CC) $(OBJS)  $(LIBFT) $(CFLAGS) $(MLXFLAGS) -I $(INCDIR) -o $(NAME)
 	@echo "\n\033[1;32mCompilation OK\n\033[0m"
 
-$(NAME_BONUS) : $(OBJS_BONUS)
-	@make -C ./libs/libft
-	@make -C ./libs/mlx
-	@cp ./libs/mlx/$(MLX) ./
-	@cp ./libs/libft/$(LIBFT) ./
-	@$(CC) $(OBJS_BONUS) $(LIBFT) $(CFLAGS) $(MLXFLAGS) -I $(INCDIR_BONUS) -o $(NAME_BONUS)
-	@echo "\n\033[1;32mCompilation OK\n\033[0m"
-
 clean :
 	@echo "\033[0;36mCleaning..."
 	@cd ./libs/libft; make clean
@@ -87,7 +78,6 @@ fclean :
 	@rm -f $(OBJS)
 	@rm -f $(OBJS_BONUS)
 	@rm -f $(NAME)
-	@rm -f $(NAME_BONUS)
 	@rm -f $(LIBFT)
 	@rm -f $(MLX)
 	@echo "\033[1;36m\n\nCleaning done\n\033[0m"
@@ -112,7 +102,13 @@ normibonus :
 	@echo "\nINCLUDES_BONUS:"
 	@norminette ./bonus/includes_bonus/*.h
 
-bonus : $(NAME_BONUS)
+bonus : $(OBJS_BONUS)
+	@make -C ./libs/libft
+	@make -C ./libs/mlx
+	@cp ./libs/mlx/$(MLX) ./
+	@cp ./libs/libft/$(LIBFT) ./
+	@$(CC) $(OBJS_BONUS) $(LIBFT) $(CFLAGS) $(MLXFLAGS) -I $(INCDIR_BONUS) -o $(NAME)
+	@echo "\n\033[1;32mCompilation OK\n\033[0m"
 
 re : fclean all
 
