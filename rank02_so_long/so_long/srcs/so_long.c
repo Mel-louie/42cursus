@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 00:41:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 12:14:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,23 @@ void	set_game(t_mlx *mlx, char *filename)
 	close(fd);
 }
 
+void	init(t_mlx *mlx)
+{
+	mlx->p = 0;
+	mlx->e = 0;
+	mlx->c = 0;
+	mlx->moves = 0;
+	mlx->won = 0;
+	mlx->map = NULL;
+	mlx->mapx = 0;
+	mlx->mapy = 0;
+}
+
 int	main(int ac, char **av)
 {
 	t_mlx	mlx;
 
-	mlx.p = 0;
-	mlx.e = 0;
-	mlx.c = 0;
-	mlx.moves = 0;
-	mlx.won = 0;
+	init(&mlx);
 	if (ac < 2 || ac > 3)
 	{
 		ft_putstr_fd(ERR_ARG, 2);

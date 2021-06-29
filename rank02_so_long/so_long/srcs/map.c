@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:56:36 by user42            #+#    #+#             */
-/*   Updated: 2021/06/28 22:05:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 13:23:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	check_map(char *line, t_mlx *mlx, int num)
 		if (mlx->e > 1 || mlx->p > 1)
 			close_error(mlx, ER_MULTIC);
 		if ((num == -1 || num == 0) && line[i] != '1')
+		{
+			free(line);
 			close_error(mlx, ER_NOTSURR);
+		}
 	}
 	mlx->mapx = i;
 }
@@ -44,6 +47,7 @@ void	fill_map(int fd, char *filename, t_mlx *mlx, int i)
 	char	*line;
 	int		ret;
 
+	line = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		close_error(mlx, ER_OPEN);
@@ -58,11 +62,11 @@ void	fill_map(int fd, char *filename, t_mlx *mlx, int i)
 		{
 			mlx->map[i] = ft_strdup(line);
 			i++;
-			free(line);
+			line = free_str(line);
 			ret = get_next_line(fd, &line);
 		}
 		mlx->map[i] = ft_strdup(line);
-		free(line);
+		line = free_str(line);
 	}
 	close(fd);
 }
