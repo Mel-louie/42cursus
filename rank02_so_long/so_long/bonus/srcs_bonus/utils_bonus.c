@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 12:42:58 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 18:17:36 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 22:38:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@ void	display_moves(t_mlx *mlx)
 	char	*str;
 
 	str = ft_itoa(mlx->moves);
-	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 215,
-		(mlx->mapy / 2) - 80, 0x00000000,
-		"movement #");
-	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 150,
-		(mlx->mapy / 2) - 80, 0x00000000,
-		str);
+	mlx_string_put(mlx->ptr, mlx->win, 10, 20, 0x00000000, "movement #");
+	mlx_string_put(mlx->ptr, mlx->win, 80, 20, 0x00000000, str);
 	str = free_str(str);
 }
 

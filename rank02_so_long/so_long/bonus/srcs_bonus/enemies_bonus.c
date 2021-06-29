@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 21:54:34 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 17:49:07 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 22:37:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	defeat(t_mlx *mlx)
 	mlx_clear_window(mlx->ptr, mlx->win);
 	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 100,
 		(mlx->mapy / 2) - 50, 0x00FF0000,
-		"Oh no, that was a shark, you lose :(");
+		"Oh no, that was a shark, you're dead :(");
 	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 50,
 		(mlx->mapy / 2) - 10, 0x00FF0000,
 		"Press ESC to exit.");

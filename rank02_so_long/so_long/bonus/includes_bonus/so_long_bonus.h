@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 18:03:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 22:22:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define WIN_NAME "So Long!"
 # define BUFFER_SIZE 32
-# define MULTIPLE 32
+# define MULTIPLE 64
 
 int				run_game(t_mlx *mlx);
 void			free_game(t_mlx *mlx);
