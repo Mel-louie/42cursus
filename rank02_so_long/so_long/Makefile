@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/29 12:32:48 by user42           ###   ########.fr        #
+#    Updated: 2021/06/29 14:35:09 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	= srcs/so_long.c \
 			srcs/draw_n_update.c \
 			srcs/events.c \
 			srcs/exits.c \
+			srcs/frees.c \
 			srcs/get_data.c \
 			srcs/map.c \
 			srcs/player.c \

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 16:45:56 by user42            #+#    #+#             */
-/*   Updated: 2021/06/28 23:29:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 13:30:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	display_moves(t_mlx *mlx)
 
 	mlx->moves++;
 	str = ft_itoa(mlx->moves);
-	ft_putstr_fd("\033[1;37mSO_LONG 🐟 ", 1);
+	ft_putstr_fd("\033[1;37mSO_LONG 🐟\t", 1);
 	ft_putstr_fd("\033[0;37mmovement \033[1;37m#", 1);
 	ft_putstr_fd(str, 1);
 	ft_putstr_fd("\n", 1);

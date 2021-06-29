@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 11:53:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 14:31:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	drawing(t_mlx *mlx, int y, int x)
 		if (elem && elem->touched == 0)
 			mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_co.ptr \
 			, mlx->set.t_co.width * x, mlx->set.t_co.height * y);
-		elem = NULL;
 	}
 	if (y == mlx->pl.posy && x == mlx->pl.posx)
 		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl.ptr \

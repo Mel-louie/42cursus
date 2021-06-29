@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 14:50:58 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/06/21 14:53:11 by user42           ###   ########.fr       */
+/*   Created: 2021/06/29 14:02:36 by user42            #+#    #+#             */
+/*   Updated: 2021/06/29 14:25:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	get_next_line(int fd, char **line)
+void	ft_bzero(void *s, size_t n)
 {
-	static char	buffer[32];
-	int			ret;
+	char			*m;
+	unsigned int	i;
 
-	if (!line)
-		return (-1);
-	*line = ft_strndup("", 1);
-	ret = read(fd, buffer, 1);
-	while (ret > 0)
+	m = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		if (buffer[0] == '\n')
-			return (1);
-		*line = ft_strjoin(*line, buffer);
-		if (*line == NULL)
-			return (-1);
-		ret = read(fd, buffer, 1);
+		m[i] = '\0';
+		i++;
 	}
-	if (ret < 0)
-		return (-1);
-	return (ret);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*dst;
+
+	dst = malloc(sizeof(char) * (count * (size + 1)));
+	if (!(dst))
+		return (NULL);
+	ft_bzero(dst, count * size);
+	return (dst);
 }

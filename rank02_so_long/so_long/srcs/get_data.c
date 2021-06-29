@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:42:12 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 16:29:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 14:39:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ void	parse_file(int fd, t_mlx *mlx)
 	int		ret;
 	int		num;
 	int		size;
+	int		i;
 
 	num = 0;
+	i = -1;
 	ret = get_next_line(fd, &line);
 	while (ret)
 	{
 		size = ft_strlen(line);
-		check_map(line, mlx, num);
+		check_map(line, mlx, num, i);
 		free(line);
 		num++;
 		ret = get_next_line(fd, &line);
@@ -74,7 +76,7 @@ void	parse_file(int fd, t_mlx *mlx)
 			close_error(mlx, ER_REC);
 	}
 	mlx->mapy = num + 1;
-	check_map(line, mlx, -1);
+	check_map(line, mlx, -1, i);
 	free(line);
 	check_char(mlx);
 }

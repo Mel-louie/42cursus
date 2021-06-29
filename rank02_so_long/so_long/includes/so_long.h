@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/28 23:46:36 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 14:39:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define MULTIPLE 32
 
 int				run_game(t_mlx *mlx);
+void			free_game(t_mlx *mlx);
 
 /*
 ** CHECKS
@@ -56,7 +57,7 @@ void			victory(t_mlx *mlx);
 ** MAP
 */
 
-void			check_map(char *line, t_mlx *mlx, int last);
+void			check_map(char *line, t_mlx *mlx, int last, int i);
 void			parse_file(int fd, t_mlx *mlx);
 void			fill_map(int fd, char *filename, t_mlx *mlx, int i);
 void			draw_map(t_mlx *mlx);

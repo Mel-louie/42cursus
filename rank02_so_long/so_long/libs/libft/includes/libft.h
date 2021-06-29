@@ -4,6 +4,13 @@
 # include <unistd.h>
 
 /*
+** ALLOC
+*/
+
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t count, size_t size);
+
+/*
 ** ATOIs ITOAs
 */
 
@@ -35,8 +42,8 @@ void		ft_putstr_fd(char *str, int fd);
 ** STRs
 */
 
-char		*ft_strdup(const char *s1);
 char		*ft_strndup(const char *s, size_t n);
+char		*ft_strdup(const char *s1);
 char		**ft_split(const char *str, char c);
 int			ft_strlen(char *str);
 char		*ft_strcpy(char *dest, const char *src);

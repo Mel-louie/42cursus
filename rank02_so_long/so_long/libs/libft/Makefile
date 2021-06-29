@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:17:57 by mdesfont          #+#    #+#              #
-#    Updated: 2021/06/28 22:52:06 by user42           ###   ########.fr        #
+#    Updated: 2021/06/29 14:08:34 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 SRC =	./srcs/ft_atoi.c \
 		./srcs/ft_bzero.c \
+		./srcs/ft_calloc.c \
 		./srcs/ft_frees.c \
 		./srcs/ft_isdigit.c \
 		./srcs/ft_itoa.c  \
@@ -74,5 +75,14 @@ re:		fclean all
 
 os:
 	@echo $(_CYAN)"The OS is currently: "$(_END)$(_YELLOW)$(OS_NAME)$(_END)
+
+norminette :
+	@echo "\033[1;37m"
+	@norminette --version
+	@echo "\nNorming...\033[0m\n"
+	@echo "SRCS:"
+	@norminette ./srcs/*.c
+	@echo "\nINCLUDES:"
+	@norminette ./includes/*.h
 
 .PHONY:		all clean fclean re

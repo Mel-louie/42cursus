@@ -6,16 +6,15 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:56:36 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 13:23:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 14:38:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	check_map(char *line, t_mlx *mlx, int num)
+void	check_map(char *line, t_mlx *mlx, int num, int i)
 {
 	int	len;
-	int	i;
 
 	len = ft_strlen(line);
 	i = -1;
@@ -51,7 +50,7 @@ void	fill_map(int fd, char *filename, t_mlx *mlx, int i)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		close_error(mlx, ER_OPEN);
-	mlx->map = malloc(sizeof(char) * (mlx->mapy * mlx->mapx));
+	mlx->map = ft_calloc(1, mlx->mapy * mlx->mapx);
 	if (mlx->map == NULL)
 		close_error(mlx, ER_MEMORY);
 	i = 0;
