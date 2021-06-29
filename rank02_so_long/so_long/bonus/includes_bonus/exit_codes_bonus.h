@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_codes.h                                       :+:      :+:    :+:   */
+/*   exit_codes_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:16 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 13:07:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 17:02:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXIT_CODES_H
-# define EXIT_CODES_H
+#ifndef EXIT_CODES_BONUS_H
+# define EXIT_CODES_BONUS_H
 
 # define ERR_ARG "Error\n\033[1;34mWrong number of arguments.\033[0m\n"
 # define ER_BAD_EXT "Error\n\033[1;34mMap extention must be \'.ber\'\033[0m\n"
@@ -21,6 +21,7 @@
 # define ER_NO_EX "Error\n\033[1;34mThere is no exit\033[0m\n"
 # define ER_NO_PL "Error\n\033[1;34mThere is no player.\033[0m\n"
 # define ER_NO_CO "Error\n\033[1;34mThere is no colectibles.\033[0m\n"
+# define ER_NO_EN "Error\n\033[1;34mThere is no ennemies.\033[0m\n"
 # define ER_NOTSURR "Error\n\033[1;34mIncorrect's map.\033[0m\n"
 # define ER_OPEN "Error\n\033[1;34mCan't open the file map.\033[0m\n"
 # define ER_REC "Error\n\033[1;34mIncorrect's map.\033[0m\n"

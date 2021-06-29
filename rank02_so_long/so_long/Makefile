@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/29 16:23:31 by user42           ###   ########.fr        #
+#    Updated: 2021/06/29 17:55:31 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS_BONUS	= bonus/srcs_bonus/so_long_bonus.c \
 			bonus/srcs_bonus/checks_bonus.c \
 			bonus/srcs_bonus/collectibles_bonus.c \
 			bonus/srcs_bonus/draw_n_update_bonus.c \
+			bonus/srcs_bonus/enemies_bonus.c \
 			bonus/srcs_bonus/events_bonus.c \
 			bonus/srcs_bonus/exits_bonus.c \
 			bonus/srcs_bonus/frees_bonus.c \
@@ -45,7 +46,7 @@ OBJS_BONUS	= $(SRCS_BONUS:%.c=%.o)
 
 # compiler
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -O3 -g3 #-fsanitize=address
 
 MLXFLAGS = -L./libs/mlx -lm -lmlx -lbsd -lX11 -lXext #linux 
 MLX = libmlx.a
@@ -101,6 +102,15 @@ norminette :
 	@norminette ./includes/*.h
 	@echo "\nLIBFT:"
 	@norminette ./libs/libft/includes/*.h ./libs/libft/srcs/*.c
+
+normibonus :
+	@echo "\033[1;37m"
+	@norminette --version
+	@echo "\nNorming...\033[0m\n"
+	@echo "SRCS_BONUS:"
+	@norminette ./bonus/srcs_bonus/*.c
+	@echo "\nINCLUDES_BONUS:"
+	@norminette ./bonus/includes_bonus/*.h
 
 bonus : $(NAME_BONUS)
 

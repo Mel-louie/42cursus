@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 16:09:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 18:06:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,30 @@ void	free_assets(t_assets *set)
 		free(set->path_pl);
 	if (set->path_wa)
 		free(set->path_wa);
+	if (set->path_enem)
+		free(set->path_enem);
 }
 
-void	free_lst(t_lst_colec *lst)
+void	free_lst_colec(t_lst_colec *lst)
 {
 	t_elem_colec	*elem;
 	t_elem_colec	*next;
+
+	if (!lst)
+		return ;
+	elem = lst->first;
+	while (elem)
+	{
+		next = elem->next;
+		free(elem);
+		elem = next;
+	}
+}
+
+void	free_lst_enem(t_lst_enemy *lst)
+{
+	t_elem_enemy	*elem;
+	t_elem_enemy	*next;
 
 	if (!lst)
 		return ;
@@ -59,7 +77,8 @@ void	free_map(t_mlx *mlx)
 void	free_game(t_mlx *mlx)
 {
 	free_assets(&mlx->set);
-	free_lst(&mlx->lst_colec);
+	free_lst_colec(&mlx->lst_colec);
+	free_lst_enem(&mlx->lst_enemy);
 	if (mlx->set.t_co.ptr)
 		mlx_destroy_image(mlx->ptr, mlx->set.t_co.ptr);
 	if (mlx->set.t_en.ptr)
@@ -70,6 +89,8 @@ void	free_game(t_mlx *mlx)
 		mlx_destroy_image(mlx->ptr, mlx->set.t_pl.ptr);
 	if (mlx->set.t_wa.ptr)
 		mlx_destroy_image(mlx->ptr, mlx->set.t_wa.ptr);
+	if (mlx->set.t_enem.ptr)
+		mlx_destroy_image(mlx->ptr, mlx->set.t_enem.ptr);
 	if (mlx->map)
 		free_map(mlx);
 }

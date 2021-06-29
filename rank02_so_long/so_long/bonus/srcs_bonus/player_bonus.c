@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 16:45:56 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 16:09:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 18:02:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,13 @@ int	can_player_move(t_mlx *mlx, int dy, int dx)
 		return (-1);
 	if (mlx->map[new_posy][new_posx] == 'C')
 		return (2);
+	if (mlx->map[new_posy][new_posx] == 'S')
+		return (3);
 	return (1);
 }
 
-void	display_moves(t_mlx *mlx)
+void	move_player_next(t_mlx *mlx, int dy, int dx, int flag)
 {
-	char	*str;
-
-	mlx->moves++;
-	str = ft_itoa(mlx->moves);
-	ft_putstr_fd("\033[1;37mSO_LONG 🐟\t", 1);
-	ft_putstr_fd("\033[0;37mmovement \033[1;37m#", 1);
-	ft_putstr_fd(str, 1);
-	ft_putstr_fd("\n", 1);
-	str = free_str(str);
-}
-
-void	move_player(t_mlx *mlx, int dy, int dx)
-{
-	int	flag;
-
-	flag = 0;
-	if (can_player_move(mlx, dy, dx) == -1)
-		flag = 1;
-	else if (can_player_move(mlx, dy, dx) == 2)
-		flag = 2;
 	if (flag == 0)
 	{
 		update_pl_pos(mlx, dy, dx);
@@ -70,6 +52,25 @@ void	move_player(t_mlx *mlx, int dy, int dx)
 		collected(mlx);
 		display_moves(mlx);
 	}
+	if (flag == 3)
+	{
+		update_pl_pos(mlx, dy, dx);
+		mlx->lose = 420;
+	}
+}
+
+void	move_player(t_mlx *mlx, int dy, int dx)
+{
+	int	flag;
+
+	flag = 0;
+	if (can_player_move(mlx, dy, dx) == -1)
+		flag = 1;
+	else if (can_player_move(mlx, dy, dx) == 2)
+		flag = 2;
+	else if (can_player_move(mlx, dy, dx) == 3)
+		flag = 3;
+	move_player_next(mlx, dy, dx, flag);
 }
 
 void	get_player_pos(t_mlx *mlx)

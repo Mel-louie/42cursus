@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 16:09:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 17:47:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	run_game(t_mlx *mlx)
 	return (0);
 }
 
-void	init_lst(t_lst_colec *lst)
+void	init_lst(t_lst_colec *lst_colec, t_lst_enemy *lst_enemy)
 {
-	lst->first = NULL;
+	lst_colec->first = NULL;
+	lst_enemy->first = NULL;
 }
 
 void	set_game(t_mlx *mlx, char *filename)
@@ -46,7 +47,7 @@ void	set_game(t_mlx *mlx, char *filename)
 		&mlx->img.s_l, &mlx->img.endian);
 	get_img_texture(mlx);
 	get_player_pos(mlx);
-	init_lst(&mlx->lst_colec);
+	init_lst(&mlx->lst_colec, &mlx->lst_enemy);
 	close(fd);
 }
 
@@ -57,9 +58,11 @@ void	init(t_mlx *mlx)
 	mlx->c = 0;
 	mlx->moves = 0;
 	mlx->won = 0;
+	mlx->lose = 0;
 	mlx->map = NULL;
 	mlx->mapx = 0;
 	mlx->mapy = 0;
+	mlx->s = 0;
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 20:04:53 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 16:09:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/29 17:15:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ void	check_char(t_mlx *mlx)
 		close_error(mlx, ER_NO_PL);
 	if (mlx->c == 0)
 		close_error(mlx, ER_NO_CO);
+	if (mlx->s == 0)
+		close_error(mlx, ER_NO_EN);
 }
 
 int	is_ok_char(char c)
 {
-	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P'
+		|| c == 'S')
 		return (1);
 	return (0);
 }
@@ -46,26 +49,23 @@ int	check_ext(char *file_ext, char *ext)
 	return (0);
 }
 
-int	check_tiles(void)
+int	check_tiles(t_mlx *mlx)
 {
-	int	floor;
-	int	walls;
-	int	colect;
-	int	player;
-	int	end;
-
 	if (check_ext("assets/floor.xpm", ".xpm") == -1 \
 		|| check_ext("assets/walls.xpm", ".xpm") == -1 \
 		|| check_ext("assets/colect.xpm", ".xpm") == -1 \
 		|| check_ext("assets/player.xpm", ".xpm") == -1 \
-		|| check_ext("assets/end.xpm", ".xpm") == -1)
+		|| check_ext("assets/end.xpm", ".xpm") == -1 \
+		|| check_ext("assets/enemy.xpm", ".xpm") == -1)
 		return (-2);
-	floor = try_open("assets/floor.xpm");
-	walls = try_open("assets/walls.xpm");
-	colect = try_open("assets/colect.xpm");
-	player = try_open("assets/player.xpm");
-	end = try_open("assets/end.xpm");
-	if ((floor || walls || colect || player || end) == 0)
+	mlx->floor = try_open("assets/floor.xpm");
+	mlx->walls = try_open("assets/walls.xpm");
+	mlx->colect = try_open("assets/colect.xpm");
+	mlx->player = try_open("assets/player.xpm");
+	mlx->end = try_open("assets/end.xpm");
+	mlx->enemy = try_open("assets/enemy.xpm");
+	if ((mlx->floor || mlx->walls || mlx->colect || mlx->player
+			|| mlx->end || mlx->enemy) == 0)
 		return (-1);
 	return (0);
 }
