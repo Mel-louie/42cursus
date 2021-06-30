@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 20:04:53 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 23:11:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 16:20:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ int	check_tiles(void)
 	int	player;
 	int	end;
 
+	if (check_ext("assets/floor.xpm", ".xpm") == -1 \
+		|| check_ext("assets/walls.xpm", ".xpm") == -1 \
+		|| check_ext("assets/colect.xpm", ".xpm") == -1 \
+		|| check_ext("assets/player.xpm", ".xpm") == -1 \
+		|| check_ext("assets/end.xpm", ".xpm") == -1)
+		return (-2);
 	floor = try_open("assets/floor.xpm");
 	walls = try_open("assets/walls.xpm");
 	colect = try_open("assets/colect.xpm");

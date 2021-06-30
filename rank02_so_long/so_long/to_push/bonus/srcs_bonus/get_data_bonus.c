@@ -1,28 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_data.c                                         :+:      :+:    :+:   */
+/*   get_data_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:42:12 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 23:16:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:03:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 void	get_path(t_mlx *mlx)
 {
-	if (check_tiles() == -1)
+	if (check_tiles(mlx) == -1)
 		close_error(mlx, ER_TILES);
-	if (check_tiles() == -2)
+	if (check_tiles(mlx) == -2)
 		close_error(mlx, ER_BAD_EXT);
 	mlx->set.path_fl = ft_strdup("assets/floor.xpm");
 	mlx->set.path_wa = ft_strdup("assets/walls.xpm");
 	mlx->set.path_co = ft_strdup("assets/colect.xpm");
-	mlx->set.path_pl = ft_strdup("assets/player.xpm");
+	mlx->set.path_pl1 = ft_strdup("assets/player.xpm");
+	mlx->set.path_pl2 = ft_strdup("assets/player2.xpm");
+	mlx->set.path_pl3 = ft_strdup("assets/player3.xpm");
+	mlx->set.path_pl4 = ft_strdup("assets/player4.xpm");
 	mlx->set.path_en = ft_strdup("assets/end.xpm");
+	mlx->set.path_enem = ft_strdup("assets/enemy.xpm");
+}
+
+void	get_player_tiles(t_mlx *mlx)
+{
+	mlx->set.t_pl1.ptr = mlx_xpm_file_to_image(mlx->ptr, \
+		mlx->set.path_pl1, &mlx->set.t_pl1.width, &mlx->set.t_pl1.height);
+	mlx->set.t_pl1.data = (int *)mlx_get_data_addr(mlx->set.t_pl1.ptr, \
+		&mlx->set.t_pl1.bpp, &mlx->set.t_pl1.s_l, &mlx->set.t_pl1.endian);
+	mlx->set.t_pl2.ptr = mlx_xpm_file_to_image(mlx->ptr, \
+		mlx->set.path_pl2, &mlx->set.t_pl2.width, &mlx->set.t_pl2.height);
+	mlx->set.t_pl2.data = (int *)mlx_get_data_addr(mlx->set.t_pl2.ptr, \
+		&mlx->set.t_pl2.bpp, &mlx->set.t_pl2.s_l, &mlx->set.t_pl2.endian);
+	mlx->set.t_pl3.ptr = mlx_xpm_file_to_image(mlx->ptr, \
+		mlx->set.path_pl3, &mlx->set.t_pl3.width, &mlx->set.t_pl3.height);
+	mlx->set.t_pl3.data = (int *)mlx_get_data_addr(mlx->set.t_pl3.ptr, \
+		&mlx->set.t_pl3.bpp, &mlx->set.t_pl3.s_l, &mlx->set.t_pl3.endian);
+	mlx->set.t_pl4.ptr = mlx_xpm_file_to_image(mlx->ptr, \
+		mlx->set.path_pl4, &mlx->set.t_pl4.width, &mlx->set.t_pl4.height);
+	mlx->set.t_pl4.data = (int *)mlx_get_data_addr(mlx->set.t_pl4.ptr, \
+		&mlx->set.t_pl4.bpp, &mlx->set.t_pl4.s_l, &mlx->set.t_pl4.endian);
 }
 
 void	get_img_texture(t_mlx *mlx)
@@ -39,14 +63,15 @@ void	get_img_texture(t_mlx *mlx)
 		mlx->set.path_co, &mlx->set.t_co.width, &mlx->set.t_co.height);
 	mlx->set.t_co.data = (int *)mlx_get_data_addr(mlx->set.t_co.ptr, \
 		&mlx->set.t_co.bpp, &mlx->set.t_co.s_l, &mlx->set.t_co.endian);
-	mlx->set.t_pl.ptr = mlx_xpm_file_to_image(mlx->ptr, \
-		mlx->set.path_pl, &mlx->set.t_pl.width, &mlx->set.t_pl.height);
-	mlx->set.t_pl.data = (int *)mlx_get_data_addr(mlx->set.t_pl.ptr, \
-		&mlx->set.t_pl.bpp, &mlx->set.t_pl.s_l, &mlx->set.t_pl.endian);
 	mlx->set.t_en.ptr = mlx_xpm_file_to_image(mlx->ptr, \
 		mlx->set.path_en, &mlx->set.t_en.width, &mlx->set.t_en.height);
 	mlx->set.t_en.data = (int *)mlx_get_data_addr(mlx->set.t_en.ptr, \
 		&mlx->set.t_en.bpp, &mlx->set.t_en.s_l, &mlx->set.t_en.endian);
+	mlx->set.t_enem.ptr = mlx_xpm_file_to_image(mlx->ptr, \
+		mlx->set.path_enem, &mlx->set.t_enem.width, &mlx->set.t_enem.height);
+	mlx->set.t_enem.data = (int *)mlx_get_data_addr(mlx->set.t_enem.ptr, \
+		&mlx->set.t_enem.bpp, &mlx->set.t_enem.s_l, &mlx->set.t_enem.endian);
+	get_player_tiles(mlx);
 }
 
 void	parse_file(int fd, t_mlx *mlx, int i)
