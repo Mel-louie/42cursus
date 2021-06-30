@@ -3,15 +3,17 @@
 ... et merci pour le poissons !
 Projet de l'école 42 qui prend la forme d'un petit jeu 2D. Il est fait pour travailler avec des textures, des sprites et quelques éléments de gameplay très basiques.
 Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures. Il est impératif d'utiliser la bibliothèque graphique <a href="https://github.com/42Paris/minilibx-linux">minilibX.</a>
+
 ```❗compatible seulement avec linux```
 
 <img src=""
      alt="">
 
 - Télécharger, installer et jouer
-	- 
-	- 
-	- 
+	- <a href="#instal">installer</a>
+	- <a href="#play">jouer</a>
+	- <a href="#bonus">bonus</a>
+	- <a href="#map">modifier la map</a>
 - Ressources:
 	- <a href="#mlx">minilibX</a>
 	- <a href="#leaks">Leaks</a>
@@ -22,12 +24,31 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
 <div id=instal></div>Tout d'abord, so_long n'est compatible qu'avec une distribution linux, car il utilise la <a href="https://github.com/42Paris/minilibx-linux">minilibX linux</a>. Pour le télécharger et compiler :
 
 ```git clone https://github.com/Mel-louie/42cursus.git && cd rank02_so_long/so_long/ && make```
+
 Si tout s'est bien passé, un executable so_long s'est créer.
-<div id=instal></div>Pour le lancer :
+
+<div id=play></div>Pour le lancer :
 
 ```./so_long map.ber```
+
 Le but est de déplacer le dauphin jusqu'à la sortie, en ayant récolté tous les poissons.
 Pour se déplacer : W, A, S, D (❗ clavier en QWERTY).
+
+<div id=bonus></div>BONUS
+
+Les bonus apportent quelques features en plus :
+- enemies causant un game over en cas de contact
+- le compteur de mouvement s'affiche sur l'écran de jeu plutôt que dans le shell
+- le sprite du joueur s'anime aux changements de directions
+Pour jouer avec les bonus il suffit de compiler avec la règle
+
+```make bonus```
+
+Puis de lancer
+
+```./so_long map_bonus.ber```
+
+<div id=map></div>
 
 # Ressouces
 
