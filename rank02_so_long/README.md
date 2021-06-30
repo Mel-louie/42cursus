@@ -97,12 +97,12 @@ pour avoir une précision de debug maximale.
 
 <h3>Textures et sprites</h3>
 
-<div id=tiles></div><b>Trouver des tiles</b><br \><br \>
+<div id=tiles></div><b>Trouver des tiles</b><br \>
 <a href="https://itch.io/">itch.io</a> en cherchant dans les assets ;<br \>
 <a href="https://opengameart.org/">OpenGameArt</a> ;<br \>
 <a href="https://www.spriters-resource.com/">The Spriters resource</a>
 <br \><br \>
-<div id=sprites></div><b>Créer et modifier les tiles</b><br \><br \>
+<div id=sprites></div><b>Créer et modifier les tiles</b><br \>
 Photoshop, sur tous les posts de l'école ;<br \>
 <a href="https://www.gimp.org/downloads/">Gimp</a> ;<br \>
 <a href="https://lospec.com/resources/">Lospec</a>, plein de ressources et outils en ligne ;<br \>
