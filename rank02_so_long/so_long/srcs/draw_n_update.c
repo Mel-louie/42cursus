@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 21:37:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:30:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ void	drawing_ex_n_colec(t_mlx *mlx, int y, int x)
 
 void	drawing(t_mlx *mlx, int y, int x)
 {
-	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_fl.ptr \
-		, mlx->set.t_fl.width * x, mlx->set.t_fl.height * y);
 	if (mlx->map[y][x] == '1')
 		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_wa.ptr \
 		, mlx->set.t_wa.width * x, mlx->set.t_wa.height * y);
+	else
+		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_fl.ptr \
+		, mlx->set.t_fl.width * x, mlx->set.t_fl.height * y);
 	drawing_ex_n_colec(mlx, y, x);
 	if (y == mlx->pl.posy && x == mlx->pl.posx)
 		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_pl.ptr \

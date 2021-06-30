@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 14:35:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:45:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,10 @@ int	red_cross(t_mlx *mlx)
 
 void	victory(t_mlx *mlx)
 {
-	mlx_clear_window(mlx->ptr, mlx->win);
 	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 100,
-		(mlx->mapy / 2) - 50, 0x00008000,
+		(mlx->mapy / 2) - 50, 0x00FFFFFF,
 		"CONGRATS YOU WON!1!! Enjoy the fish");
 	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 50,
-		(mlx->mapy / 2) - 10, 0x00008000,
+		(mlx->mapy / 2) - 10, 0x00FFFFFF,
 		"Press ESC to exit.");
 }

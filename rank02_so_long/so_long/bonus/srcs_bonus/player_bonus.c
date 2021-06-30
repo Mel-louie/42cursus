@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 16:45:56 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 21:15:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:52:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	update_pl_pos(t_mlx *mlx, int dy, int dx)
 {
 	mlx->pl.posy += dy;
 	mlx->pl.posx += dx;
+	mlx->moves++;
 }
 
 int	can_player_move(t_mlx *mlx, int dy, int dx)
@@ -44,7 +45,6 @@ void	move_player_next(t_mlx *mlx, int dy, int dx, int flag)
 	{
 		update_pl_pos(mlx, dy, dx);
 		collected(mlx);
-		mlx->moves++;
 	}
 	if (flag == 3)
 	{

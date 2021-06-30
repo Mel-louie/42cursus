@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 21:17:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:51:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,12 @@ void	drawing(t_mlx *mlx, int y, int x)
 {
 	t_elem_exit	*elem;
 
-	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_fl.ptr \
-		, mlx->set.t_fl.width * x, mlx->set.t_fl.height * y);
 	if (mlx->map[y][x] == '1')
 		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_wa.ptr \
 		, mlx->set.t_wa.width * x, mlx->set.t_wa.height * y);
+	else
+		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_fl.ptr \
+		, mlx->set.t_fl.width * x, mlx->set.t_fl.height * y);
 	if (mlx->map[y][x] == 'E')
 	{
 		push_to_lst_exits(mlx, y, x);

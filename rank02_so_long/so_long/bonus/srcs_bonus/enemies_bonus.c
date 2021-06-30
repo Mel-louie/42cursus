@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 21:54:34 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 21:16:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:49:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ t_elem_enemy	*get_enemies(t_mlx *mlx, int y, int x)
 
 void	defeat(t_mlx *mlx)
 {
-	mlx_clear_window(mlx->ptr, mlx->win);
+	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 99,
+		(mlx->mapy / 2) - 50, 0x00000000,
+		"Oh no, that was a shark, you're dead :(");
+	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 49,
+		(mlx->mapy / 2) - 10, 0x00000000,
+		"Press ESC to exit.");
 	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 100,
 		(mlx->mapy / 2) - 50, 0x00FF0000,
 		"Oh no, that was a shark, you're dead :(");
