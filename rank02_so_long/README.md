@@ -21,8 +21,8 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
 		- <a href="#tiles">Trouver des tiles</a>
 		- <a href="#sprites">Créer et modifier les tiles</a>
 
-<img src=""
-     alt="">
+<img src="so_long.png"
+     alt="screen of the game">
 
 # Télécharger, installer et jouer
 
