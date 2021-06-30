@@ -9,7 +9,7 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
      alt="">
 
 - Ressources:
-	- <a href="mlx">minilibX</a>
+	- <a href="#mlx">minilibX</a>
 	- Leaks
 	- Textures et sprites
 
