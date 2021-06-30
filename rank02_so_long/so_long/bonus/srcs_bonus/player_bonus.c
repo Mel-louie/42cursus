@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 16:45:56 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 23:39:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 21:15:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,7 @@ void	move_player_next(t_mlx *mlx, int dy, int dx, int flag)
 {
 	if (flag == 0)
 	{
-		update_pl_pos(mlx, dy, dx);
-		if (mlx->pos.exity == mlx->pl.posy && mlx->pos.exitx == mlx->pl.posx)
-		{
-			if (colect_all(mlx) == 1)
-				mlx->won = 42;
-		}
-		mlx->moves++;
+		is_an_exit(mlx, dy, dx);
 	}
 	if (flag == 2)
 	{

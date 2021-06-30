@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:47:43 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 23:02:16 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 21:17:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	drawing_player(t_mlx *mlx, int y, int x)
 
 void	drawing(t_mlx *mlx, int y, int x)
 {
+	t_elem_exit	*elem;
+
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_fl.ptr \
 		, mlx->set.t_fl.width * x, mlx->set.t_fl.height * y);
 	if (mlx->map[y][x] == '1')
@@ -60,8 +62,8 @@ void	drawing(t_mlx *mlx, int y, int x)
 		, mlx->set.t_wa.width * x, mlx->set.t_wa.height * y);
 	if (mlx->map[y][x] == 'E')
 	{
-		mlx->pos.exity = y;
-		mlx->pos.exitx = x;
+		push_to_lst_exits(mlx, y, x);
+		elem = get_exits(mlx, y, x);
 		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_en.ptr \
 		, mlx->set.t_en.width * x, mlx->set.t_en.height * y);
 	}

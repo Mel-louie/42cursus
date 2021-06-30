@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 22:22:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:04:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			victory(t_mlx *mlx);
 */
 
 void			check_map(char *line, t_mlx *mlx, int last, int i);
-void			parse_file(int fd, t_mlx *mlx);
+void			parse_file(int fd, t_mlx *mlx, int i);
 void			fill_map(int fd, char *filename, t_mlx *mlx, int i);
 void			draw_map(t_mlx *mlx);
 
@@ -81,6 +81,7 @@ void			get_img_texture(t_mlx *mlx);
 
 void			get_player_pos(t_mlx *mlx);
 void			move_player(t_mlx *mlx, int dy, int dx);
+void			update_pl_pos(t_mlx *mlx, int dy, int dx);
 
 /*
 ** COLLECTIBLES
@@ -90,5 +91,13 @@ void			push_to_lst(t_mlx *mlx, int y, int x);
 t_elem_colec	*get_colectibles(t_mlx *mlx, int y, int x);
 void			collected(t_mlx *mlx);
 int				colect_all(t_mlx *mlx);
+
+/*
+** EXITS
+*/
+
+t_elem_exit		*get_exits(t_mlx *mlx, int y, int x);
+void			push_to_lst_exits(t_mlx *mlx, int y, int x);
+void			is_an_exit(t_mlx *mlx, int dy, int dx);
 
 #endif

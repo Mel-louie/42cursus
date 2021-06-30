@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 15:56:36 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 23:29:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 21:57:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	control_char(char c, t_mlx *mlx, char *line, int num)
 		mlx->p += 1;
 	if (c == 'C')
 		mlx->c += 1;
-	if (mlx->e > 1 || mlx->p > 1)
+	if (mlx->p > 1)
 	{
 		free(line);
 		close_error(mlx, ER_MULTIC);
@@ -44,7 +44,10 @@ void	check_map(char *line, t_mlx *mlx, int num, int i)
 	len = ft_strlen(line);
 	i = -1;
 	if (line[0] != '1' || line[len - 1] != '1')
+	{
+		free(line);
 		close_error(mlx, ER_NOTSURR);
+	}
 	while (line[++i])
 		control_char(line[i], mlx, line, num);
 	mlx->mapx = i;
@@ -59,7 +62,7 @@ void	fill_map(int fd, char *filename, t_mlx *mlx, int i)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		close_error(mlx, ER_OPEN);
-	mlx->map = ft_calloc(1, mlx->mapy * mlx->mapx);
+	mlx->map = ft_calloc(1, (mlx->mapy * mlx->mapx) + 15);
 	if (mlx->map == NULL)
 		close_error(mlx, ER_MEMORY);
 	i = 0;

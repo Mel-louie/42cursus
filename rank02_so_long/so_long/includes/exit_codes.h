@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:16 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 23:36:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 21:19:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define ER_BAD_EXT "Error\n\033[1;34mMap extention must be \'.ber\'\033[0m\n"
 # define ER_END "Error\n\033[1;34m\'.ber\' mustn't end with a \\n\033[0m\n"
 # define ER_MEMORY "Error\n\033[1;34mCan't alloc memory.\033[0m\n"
-# define ER_MULTIC "Error\n\033[1;34mMulti 'P' or 'E' on the map.\033[0m\n"
+# define ER_MULTIC "Error\n\033[1;34mMulti 'P' on the map.\033[0m\n"
 # define ER_NO_EX "Error\n\033[1;34mThere is no exit\033[0m\n"
 # define ER_NO_PL "Error\n\033[1;34mThere is no player.\033[0m\n"
 # define ER_NO_CO "Error\n\033[1;34mThere is no colectibles.\033[0m\n"

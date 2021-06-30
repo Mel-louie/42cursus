@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:01:17 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 22:48:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 21:07:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,19 @@ typedef struct s_lst_colec
 	t_elem_colec	*first;
 }				t_lst_colec;
 
-typedef struct s_exit
+typedef struct s_elem_exit	t_elem_exit;
+
+typedef struct s_elem_exit
 {
-	int			exitx;
-	int			exity;
-}				t_exit;
+	int				exitx;
+	int				exity;
+	t_elem_exit		*next;
+}				t_elem_exit;
+
+typedef struct s_lst_exit
+{
+	t_elem_exit	*first;
+}				t_lst_exit;
 
 typedef struct s_player
 {
@@ -113,7 +121,7 @@ typedef struct s_mlx
 	t_img		img;
 	t_assets	set;
 	t_player	pl;
-	t_exit		pos;
+	t_lst_exit	lst_exit;
 	t_lst_colec	lst_colec;
 	t_lst_enemy	lst_enemy;
 	int			floor;

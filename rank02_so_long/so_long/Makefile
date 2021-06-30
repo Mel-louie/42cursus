@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 17:31:08 by user42            #+#    #+#              #
-#    Updated: 2021/06/29 23:09:04 by user42           ###   ########.fr        #
+#    Updated: 2021/06/30 22:05:17 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS	= srcs/so_long.c \
 			srcs/checks.c \
 			srcs/collectibles.c \
 			srcs/draw_n_update.c \
+			srcs/ends.c \
 			srcs/events.c \
 			srcs/exits.c \
 			srcs/frees.c \
@@ -29,6 +30,7 @@ SRCS_BONUS	= bonus/srcs_bonus/so_long_bonus.c \
 			bonus/srcs_bonus/checks_bonus.c \
 			bonus/srcs_bonus/collectibles_bonus.c \
 			bonus/srcs_bonus/draw_n_update_bonus.c \
+			bonus/srcs_bonus/ends_bonus.c \
 			bonus/srcs_bonus/enemies_bonus.c \
 			bonus/srcs_bonus/events_bonus.c \
 			bonus/srcs_bonus/exits_bonus.c \
@@ -45,7 +47,7 @@ OBJS_BONUS	= $(SRCS_BONUS:%.c=%.o)
 
 # compiler
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -O3 -g3 #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 
 MLXFLAGS = -L./libs/mlx -lm -lmlx -lbsd -lX11 -lXext #linux 
 MLX = libmlx.a

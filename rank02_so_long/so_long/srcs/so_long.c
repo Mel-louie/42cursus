@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 12:14:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:03:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	run_game(t_mlx *mlx)
 	return (0);
 }
 
-void	init_lst(t_lst_colec *lst)
+void	init_lst(t_lst_colec *lst_c, t_lst_exit *lst_ex)
 {
-	lst->first = NULL;
+	lst_c->first = NULL;
+	lst_ex->first = NULL;
 }
 
 void	set_game(t_mlx *mlx, char *filename)
@@ -35,7 +36,7 @@ void	set_game(t_mlx *mlx, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		close_error(mlx, ER_OPEN);
-	parse_file(fd, mlx);
+	parse_file(fd, mlx, i);
 	fill_map(fd, filename, mlx, i);
 	get_path(mlx);
 	mlx->ptr = mlx_init();
@@ -46,7 +47,7 @@ void	set_game(t_mlx *mlx, char *filename)
 		&mlx->img.s_l, &mlx->img.endian);
 	get_img_texture(mlx);
 	get_player_pos(mlx);
-	init_lst(&mlx->lst_colec);
+	init_lst(&mlx->lst_colec, &mlx->lst_exit);
 	close(fd);
 }
 

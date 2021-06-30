@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:42:12 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 22:56:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/30 22:03:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,12 @@ void	get_img_texture(t_mlx *mlx)
 	get_player_tiles(mlx);
 }
 
-void	parse_file(int fd, t_mlx *mlx)
+void	parse_file(int fd, t_mlx *mlx, int i)
 {
 	char	*line;
 	int		ret;
 	int		num;
 	int		size;
-	int		i;
 
 	num = 0;
 	i = -1;
@@ -93,7 +92,10 @@ void	parse_file(int fd, t_mlx *mlx)
 		num++;
 		ret = get_next_line(fd, &line);
 		if (ft_strlen(line) != size)
+		{
+			free(line);
 			close_error(mlx, ER_REC);
+		}
 	}
 	mlx->mapy = num + 1;
 	check_map(line, mlx, -1, i);
