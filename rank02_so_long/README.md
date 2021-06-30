@@ -17,7 +17,9 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
 - Ressources:
 	- <a href="#mlx">minilibX</a>
 	- <a href="#leaks">Leaks</a>
-	- <a href="#sprites">Textures et sprites</a>
+	- Textures et sprites
+		- <a href="#tiles">Trouver des tiles</a>
+		- <a href="#sprites">Créer et modifier les tiles</a>
 
 <img src=""
      alt="">
@@ -93,6 +95,16 @@ Pour libs externes incluses au projet (libft, mlx...) penser aussi à les compil
 pour avoir une précision de debug maximale. 
 ```
 
-<h3><div id=sprites>Textures et sprites</div></h3>
+<h3>Textures et sprites</h3>
 
-https://anyconv.com/fr/convertisseur-de-png-en-xpm/
+<div id=tiles></div><b>Trouver des tiles</b>
+<a href="https://itch.io/">itch.io</a> en cherchant dans les assets ;<br \>
+<a href="https://opengameart.org/">OpenGameArt</a> ;<br \>
+<a href="https://www.spriters-resource.com/">The Spriters resource</a>
+
+<div id=sprites></div><b>Créer et modifier les tiles</b>
+Photoshop, sur tous les posts de l'école ;<br \>
+<a href="https://www.gimp.org/downloads/">Gimp</a> ;<br \>
+<a href="https://lospec.com/resources/">Lospec</a>, plein de ressources et outils en ligne ;<br \>
+Pour utiliser des images dans la minilibX, il faut convertir les png en xpm :<br \>
+<a href="https://anyconv.com/fr/convertisseur-de-png-en-xpm/">convertisseur</a>
