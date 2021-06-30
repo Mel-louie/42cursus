@@ -2,16 +2,32 @@
 
 ... et merci pour le poissons !
 Projet de l'école 42 qui prend la forme d'un petit jeu 2D. Il est fait pour travailler avec des textures, des sprites et quelques éléments de gameplay très basiques.
-Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures. Il est impératif d'utiliser la bibliothèque graphique minilibX.
+Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures. Il est impératif d'utiliser la bibliothèque graphique <a href="https://github.com/42Paris/minilibx-linux">minilibX.</a>
 ```❗compatible seulement avec linux```
 
 <img src=""
      alt="">
 
+- Télécharger, installer et jouer
+	- 
+	- 
+	- 
 - Ressources:
 	- <a href="#mlx">minilibX</a>
-	- Leaks
-	- Textures et sprites
+	- <a href="#leaks">Leaks</a>
+	- <a href="#sprites">Textures et sprites</a>
+
+# Télécharger, installer et jouer
+
+<div id=instal></div>Tout d'abord, so_long n'est compatible qu'avec une distribution linux, car il utilise la <a href="https://github.com/42Paris/minilibx-linux">minilibX linux</a>. Pour le télécharger et compiler :
+
+```git clone https://github.com/Mel-louie/42cursus.git && cd rank02_so_long/so_long/ && make```
+Si tout s'est bien passé, un executable so_long s'est créer.
+<div id=instal></div>Pour le lancer :
+
+```./so_long map.ber```
+Le but est de déplacer le dauphin jusqu'à la sortie, en ayant récolté tous les poissons.
+Pour se déplacer : W, A, S, D (❗ clavier en QWERTY).
 
 # Ressouces
 
@@ -22,7 +38,8 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
 <a href="https://github.com/keuhdall/images_example">Explanations on how the images are working on minilibx</a><br />
 <a href="https://github.com/qst0/ft_libgfx#minilibx">minilibx's man and ressources</a><br />
 
-## Leaks
+<h3><div id=leaks>Leaks</div></h3>
+
 ```
 • SOLONG=so_long;MAP=map.ber;valgrind --tool=memcheck --leak-check=full --leak-resolution=high --show-reachable=yes --log-file=valgrind_log ./$SOLONG $MAP;grep -A1 "valgrind" valgrind_log|grep $SOLONG
 • valgrind --leak-check=yes ./so_long map.ber
@@ -44,6 +61,6 @@ Pour libs externes incluses au projet (libft, mlx...) penser aussi à les compil
 pour avoir une précision de debug maximale. 
 ```
 
-## Textures et sprites
+<h3><div id=sprites>Textures et sprites</div></h3>
 
 https://anyconv.com/fr/convertisseur-de-png-en-xpm/
