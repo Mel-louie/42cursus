@@ -1,6 +1,6 @@
 :radio_button: faire des tests sur toutes les erreurs et sorties normales pour check les leaks
 
-:radio_button: faire un repo avec plein de maps dont des fausses a tester
+:radio_button: faire un repo avec plein de maps dont des fausses a tester notamment plusieurs E
 
 
 
