@@ -2,21 +2,27 @@
 
 ... et merci pour le poissons !
 Projet de l'école 42 qui prend la forme d'un petit jeu 2D. Il est fait pour travailler avec des textures, des sprites et quelques éléments de gameplay très basiques.
-Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations, etc. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures, etc. Il est impératif d'utiliser la bibliothèque graphique minilibx.
+Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures. Il est impératif d'utiliser la bibliothèque graphique minilibX.
+```❗compatible seulement avec linux```
 
 <img src=""
      alt="">
 
-# Ressouceslol
+- Ressources:
+	- <a href="mlx">minilibX</a>
+	- Leaks
+	- Textures et sprites
 
-## Minilibx
+# Ressouces
+
+<h3><div id=mlx>minilibX</div></h3>
 
 <a href="https://elearning.intra.42.fr/searches/search?query=minilibx">Vidéos de l'intra de 42 évoquant la minilibx</a><br />
 <a href="https://harm-smits.github.io/42docs/libs/minilibx.html">Tuto minilibx fait par des étudiants</a><br />
 <a href="https://github.com/keuhdall/images_example">Explanations on how the images are working on minilibx</a><br />
 <a href="https://github.com/qst0/ft_libgfx#minilibx">minilibx's man and ressources</a><br />
 
-## LEAKS
+## Leaks
 ```
 • SOLONG=so_long;MAP=map.ber;valgrind --tool=memcheck --leak-check=full --leak-resolution=high --show-reachable=yes --log-file=valgrind_log ./$SOLONG $MAP;grep -A1 "valgrind" valgrind_log|grep $SOLONG
 • valgrind --leak-check=yes ./so_long map.ber
@@ -39,3 +45,5 @@ pour avoir une précision de debug maximale.
 ```
 
 ## Textures et sprites
+
+https://anyconv.com/fr/convertisseur-de-png-en-xpm/
