@@ -7,7 +7,7 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
 <img src=""
      alt="">
 
-# Ressouces
+# Ressouceslol
 
 ## Minilibx
 
