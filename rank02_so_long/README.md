@@ -1,13 +1,13 @@
-# so_long... WIP
+# so_long... 🐟 🐬 🦈
 
-... et merci pour le poissons !
+<b>... et merci pour le poissons !</b>
+
 Projet de l'école 42 qui prend la forme d'un petit jeu 2D. Il est fait pour travailler avec des textures, des sprites et quelques éléments de gameplay très basiques.
+
 Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures. Il est impératif d'utiliser la bibliothèque graphique <a href="https://github.com/42Paris/minilibx-linux">minilibX.</a>
 
 ```❗compatible seulement avec linux```
 
-<img src=""
-     alt="">
 
 - Télécharger, installer et jouer
 	- <a href="#instal">installer</a>
@@ -19,9 +19,13 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
 	- <a href="#leaks">Leaks</a>
 	- <a href="#sprites">Textures et sprites</a>
 
+<img src=""
+     alt="">
+
 # Télécharger, installer et jouer
 
-<div id=instal></div>Tout d'abord, so_long n'est compatible qu'avec une distribution linux, car il utilise la <a href="https://github.com/42Paris/minilibx-linux">minilibX linux</a>. Pour le télécharger et compiler :
+<div id=instal></div>Tout d'abord, so_long n'est compatible qu'avec une distribution linux, car il utilise la <a href="https://github.com/42Paris/minilibx-linux">minilibX linux</a>.
+Pour le télécharger et compiler :
 
 ```git clone https://github.com/Mel-louie/42cursus.git && cd rank02_so_long/so_long/ && make```
 
@@ -34,21 +38,27 @@ Si tout s'est bien passé, un executable so_long s'est créer.
 Le but est de déplacer le dauphin jusqu'à la sortie, en ayant récolté tous les poissons.
 Pour se déplacer : W, A, S, D (❗ clavier en QWERTY).
 
-<div id=bonus></div>BONUS
+<div id=bonus></div><b>BONUS</b>
 
 Les bonus apportent quelques features en plus :
 - enemies causant un game over en cas de contact
 - le compteur de mouvement s'affiche sur l'écran de jeu plutôt que dans le shell
 - le sprite du joueur s'anime aux changements de directions
-Pour jouer avec les bonus il suffit de compiler avec la règle
 
-```make bonus```
+Pour jouer avec les bonus il suffit de compiler avec la règle ```make bonus```
 
 Puis de lancer
 
 ```./so_long map_bonus.ber```
 
-<div id=map></div>
+
+<div id=map></div>La map peut être mofier, en suivant certaines règles :
+
+- elle doit être composée des char 0, 1, P, C, E (+ S en cas de map bonus)
+- elle doit être entourrée de murs ('1')
+- elle doit être rectangulaire (pas de retour à la ligne en fin de fichier non plus)
+- son extension doit être '.ber'
+- elle ne doit pas être plus grande que l'écran (NB: chaque bloc est en 64x64)
 
 # Ressouces
 
