@@ -52,8 +52,9 @@ Puis de lancer
 ```./so_long map_bonus.ber```
 
 
-<div id=map></div>La map peut être mofier, en suivant certaines règles :
+<div id=map></div><b>MAP</b>
 
+La map peut être mofier, en suivant certaines règles :
 - elle doit être composée des char 0, 1, P, C, E (+ S en cas de map bonus)
 - elle doit être entourrée de murs ('1')
 - elle doit être rectangulaire (pas de retour à la ligne en fin de fichier non plus)
