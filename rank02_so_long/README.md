@@ -2,6 +2,9 @@
 
 <b>... et merci pour le poissons !</b>
 
+<img src="so_long.png"
+     alt="screen of the game">
+
 Projet de l'école 42 qui prend la forme d'un petit jeu 2D. Il est fait pour travailler avec des textures, des sprites et quelques éléments de gameplay très basiques.
 
 Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algorithmes de base, recherche d'informations. En tant que projet de conception graphique, il permet d'améliorer les compétences dans les domaines suivants : fenêtres, couleurs, événements, textures. Il est impératif d'utiliser la bibliothèque graphique <a href="https://github.com/42Paris/minilibx-linux">minilibX.</a>
@@ -21,8 +24,6 @@ Les objectifs de ce projet sont : rigueur, utilisation de C, utilisation d'algor
 		- <a href="#tiles">Trouver des tiles</a>
 		- <a href="#sprites">Créer et modifier les tiles</a>
 
-<img src="so_long.png"
-     alt="screen of the game">
 
 # Télécharger, installer et jouer
 
