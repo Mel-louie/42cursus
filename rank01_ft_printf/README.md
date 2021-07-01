@@ -2,7 +2,7 @@
 
 <p>:boom: Ajout de ft_dprintf : feature perso. Ne fait pas partie du sujet.</p>
 
-# ft_printf
+# ft_printf 100%
 
 <table>
     <tr>
@@ -57,8 +57,3 @@ man 3 printf / man 3 stdarg4
 •Gérez un ou plusieurs des flags suivants : l ll h hh
 
 •Gérez tous les flags suivants : ’# +’ (espace est un flag valide)
-
-```
-100/100
-```
-
