@@ -6,27 +6,55 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:42:12 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 22:03:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/01 02:59:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/so_long_bonus.h"
 
+void	get_path_player(t_mlx *mlx)
+{
+	if (try_open("assets/player.xpm") == 1)
+		mlx->set.path_pl1 = ft_strdup("assets/player.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/player2.xpm") == 1)
+		mlx->set.path_pl2 = ft_strdup("assets/player2.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/player3.xpm") == 1)
+		mlx->set.path_pl3 = ft_strdup("assets/player3.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/player4.xpm") == 1)
+		mlx->set.path_pl4 = ft_strdup("assets/player4.xpm");
+	else
+		close_error(mlx, ER_TILES);
+}
+
 void	get_path(t_mlx *mlx)
 {
-	if (check_tiles(mlx) == -1)
+	if (try_open("assets/floor.xpm") == 1)
+		mlx->set.path_fl = ft_strdup("assets/floor.xpm");
+	else
 		close_error(mlx, ER_TILES);
-	if (check_tiles(mlx) == -2)
-		close_error(mlx, ER_BAD_EXT);
-	mlx->set.path_fl = ft_strdup("assets/floor.xpm");
-	mlx->set.path_wa = ft_strdup("assets/walls.xpm");
-	mlx->set.path_co = ft_strdup("assets/colect.xpm");
-	mlx->set.path_pl1 = ft_strdup("assets/player.xpm");
-	mlx->set.path_pl2 = ft_strdup("assets/player2.xpm");
-	mlx->set.path_pl3 = ft_strdup("assets/player3.xpm");
-	mlx->set.path_pl4 = ft_strdup("assets/player4.xpm");
-	mlx->set.path_en = ft_strdup("assets/end.xpm");
-	mlx->set.path_enem = ft_strdup("assets/enemy.xpm");
+	if (try_open("assets/walls.xpm") == 1)
+		mlx->set.path_wa = ft_strdup("assets/walls.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/colect.xpm") == 1)
+		mlx->set.path_co = ft_strdup("assets/colect.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	get_path_player(mlx);
+	if (try_open("assets/end.xpm") == 1)
+		mlx->set.path_en = ft_strdup("assets/end.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/enemy.xpm") == 1)
+		mlx->set.path_enem = ft_strdup("assets/enemy.xpm");
+	else
+		close_error(mlx, ER_TILES);
 }
 
 void	get_player_tiles(t_mlx *mlx)

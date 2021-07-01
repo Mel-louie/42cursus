@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 22:01:17 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 21:07:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/01 02:51:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_player
 	int			posx;
 	int			posy;
 	int			direction;
+	int			old_posx;
+	int			old_posy;
 }				t_player;
 
 typedef struct s_img

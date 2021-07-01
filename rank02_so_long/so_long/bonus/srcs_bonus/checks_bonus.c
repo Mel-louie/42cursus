@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 20:04:53 by user42            #+#    #+#             */
-/*   Updated: 2021/06/29 22:49:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/01 02:09:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,33 +46,5 @@ int	check_ext(char *file_ext, char *ext)
 		len_file--;
 		len_ext--;
 	}
-	return (0);
-}
-
-int	check_tiles(t_mlx *mlx)
-{
-	if (check_ext("assets/floor.xpm", ".xpm") == -1 \
-		|| check_ext("assets/walls.xpm", ".xpm") == -1 \
-		|| check_ext("assets/colect.xpm", ".xpm") == -1 \
-		|| check_ext("assets/player.xpm", ".xpm") == -1 \
-		|| check_ext("assets/player2.xpm", ".xpm") == -1 \
-		|| check_ext("assets/player3.xpm", ".xpm") == -1 \
-		|| check_ext("assets/player4.xpm", ".xpm") == -1 \
-		|| check_ext("assets/end.xpm", ".xpm") == -1 \
-		|| check_ext("assets/enemy.xpm", ".xpm") == -1)
-		return (-2);
-	mlx->floor = try_open("assets/floor.xpm");
-	mlx->walls = try_open("assets/walls.xpm");
-	mlx->colect = try_open("assets/colect.xpm");
-	mlx->player1 = try_open("assets/player.xpm");
-	mlx->player2 = try_open("assets/player2.xpm");
-	mlx->player3 = try_open("assets/player3.xpm");
-	mlx->player4 = try_open("assets/player4.xpm");
-	mlx->end = try_open("assets/end.xpm");
-	mlx->enemy = try_open("assets/enemy.xpm");
-	if ((mlx->floor || mlx->walls || mlx->colect || mlx->player1
-			|| mlx->player1 || mlx->player3 || mlx->player3
-			|| mlx->end || mlx->enemy) == 0)
-		return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 15:42:12 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 22:04:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/01 03:01:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,26 @@
 
 void	get_path(t_mlx *mlx)
 {
-	if (check_tiles() == -1)
+	if (try_open("assets/floor.xpm") == 1)
+		mlx->set.path_fl = ft_strdup("assets/floor.xpm");
+	else
 		close_error(mlx, ER_TILES);
-	if (check_tiles() == -2)
-		close_error(mlx, ER_BAD_EXT);
-	mlx->set.path_fl = ft_strdup("assets/floor.xpm");
-	mlx->set.path_wa = ft_strdup("assets/walls.xpm");
-	mlx->set.path_co = ft_strdup("assets/colect.xpm");
-	mlx->set.path_pl = ft_strdup("assets/player.xpm");
-	mlx->set.path_en = ft_strdup("assets/end.xpm");
+	if (try_open("assets/floor.xpm") == 1)
+		mlx->set.path_wa = ft_strdup("assets/walls.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/floor.xpm") == 1)
+		mlx->set.path_co = ft_strdup("assets/colect.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/floor.xpm") == 1)
+		mlx->set.path_pl = ft_strdup("assets/player.xpm");
+	else
+		close_error(mlx, ER_TILES);
+	if (try_open("assets/floor.xpm") == 1)
+		mlx->set.path_en = ft_strdup("assets/end.xpm");
+	else
+		close_error(mlx, ER_TILES);
 }
 
 void	get_img_texture(t_mlx *mlx)

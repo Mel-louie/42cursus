@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 15:36:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 22:45:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/01 03:22:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,7 @@ void	victory(t_mlx *mlx)
 	mlx_string_put(mlx->ptr, mlx->win, (mlx->mapx / 2) - 50,
 		(mlx->mapy / 2) - 10, 0x00FFFFFF,
 		"Press ESC to exit.");
+	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->set.t_fl.ptr \
+		, mlx->set.t_fl.width * mlx->pl.old_posx,
+		mlx->set.t_fl.height * mlx->pl.old_posy);
 }

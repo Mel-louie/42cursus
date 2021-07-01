@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:53:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 22:03:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/01 02:09:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void			free_game(t_mlx *mlx);
 int				check_ext(char *file_ext, char *ext);
 int				is_ok_char(char c);
 int				try_open(char *file);
-int				check_tiles(t_mlx *mlx);
 void			check_char(t_mlx *mlx);
 
 /*

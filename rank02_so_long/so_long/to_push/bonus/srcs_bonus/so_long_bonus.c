@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 11:50:33 by user42            #+#    #+#             */
-/*   Updated: 2021/06/30 22:03:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/01 03:21:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	set_game(t_mlx *mlx, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		close_error(mlx, ER_OPEN);
+	get_path(mlx);
 	parse_file(fd, mlx, i);
 	fill_map(fd, filename, mlx, i);
-	get_path(mlx);
 	mlx->ptr = mlx_init();
 	window_size(mlx);
 	mlx->win = mlx_new_window(mlx->ptr, mlx->mapx, mlx->mapy, WIN_NAME);

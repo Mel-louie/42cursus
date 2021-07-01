@@ -16,6 +16,8 @@ void	is_an_exit(t_mlx *mlx, int dy, int dx)
 {
 	t_elem_exit	*elem;
 
+	mlx->pl.old_posx = mlx->pl.posx;
+	mlx->pl.old_posy = mlx->pl.posy;
 	update_pl_pos(mlx, dy, dx);
 	elem = mlx->lst_exit.first;
 	while (elem)
