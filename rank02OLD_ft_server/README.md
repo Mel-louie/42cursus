@@ -1,6 +1,6 @@
 Un sujet d’Administration Système de l'école 42. Il vous fera découvrir Docker et vous fera mettre en place un serveur web.
 
-# ft_server
+# ft_server 100%
 
 ## Commandes utiles
 
@@ -66,8 +66,4 @@ systemctl restart nginx
 par
 ```
 service nginx restart
-```
-
-```
-100/100
 ```
