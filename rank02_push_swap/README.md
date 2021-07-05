@@ -65,5 +65,10 @@ It means to succes 3 int and 5 int and have at least 3/5 and 3/5 to 100 int and 
   - Less than 10000: 2pt
   - Less than 11500: 1pt<br />
 
+## Ressources
+I used <a href="https://www.geeksforgeeks.org/insertion-sort/">insertion sort</a> and <a href="https://www.geeksforgeeks.org/quick-sort/">quick sort</a>, adapt with two stack and the limited amount of operations.<br />
+<a href="https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a">push_swap tutorial: partitioning your stack with chunks</a><br />
+<a href="https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e">push_swap tutorial: radix sort</a><br />
+
 ## Tester
 I also coded a <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap_tester">script</a> to check your instruction number.
