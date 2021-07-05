@@ -1,6 +1,6 @@
 NAME = makefile_template
 
-#    COLORS    #
+#	COLORS	#
 _BLACK		= "\033[30m"
 _RED		= "\033[31m"
 _GREEN		= "\033[32m"
@@ -10,7 +10,7 @@ _PURPLE		= "\033[35m"
 _CYAN		= "\033[36m"
 _WHITE		= "\033[37m"
 _END		= "\033[0m"
-# -- bold -- #
+#	bold	#
 B_BLACK		= "\033[1;30m"
 B_RED		= "\033[1;31m"
 B_GREEN		= "\033[1;32m"
@@ -20,7 +20,7 @@ B_PURPLE	= "\033[1;35m"
 B_CYAN		= "\033[1;36m"
 B_WHITE		= "\033[1;37m"
 
-#    DETECT	OS      #
+#	DETECTOS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
 
@@ -53,18 +53,20 @@ $(NAME) : $(OBJS)
 #	@cp ./libs/libft/$(LIBFT) ./
 #	@$(CC) $(OBJS)  $(LIBFT) $(CFLAGS) -I $(INCDIR) -o $(NAME) # <-- use with libft and include directory
 	@$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
-	@echo "\n\033[1;32mCompilation $@ OK\n\033[0m"
+	@echo "\n\033[1;32mCompilation of $@: Sucess\n\033[0m"
 
 clean :
 	@echo "\033[0;36mCleaning..."
 #	@cd ./libs/libft; make clean
 	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 	@echo "\033[1;36m\nCleaning done\n\033[0m"
 
 fclean :
 	@echo "\033[0;36mFcleanig, remove all...\n"
 #	@cd ./libs/libft; make fclean
 	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 #	@rm -f $(OBJS_BONUS)
 	@rm -f $(NAME)
 #	@rm -f $(LIBFT)
