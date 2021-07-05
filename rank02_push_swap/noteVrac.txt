@@ -1,0 +1,64 @@
+Message d'erreur en plus du "Error\n" ?
+si oui, l'add
+si non, opti ft_error
+
+3 nb	: max 2-3 coups 5
+5 nb	: max 12 coups 5
+(50 ideal: less than 700)
+100 nb	: Less than 700: 5pt - Less than 900: 4pt - Less than 1100: 3pt - Less than 1300: 2pt - Less than 1500: 1pt
+			5						4						3					2					1
+500 nb	: Less than 5500: 5pt - Less than 7000: 4pt - Less than 8500: 3pt - Less than 10000: 2pt - Less than 11500: 1pt
+			5						4						3					2					1
+
+
+sa : swap a- swap the first 2 elements at the top of stacka. Do nothing if there is only one or no elements.
+sb :swap b- swap the first 2 elements at the top of stackb. Do nothing if thereis only one or no elements.
+ss :sa and sb at the same time.
+
+ra :rotate a- shift up all elements of stackaby 1. The first element becomes the last one.
+rb :rotate b- shift up all elements of stackbby 1. The first element becomes the last one.
+rr :ra and rb at the same time.
+
+rra :reverse rotate a- shift down all elements of stack a by 1. The last element becomes the first one.
+rrb :reverse rotate b- shift down all elements of stack b by 1. The last element becomes the first one.
+rrr :rra and rrb at the same time.
+
+pa :push a- take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
+pb :push b- take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
+
+/*
+	int e = 0;
+	printf("stack a:");
+	while (e < a->size)
+	{
+		printf(" %i", a->stack[e]);
+		e++;
+	}
+	printf("\n");
+	e = 0;
+	printf("stack b:");
+	while (e < b->size)
+	{
+		printf(" %i", b->stack[e]);
+		e++;
+	}
+	printf("\n");
+*/
+/*
+	int e = 0;
+	printf("stack a:");
+	while (e < a.size)
+	{
+		printf(" %i", a.stack[e]);
+		e++;
+	}
+	printf("\n");
+	e = 0;
+	printf("stack b:");
+	while (e < b.size)
+	{
+		printf(" %i", b.stack[e]);
+		e++;
+	}
+	printf("\n");
+*/
