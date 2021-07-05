@@ -3,11 +3,9 @@
 :radio_button: to do; :ballot_box_with_check: OK; :exclamation: priority; :scissors: not a thing anymore<br><br>
 
 
-:radio_button: cleaner/norme<br>
-:radio_button: tout récup et faire un gros check sur la vm avec tous les tester trouvables<br>
-:radio_button: checker les leaks<br>
-<br>
-
+:ballot_box_with_check: cleaner/norme<br>
+:ballot_box_with_check: tout récup et faire un gros check sur la vm avec tous les tester trouvables<br>
+:ballot_box_with_check: checker les leaks<br>
 :ballot_box_with_check: faire des fiche fonctionnement des algo<br>
 :ballot_box_with_check: tris <br>
 	:ballot_box_with_check: déjà trié ?<br>
