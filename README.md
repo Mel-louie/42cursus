@@ -12,7 +12,7 @@ Every folder got a README with some infos (mostly in French) on the project inst
 - RANK02
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02OLD_ft_server">FT_SERVER (no longer a project since July 2021) </a>
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap"> PUSH_SWAP </a>
-  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap_tester"> A tester I coded for push_swap </a>
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap_tester"> A tester I coded for PUSH_SWAP </a>
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_so_long">SO_LONG </a>
 - RANK03
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank03_exam">Exam rank 03 </a>
