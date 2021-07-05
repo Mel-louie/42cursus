@@ -19,6 +19,6 @@ Every folder got a README with some infos (mostly in French) on the project inst
 - RANK04
   -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_cub3D">cub3D (2020 vers.) </a>
 - RANK05
-  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_inception">Inception </a>wip
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_inception">Inception </a>🚧
  - Outside COMMON CORE
     - <a href="https://github.com/Mel-louie/42cursus/tree/main/rn_42_libasm">LIBASM </a>
