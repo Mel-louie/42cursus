@@ -20,57 +20,71 @@ B_PURPLE	= "\033[1;35m"
 B_CYAN		= "\033[1;36m"
 B_WHITE		= "\033[1;37m"
 
-#	DETECTOS	#
+#	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
+SRCS_FILE		= main.c
+#SRCS_FILE_BONUS = bonus.c \
 
-SRCS	= main.c
-#SRCS_BONUS	= bonus/srcs_bonus/main_bonus.c \
+SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
+OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
 
-OBJ_DIR = objs
-OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
-	
-#OBJS_BONUS	= $(SRCS_BONUS:%.c=%.o)
+#SRCS_BONUS		= $(addprefix $(SRCS_DIR_BONUS), $(SRCS_FILE_BONUS))
+#OBJS_BONUS		= $(addprefix $(OBJS_DIR_BONUS), $(SRCS_FILE_BONUS:.c=.o))
+#SRCS_DIR_BONUS	= ./bonus/srcs_bonus/
+#OBJS_DIR_BONUS	= ./bonus/objs_bonus/
+#INCLUDES_DIR_BONUS = ./bonus/includes_bonus/
+#INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS) $(LIBFT_DIR) $(LIBVECT_DIR) $(MLX_DIR))
+#HEADER_BONUS	= $(INCLUDES_DIR_BONUS)cub3d_bonus.h
 
-# compiler
-CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
+SRCS_DIR		= ./srcs/
+OBJS_DIR		= ./objs/
+INCLUDES_DIR	= ./includes/
+#LIBFT_DIR		= ./lib/libft/
 
-#LIBFT = libft.a
-#INCDIR	= ./includes/
-#INCDIR_BONUS = ./bonus/includes_bonus/
+#LIBFT			= $(LIBFT_DIR)libft.a
+HEADER			= $(INCLUDES_DIR)main.h
 
-$(OBJ_DIR)/%.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< -I $(INC_DIR) -I $(INC_LIB_DIR)
-	@printf "%-60b\r"
+CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
+CC				= clang
 
-all : 
-	@mkdir -p $(OBJ_DIR) 
-	@make $(NAME) --no-print-directory
+INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR) $(LIBVECT_DIR) $(MLX_DIR))
 
-$(NAME) : $(OBJS)
-#	@make -C ./libs/libft
-#	@cp ./libs/libft/$(LIBFT) ./
-#	@$(CC) $(OBJS)  $(LIBFT) $(CFLAGS) -I $(INCDIR) -o $(NAME) # <-- use with libft and include directory
-	@$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
-	@echo "\n\033[1;32mCompilation of $@: Sucess\n\033[0m"
+all: launch
 
-clean :
-	@echo "\033[0;36mCleaning..."
-#	@cd ./libs/libft; make clean
-	@rm -f $(OBJS)
-	@rm -rf $(OBJ_DIR)
-	@echo "\033[1;36m\nCleaning done\n\033[0m"
+launch:
+#	$(MAKE) $(LIBFT)
+	@echo $(_CLEAR)$(_YELLOW)"building - "$(_GREEN)$(NAME)$(_END)
+	@$(MAKE) $(NAME)
+	@echo -e "\033[1K"
+	@echo $(_GREEN)"Done."$(_END)$(_SHOW_CURS)
 
-fclean :
-	@echo "\033[0;36mFcleanig, remove all...\n"
-#	@cd ./libs/libft; make fclean
-	@rm -f $(OBJS)
-	@rm -rf $(OBJ_DIR)
-#	@rm -f $(OBJS_BONUS)
-	@rm -f $(NAME)
-#	@rm -f $(LIBFT)
-	@echo "\033[1;36m\n\nCleaning done\n\033[0m"
+$(OBJS_DIR):
+	mkdir $@
+
+#$(LIBFT):
+#	$(MAKE) -sC $(LIBFT_DIR)
+#	echo
+
+$(NAME): $(OBJS_DIR) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS)  -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
+$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@printf $<
+
+clean:
+#	$(MAKE) -sC $(LIBFT_DIR) clean
+	@$(RM) -r $(OBJS_DIR)
+
+fclean: clean
+	@$(RM) $(LIBFT)
+	@$(RM) $(NAME)
+
+re:
+	@$(MAKE) -s fclean
+	@$(MAKE) -s
 
 norminette :
 	@echo "\033[1;37m"
@@ -98,7 +112,6 @@ norminette :
 #	@$(CC) $(OBJS_BONUS) $(LIBFT) $(CFLAGS) -I $(INCDIR_BONUS) -o $(NAME)
 #	@echo "\n\033[1;32mCompilation OK\n\033[0m"
 
-re : fclean all
 
 os:
 	@echo $(OS_NAME)
