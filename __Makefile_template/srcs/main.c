@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 11:41:19 by louielouie        #+#    #+#             */
-/*   Updated: 2021/07/06 09:49:01 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/07/06 12:49:33 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(int ac, char **av)
 {
-	printf("Hello Makefile\n");
 	(void)ac;
-	(void)av;
+	ft_putstr_fd(av[1], 1);
+	ft_putstr_fd("\n", 1);
 	return (0);
 }

@@ -28,7 +28,6 @@ SRCS_FILE		= main.c
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
-
 #SRCS_BONUS		= $(addprefix $(SRCS_DIR_BONUS), $(SRCS_FILE_BONUS))
 #OBJS_BONUS		= $(addprefix $(OBJS_DIR_BONUS), $(SRCS_FILE_BONUS:.c=.o))
 #SRCS_DIR_BONUS	= ./bonus/srcs_bonus/
@@ -40,10 +39,9 @@ OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
 SRCS_DIR		= ./srcs/
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
-#LIBFT_DIR		= ./lib/libft/
-
-#LIBFT			= $(LIBFT_DIR)libft.a
 HEADER			= $(INCLUDES_DIR)main.h
+LIBFT_DIR		= ./libft/
+LIBFT			= $(LIBFT_DIR)libft.a
 
 CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 CC				= clang
@@ -53,34 +51,36 @@ INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR) $(LIBVECT_DIR) $(MLX_DIR
 all: launch
 
 launch:
-#	$(MAKE) $(LIBFT)
-	@echo $(_CLEAR)$(_YELLOW)"building - "$(_GREEN)$(NAME)$(_END)
+	@$(MAKE) $(LIBFT)
+	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 	@$(MAKE) $(NAME)
-	@echo -e "\033[1K"
-	@echo $(_GREEN)"Done."$(_END)$(_SHOW_CURS)
+	@echo $(_END)$(B_WHITE)"[ created with success]\t\t" $(B_GREEN)$(NAME)$(_END)
 
 $(OBJS_DIR):
-	mkdir $@
+	@mkdir $@
 
-#$(LIBFT):
-#	$(MAKE) -sC $(LIBFT_DIR)
-#	echo
+$(LIBFT):
+	@$(MAKE) -sC $(LIBFT_DIR)
+	
 
 $(NAME): $(OBJS_DIR) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS)  -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@printf $<
+	@echo -e "\033[2K"
 
 clean:
-#	$(MAKE) -sC $(LIBFT_DIR) clean
-	@$(RM) -r $(OBJS_DIR)
+	@$(MAKE) -sC $(LIBFT_DIR) clean
+	@rm -rf $(OBJ)
+	@rm -rf $(OBJS_DIR)
+	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\tobjects"$(_END)
 
 fclean: clean
-	@$(RM) $(LIBFT)
-	@$(RM) $(NAME)
+	@$(MAKE) -sC $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
+	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 
 re:
 	@$(MAKE) -s fclean
@@ -91,11 +91,11 @@ norminette :
 	@norminette --version
 	@echo "\nNorming...\033[0m\n"
 	@echo "SRCS:"
-	@norminette ./*.c
-#	@echo "\nINCLUDES:"
-#	@norminette ./includes/*.h
-#	@echo "\nLIBFT:"
-#	@norminette ./libs/libft/includes/*.h ./libs/libft/srcs/*.c
+	@norminette srcs/
+	@echo "\nINCLUDES:"
+	@norminette includes/
+	@echo "\nLIBFT:"
+	@norminette libft/srcs/
 
 #normibonus :
 #	@echo "\033[1;37m"
