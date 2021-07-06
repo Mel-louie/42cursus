@@ -30,11 +30,6 @@ SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
 #SRCS_BONUS		= $(addprefix $(SRCS_DIR_BONUS), $(SRCS_FILE_BONUS))
 #OBJS_BONUS		= $(addprefix $(OBJS_DIR_BONUS), $(SRCS_FILE_BONUS:.c=.o))
-#SRCS_DIR_BONUS	= ./bonus/srcs_bonus/
-#OBJS_DIR_BONUS	= ./bonus/objs_bonus/
-#INCLUDES_DIR_BONUS = ./bonus/includes_bonus/
-#INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS) $(LIBFT_DIR) $(LIBVECT_DIR) $(MLX_DIR))
-#HEADER_BONUS	= $(INCLUDES_DIR_BONUS)cub3d_bonus.h
 
 SRCS_DIR		= ./srcs/
 OBJS_DIR		= ./objs/
@@ -42,6 +37,11 @@ INCLUDES_DIR	= ./includes/
 HEADER			= $(INCLUDES_DIR)main.h
 LIBFT_DIR		= ./libft/
 LIBFT			= $(LIBFT_DIR)libft.a
+#SRCS_DIR_BONUS	= ./bonus/srcs_bonus/
+#OBJS_DIR_BONUS	= ./bonus/objs_bonus/
+#INCLUDES_DIR_BONUS = ./bonus/includes_bonus/
+#INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS) $(LIBFT_DIR) $(LIBVECT_DIR) $(MLX_DIR))
+#HEADER_BONUS	= $(INCLUDES_DIR_BONUS)cub3d_bonus.h
 
 CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 CC				= clang
@@ -97,6 +97,13 @@ norminette :
 	@echo "\nLIBFT:"
 	@norminette libft/srcs/
 
+#bonus:
+#	@echo "BONUS"
+#	@$(MAKE) $(LIBFT)
+#	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
+#	@$(MAKE) $(NAME)
+#	@echo $(_END)$(B_WHITE)"[ created with success]\t\t" $(B_GREEN)$(NAME)$(_END)
+
 #normibonus :
 #	@echo "\033[1;37m"
 #	@norminette --version
@@ -105,13 +112,6 @@ norminette :
 #	@norminette ./bonus/srcs_bonus/*.c
 #	@echo "\nINCLUDES_BONUS:"
 #	@norminette ./bonus/includes_bonus/*.h
-
-#bonus : $(OBJS_BONUS)
-#	@make -C ./libs/libft
-#	@cp ./libs/libft/$(LIBFT) ./
-#	@$(CC) $(OBJS_BONUS) $(LIBFT) $(CFLAGS) -I $(INCDIR_BONUS) -o $(NAME)
-#	@echo "\n\033[1;32mCompilation OK\n\033[0m"
-
 
 os:
 	@echo $(OS_NAME)
