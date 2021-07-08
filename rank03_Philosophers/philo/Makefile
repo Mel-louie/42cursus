@@ -25,27 +25,19 @@ OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
 SRCS_FILE		= philo.c \
 					errors.c
-#SRCS_FILE_BONUS = bonus.c \
-
-SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
-OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
-#SRCS_BONUS		= $(addprefix $(SRCS_DIR_BONUS), $(SRCS_FILE_BONUS))
-#OBJS_BONUS		= $(addprefix $(OBJS_DIR_BONUS), $(SRCS_FILE_BONUS:.c=.o))
 
 SRCS_DIR		= ./srcs/
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
+
+SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
+OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
+INCLUDES		= $(addprefix -I, $(INCLUDES_DIR))
 HEADER			= $(INCLUDES_DIR)philo.h
-#SRCS_DIR_BONUS	= ./bonus/srcs_bonus/
-#OBJS_DIR_BONUS	= ./bonus/objs_bonus/
-#INCLUDES_DIR_BONUS = ./bonus/includes_bonus/
-#INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS)
-#HEADER_BONUS	= $(INCLUDES_DIR_BONUS)cub3d_bonus.h
 
 CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 CC				= clang
 
-INCLUDES	= $(addprefix -I, $(INCLUDES_DIR))
 
 all: launch
 
