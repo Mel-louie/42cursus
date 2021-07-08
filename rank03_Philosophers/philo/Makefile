@@ -1,4 +1,4 @@
-NAME = makefile_template
+NAME = philo
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -23,7 +23,8 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= philo.c
+SRCS_FILE		= philo.c \
+					errors.c
 #SRCS_FILE_BONUS = bonus.c \
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
@@ -86,21 +87,6 @@ norminette :
 	@norminette srcs/
 	@echo "\nINCLUDES:"
 	@norminette includes/
-
-#bonus:
-#	@echo "BONUS"
-#	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
-#	@$(MAKE) $(NAME)
-#	@echo $(_END)$(B_WHITE)"[ created with success]\t\t" $(B_GREEN)$(NAME)$(_END)
-
-#normibonus :
-#	@echo "\033[1;37m"
-#	@norminette --version
-#	@echo "\nNorming...\033[0m\n"
-#	@echo "SRCS_BONUS:"
-#	@norminette ./bonus/srcs_bonus/*.c
-#	@echo "\nINCLUDES_BONUS:"
-#	@norminette ./bonus/includes_bonus/*.h
 
 os:
 	@echo $(OS_NAME)
