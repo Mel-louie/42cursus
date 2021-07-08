@@ -23,7 +23,7 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= main.c
+SRCS_FILE		= philo.c
 #SRCS_FILE_BONUS = bonus.c \
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
@@ -34,37 +34,31 @@ OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
 SRCS_DIR		= ./srcs/
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
-HEADER			= $(INCLUDES_DIR)main.h
-LIBFT_DIR		= ./libft/
-LIBFT			= $(LIBFT_DIR)libft.a
+HEADER			= $(INCLUDES_DIR)philo.h
 #SRCS_DIR_BONUS	= ./bonus/srcs_bonus/
 #OBJS_DIR_BONUS	= ./bonus/objs_bonus/
 #INCLUDES_DIR_BONUS = ./bonus/includes_bonus/
-#INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS) $(LIBFT_DIR)
+#INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS)
 #HEADER_BONUS	= $(INCLUDES_DIR_BONUS)cub3d_bonus.h
 
 CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 CC				= clang
 
-INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
+INCLUDES	= $(addprefix -I, $(INCLUDES_DIR))
 
 all: launch
 
 launch:
-	@$(MAKE) $(LIBFT)
 	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 	@$(MAKE) $(NAME)
 	@echo $(_END)$(B_WHITE)"[ created with success]\t\t" $(B_GREEN)$(NAME)$(_END)
 
 $(OBJS_DIR):
 	@mkdir $@
-
-$(LIBFT):
-	@$(MAKE) -sC $(LIBFT_DIR)
 	
 
 $(NAME): $(OBJS_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -72,13 +66,11 @@ $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
 	@echo -e "\033[2K"
 
 clean:
-	@$(MAKE) -sC $(LIBFT_DIR) clean
 	@rm -rf $(OBJ)
 	@rm -rf $(OBJS_DIR)
 	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\tobjects"$(_END)
 
 fclean: clean
-	@$(MAKE) -sC $(LIBFT_DIR) fclean
 	@rm -f $(NAME)
 	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 
@@ -94,12 +86,9 @@ norminette :
 	@norminette srcs/
 	@echo "\nINCLUDES:"
 	@norminette includes/
-	@echo "\nLIBFT:"
-	@norminette libft/srcs/
 
 #bonus:
 #	@echo "BONUS"
-#	@$(MAKE) $(LIBFT)
 #	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 #	@$(MAKE) $(NAME)
 #	@echo $(_END)$(B_WHITE)"[ created with success]\t\t" $(B_GREEN)$(NAME)$(_END)
