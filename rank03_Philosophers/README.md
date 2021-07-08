@@ -25,3 +25,5 @@
 <a href="https://www.youtube.com/playlist?list=PL9IEJIKnBJjFZxuqyJ9JqVYmuFZHr7CFM"></a>Programming with threads, Jacob Sorber playlist on youtube<br />
 <a href=""></a><br />
 <a href=""></a><br />
+https://www.youtube.com/watch?v=_ruovgwXyYs
+https://www.thecrazyprogrammer.com/2017/06/dining-philosophers-problem-c-c.html
