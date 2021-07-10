@@ -6,11 +6,23 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 12:44:21 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/07/08 13:10:32 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/07/10 15:36:31 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	unsigned int	i;
+
+	if (!s1 || !s2)
+		return (-1);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		++i;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 int	check_num(char *str)
 {
@@ -33,9 +45,15 @@ int	handle_errors(int ac, char **av)
 	i = ac - 1;
 	while (i)
 	{
-		if (check_num(av[i]) == 1)
+		if (check_num(av[i]) == 1 || ft_strcmp(av[1], "0") == 0)
 		{
-			printf("You can only run the program with numbers.\n");
+			printf("Error\nYou can only run the program with");
+			printf(" positives integers.\n");
+			if (ft_strcmp(av[1], "0") == 0)
+			{
+				printf("The first number is the number of philosophers. ");
+				printf("Should be >= 1.\n");
+			}
 			return (1);
 		}
 		i--;
