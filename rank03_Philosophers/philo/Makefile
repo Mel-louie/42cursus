@@ -51,10 +51,10 @@ $(OBJS_DIR):
 	
 
 $(NAME): $(OBJS_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -lpthread -o $(NAME)
 
 $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -D_REENTRANT $(INCLUDES) -c $< -o $@
 	@printf $<
 	@echo -e "\033[2K"
 
