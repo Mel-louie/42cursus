@@ -65,6 +65,7 @@ In this version the specific rules are:
 <h3><div id=thread></div>Programming with threads</h3>
 
 <a href="https://www.youtube.com/playlist?list=PL9IEJIKnBJjFZxuqyJ9JqVYmuFZHr7CFM">📺 Programming with threads, Jacob Sorber playlist on youtube (EN)</a><br />
+<a href="https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2">📺 Unix Threads in C, CodeVault playlist on youtube (EN)</a><br />
 <a href="https://franckh.developpez.com/tutoriels/posix/pthreads/">📄 Tutoriel pthread (FR)</a><br />
 <a href=""></a><br />
 <a href=""></a><br />
