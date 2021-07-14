@@ -1,50 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/08 12:44:21 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/07/14 13:52:36 by louielouie       ###   ########.fr       */
+/*   Created: 2021/07/14 13:47:52 by louielouie        #+#    #+#             */
+/*   Updated: 2021/07/14 14:02:56 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	check_num(char *str)
+void	usage(int code)
 {
-	int	c;
-
-	c = 0;
-	while (str[c])
+	if (code == 1)
 	{
-		if (str[c] < '0' || str[c] > '9')
-			return (1);
-		c++;
+		printf("-- First agument is the number of Philosophers\n");
+		printf(" \t must be between 1 and 200.\n");
 	}
-	return (0);
 }
 
-int	handle_errors(int ac, char **av)
+int	get_arg(int ac, char **av, t_settings *set)
 {
-	int	i;
-
-	i = ac - 1;
-	while (i)
+	set->philos_nb = ft_atoi(av[1]);
+	if (set->philos_nb < 1 || set->philos_nb > 200)
 	{
-		if (check_num(av[i]) == 1)
-		{
-			printf("Error\nYou can only run the program with");
-			printf(" positives integers.\n");
-			return (1);
-		}
-		i--;
+		usage(1);
+		return (2);
 	}
-	if (ac < 5 || ac > 6)
-	{
-		printf("Wrong number of arguments.\n");
-		return (1);
-	}
+	set->t_to_die = ft_atoi(av[2]);
+	set->t_to_eat = ft_atoi(av[3]);
+	set->t_to_sleep = ft_atoi(av[4]);
+	if (ac == 6)
+		set->opt_must_eat_nb = ft_atoi(av[5]);
 	return (0);
 }

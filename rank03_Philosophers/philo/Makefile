@@ -24,7 +24,9 @@ B_WHITE		= "\033[1;37m"
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
 SRCS_FILE		= philo.c \
-					errors.c
+					errors.c \
+					ft_utils.c \
+					init.c
 
 SRCS_DIR		= ./srcs/
 OBJS_DIR		= ./objs/
