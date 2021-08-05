@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 11:31:27 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/07/14 14:03:29 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/08/05 12:26:40 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,19 @@
 # include <stdio.h>
 # include <pthread.h>
 
+/*
+** must_eat_nb: 
+** if allphilosophers eat at least [must_eat_nb] the simulation will stop
+** if not specified, the simulation will stop only at the death of a philosopher
+*/
+
 typedef struct s_settings
 {
 	int		philos_nb;
 	int		t_to_die;
 	int		t_to_eat;
 	int		t_to_sleep;
-	int		opt_must_eat_nb;
+	int		must_eat_nb;
 }			t_settings;
 
 int	main(int ac, char **av);
