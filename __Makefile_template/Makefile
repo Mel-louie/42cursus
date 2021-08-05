@@ -54,7 +54,7 @@ launch:
 	@$(MAKE) $(LIBFT)
 	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 	@$(MAKE) $(NAME)
-	@echo $(_END)$(B_WHITE)"[ created with success]\t\t" $(B_GREEN)$(NAME)$(_END)
+	@echo $(_END)$(B_WHITE)"[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\t"
 
 $(OBJS_DIR):
 	@mkdir $@
@@ -69,7 +69,7 @@ $(NAME): $(OBJS_DIR) $(OBJS)
 $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@printf $<
-	@echo -e "\033[2K"
+	@printf "\r"
 
 clean:
 	@$(MAKE) -sC $(LIBFT_DIR) clean
