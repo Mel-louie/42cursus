@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 11:31:27 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/08/05 15:52:13 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/08/06 15:44:23 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 ** 
 ** *****************************************************************************
 */
+
+typedef struct s_forks
+{
+	pthread_mutex_t	**locks;
+	int				philos_count;
+}					t_forks;
 
 typedef struct s_arg_struct
 {
@@ -60,6 +66,7 @@ typedef struct s_philo_struct
 	pthread_mutex_t	*blockmoni;
 	t_arg_struct	*parg;
 	long			t0;
+	int id;                /* The philosopher's id: 0 to 5 */
 }			t_philo_struct;
 
 typedef struct s_structs

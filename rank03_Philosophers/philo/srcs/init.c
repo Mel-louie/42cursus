@@ -6,11 +6,39 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 13:47:52 by louielouie        #+#    #+#             */
-/*   Updated: 2021/08/05 15:48:19 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/08/06 15:45:57 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	*init_state(int phil_count)
+{
+	t_forks	*pp;
+	int		i;
+
+	i = 0;
+	pp = (t_forks *) malloc(sizeof(t_forks)); // proteger
+	pp->locks = malloc(sizeof(t_forks) * phil_count);
+	if (pp == NULL)
+	{
+		printf("Error on memory allocation.\n"); //faire fonction exit
+		return (NULL); // return (3)
+	}
+	pp->philos_count = phil_count;
+	while (i < phil_count)
+	{
+		pp->locks[i] = malloc(sizeof(pthread_mutex_t));
+		i++;
+	}
+	i = 0;
+	while (i < phil_count)
+	{
+		pthread_mutex_init(pp->locks[i], NULL);
+		i++;
+	}
+	return ((void *)pp);
+}
 
 int	init_philos(t_structs *s)
 {
@@ -18,20 +46,22 @@ int	init_philos(t_structs *s)
 	int				*blocknum;
 	pthread_mutex_t	*blockmoni;
 	long			t0;
-	//	void			*v;
+	void			*v;
 
 	srandom(time(0));
 	i = 0;
 	blockmoni = NULL;
 	t0 = time(0);
-	//v = init_state(s.arg.philos);
-	blocknum = malloc(sizeof(int) * s->arg.philos);
+	v = init_state(s->arg.philos);
+	blocknum = malloc(sizeof(int) * s->arg.philos * 2);
+	for (i = 0; i < s->arg.philos * 2; i++) blocknum[i] = 0;//
 	blockmoni = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(blockmoni, NULL);
+	i = 0;
 	while (i < s->arg.philos)
 	{
-		s->ps[i].philos_nb = i + 1;
-	//	s.ps[i].v = v;
+		s->ps[i].philos_nb = i ;
+		s->ps[i].v = v;
 		s->ps[i].t_to_die = s->arg.die;
 		s->ps[i].t_to_eat = s->arg.eat;
 		s->ps[i].t_to_sleep = s->arg.sleep;
