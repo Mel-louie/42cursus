@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 14:54:38 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/08/06 16:06:44 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/08/10 14:18:51 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	pickup(t_philo_struct *ps)
 	pp = (t_forks *)ps->v;
 	phil_count = pp->philos_count;
 	pthread_mutex_lock(pp->locks[ps->philos_nb]);					/* lock up left stick */
-	printf("\n\tforks left picked by %d\n", ps->philos_nb);
-	sleep(3);
+	printf("\n\t\033[32mforks left picked by %d\033[0m\n", ps->philos_nb);
+	//sleep(3);
 	pthread_mutex_lock(pp->locks[(ps->philos_nb+1)%phil_count]);	/* lock up right stick */
-	printf("\tforks right picked by %d\n\n", ps->philos_nb);
+	printf("\t\033[32mforks right picked by %d\033[0m\n", ps->philos_nb);
 }
 
 void	putdown(t_philo_struct *ps)
@@ -33,9 +33,9 @@ void	putdown(t_philo_struct *ps)
 	pp = (t_forks *)ps->v;
 	phil_count = pp->philos_count;
 	pthread_mutex_unlock(pp->locks[ps->philos_nb]);					/* unlock up left stick */
-	printf("\n\tforks left picked by %d\n", ps->philos_nb);
+	printf("\n\t\033[31mforks left picked by %d\033[0m\n", ps->philos_nb);
 	pthread_mutex_unlock(pp->locks[(ps->philos_nb + 1) % phil_count]);	/* unlock up right stick */
-	printf("\tforks right picked by %d\n\n", ps->philos_nb);
+	printf("\t\033[31mforks right picked by %d\033[0m\n", ps->philos_nb);
 }
 
 void	*start_routine(void *v)
