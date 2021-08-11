@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 11:41:19 by louielouie        #+#    #+#             */
-/*   Updated: 2021/08/06 15:56:24 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/08/11 15:15:08 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 
 int	main(int ac, char **av)
 {
-	t_structs		s;
-	char			str[500];
-	char			*curr;
-	int				total;
-	int				i;
+	t_structs	s;
+	// int			i;
 
 	if (handle_errors(ac, av) == 1)
 		return (1);
@@ -33,62 +30,13 @@ int	main(int ac, char **av)
 	if (!init_philos(&s) || !create_threads(&s))
 		printf("init fail\n"); //
 	
-	//
-	int j = 0;
-	int tmp;
-	tmp = s.ps->must_eat_nb;
-	if (tmp != -1)
-	{
-		while(j < tmp)
-		{
-		//	printf("%d\n", j);
-			pthread_mutex_lock(s.ps->blockmoni);
-			curr = str;
-			total = 0;
-			for(i = 0; i < s.ps->philos_nb; i++)
-				total += s.ps->blocknum[i];
-			sprintf(curr, "%3ld Total blocktime: %5d : ",
-			time(0) - s.ps->t0, total);
-			curr = str + strlen(str);
-			for(i=0; i < s.ps->philos_nb; i++)
-			{
-				sprintf(curr, "%5d ", s.ps->blocknum[i]);
-				curr = str + strlen(str);
-			}
-			pthread_mutex_unlock(s.ps->blockmoni);
-			printf("%s\n", str);
-			fflush(stdout);
-			sleep(10);
-			j++;
-		}
-	}
-	else
-	{
-		while(1)
-		{
-		//	printf("%d\n", j);
-			pthread_mutex_lock(s.ps->blockmoni);
-			curr = str;
-			total = 0;
-			for(i = 0; i < s.ps->philos_nb; i++)
-				total += s.ps->blocknum[i];
-			sprintf(curr, "%3ld Total blocktime: %5d : ",
-			time(0) - s.ps->t0, total);
-			curr = str + strlen(str);
-			for(i=0; i < s.ps->philos_nb; i++)
-			{
-				sprintf(curr, "%5d ", s.ps->blocknum[i]);
-				curr = str + strlen(str);
-			}
-			pthread_mutex_unlock(s.ps->blockmoni);
-			printf("%s\n", str);
-			fflush(stdout);
-			sleep(10);
-			j++;
-		}
-	}
-	//
-	
+
+	// i = 0;
+	// while (i < s.arg.philos)
+	// {
+	// 	pthread_join(s.ps[i].thread_id, NULL);
+	// 	i++;
+	// }
 	free(s.ps);
 	return (0);
 }

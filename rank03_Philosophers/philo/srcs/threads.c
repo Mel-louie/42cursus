@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 14:54:38 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/08/10 14:18:51 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:21:58 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,12 @@ int	create_threads(t_structs *s)
 	{
 		s->ps[i].parg = &s->arg;
 		pthread_create(&s->ps[i].thread_id, NULL, start_routine, &s->ps[i]);
+		i++;
+	}
+	i = 0;
+	while (i < s->arg.philos)
+	{
+		pthread_join(s->ps[i].thread_id, NULL);
 		i++;
 	}
 	return (1);
