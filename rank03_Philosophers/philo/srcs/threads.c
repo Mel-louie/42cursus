@@ -6,23 +6,54 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 14:54:38 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/08/11 14:21:58 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/01 18:40:23 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+// implémente les procédures en faisant en sorte que chaque baguette soit un moniteur (mutex),
+//et que chaque philosophe tente de ramasser la baguette de sa gauche en premier, puis de sa droite,
+//puis de manger, puis de poser la droite, puis de poser la gauche.
+
+// Cette méthode est sujette à des blocages, bien que sur ce système, vous n'en verrez jamais vraiment
+//à cause de la granularité des temps entre les threads. La seule fois où cette solution pose un problème
+//est si le thread d'un philosophe est préempté entre le ramassage du premier et du second mutex. 
+//cela n'arrive pas vraiment ici, donc il semble que cela fonctionne très bien.
+
+// mais avec un délai de 3 secondes entre la prise de la baguette 1 et la prise de la baguette 2
+//vous obtenez un blocage instantané si tous les philosophes essaient de ramasser leurs baguettes en même temps.
+
+// donc en faitsant en sorte que les philosophes impairs commencent à gauche en premier (if (ps->philos_nb % 2 == 1)),
+//et les philosophes pairs à droite en premier, cela ne bloque pas, même si vous mettez un délai entre le ramassage
+//des baguettes une et deux (sleep(3)).
+
+//problem possible: one thread can get more resources than the others due to your synchronization protocol
+
+
 void	pickup(t_philo_struct *ps)
 {
 	t_forks	*pp;
 	int		phil_count;
+
 	pp = (t_forks *)ps->v;
 	phil_count = pp->philos_count;
-	pthread_mutex_lock(pp->locks[ps->philos_nb]);					/* lock up left stick */
-	printf("\n\t\033[32mforks left picked by %d\033[0m\n", ps->philos_nb);
-	//sleep(3);
-	pthread_mutex_lock(pp->locks[(ps->philos_nb+1)%phil_count]);	/* lock up right stick */
-	printf("\t\033[32mforks right picked by %d\033[0m\n", ps->philos_nb);
+	if (ps->philos_nb % 2 == 1)
+	{
+		pthread_mutex_lock(pp->locks[ps->philos_nb]);       /* lock up left stick */
+		// sleep(3);
+		pthread_mutex_lock(pp->locks[(ps->philos_nb+1)%phil_count]); /* lock right stick */
+	}
+	else
+	{
+		pthread_mutex_lock(pp->locks[(ps->philos_nb+1)%phil_count]); /* lock right stick */ 
+		// sleep(3);
+		pthread_mutex_lock(pp->locks[ps->philos_nb]);       /* lock up left stick */
+	}
+	if (ps->philos_nb % 2 == 1)
+		printf("\t\033[32mphilo %i starts eating\033[0m\n", ps->philos_nb);
+	else if (ps->philos_nb % 2 != 1)
+		printf("\t\033[33mphilo %i starts eating\033[0m\n", ps->philos_nb);
 }
 
 void	putdown(t_philo_struct *ps)
@@ -32,10 +63,20 @@ void	putdown(t_philo_struct *ps)
 
 	pp = (t_forks *)ps->v;
 	phil_count = pp->philos_count;
-	pthread_mutex_unlock(pp->locks[ps->philos_nb]);					/* unlock up left stick */
-	printf("\n\t\033[31mforks left picked by %d\033[0m\n", ps->philos_nb);
-	pthread_mutex_unlock(pp->locks[(ps->philos_nb + 1) % phil_count]);	/* unlock up right stick */
-	printf("\t\033[31mforks right picked by %d\033[0m\n", ps->philos_nb);
+	if (ps->philos_nb % 2 == 1)
+	{
+		pthread_mutex_unlock(pp->locks[(ps->philos_nb+1)%phil_count]); /* unlock right stick */ 
+		pthread_mutex_unlock(pp->locks[ps->philos_nb]);  /* unlock left stick */
+	}
+	else
+	{
+		pthread_mutex_unlock(pp->locks[ps->philos_nb]);  /* unlock left stick */
+		pthread_mutex_unlock(pp->locks[(ps->philos_nb+1)%phil_count]); /* unlock right stick */ 
+	}
+	if (ps->philos_nb % 2 == 1)
+		printf("\t\033[32mphilo %i stops eating\033[0m\n", ps->philos_nb);
+	else if (ps->philos_nb % 2 != 1)
+		printf("\t\033[33mphilo %i stops eating\033[0m\n", ps->philos_nb);
 }
 
 void	*start_routine(void *v)
