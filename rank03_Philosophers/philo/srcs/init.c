@@ -6,29 +6,30 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 13:47:52 by louielouie        #+#    #+#             */
-/*   Updated: 2021/08/06 15:45:57 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/02 18:18:26 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*init_state(int phil_count)
+void	*init_state(int phil_count, t_utils *u)
 {
 	t_forks	*pp;
 	int		i;
 
 	i = 0;
-	pp = (t_forks *) malloc(sizeof(t_forks)); // proteger
-	pp->locks = malloc(sizeof(t_forks) * phil_count);
+	pp = (t_forks *) malloc(sizeof(t_forks));
 	if (pp == NULL)
-	{
-		printf("Error on memory allocation.\n"); //faire fonction exit
-		return (NULL); // return (3)
-	}
+		u->error_code = alloc_error(3);
+	pp->locks = malloc(sizeof(t_forks) * phil_count);
+	if (pp->locks == NULL)
+		u->error_code = alloc_error(3);
 	pp->philos_count = phil_count;
 	while (i < phil_count)
 	{
 		pp->locks[i] = malloc(sizeof(pthread_mutex_t));
+		if (pp->locks[i] == NULL)
+			u->error_code = alloc_error(3);
 		i++;
 	}
 	i = 0;
@@ -40,34 +41,25 @@ void	*init_state(int phil_count)
 	return ((void *)pp);
 }
 
-int	init_philos(t_structs *s)
+int	init_philos(t_structs *s, t_utils *u)
 {
 	int				i;
-	int				*blocknum;
-	pthread_mutex_t	*blockmoni;
 	long			t0;
 	void			*v;
 
 	srandom(time(0));
 	i = 0;
-	blockmoni = NULL;
 	t0 = time(0);
-	v = init_state(s->arg.philos);
-	blocknum = malloc(sizeof(int) * s->arg.philos * 2);
-	for (i = 0; i < s->arg.philos * 2; i++) blocknum[i] = 0;//
-	blockmoni = malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(blockmoni, NULL);
+	v = init_state(s->arg.philos, u);
 	i = 0;
 	while (i < s->arg.philos)
 	{
-		s->ps[i].philos_nb = i ;
+		s->ps[i].philos_nb = i;
 		s->ps[i].v = v;
 		s->ps[i].t_to_die = s->arg.die;
 		s->ps[i].t_to_eat = s->arg.eat;
 		s->ps[i].t_to_sleep = s->arg.sleep;
 		s->ps[i].must_eat_nb = s->arg.must_eat;
-		s->ps[i].blocknum = blocknum;
-		s->ps[i].blockmoni = blockmoni;
 		s->ps[i].t0 = t0;
 		i++;
 	}

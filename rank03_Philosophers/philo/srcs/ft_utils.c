@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 13:40:12 by louielouie        #+#    #+#             */
-/*   Updated: 2021/07/14 13:44:53 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/09/02 16:16:11 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,10 @@ int	ft_strcmp(const char *s1, const char *s2)
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 		++i;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int	alloc_error(int code)
+{
+	printf("Error on memory allocation.\n");
+	return (code);
 }

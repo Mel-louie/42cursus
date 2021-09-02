@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 11:31:27 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/01 18:41:36 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/02 18:17:53 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ typedef struct s_philo_struct
 	int				must_eat_nb;
 	pthread_t		thread_id;
 	void			*v;
-	int				*blocknum;
-	pthread_mutex_t	*blockmoni;
 	t_arg_struct	*parg;
 	long			t0;
 }			t_philo_struct;
@@ -74,11 +72,17 @@ typedef struct s_structs
 	t_arg_struct	arg;
 }			t_structs;
 
+typedef struct s_utils
+{
+	int	error_code;
+}		t_utils;
+
 int	main(int ac, char **av);
 int	handle_errors(int ac, char **av);
 int	ft_atoi(const char *str);
 int	get_arg(int ac, char **av, t_structs *s);
-int	init_philos(t_structs *s);
-int create_threads(t_structs *s);
+int	init_philos(t_structs *s, t_utils *u);
+int	create_threads(t_structs *s);
+int	alloc_error(int code);
 
 #endif
