@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 11:31:27 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/02 18:17:53 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/04 11:59:45 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_philo_struct
 	void			*v;
 	t_arg_struct	*parg;
 	long			t0;
+	int				id;
 }			t_philo_struct;
 
 typedef struct s_structs

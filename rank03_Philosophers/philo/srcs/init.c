@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 13:47:52 by louielouie        #+#    #+#             */
-/*   Updated: 2021/09/02 18:18:26 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/04 12:02:52 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	init_philos(t_structs *s, t_utils *u)
 	i = 0;
 	t0 = time(0);
 	v = init_state(s->arg.philos, u);
-	i = 0;
 	while (i < s->arg.philos)
 	{
 		s->ps[i].philos_nb = i;
@@ -61,6 +60,7 @@ int	init_philos(t_structs *s, t_utils *u)
 		s->ps[i].t_to_sleep = s->arg.sleep;
 		s->ps[i].must_eat_nb = s->arg.must_eat;
 		s->ps[i].t0 = t0;
+		s->ps[i].id = s->ps[i].philos_nb + 1;
 		i++;
 	}
 	return (1);

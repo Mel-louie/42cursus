@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 14:54:38 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/03 20:16:40 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/09/04 12:03:49 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ void	pickup(t_philo_struct *ps)
 	if (ps->philos_nb % 2 == 1)
 	{
 		pthread_mutex_lock(pp->locks[ps->philos_nb]);
-		printf("_ms Philosopher %d has taken a fork\n", ps->philos_nb);
+		printf("_ms Philosopher %d has taken a fork\n", ps->id);
 		pthread_mutex_lock(pp->locks[(ps->philos_nb + 1) % phil_count]);
-		printf("_ms Philosopher %d has taken a fork\n", ps->philos_nb);
+		printf("_ms Philosopher %d has taken a fork\n", ps->id);
 	}
 	else
 	{
 		pthread_mutex_lock(pp->locks[(ps->philos_nb + 1) % phil_count]);
-		printf("_ms Philosopher %d has taken a fork\n", ps->philos_nb);
+		printf("_ms Philosopher %d has taken a fork\n", ps->id);
 		pthread_mutex_lock(pp->locks[ps->philos_nb]);
-		printf("_ms Philosopher %d has taken a fork\n", ps->philos_nb);
+		printf("_ms Philosopher %d has taken a fork\n", ps->id);
 	}
 }
 
@@ -105,14 +105,14 @@ void	*start_routine(void *v)
 	{
 		st = ps->parg->eat;
 		pickup(ps);
-		printf("\033[32m _ms Philosopher %d is eating\033[0m\n", ps->philos_nb);
+		printf("\033[32m _ms Philosopher %d is eating\033[0m\n", ps->id);
 		sleep(st);
 		putdown(ps);
 		st = ps->parg->sleep;
-		printf("\033[33m _ms Philosopher %d is sleeping\033[0m\n", ps->philos_nb);
+		printf("\033[33m _ms Philosopher %d is sleeping\033[0m\n", ps->id);
 		sleep(st);
 		st = ps->parg->die;
-		printf("\033[34m _ms Philosopher %d is thinking\033[0m\n", ps->philos_nb);
+		printf("\033[34m _ms Philosopher %d is thinking\033[0m\n", ps->id);
 		sleep(st);
 	}
 	return (v);
