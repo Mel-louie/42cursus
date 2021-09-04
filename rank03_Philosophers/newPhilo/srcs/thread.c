@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:19 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/04 16:58:08 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:31:29 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*start_thread(void *arg)
 
 	philo = arg;
 	eat = 0;
-	if (philo->id % 2 == 1)
+	if (philo->id % 2 == 0)
 		usleep(200);
 	while (eat != philo->data->eat_times && chk_dead(philo) == 0)
 	{

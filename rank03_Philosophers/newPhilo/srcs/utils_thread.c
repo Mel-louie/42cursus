@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:18 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/04 16:53:41 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:02:03 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	dead_chk(t_philo *philo, t_data *data)
 			if (data->state != OK)
 				data->state = DEAD;
 			if (data->state == DEAD)
-				philo_write(&philo[i], "died");
+				philo_write(&philo[i], "\033[31mdied\033[0m");
 			pthread_mutex_unlock(&data->state_mutex);
 			return (1);
 		}
