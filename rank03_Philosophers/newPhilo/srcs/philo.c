@@ -6,11 +6,17 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:21 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/06 15:33:10 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 16:56:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	one_philo(t_philo *philo, t_data *data)
+{
+	if (data->num == 1)
+		pthread_mutex_unlock(philo->lfork_mutex);
+}
 
 int	main(int ac, char **av)
 {

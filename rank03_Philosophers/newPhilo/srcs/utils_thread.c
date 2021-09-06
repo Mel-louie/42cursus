@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:18 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/06 16:54:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 17:14:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,6 @@ void	time_sleep(unsigned long time_to_sleep)
 		usleep(100);
 }
 
-void	one_philo(t_philo *philo, t_data *data)
-{
-	if (data->num == 1)
-		pthread_mutex_unlock(philo->lfork_mutex);
-}
-
 int	died(t_philo *philo, t_data *data)
 {
 	int	i;
@@ -76,7 +70,7 @@ int	died(t_philo *philo, t_data *data)
 			if (data->state != OK)
 				data->state = DEAD;
 			if (data->state == DEAD)
-				philo_write(&philo[i], "\033[31mdied\033[0m");
+				philo_write(&philo[i], "died");
 			pthread_mutex_unlock(&data->state_mutex);
 			one_philo(philo, data);
 			return (1);
