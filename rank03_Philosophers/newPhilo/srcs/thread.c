@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:19 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/04 17:31:29 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:10:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	get_fork(t_philo *philo)
 {
 	pthread_mutex_lock(philo->lfork_mutex);
-	if (chk_dead(philo))
+	if (is_dead(philo))
 	{
 		pthread_mutex_unlock(philo->lfork_mutex);
 		return (1);
 	}
 	philo_write(philo, "has taken a fork");
 	pthread_mutex_lock(philo->rfork_mutex);
-	if (chk_dead(philo))
+	if (is_dead(philo))
 	{
 		pthread_mutex_unlock(philo->lfork_mutex);
 		pthread_mutex_unlock(philo->rfork_mutex);
@@ -50,7 +50,7 @@ void	*start_thread(void *arg)
 	eat = 0;
 	if (philo->id % 2 == 0)
 		usleep(200);
-	while (eat != philo->data->eat_times && chk_dead(philo) == 0)
+	while (eat != philo->data->eat_times && is_dead(philo) == 0)
 	{
 		if (get_fork(philo))
 			break ;
@@ -59,7 +59,7 @@ void	*start_thread(void *arg)
 		time_sleep(philo->data->time_to_eat);
 		pthread_mutex_unlock(philo->lfork_mutex);
 		pthread_mutex_unlock(philo->rfork_mutex);
-		if (chk_dead(philo))
+		if (is_dead(philo))
 			break ;
 		philo_write(philo, "is thinking");
 		time_sleep(philo->data->time_to_sleep);
@@ -81,7 +81,7 @@ int	set_thread(t_data *data, t_philo *philo, pthread_t *thread)
 			return (1);
 		++i;
 	}
-	dead_chk(philo, data);
+	died(philo, data);
 	i = 0;
 	while (i < data->num)
 	{

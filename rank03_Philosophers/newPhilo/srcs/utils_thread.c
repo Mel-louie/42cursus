@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_thread.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:18 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/04 17:02:03 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:10:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	set_state(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->state_mutex);
 }
 
-int	chk_dead(t_philo *philo)
+int	is_dead(t_philo *philo)
 {
 	int	ret;
 
@@ -55,7 +55,7 @@ void	time_sleep(unsigned long time_to_sleep)
 		usleep(100);
 }
 
-int	dead_chk(t_philo *philo, t_data *data)
+int	died(t_philo *philo, t_data *data)
 {
 	int	i;
 

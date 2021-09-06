@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:02 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/04 16:19:05 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:10:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # define DEAD 0
 # define ALIVE 1
 # define OK 2
+
+/*
+** *****************************************************************************
+** struct de toutes les datas dont il y a besoin par philos
+** *****************************************************************************
+*/
 
 typedef struct s_data
 {
@@ -56,9 +62,9 @@ void			philo_write(t_philo *philo, char *s);
 int				init_philo(t_data *data, t_philo *philo, int i);
 int				parsing(t_data *data, int ac, char **av);
 unsigned long	get_time(void);
-int				chk_dead(t_philo *philo);
+int				is_dead(t_philo *philo);
 void			time_sleep(unsigned long time_to_sleep);
-int				dead_chk(t_philo *philo, t_data *data);
+int				died(t_philo *philo, t_data *data);
 void			set_state(t_philo *philo);
 int				set_thread(t_data *data, t_philo *philo, pthread_t *thread);
 
