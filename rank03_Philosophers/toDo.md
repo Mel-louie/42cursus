@@ -1,5 +1,8 @@
 🔘 check si mes explications sont bonnes (cheat sheet bullet points dans le cahier)
+🔘 reviser (onglets mac school)
+🔘 tester sur mac os
 <br />
+✅ normer
 ✅ probleme quand philo dies apres que tous est pris une fork (ne sort pas du prog) > voir test_one
 ✅ commenter et documenter 
 ✅ faire un mini tester

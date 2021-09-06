@@ -70,6 +70,4 @@ In this version the specific rules are:
 <a href="https://franckh.developpez.com/tutoriels/posix/pthreads/">📄 Tutoriel pthread (FR)</a><br />
 <a href=""></a><br />
 <a href=""></a><br />
-https://www.youtube.com/watch?v=_ruovgwXyYs
-
 <a href=""></a><br />
