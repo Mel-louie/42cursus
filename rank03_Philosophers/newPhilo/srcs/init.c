@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:22 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/04 16:21:10 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/09/06 16:13:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+/*
+** *****************************************************************************
+philo->lfork_mutex = &data->forks[i]; la fourchette gauche de chaque philo
+correspond a l'index du philo (forks[i])
+philo->rfork_mutex = &data->forks[(i + 1) % data->num]; la fourchette droite
+du philo pointe sur la fourchette suivante (ex: &data->forks[(5 + 1) % 8) = 6,
+la fourchette 6 est celle du philo 6)(&data->forks[(7 + 1) % 8) = 0 > pour le
+dernier philo, dont le voisin de droite est le philo 0)
+** *****************************************************************************
+*/
 
 int	init_philo(t_data *data, t_philo *philo, int i)
 {

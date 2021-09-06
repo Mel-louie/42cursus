@@ -24,7 +24,7 @@ B_WHITE		= "\033[1;37m"
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
 SRCS_FILE		= philo.c \
-					parsing.c \
+					init.c \
 					thread.c \
 					utils_thread.c \
 					utils.c

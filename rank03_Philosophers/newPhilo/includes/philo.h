@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:02 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/06 15:10:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/06 15:33:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ int				is_dead(t_philo *philo);
 void			time_sleep(unsigned long time_to_sleep);
 int				died(t_philo *philo, t_data *data);
 void			set_state(t_philo *philo);
-int				set_thread(t_data *data, t_philo *philo, pthread_t *thread);
+int				set_threads(t_data *data, t_philo *philo, pthread_t *thread);
 
 #endif
