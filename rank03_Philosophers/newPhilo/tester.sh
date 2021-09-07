@@ -141,7 +141,7 @@ test_three ()
 test_four ()
 {
 	(./philo 4 410 200 200 $3 > "./log_$1")&
-	sleep 10
+	sleep 12
 		lines=$(grep eating "./log_$1" | wc -l)
 		if [ $lines -ge $3 ];then
 			printf "${_GREEN}"
@@ -164,7 +164,7 @@ test_five ()
 	error=0
 	while [ $i -le 10 ];do
 		(./philo 2 60 60 60 > "./log_$1")&
-		sleep 2
+		sleep 8
 		pgrep $1 > /dev/null
 		if [ "$?" -eq 1 ];then
 			printf "\r[%d/10]" $i
