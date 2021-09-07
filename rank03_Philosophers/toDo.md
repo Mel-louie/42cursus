@@ -1,12 +1,16 @@
+! ! ./philo 4 500 200 2147483647 	un philo meurt au bout de 500 ms
+
 🔘 check si mes explications sont bonnes (cheat sheet bullet points dans le cahier)
 
 🔘 reviser (onglets mac school)
 
-🔘 tester sur mac os
+🔘 tester sur mac os school + guaca
 
-🔘 tester tous les tests de la cheatsheet
+
 
 <br />
+
+✅ tester tous les tests de la cheatsheet
 
 ✅ normer
 
@@ -29,4 +33,3 @@
 ✅  print les changements de status
 
 
-! ! ./philo 4 500 200 2147483647 	un philo meurt au bout de 500 ms
