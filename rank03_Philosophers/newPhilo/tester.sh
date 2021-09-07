@@ -21,7 +21,6 @@ _BCYAN="\033[1;36m"			# CYAN
 _BWHITE="\033[1;37m"		# WHITE
 
 FILE=errors_log
-FILE2=output
 
 make re
 printf "${_GREEN}\n(•_•)\t( •_•)>⌐■-■\t(⌐■_■)\n${_END}"
@@ -38,10 +37,6 @@ printf "In Case of a failed test, please check ./errors_log file for more inform
 
 if [ -f "$FILE" ]; then
 	rm "$FILE"
-fi
-
-if [ -f "$FILE2" ]; then
-	rm "$FILE2"
 fi
 
 error_log ()
@@ -90,7 +85,7 @@ test_two ()
 	(./philo 4 410 200 200 > /dev/null)&
 	i=1
 	error=0
-	while [ $i -lt 10 ];do
+	while [ $i -lt 180 ];do
 		printf "\r[%d...]" $i
 		pgrep $1 > /dev/null
 		if [ "$?" -ne 0 ];then
@@ -121,7 +116,7 @@ test_three ()
 	(./philo 5 800 200 200 > /dev/null)&
 	i=1
 	error=0
-	while [ $i -lt 10 ];do
+	while [ $i -lt 180 ];do
 		printf "\r[%d...]" $i
 		pgrep $1 > /dev/null
 		if [ "$?" -ne 0 ];then
@@ -147,7 +142,6 @@ test_four ()
 {
 	(./philo 4 410 200 200 $3 > "./log_$1")&
 	sleep 10
-	 	echo "$3 $4 $lines"
 		lines=$(grep eating "./log_$1" | wc -l)
 		if [ $lines -ge $3 ];then
 			printf "${_GREEN}"
@@ -155,7 +149,7 @@ test_four ()
 		else
 			printf "${_RED}"
 			echo " Test #4: $3 Failed"
-			error_log $1 "Test #4" "Given 4 410 200 200 $3 arguments to $1, $1 should only be stopped if each philosopher ate at least $3 times! They ate $lines in total"
+			error_log $1 "Test #4" "Given 4 410 200 200 $3 arguments to $1, $1 should only be stopped if each philosopher ate at least $3 times! They ate: $lines time, in total"
 		fi
 	printf "${_END}"
 	rm -rf "./log_$1"
