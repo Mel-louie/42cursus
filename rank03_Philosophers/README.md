@@ -17,7 +17,7 @@ In this project, the Philosophers also have to sleep.
 
 - Tester
 	- <a href="#uset">Usage</a>
-	- <a href="">Link to tester.sh</a>
+	- <a href="https://github.com/Mel-louie/42cursus/blob/main/rank03_Philosophers/newPhilo/tester.sh">Link to tester.sh</a>
 	- <a href="#cheatsheet">Cheatsheet for rapid tests</a>
 - Download, install and use
 	- <a href="#instal">Install</a>
