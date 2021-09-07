@@ -4,7 +4,7 @@
 
 🔘 reviser (onglets mac school)
 
-🔘 tester sur mac os school + guaca
+🔘 tester sur mac os school + vm boostée
 
 
 
