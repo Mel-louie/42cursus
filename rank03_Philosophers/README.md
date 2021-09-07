@@ -15,6 +15,10 @@
 
 In this project, the Philosophers also have to sleep.
 
+- Tester
+	- <a href="#uset">Usage</a>
+	- <a href="">Link to tester.sh</a>
+	- <a href="#cheatsheet">Cheatsheet for rapid tests</a>
 - Download, install and use
 	- <a href="#instal">Install</a>
 	- <a href="#play">Use</a>
@@ -23,6 +27,82 @@ In this project, the Philosophers also have to sleep.
 	- <a href="#problem">Dinning Philosophers problem, explanations and solutions</a>
 	- <a href="#thread">Programming with threads</a>
 
+
+# Tester
+
+<div id=uset></div></a>How to use the tester
+Copy tester.sh in your project folder and then:
+Inspire by differents testers on github.
+Feel free to use and modify it.
+
+```
+~> bash tester.sh
+
+```
+
+<div id=cheatsheet></div></a>Cheatsheet
+<table>
+    <tr>
+        <td><b>Test</b></td>
+        <td><b>Résultat attendu</b></td>
+    </tr>
+    <tr>
+        <td>./philo 1 200 200 200</td>
+        <td>philo 1 ne prend qu'une fourchette et meurt au bout de 200 ms</td>
+    </tr>
+    <tr>
+        <td>./philo 1 800 200 200</td>
+        <td>	"			"			"		"			"	800 ms</td>
+    </tr>
+    <tr>
+        <td><./philo 2 800 200 200</td>
+        <td>personne ne meurt</td>
+    </tr>
+    <tr>
+        <td>./philo 5 800 200 200 </td>
+        <td>	"	"	"</td>
+    </tr>
+    <tr>
+        <td>./philo 5 800 200 200 7</td>
+        <td>la simulation s'arrete quand chaque philo a mange au moins 7 fois</td>
+    </tr>
+    <tr>
+        <td>./philo 4 410 200 200</td>
+        <td>personne ne meurt</td>
+    </tr>
+    <tr>
+        <td>./philo 4 310 200 200</td>
+        <td>un philo meurt</td>
+    </tr>
+    <tr>
+        <td>./philo 4 500 200 1.2</td>
+        <td>argument invalide</td>
+    </tr>
+    <tr>
+        <td>./philo 4 0 200 200</td>
+        <td>argument invalide</td>
+    </tr>
+    <tr>
+        <td>./philo 4 -500 200 200 </td>
+        <td>argument invalide</td>
+    </tr>
+    <tr>
+        <td>./philo 4 500 200 2147483647</td>
+        <td>un philo meurt au bout de 500 ms</td>
+    </tr>
+    <tr>
+        <td>./philo 4 2147483647 200 200</td>
+        <td>personne ne meurt</td>
+    </tr>
+    <tr>
+        <td>./philo 4 214748364732 200 200</td>
+        <td>argument invalide</td>
+    </tr>
+    <tr>
+        <td>./philo 4 200 210 200</td>
+        <td>un philo meurt, il faut afficher la mort avant 210 ms</td>
+    </tr>
+</table>
 
 # Download, install and use
 
@@ -49,6 +129,7 @@ or
 
 <div id=bonus></div><b>BONUS</b>
 
+NB: my programm only containes the mandatoty part.
 In this version the specific rules are:
 - All the forks are in the middle of the table.
 - They have no states in memory but the number of available forks is represented bya semaphore.
