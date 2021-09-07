@@ -30,10 +30,10 @@ In this project, the Philosophers also have to sleep.
 
 # Tester
 
-<div id=uset></div></a>How to use the tester
-Copy tester.sh in your project folder and then:
 Inspire by differents testers on github.
 Feel free to use and modify it.
+<div id=uset></div></a>
+Copy tester.sh in your project folder and then:
 
 ```
 ~> bash tester.sh
