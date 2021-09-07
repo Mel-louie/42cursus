@@ -1,4 +1,0 @@
-[philo-Test #4]: Given 4 410 200 200 28 arguments to philo, philo should only be stopped if each philosopher ate at least 28 times! They ate:       10 time, in total
-[philo-Test #4]: Given 4 410 200 200 40 arguments to philo, philo should only be stopped if each philosopher ate at least 40 times! They ate:       10 time, in total
-[philo-Test #4]: Given 4 410 200 200 48 arguments to philo, philo should only be stopped if each philosopher ate at least 48 times! They ate:        3 time, in total
-[philo-Test #4]: Given 4 410 200 200 60 arguments to philo, philo should only be stopped if each philosopher ate at least 60 times! They ate:        3 time, in total

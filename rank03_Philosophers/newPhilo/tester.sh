@@ -203,11 +203,11 @@ tests()
 
 	target="philo"
 
-	# test_one $target $1
+	test_one $target $1
 	
-	# test_two $target $1
+	test_two $target $1
 
-	# test_three $target $1
+	test_three $target $1
 	
 	printf "\n${_CYAN}"
 	echo "Test #4 in progress, please wait..."
@@ -217,7 +217,7 @@ tests()
 	test_four $target $1 12 48 3
 	test_four $target $1 15 60 4
 
-	# test_five $target $1
+	test_five $target $1
 	rm -rf "./log_$target"
 }
 
