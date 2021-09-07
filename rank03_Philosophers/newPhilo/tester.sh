@@ -21,6 +21,7 @@ _BCYAN="\033[1;36m"			# CYAN
 _BWHITE="\033[1;37m"		# WHITE
 
 FILE=errors_log
+FILE2=output
 
 make re
 printf "${_GREEN}\n(•_•)\t( •_•)>⌐■-■\t(⌐■_■)\n${_END}"
@@ -37,6 +38,10 @@ printf "In Case of a failed test, please check ./errors_log file for more inform
 
 if [ -f "$FILE" ]; then
 	rm "$FILE"
+fi
+
+if [ -f "$FILE2" ]; then
+	rm "$FILE2"
 fi
 
 error_log ()
@@ -140,8 +145,8 @@ test_three ()
 
 test_four ()
 {
-	(./philo 4 410 200 200 $3 > "./log_$1")&
-	sleep 2
+	(./philo 4 410 200 200 $3 > "./log_$1" > "FILE2")&
+	sleep 10
 	 	echo "$3 $4 $lines"
 		lines=$(grep eating "./log_$1" | wc -l)
 		if [ $lines -ge $3 ];then
