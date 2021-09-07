@@ -55,7 +55,7 @@ Copy tester.sh in your project folder and then:
         <td>	"			"			"		"			"	800 ms</td>
     </tr>
     <tr>
-        <td><./philo 2 800 200 200</td>
+        <td>./philo 2 800 200 200</td>
         <td>personne ne meurt</td>
     </tr>
     <tr>
