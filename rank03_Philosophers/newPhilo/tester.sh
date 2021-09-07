@@ -141,12 +141,10 @@ test_three ()
 test_four ()
 {
 	(./philo 4 410 200 200 $3 > "./log_$1")&
-	sleep 5
-		echo "$4 $3 $2 $1 $0"
-	pgrep $1 > /dev/null
-	if [ "$?" -eq 0 ];then
+	sleep 2
+	 	echo "$3 $4 $lines"
 		lines=$(grep eating "./log_$1" | wc -l)
-		if [ $lines -ge $4 ];then
+		if [ $lines -ge $3 ];then
 			printf "${_GREEN}"
 			echo " Test #4: $3 Sucess!"
 		else
@@ -154,12 +152,6 @@ test_four ()
 			echo " Test #4: $3 Failed"
 			error_log $1 "Test #4" "Given 4 410 200 200 $3 arguments to $1, $1 should only be stopped if each philosopher ate at least $3 times!"
 		fi
-	else
-		printf "${_RED}"
-		echo " Test #4: $3 Failed"
-		error_log $1 "Test #4" "Given 4 410 200 200 $3 arguments to $1, $1 philo should stop!"
-		pkill $1
-	fi
 	printf "${_END}"
 	rm -rf "./log_$1"
 }
