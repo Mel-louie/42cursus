@@ -145,7 +145,7 @@ test_three ()
 
 test_four ()
 {
-	(./philo 4 410 200 200 $3 > "./log_$1" > "FILE2")&
+	(./philo 4 410 200 200 $3 > "./log_$1")&
 	sleep 10
 	 	echo "$3 $4 $lines"
 		lines=$(grep eating "./log_$1" | wc -l)
@@ -155,7 +155,7 @@ test_four ()
 		else
 			printf "${_RED}"
 			echo " Test #4: $3 Failed"
-			error_log $1 "Test #4" "Given 4 410 200 200 $3 arguments to $1, $1 should only be stopped if each philosopher ate at least $3 times!"
+			error_log $1 "Test #4" "Given 4 410 200 200 $3 arguments to $1, $1 should only be stopped if each philosopher ate at least $3 times! They ate $lines in total"
 		fi
 	printf "${_END}"
 	rm -rf "./log_$1"
