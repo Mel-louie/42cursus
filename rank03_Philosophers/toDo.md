@@ -1,12 +1,11 @@
 🔘 check si mes explications sont bonnes (cheat sheet bullet points dans le cahier)
 
-🔘 reviser (onglets mac school)
-
-🔘 tester sur mac os school + vm boostée
-
+🔘 reviser
 
 
 <br />
+
+✅  tester sur mac os school + vm boostée
 
 ✅ tester tous les tests de la cheatsheet
 
