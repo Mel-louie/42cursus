@@ -166,30 +166,23 @@ test_five ()
 		(./philo 2 60 60 60 > "./log_$1")&
 		sleep 8
 		pgrep $1 > /dev/null
-		if [ "$?" -eq 1 ];then
-			printf "\r[%d/10]" $i
-			tmp=$(grep died -m 1 "./log_$1" | awk '{print $1}' | sed 's/[^0-9]*//g')
-			if [ $i -gt 1 ];then
-				x=$(expr $tmp - $t)
-				x=${x#-}
-				if [ $x -gt 10 ];then
-					printf "${_RED} Test #5 Failed\n"
-					error_log $1 "Test #5" "Given 2 60 60 60 arguments to $1, the time difference of each death shouldn't be bigger than 10ms!"
-					error=1
-					break
-				fi
-			else
-				t=$tmp
+		printf "\r[%d/10]" $i
+		tmp=$(grep died -m 1 "./log_$1" | awk '{print $1}' | sed 's/[^0-9]*//g')
+		if [ $i -gt 1 ];then
+			x=$(expr $tmp - $t)
+			x=${x#-}
+			if [ $x -gt 10 ];then
+				printf "${_RED} Test #5 Failed\n"
+				error_log $1 "Test #5" "Given 2 60 60 60 arguments to $1, the time difference of each death shouldn't be bigger than 10ms!"
+				error=1
+				break
 			fi
 		else
-			printf "${_RED} Test #5 Failed\n"
-			error_log $1 "Test #5" "Given 2 60 60 60 arguments to $1, a philosopher should die!"
-			pkill $1
-			break
+			t=$tmp
 		fi
 		i=$(( $i + 1 ))
 	done
-	
+
 	if [ $error -eq 0 ]; then
 		printf "${_GREEN}"
 		echo " Test #5 Sucess!"
