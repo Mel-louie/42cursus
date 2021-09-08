@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 16:18:19 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/09/08 01:46:31 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/09/08 16:34:26 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	philo_eat(t_philo *philo, int *eat)
 	pthread_mutex_lock(&philo->last_ate_mutex);
 	philo->last_ate = get_time();
 	pthread_mutex_unlock(&philo->last_ate_mutex);
-	philo_write(philo, "\033[32mis eating\033[0m");
+	philo_write(philo, "is eating");
 	*eat += 1;
 }
 

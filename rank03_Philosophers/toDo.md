@@ -1,5 +1,3 @@
-! ! ./philo 4 500 200 2147483647 	un philo meurt au bout de 500 ms
-
 🔘 check si mes explications sont bonnes (cheat sheet bullet points dans le cahier)
 
 🔘 reviser (onglets mac school)
