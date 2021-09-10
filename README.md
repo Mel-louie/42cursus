@@ -16,7 +16,7 @@ Every folder got a README with some infos (mostly in French) on the project inst
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_so_long">SO_LONG </a>
 - RANK03
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank03_exam">Exam rank 03 </a>
-  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank03_Philosophers">Philosophers </a>🚧
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank03_Philosophers">Philosophers </a>
 - RANK04
   -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_cub3D">cub3D (2020 vers.) </a>
 - RANK05

@@ -1,4 +1,4 @@
-# Philosophers 🧵 📜    🚧 
+# Philosophers 🧵 📜 100%
 
 <b>This project will learn you the basics of threading a process, how to make threads, and discover the mutex</b>
 
