@@ -19,6 +19,7 @@ Every folder got a README with some infos (mostly in French) on the project inst
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank03_Philosophers">Philosophers </a>
 - RANK04
   -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_cub3D">cub3D (2020 vers.) </a>
+  -  <a href="">Exam rank 04 </a>🚧
 - RANK05
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_inception">Inception </a>🚧
  - Outside COMMON CORE
