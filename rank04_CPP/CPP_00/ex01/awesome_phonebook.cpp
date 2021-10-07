@@ -15,24 +15,46 @@
 
 using namespace std;
 
+void	table_of_contents(void)
+{
+	cout << "What do you want to do:\n";
+	cout << "\tTo add a new contact, enter ADD\n";
+	cout << "\tTo set, enter SEARCH\n";
+	cout << "\tTo exit, enter EXIT\n";
+}
+
 int	main(void)
 {
 	char	choice[255];
 
 	cout << "\n== Hello and wellcome on my Awesome PhoneBook! ==\n\n";
-	cout << "What do you want to do:\n";
-	cout << "\tTo add a new contact, enter ADD\n";
-	cout << "\tTo set, enter SEARCH\n";
-	cout << "\tTo exit, enter EXIT\n";
+	table_of_contents();
 	cin >> choice;
 
-	if (!strcmp(choice, "ADD"))
-		cout << "add\n";
-	else if (!strcmp(choice, "SEARCH"))
-		cout << "search\n";
-	else if (!strcmp(choice, "EXIT"))
-		cout << "exit\n";
-	else
-		cout << "nothing\n";
+	while (1)
+	{
+		if (!strcmp(choice, "ADD"))
+		{
+			cout << "add\n";
+			break ;
+		}
+		else if (!strcmp(choice, "SEARCH"))
+		{
+			cout << "search\n";
+			break ;
+		}
+		else if (!strcmp(choice, "EXIT"))
+		{
+			cout << "exit\n";
+			//break ;
+			exit(1);
+		}
+		else
+		{
+			cout << "Wrong option\n";
+			table_of_contents();
+			cin >> choice;
+		}
+	}
 	return (0);
 }
