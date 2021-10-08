@@ -6,11 +6,35 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 11:16:28 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 13:24:57 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/08 13:57:10 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Class.phonebook.hpp"
+#include "Class.contact.hpp"
+
+void	search_index(int nb_contact, Contact phonebook[])
+{
+	int	contact_index;
+
+	cout << "Enter the index of a contact: ";
+	cin >> contact_index;
+	cout << endl;
+	int	i = contact_index - 1;
+	if (cin.good() && (contact_index > 0 && contact_index <= nb_contact))
+	{
+		cout << "First name: " << phonebook[i].get_fst_name() << endl;
+		cout << "Last name: " << phonebook[i].get_lst_name() << endl;
+		cout << "Nickname: " << phonebook[i].get_nck_name() << endl;
+		cout << "Phone number: " << phonebook[i].get_phone_num() << endl;
+		cout << "😈 Darkest secret: " << phonebook[i].get_darkest_scrt() << endl;
+	}
+	else
+	{
+		cin.clear();
+		cout << "Invalid entry :( " << endl;
+	}
+	
+}
 
 string	trunc(string name)
 {
@@ -19,7 +43,7 @@ string	trunc(string name)
 	return(name);
 }
 
-void	search(Phonebook phonebook[], int num_contact)
+void	search(Contact phonebook[], int num_contact)
 {
 	string	fst_name;
 	string	lst_name;
@@ -47,6 +71,7 @@ void	search(Phonebook phonebook[], int num_contact)
 		cout << setw(10) << nck_name << endl;
 		i++; index++;
 	}
-	
+	cout << endl;
+	search_index(num_contact, phonebook);
 	cout << endl;
 }

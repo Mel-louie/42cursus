@@ -6,15 +6,15 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 11:16:28 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 12:30:31 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/08 13:57:10 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Class.phonebook.hpp"
+#include "Class.contact.hpp"
 
-Phonebook	add()
+Contact	add()
 {
-	Phonebook	new_contact;
+	Contact	new_contact;
 	string	buf;
 
 	cout << "First name: ";

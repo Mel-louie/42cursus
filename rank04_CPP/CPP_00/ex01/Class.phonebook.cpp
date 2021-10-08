@@ -5,65 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/07 16:23:40 by louie             #+#    #+#             */
-/*   Updated: 2021/10/08 12:55:17 by mdesfont         ###   ########.fr       */
+/*   Created: 2021/10/08 14:05:08 by mdesfont          #+#    #+#             */
+/*   Updated: 2021/10/08 14:28:10 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Class.contact.hpp"
 #include "Class.phonebook.hpp"
 
+//Constructor
 
-string	Phonebook::get_fst_name()
+Phonebook::Phonebook(void)
 {
-	return (first_name);
+	std::cout << "PhoneBook Creator Called" << std::endl;
+	this->nb_contact = 0;
 }
 
-string	Phonebook::get_lst_name()
+//Destructor
+
+Phonebook::~Phonebook(void)
 {
-	return (last_name);
+	std::cout << "PhoneBook Destructor Called" << std::endl;
 }
 
-string	Phonebook::get_nck_name()
-{
-	return (nickname);
+void	Phonebook::table_of_contents(void)
+{		
+        string	choice;
+
+		while (1)
+        {
+			if (!std::cin.eof())
+	        {
+				cout << "What do you want to do:" << endl;
+				cout << "\tTo add a new contact, type ADD and press ENTER" << endl;
+				cout << "\tTo search a contact, type SEARCH and press ENTER" << endl;
+				cout << "\tTo exit, type EXIT and press ENTER" << endl;
+			}
+			getline(cin, choice);
+			if (std::cin.eof()) {
+				std::cout << std::endl;
+				exit(0);
+			}
+			else if (choice == "EXIT")
+				exit(0);
+			else if (choice == "ADD")
+				this->_addContact();
+			else if (choice == "SEARCH")
+				this->_searchContact();
+		}
 }
 
-string	Phonebook::get_phone_num()
-{
-	return (phone_number);
-}
-
-string Phonebook::get_darkest_scrt()
-{
-	return (darkest_secret);
-}
-
-void	Phonebook::set_fst_name(string s)
-{
-	this->first_name = s;
-	return ;
-}
-
-void	Phonebook::set_lst_name(string s)
-{
-	this->last_name = s;
-	return ;
-}
-
-void	Phonebook::set_nck_name(string s)
-{
-	this->nickname = s;
-	return ;
-}
-
-void	Phonebook::set_phone_num(string s)
-{
-	this->phone_number = s;
-	return ;
-}
-
-void	Phonebook::set_darkest_scrt(string s)
-{
-	this->darkest_secret = s;
-	return ;
-}
