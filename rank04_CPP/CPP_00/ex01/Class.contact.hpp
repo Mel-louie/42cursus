@@ -39,6 +39,8 @@ public:
 	string	get_nck_name(void);
 	string	get_phone_num(void);
 	string	get_darkest_scrt(void);
+
+//	void	display_contact_infos(void);
 	
 private:
 	string	first_name;
