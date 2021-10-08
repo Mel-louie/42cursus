@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Class.phonebook.cpp                                :+:      :+:    :+:   */
+/*   Class.contact.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:23:40 by louie             #+#    #+#             */
-/*   Updated: 2021/10/08 13:57:10 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/08 14:40:45 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Class.contact.hpp"
+
+//Constructor
+
+Contact::Contact( void ) {}
+
+//Destructor
+
+Contact::~Contact( void ) {}
 
 
 string	Contact::get_fst_name()
