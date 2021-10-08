@@ -1,14 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   awesome_phonebook.hpp                              :+:      :+:    :+:   */
+/*   Class.phonebook.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:23:40 by louie             #+#    #+#             */
-/*   Updated: 2021/10/07 16:43:55 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/08 11:15:14 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <iostream>
+#include <cstring>
 
 using namespace std;
 

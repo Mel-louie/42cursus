@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   awesome_phonebook.cpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:01:56 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/07 16:59:00 by louie            ###   ########.fr       */
-/*https://github.com/jraleman/42_Piscine-CPP/blob/master/day00/ex01/main.cpp                                                                            */
+/*   Updated: 2021/10/08 11:15:07 by mdesfont         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
-#include "awesome_phonebook.hpp"
+#include "Class.phonebook.hpp"
 
 using namespace std;
 
 void	table_of_contents(void)
 {
-	cout << "What do you want to do:\n";
-	cout << "\tTo add a new contact, enter ADD\n";
-	cout << "\tTo set, enter SEARCH\n";
-	cout << "\tTo exit, enter EXIT\n";
+	cout << "What do you want to do:" << endl;
+	cout << "\tTo add a new contact, enter ADD" << endl;
+	cout << "\tTo set, enter SEARCH" << endl;
+	cout << "\tTo exit, enter EXIT" << endl;
 }
 
 int	main(void)
@@ -30,7 +28,7 @@ int	main(void)
 	int	contact_index;
 
 	contact_index = 0;
-	cout << "\n== Hello and wellcome on my Awesome PhoneBook! ==\n\n";
+	cout << "\n== Hello and wellcome on my Awesome PhoneBook! ==\n" << endl;
 	table_of_contents();
 	cin >> choice;
 
