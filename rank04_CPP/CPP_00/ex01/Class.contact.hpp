@@ -17,6 +17,9 @@
 # include <string>
 # include <iomanip>
 
+# define MAX_CONTACT 8
+# define MAX_WIDTH 10
+
 using namespace std;
 
 class Contact
@@ -44,7 +47,8 @@ private:
 
 //	FUNCTIONS
 
+void    search(Contact phonebook[], int index);
 void	table_of_contents(void);
-
+Contact	add();
 
 #endif
