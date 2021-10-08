@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:05:08 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 14:30:03 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/08 14:32:35 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,31 @@ void	Phonebook::table_of_contents(void)
 		}
 }
 
-void	Phonebook::search(void) {
-	if (!this->_nbContact) {
-		std::cout << "No contacts in phoneBook" << std::endl;
+void	Phonebook::search(void)
+{
+	if (!this->nb_contact)
+	{
+		cout << "There is no contact for now!" << endl;
 		return ;	
 	}
-	std::cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |" << std::endl;
-	for (int i = 0 ; i < _nbContact ; i++) {
+
+	cout << "     index|first name| last name|  nickname" << endl;
+
+	for (int i = 0 ; i < nb_contact ; i++)
+	{
 		std::cout << "|" << std::right << std::setw(10) << i;
-		this->_contacts[i].printContact();
+		this->contact[i].printContact();
 	}
 	int	index;
 	std::cout << "Type in contact index: ";
 	std::cin >> index;
-	if (std::cin.fail() || index >= this->_nbContact || index < 0) {
-		std::cout << "Please type in an integer between 0 and " << this->_nbContact - 1 << std::endl;
+	if (std::cin.fail() || index >= this->nb_contact || index < 0) {
+		std::cout << "Please type in an integer between 0 and " << this->nb_contact - 1 << std::endl;
 		std::cin.clear();
 		std::cin.ignore(10000, '\n');
 	}
 	else {
-		this->_contacts[index].printFullContact();
+		this->contact[index].printFullContact();
 		std::cin.ignore(INT_MAX, '\n');
 	}
 	return ;
