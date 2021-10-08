@@ -23,7 +23,7 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= awesome_phonebook.cpp
+SRCS_FILE		= awesome_phonebook.cpp search_phonebook.cpp add_contact.cpp Class.phonebook.cpp
 
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 

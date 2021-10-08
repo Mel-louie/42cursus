@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:01:56 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/08 11:15:07 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/08 12:41:37 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,50 +17,48 @@ using namespace std;
 void	table_of_contents(void)
 {
 	cout << "What do you want to do:" << endl;
-	cout << "\tTo add a new contact, enter ADD" << endl;
-	cout << "\tTo set, enter SEARCH" << endl;
-	cout << "\tTo exit, enter EXIT" << endl;
+	cout << "\tTo add a new contact, type ADD and press ENTER" << endl;
+	cout << "\tTo search a contact, type SEARCH and press ENTER" << endl;
+	cout << "\tTo exit, type EXIT and press ENTER" << endl;
 }
 
 int	main(void)
 {
-	char	choice[255];
+	Phonebook	phonebook[MAX_CONTACT];
+	string	choice;
 	int	contact_index;
 
 	contact_index = 0;
-	cout << "\n== Hello and wellcome on my Awesome PhoneBook! ==\n" << endl;
+	cout << "\n== Hello and wellcome to my Awesome PhoneBook! ==\n" << endl;
 	table_of_contents();
-	cin >> choice;
 
 	while (1)
 	{
-		if (!strcmp(choice, "ADD"))
+		getline(cin, choice);
+		if (choice == "ADD")
 		{
-			cout << "add\n";
-			break ;
+			if (contact_index < MAX_CONTACT)
+				phonebook[contact_index++] = add();
+			else
+			{
+				cout << "PhoneBook is full :(" << endl;
+				table_of_contents();
+			}
 		}
-		else if (!strcmp(choice, "SEARCH"))
+		else if (choice == "SEARCH")
 		{
 			if (contact_index > 0)
-				cout << "lol" << endl;
+				search(phonebook, contact_index);
 			else
 			{
 				cout << "There is no contact for now!" << endl;
 				table_of_contents();
-				cin >> choice;
 			}
 		}
-		else if (!strcmp(choice, "EXIT"))
-		{
-			cout << "exit\n";
-			//break ;
-			exit(1);
-		}
+		else if (choice == "EXIT")
+			exit(0);
 		else
-		{
-			table_of_contents();
-			cin >> choice;
+			table_of_contents();		
 		}
-	}
 	return (0);
 }
