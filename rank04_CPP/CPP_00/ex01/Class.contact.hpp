@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLASS_PHONEBOOK_HPP
-# define CLASS_PHONEBOOK_HPP
+#ifndef CLASS_CONTACT_HPP
+# define CLASS_CONTACT_HPP
 
 # include <iostream>
 # include <string>
@@ -25,6 +25,9 @@ using namespace std;
 class Contact
 {
 public:
+	Contact(void);
+	~Contact(void);
+
 	void	set_fst_name(string);
 	void	set_lst_name(string);
 	void	set_nck_name(string);
