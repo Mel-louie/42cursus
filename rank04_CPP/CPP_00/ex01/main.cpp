@@ -6,7 +6,7 @@
 /*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 19:00:09 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 18:29:25 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/10 15:43:13 by louie            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
 	run = true;
 	while (run)
 	{
-		std::cout << std::endl << "Enter ADD, SEARCH or EXIT\n> ";
+		std::cout << std::endl << "> ";
 		std::getline(std::cin, choice);
 		if (choice == "ADD")
 			phonebook.add_contact();
@@ -30,9 +30,10 @@ int main(void)
 			phonebook.search_contact();
 		else if (choice == "EXIT")
 		{
-			std::cout << "== Have a nice day! ==" << std::endl;
+			std::cout << std::endl << "== Have a nice day! ==" << std::endl;
 			run = false;
 		}
 	}
+	std::cout << std::endl;
 	return (0);
 }

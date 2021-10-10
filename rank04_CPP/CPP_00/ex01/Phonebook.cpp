@@ -6,7 +6,7 @@
 /*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:09:26 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 18:29:07 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/10 15:37:18 by louie            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ void Phonebook::table_of_contents(void)
 void Phonebook::add_contact(void)
 {
 	if (this->nb_of_contacts == 8)
-		std::cout << "The PhoneBook is full !" << std::endl;
-	else if (this->contacts[this->nb_of_contacts].set_informations(this->nb_of_contacts + 1))
+		std::cout << "The PhoneBook is full!" << std::endl;
+	else
+	{
+		this->contacts[this->nb_of_contacts].set_informations(this->nb_of_contacts + 1);
 		this->nb_of_contacts++;
+	}
 }
 
 void Phonebook::show_search_header(void)
@@ -54,7 +57,7 @@ void Phonebook::search_contact(void)
 	else
 	{
 		this->show_search_header();
-		std::cout << "Enter Index to display informations or 0 to exit\n> ";
+		std::cout << "Enter Index to display contact's informations\n> ";
 		while (!(std::cin >> index) || (index < 0 || index > this->nb_of_contacts))
 		{
 			std::cin.clear();

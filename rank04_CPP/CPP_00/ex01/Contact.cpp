@@ -6,7 +6,7 @@
 /*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 19:02:01 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 18:26:08 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/10 15:29:43 by louie            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void Contact::display_header()
 
 void Contact::display(void)
 {
-	std::cout << "# Contact [" << this->index << "]" << std::endl;
+	std::cout << "Contact [" << this->index << "]" << std::endl;
 	for (int i = FirstName; i <= Secret; i++)
 	{
 		std::cout << Contact::fields_name[i] << ": ";
