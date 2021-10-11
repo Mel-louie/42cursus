@@ -31,7 +31,7 @@ If everythings went fine, an executable (<i>EXE_NAME</i>) has been created.
 
 <h3><div id=></div></h3>
 
-<a href=""></a><br />
+<a href="https://fr.wikibooks.org/wiki/Programmation_C%2B%2B/Les_r%C3%A9f%C3%A9rences#Pourquoi_utiliser_une_r%C3%A9f%C3%A9rence_?">Pourquoi utiliser des references ?</a><br />
 <a href=""></a><br />
 <a href=""></a><br />
 
