@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 10:35:54 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/11 10:41:51 by mdesfont         ###   ########.fr       */
+/*   Created: 2021/10/11 13:00:51 by mdesfont          #+#    #+#             */
+/*   Updated: 2021/10/11 13:16:10 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 # define ZOMBIE_HPP
 
 # include <string>
+# include <iostream>
 
 class Zombie
 {
 public:
 
+	//constructors and destructor
 	Zombie( void );
+	Zombie(std::string name);
 	~Zombie( void );
+
+	//setter + getter
+	void	setName(std::string);
+	std::string	getName(void);
 
 	//member function
 	void	announce( void );
