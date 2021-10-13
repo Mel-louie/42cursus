@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <functional>
 #include "Account.hpp"
+#include <iostream>
 
 
 int		main( void ) {
@@ -39,7 +40,6 @@ int		main( void ) {
 
 	Account::displayAccountsInfos();
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
-
 	for ( acc_int_t it( acc_begin, dep_begin );
 		  it.first != acc_end && it.second != dep_end;
 		  ++(it.first), ++(it.second) ) {

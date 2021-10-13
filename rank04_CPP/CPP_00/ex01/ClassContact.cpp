@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*   ClassContact.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 19:02:01 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/10 15:29:43 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/13 12:28:20 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "ClassContact.hpp"
 
 std::string Contact::fields_name[5] = {
-	"First Name",
-	"Last Name",
-	"Nickname",
-	"Phone number",
-	"Darkest Secret"
+	"First Name\t\t",
+	"Last Name\t\t",
+	"Nickname\t\t",
+	"Phone number\t\t",
+	"😈 Darkest Secret\t"
 };
 
 Contact::Contact()
@@ -66,7 +66,7 @@ void Contact::display_header()
 
 void Contact::display(void)
 {
-	std::cout << "Contact [" << this->index << "]" << std::endl;
+	std::cout << std::endl << "Contact [" << this->index << "]" << std::endl;
 	for (int i = FirstName; i <= Secret; i++)
 	{
 		std::cout << Contact::fields_name[i] << ": ";

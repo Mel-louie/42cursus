@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   ClassPhonebook.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:08:49 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 18:21:05 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/13 13:30:05 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CLASSPHONEBOOK_HPP
+# define CLASSPHONEBOOK_HPP
 
 # include <iostream>
 # include <iomanip>
 # include <string>
-# include "Contact.hpp"
+# include "ClassContact.hpp"
 
 class Phonebook
 {
-private:
-	Contact	contacts[8];
-	int		nb_of_contacts;
 public:
 	Phonebook();
-	virtual ~Phonebook();
+	~Phonebook();
 
 	void	table_of_contents(void);
 	void	add_contact(void);
 	void	search_contact(void);
 	void	show_search_header(void);
+
+private:
+	Contact	contacts[8];
+	int		nb_of_contacts;
 };
 
 #endif

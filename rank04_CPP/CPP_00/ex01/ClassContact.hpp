@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   ClassContact.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 19:04:23 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/08 18:15:03 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/13 13:28:11 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 
 class Contact
 {
+public:
+	Contact();
+	virtual ~Contact();
+
+	bool	set_informations(int index);
+	void	display_header(void);
+	void	display(void);
+
 private:
 	int					index;
 	static std::string	fields_name[5];
@@ -31,13 +39,6 @@ private:
 		PhoneNumber,
 		Secret
 	};
-public:
-	Contact();
-	virtual ~Contact();
-
-	bool	set_informations(int index);
-	void	display_header(void);
-	void	display(void);
 };
 
 #endif

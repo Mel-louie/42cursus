@@ -30,7 +30,7 @@ OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 OBJS_DIR		= ./objs/
 
 CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
-CC				= g++
+CC				= clang++
 
 all: launch
 

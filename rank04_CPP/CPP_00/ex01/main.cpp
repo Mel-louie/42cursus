@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 19:00:09 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/10 15:43:13 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/13 12:12:25 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "ClassPhonebook.hpp"
 
 int main(void)
 {
@@ -22,7 +22,7 @@ int main(void)
 	run = true;
 	while (run)
 	{
-		std::cout << std::endl << "> ";
+		std::cout << std::endl;
 		std::getline(std::cin, choice);
 		if (choice == "ADD")
 			phonebook.add_contact();

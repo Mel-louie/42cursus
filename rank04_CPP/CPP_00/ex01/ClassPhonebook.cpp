@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   ClassPhonebook.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louie <louie@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:09:26 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/10 15:37:18 by louie            ###   ########.fr       */
+/*   Updated: 2021/10/13 13:25:19 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "ClassPhonebook.hpp"
 
 Phonebook::Phonebook()
 {
 	this->nb_of_contacts = 0;
 }
 
-Phonebook::~Phonebook()
-{
-}
+Phonebook::~Phonebook() {}
 
 void Phonebook::table_of_contents(void)
 {
@@ -33,7 +31,7 @@ void Phonebook::table_of_contents(void)
 void Phonebook::add_contact(void)
 {
 	if (this->nb_of_contacts == 8)
-		std::cout << "The PhoneBook is full!" << std::endl;
+		std::cout << "The PhoneBook is full!" << std::endl << "Please, SEARCH a contact or EXIT";
 	else
 	{
 		this->contacts[this->nb_of_contacts].set_informations(this->nb_of_contacts + 1);
@@ -43,7 +41,9 @@ void Phonebook::add_contact(void)
 
 void Phonebook::show_search_header(void)
 {
+	std::cout << std::endl; 
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	for (int i = 0; i < this->nb_of_contacts; i++)
 		this->contacts[i].display_header();
 }
@@ -57,11 +57,11 @@ void Phonebook::search_contact(void)
 	else
 	{
 		this->show_search_header();
-		std::cout << "Enter Index to display contact's informations\n> ";
-		while (!(std::cin >> index) || (index < 0 || index > this->nb_of_contacts))
+		std::cout << std::endl << "Enter Index to display contact's informations, or 0 to exit SEARCH\n> ";
+		if (!(std::cin >> index) || (index < 0 || index > this->nb_of_contacts))
 		{
 			std::cin.clear();
-			std::cout << "invalid index\n~";
+			std::cout << "invalid index" << std::endl;
 		}
 		if (index > 0)
 			this->contacts[index - 1].display();
