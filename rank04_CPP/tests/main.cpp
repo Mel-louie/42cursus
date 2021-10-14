@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassPhonebook.hpp                                 :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/14 16:08:49 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/14 14:11:19 by mdesfont         ###   ########.fr       */
+/*   Created: 2021/10/14 12:34:25 by mdesfont          #+#    #+#             */
+/*   Updated: 2021/10/14 13:16:45 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLASSPHONEBOOK_HPP
-# define CLASSPHONEBOOK_HPP
+#include "ClassTests.hpp"
 
-# include <iostream>
-# include <iomanip>
-# include <string>
-# include "ClassContact.hpp"
-
-class Phonebook
+int	main( void )
 {
-public:
-	Phonebook();
-	~Phonebook();
+	Sample	sample;
+	int	val;
 
-	void	table_of_contents(void) const;
-	void	add_contact(void);
-	void	search_contact(void);
-	void	show_search_header(void);
+	std::cout << "Bliblou\t: ";
+	sample.bliblou();
+	
+	//set value
+	std::cout << "Choose a value: ";
+	std::cin >> val;
+	sample.setVal(val);
 
-private:
-	Contact	contacts[8];
-	int		nb_of_contacts;
-};
-
-#endif
+	std::cout << "get value\t: ";
+	std::cout << sample.getVal() << std::endl;
+	
+	return (0);
+}

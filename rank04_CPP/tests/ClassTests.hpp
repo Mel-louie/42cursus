@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassContact.hpp                                   :+:      :+:    :+:   */
+/*   ClassTests.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/13 19:04:23 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/14 14:10:47 by mdesfont         ###   ########.fr       */
+/*   Created: 2021/10/14 12:29:43 by mdesfont          #+#    #+#             */
+/*   Updated: 2021/10/14 13:18:21 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#include <iostream>
 
-# include <iostream>
-# include <iomanip>
-# include <string>
-
-class Contact
+class Sample
 {
 public:
-	Contact();
-	virtual ~Contact();
+	Sample();
+	~Sample();
 
-	bool	set_informations(int index);
-	void	display_header(void);
-	void	display(void);
+	//member functions
+	void	bliblou( void );
+	void	setVal(int val);
+//si la fonction est en "read only", ne pas hésiter à toujours la mettre en const
+	int	getVal( void ) const;	
 
 private:
-	int					index;
-	static std::string	fields_name[5];
-	std::string			informations[5];
-
-	enum Field {
-		FirstName = 0,
-		LastName,
-		Nickname,
-		PhoneNumber,
-		Secret
-	};
+	//member attributes
+	int _val;
 };
-
-#endif

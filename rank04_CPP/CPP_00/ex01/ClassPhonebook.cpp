@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:09:26 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/13 13:25:19 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:11:05 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Phonebook::Phonebook()
 
 Phonebook::~Phonebook() {}
 
-void Phonebook::table_of_contents(void)
+void Phonebook::table_of_contents(void) const
 {
 	std::cout << "\n== Hello and welcome to my Awesome PhoneBook! ==\n" << std::endl;
 	std::cout << "What do you want to do:" << std::endl;

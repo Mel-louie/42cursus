@@ -6,7 +6,7 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:08:49 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/13 13:30:05 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:12:44 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	Phonebook();
 	~Phonebook();
 
-	void	table_of_contents(void);
+	void	table_of_contents(void) const;
 	void	add_contact(void);
 	void	search_contact(void);
 	void	show_search_header(void);
