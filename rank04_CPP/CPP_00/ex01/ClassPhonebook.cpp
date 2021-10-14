@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClassPhonebook.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:09:26 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/14 14:11:05 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:05:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 Phonebook::Phonebook()
 {
 	this->nb_of_contacts = 0;
+	this->oldest = 0;
 }
 
 Phonebook::~Phonebook() {}
 
-void Phonebook::table_of_contents(void) const
+void	Phonebook::table_of_contents(void) const
 {
 	std::cout << "\n== Hello and welcome to my Awesome PhoneBook! ==\n" << std::endl;
 	std::cout << "What do you want to do:" << std::endl;
@@ -28,10 +29,28 @@ void Phonebook::table_of_contents(void) const
 	std::cout << "\tTo exit, type EXIT and press ENTER" << std::endl;
 }
 
-void Phonebook::add_contact(void)
+void	Phonebook::replace_contact(void)
+{
+	std::cout << "The PhoneBook is full!" << std::endl
+	<< "The oldest contact will be replace by the new one." << std::endl;
+	if (this->oldest == 0)
+	{
+		this->contacts[0].set_informations(1);
+		this->oldest += 1;
+	}
+	else
+	{
+		this->contacts[this->oldest].set_informations(this->oldest + 1);
+		this->oldest += 1;
+	}
+	if (this->oldest == 8)
+		this->oldest = 0;
+}
+
+void	Phonebook::add_contact(void)
 {
 	if (this->nb_of_contacts == 8)
-		std::cout << "The PhoneBook is full!" << std::endl << "Please, SEARCH a contact or EXIT";
+		Phonebook::replace_contact();
 	else
 	{
 		this->contacts[this->nb_of_contacts].set_informations(this->nb_of_contacts + 1);
@@ -39,7 +58,7 @@ void Phonebook::add_contact(void)
 	}
 }
 
-void Phonebook::show_search_header(void)
+void	Phonebook::show_search_header(void)
 {
 	std::cout << std::endl; 
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
@@ -48,7 +67,7 @@ void Phonebook::show_search_header(void)
 		this->contacts[i].display_header();
 }
 
-void Phonebook::search_contact(void)
+void	Phonebook::search_contact(void)
 {
 	int	index;
 
