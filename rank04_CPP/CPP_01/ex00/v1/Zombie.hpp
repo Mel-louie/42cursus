@@ -3,31 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/15 14:51:34 by user42            #+#    #+#             */
-/*   Updated: 2021/10/15 15:15:02 by user42           ###   ########.fr       */
+/*   Created: 2021/10/11 13:00:51 by mdesfont          #+#    #+#             */
+/*   Updated: 2021/10/11 13:16:10 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
+# include <string>
 # include <iostream>
 
 class Zombie
 {
 public:
+
+	//constructors and destructor
+	Zombie( void );
 	Zombie(std::string name);
-	~Zombie();
+	~Zombie( void );
+
+	//setter + getter
+	void	setName(std::string);
+	std::string	getName(void);
+
+	//member function
 	void	announce( void );
-	std::string	getName( void );
-	
+
 private:
-	std::string	_name;
+		std::string	_name;
 };
 
 Zombie* newZombie( std::string name );
+
 void randomChump( std::string name );
 
 #endif

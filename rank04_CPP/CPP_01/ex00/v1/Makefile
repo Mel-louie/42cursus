@@ -1,4 +1,4 @@
-NAME = zombie
+NAME = Zombie
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -29,7 +29,7 @@ OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 
 OBJS_DIR		= ./objs/
 
-CFLAGS			= -Wall -Wextra -Werror #-O3 -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 CC				= clang++
 
 all: launch
