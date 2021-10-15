@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 16:09:26 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/14 16:05:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/15 16:48:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ void	Phonebook::search_contact(void)
 		if (!(std::cin >> index) || (index < 0 || index > this->nb_of_contacts))
 		{
 			std::cin.clear();
-			std::cout << "invalid index" << std::endl;
+			std::cout << "/!\\ invalid index" << std::endl;
+			return ;
 		}
-		if (index > 0)
+		if (index > 0 && index < 9)
 			this->contacts[index - 1].display();
 	}
 }
