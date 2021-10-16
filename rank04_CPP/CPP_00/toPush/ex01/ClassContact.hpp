@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClassContact.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 19:04:23 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/13 13:28:11 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/15 17:37:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Contact
 {
 public:
 	Contact();
-	virtual ~Contact();
+	~Contact();
 
 	bool	set_informations(int index);
 	void	display_header(void);
