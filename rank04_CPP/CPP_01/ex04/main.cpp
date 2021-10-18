@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 15:09:14 by user42            #+#    #+#             */
-/*   Updated: 2021/10/18 19:17:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/18 19:22:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	main(int ac, char **av)
 
 	replaceFile << content;
 	replaceFile.close();
-	
 
 	return (0);
 }
