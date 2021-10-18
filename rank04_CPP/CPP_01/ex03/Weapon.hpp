@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 16:02:16 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/11 16:24:27 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/18 13:58:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@
 class Weapon
 {
 public:
-	Weapon(std::string weapon_type);
+	Weapon();
+	Weapon(const std::string& type );
 	~Weapon();
 
-//getter  method that returns a const reference to the string
+	void	setType( const std::string& type );
 	const std::string&	getType( void ) const;
-//setter
-	void	setType(const std::string& _type);
 
 private:
 	std::string	_type;
-
 };
 
 #endif

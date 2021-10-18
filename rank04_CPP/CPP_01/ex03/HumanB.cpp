@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 16:02:16 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/11 16:53:35 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/10/18 15:02:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,47 @@
 #include <iostream>
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name )
+HumanB::HumanB( void ): _name("JeanMarc"), _weapon()
 {
-	this->_name = name;
-	return ;
+	
 }
 
-HumanB::~HumanB( void ) {}
+HumanB::HumanB( const std::string& name ): _name(name), _weapon()
+{
+	
+}
 
-void	HumanB::setWeapon(Weapon &weapon)
+HumanB::~HumanB()
+{
+	
+}
+
+//setters
+void	HumanB::setWeapon( Weapon& weapon)
 {
 	this->_weapon = &weapon;
 }
 
+void	HumanB::setName( const std::string name)
+{
+	this->_name = name;
+}
+
+//getters
+const Weapon*	HumanB::getWeapon( void ) const
+{
+	return (this->_weapon);
+}
+
+std::string	HumanB::getName( void ) const
+{
+	return (this->_name);
+}
+
 void	HumanB::attack( void )
 {
-	if (this->_weapon)
-		std::cout << this->_name << " attacks with his " << this->_weapon->getType() << std::endl;
+	if (_weapon == NULL)
+		std::cout << this->getName() << " attacks without weapon!!" << std::endl;
 	else
-		std::cout << this->_name << " attacks but doesn't have a weapon!!! " << std::endl;
+		std::cout << this->getName() << " attacks with his " << this->getWeapon()->getType() << std::endl;
 }
