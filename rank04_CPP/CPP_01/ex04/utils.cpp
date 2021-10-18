@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 15:09:14 by user42            #+#    #+#             */
-/*   Updated: 2021/10/18 18:01:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/18 19:06:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	displayUsages()
 	<< "\t./replace [filename] [string1] [string2]" << std::endl;
 }
 
-int	checkArgs(int ac, char **av, std::string replaceFilename)
+int	checkArgs(int ac, char **av)
 {
 	int	ret = 0;
 
@@ -34,10 +34,6 @@ int	checkArgs(int ac, char **av, std::string replaceFilename)
 		displayUsages();
 		return ( ret = 1 );
 	}
-
-	replaceFilename = av[1];
-	replaceFilename.append(".replace");
-	//std::cout << replaceFilename << std::endl;
 
 	return (ret);
 }
@@ -54,6 +50,8 @@ std::string	getBuffer(std::string fileName)
 		file.close();
 		dest = buffer.str();
 	}
+	else
+		return (NULL);
 	
 	return ( dest );
 }

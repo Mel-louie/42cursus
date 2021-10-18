@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:29:41 by user42            #+#    #+#             */
-/*   Updated: 2021/10/18 17:44:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/18 19:06:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define REPLACE_HPP
 
 void	displayUsages();
-int	checkArgs(int ac, char **av, std::string replaceFilename);
+int	checkArgs(int ac, char **av);
 std::string	getBuffer(std::string fileName);
 
 #endif
