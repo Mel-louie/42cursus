@@ -1,4 +1,4 @@
-NAME = weapon
+NAME = replace
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -23,13 +23,13 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRCS_FILE		= main.cpp
 
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 
 OBJS_DIR		= ./objs/
 
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 CC				= clang++
 
 all: launch
