@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 13:32:02 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/19 13:42:28 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/19 15:34:57 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,21 @@ Karen::~Karen() {}
 
 void	Karen::complain( std::string level )
 {
-	(void)level;
+	std::string	levels_arr[4] = {"debug", "info", "warning", "error"};
+	void	(Karen::*ptr_functions[4])(void) = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
+	int	i = -1;
+
+	while (++i < 4)
+	{
+		if ( level.compare(levels_arr[i]) == 0)
+			(this->*ptr_functions[i])();
+	}
 }
 
 void	Karen::debug( void )
 {
 	std::cout << "I love to get extra bacon "
-	<< "for my 7XL-double-cheese-triple-pickle-special-ketchup burger."
+	<< "for my 7XL-double-cheese-triple-pickle-special-ketchup burger. "
 	<< "I just love it!" << std::endl;
 }
 
