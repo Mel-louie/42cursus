@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 13:32:13 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/19 17:03:25 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/19 17:31:29 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	displayUsages()
 	<< "\t./karenFilter \"DEBUG\"" << std::endl
 	<< "\t./karenFilter \"INFO\"" << std::endl
 	<< "\t./karenFilter \"WARNING\"" << std::endl
-	<< "\t./karenFilter \"ERROR\""
+	<< "\t./karenFilter \"ERROR\"" << std::endl
+	<< "Or\t./karenFilter \"whatever\""
 	<< std::endl;
 }
 
@@ -58,9 +59,8 @@ int	main(int ac, char **av)
 			momFromHell.complain("error");
 			std::cout << std::endl;
 			break ;
-		case 4:
+		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		
 	}
 	return (0);
 }

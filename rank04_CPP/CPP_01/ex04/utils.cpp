@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 15:09:14 by user42            #+#    #+#             */
-/*   Updated: 2021/10/18 19:06:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/19 17:23:37 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	displayUsages()
 {
-	std::cout << "The program takes a filename and two strings, which are NOT empty." 
+	std::cout << "The program takes a filename, which exists and for which you have the permissions, and two strings, which are NOT empty." 
 	<< std::endl;
 	std::cout << "Like this:" << std::endl
 	<< "\t./replace [filename] [string1] [string2]" << std::endl;
@@ -30,7 +30,6 @@ int	checkArgs(int ac, char **av)
 
 	if (ac != 4 || av[1][0] == '\0' || av[2][0] == '\0' || av[3][0] == '\0')
 	{
-
 		displayUsages();
 		return ( ret = 1 );
 	}

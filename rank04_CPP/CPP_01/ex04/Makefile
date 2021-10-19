@@ -23,13 +23,13 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= main.cpp utils.cpp
+SRCS_FILE		= main.cpp utils.cpp ftReplace.cpp
 
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 
 OBJS_DIR		= ./objs/
 
-CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror
 CC				= clang++
 
 all: launch
