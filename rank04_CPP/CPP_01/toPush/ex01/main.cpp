@@ -3,23 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:35:26 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/10/15 17:26:07 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/20 12:41:45 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
 	int	i = -1;
-	int	n;
+	int	n = 0;
+
+	if (ac != 1)
+	{
+		std::cout << "You don't need args" << std::endl;
+		return (1);
+		(void)av;
+	}
 
 	std::cout << "Hello! How many Zombies do you want?\n> ";
-	std::cin >> n;
+	while (!(std::cin >> n))
+	{
+		std::cout << "Must be a number, between 1 and INT_MAX";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << std::endl;
+		std::cout << "> ";
+	}
 	std::cout << std::endl;
+	
+	if (n <= 0)
+	{
+		std::cout << "Number of Zombies must be positive" << std::endl;
+		return (1);
+	}
 	
 	Zombie*	horde = zombieHorde(n, "oneOfThousands");
 
