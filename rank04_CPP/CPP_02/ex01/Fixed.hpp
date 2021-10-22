@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 12:34:48 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/22 17:53:35 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/22 20:40:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ class Fixed
 public:
 	Fixed();
 	Fixed(Fixed const& src);
+	//int constructor
 	Fixed(int const nb);
+	//floating point constructor
 	Fixed(float const nbf);
 	~Fixed();
 
@@ -30,7 +32,9 @@ public:
 	int	getRawBits( void ) const;
 	void	setRawBits(int const raw);
 
+	//fixed point value to floating point value
 	float	toFloat(void) const;
+	//fixed point value to integer value
 	int	toInt(void) const;
 	
 private:
@@ -38,6 +42,7 @@ private:
 	static const int	_nbFract = 8;
 };
 
+//operator << overload
 std::ostream&	operator<<( std::ostream& os, const Fixed& src );
 
 #endif
