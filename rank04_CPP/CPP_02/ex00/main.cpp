@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/15 15:08:34 by user42            #+#    #+#             */
-/*   Updated: 2021/10/15 15:12:18 by user42           ###   ########.fr       */
+/*   Created: 2021/10/22 12:31:21 by louielouie        #+#    #+#             */
+/*   Updated: 2021/10/22 12:33:27 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
+#include <iostream>
 
+int main(void) {
 
-Zombie* newZombie( std::string name )
-{
-	Zombie*	nwZmbi = new Zombie(name);
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
 
-	return (nwZmbi);
+	c = b;
+
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+
+	return 0;
 }

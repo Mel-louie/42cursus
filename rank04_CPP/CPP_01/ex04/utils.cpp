@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 15:09:14 by user42            #+#    #+#             */
-/*   Updated: 2021/10/19 17:23:37 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/20 12:44:53 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ int	checkArgs(int ac, char **av)
 	return (ret);
 }
 
+int	openFile(std::string fileName)
+{
+	int	ret = 0;
+	std::ofstream file( fileName, std::ios::in | std::ios::out);
+	
+	if ( !file )
+		return ( ret = 1 );
+	file.close();
+	return ( ret );
+}
+
 std::string	getBuffer(std::string fileName)
 {
 	std::string	dest;
@@ -49,8 +60,6 @@ std::string	getBuffer(std::string fileName)
 		file.close();
 		dest = buffer.str();
 	}
-	else
-		return (NULL);
-	
+
 	return ( dest );
 }
