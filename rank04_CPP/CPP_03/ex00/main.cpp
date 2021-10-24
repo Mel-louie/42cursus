@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:51:13 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/24 20:42:08 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/24 20:49:20 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ int	main()
 	Trap.setName(nameTrap);
 	std::cout << std::endl;
 
+	std::cout << "Checking attributes values..." << std::endl;
+	std::cout << Clap.getName() << " hitpoints:" << Clap.getHitPoints()
+	<< " energy:" << Clap.getEnergyPoints() << " attack damages:" << Clap.getAttackDamage() << std::endl;
+	std::cout << Trap.getName() << " hitpoints:" << Trap.getHitPoints()
+	<< " energy:" << Trap.getEnergyPoints() << " attack damages:" << Trap.getAttackDamage() << std::endl;
+	std::cout << std::endl; std::cout << std::endl;
+
+	std::cout << "=== FIGHT! ===" << std::endl;
 	Clap.attack(Trap.getName());
 	Trap.takeDamage(0);
 	std::cout << std::endl;
