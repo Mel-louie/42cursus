@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 14:58:50 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/24 16:05:53 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/24 20:22:13 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ public:
 	unsigned int	getHitPoints( void ) const;
 	unsigned int	getEnergyPoints( void ) const;
 	unsigned int	getAttackDamage( void ) const;
+
+	//setters
+	void	setName( std::string name);
 
 	//member functions
 	void	attack( std::string const& target );
