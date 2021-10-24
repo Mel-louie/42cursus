@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 12:34:48 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/22 20:34:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/24 18:19:37 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class Fixed
 {
 public:
+//class canonique
 	//default constructor
 	Fixed();
 	//copy constructor
@@ -26,6 +27,7 @@ public:
 	~Fixed();
 	//assignation operator
 	Fixed&	operator=(Fixed const& src);
+//
 
 	int	getRawBits( void ) const;
 	void	setRawBits(int const raw);

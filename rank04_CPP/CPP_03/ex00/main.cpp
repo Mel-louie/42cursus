@@ -5,27 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 12:31:21 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/24 18:20:15 by louielouie       ###   ########.fr       */
+/*   Created: 2021/10/24 17:51:13 by louielouie        #+#    #+#             */
+/*   Updated: 2021/10/24 17:54:13 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include <iostream>
+#include "ClapTrap.hpp"
 
-int main(void) {
+int	main()
+{
+	ClapTrap	Clap("michel");
+	ClapTrap	Trap;
 
-	Fixed a;
-	Fixed b(a);
-	Fixed c;
-
-	c = b;
-
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-
-
-	//std::cout << std::endl << std::endl;
-	return 0;
+	Trap = Clap;
+	
+	return (0);	
 }
