@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 14:58:50 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/25 16:55:17 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/25 17:21:12 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ public:
 	void	takeDamage( unsigned int amount );
 	void	beRepaired( unsigned int amount );
 
-private:
+protected:
 	std::string	_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
