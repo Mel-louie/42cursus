@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:30:35 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/26 16:25:09 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/26 19:19:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,13 @@ FragTrap&	FragTrap::operator=( FragTrap const& src ) {
 	std::cout << "FragTrap assigment operator has been called" << std::endl;
 	ClapTrap::operator=( src );
 	return *this;
+}
+
+void	FragTrap::attack( std::string const& target) {
+	
+	std::cout << "FragTrap " << this->getName() << " attack " << target << " causing "
+	<< this->getAttackDamage() << " points of damage." << std::endl;
+	return ;
 }
 
 void	FragTrap::highFivesGuys(void) {

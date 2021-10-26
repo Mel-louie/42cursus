@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 13:37:32 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/26 14:29:18 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/26 19:17:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ public:
 	~FragTrap();
 	
 	FragTrap&	operator=( FragTrap const& src );
+
+	//fonction de masquage
+	void	attack( std::string const& target );
 
 	//member function
 	void	highFivesGuys(void);
