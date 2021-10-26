@@ -6,14 +6,13 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 14:58:50 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/25 17:21:12 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/26 16:22:06 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-# include <iostream>
 # include <string>
 
 class ClapTrap
@@ -23,7 +22,7 @@ public:
 	ClapTrap();
 	ClapTrap( std::string name);
 	ClapTrap( ClapTrap const& src );
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 	ClapTrap&	operator=( ClapTrap const& src );
 //

@@ -6,10 +6,12 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 15:45:13 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/25 16:52:43 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/26 16:24:23 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#include <iostream>
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(): _name( "NAME" ), _hitPoints(10), _energyPoints(10),

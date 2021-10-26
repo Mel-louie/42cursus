@@ -6,11 +6,14 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:30:35 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/26 15:01:11 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/26 16:25:09 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ClapTrap.hpp"
 #include "FragTrap.hpp"
+#include <string>
+#include <iostream>
 
 FragTrap::FragTrap(): ClapTrap() {
 	
