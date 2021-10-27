@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:30:35 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/26 19:19:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/27 19:11:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ FragTrap::FragTrap(): ClapTrap() {
 	
 	std::cout << "FragTrap default constructor has been called" << std::endl;
 	
-	this->setName( "FragTrap" );
-	this->setHitPoints( 100 );
-	this->setEnergyPoints( 100 );
-	this->setAttackDamage( 30 );
+	this->setName( "NAME" );
+	this->setDefaultHitPoint(  );
+	this->setDefaultEnergy(  );
+	this->setDefaultAttackDamages(  );
 	return ;
 }
 
@@ -30,9 +30,9 @@ FragTrap::FragTrap( std::string name ): ClapTrap( name ) {
 	
 	std::cout << "FragTrap " << this->getName() << " constructor has been called" << std::endl;
 
-	this->setHitPoints( 100 );
-	this->setEnergyPoints( 100 );
-	this->setAttackDamage( 30 );
+	this->setDefaultHitPoint(  );
+	this->setDefaultEnergy(  );
+	this->setDefaultAttackDamages(  );
 	return ;
 }
 
@@ -71,12 +71,30 @@ void	FragTrap::highFivesGuys(void) {
 
 	int i;
 	
-	std::cout << this->getName() << " says: HELLO CORRECTOR! Would you like to high five me?\n> YES: enter 1, NO: enter 0" << std::endl;
+	std::cout << this->getName() << " says: HELLO CORRECTOR! Would you like to high five me?\n> YES: enter 1, NO: enter anything else" << std::endl;
 	std::cin >> i;
 
 	if (i != 1)
 		std::cout << "Oh. OK then :(" << std::endl;
 	else if (i == 1)
 		std::cout << "Yeah! HIGH FIVE ✋" << std::endl;
+	return ;
+}
+
+void	FragTrap::setDefaultEnergy() {
+	
+	this->_energyPoints = 100;
+	return ;
+}
+
+void	FragTrap::setDefaultHitPoint() {
+	
+	this->_hitPoints = 100;
+	return ;
+}
+
+void	FragTrap::setDefaultAttackDamages() {
+
+	this->_attackDamage = 30;
 	return ;
 }

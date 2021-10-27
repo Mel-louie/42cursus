@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 11:37:05 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/26 16:55:29 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/27 19:10:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ ScavTrap::ScavTrap(): ClapTrap() {
 
 	std::cout << "ScavTrap default constructor has been called" << std::endl;
 
-	this->setName( "ScavTrap" );
-	this->setHitPoints( 100 );
-	this->setEnergyPoints( 50 );
-	this->setAttackDamage( 20 );
+	this->setName( "NAME" );
+	this->setDefaultHitPoint(  );
+	this->setDefaultEnergy(  );
+	this->setDefaultAttackDamages(  );
 	return ;
 }
 
@@ -28,9 +28,9 @@ ScavTrap::ScavTrap( std::string name ): ClapTrap( name ) {
 
 	std::cout << "ScavTrap " << this->getName() << " constructor has been called" << std::endl;
 
-	this->setHitPoints( 100 );
-	this->setEnergyPoints( 50 );
-	this->setAttackDamage( 20 );
+	this->setDefaultHitPoint(  );
+	this->setDefaultEnergy(  );
+	this->setDefaultAttackDamages(  );
 	return ;
 }
 
@@ -69,5 +69,23 @@ void	ScavTrap::attack( std::string const& target) {
 void	ScavTrap::guardGate() {
 
 	std::cout << this->getName() << " is now THE KEEPER OF THE GATE!1!!"<< std::endl;	
+	return ;
+}
+
+void	ScavTrap::setDefaultEnergy() {
+	
+	this->_energyPoints = 50;
+	return ;
+}
+
+void	ScavTrap::setDefaultHitPoint() {
+	
+	this->_hitPoints = 100;
+	return ;
+}
+
+void	ScavTrap::setDefaultAttackDamages() {
+
+	this->_attackDamage = 20;
 	return ;
 }

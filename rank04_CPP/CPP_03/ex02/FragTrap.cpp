@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:30:35 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/26 19:18:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/10/27 17:52:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	FragTrap::highFivesGuys(void) {
 
 	int i;
 	
-	std::cout << this->getName() << " says: HELLO CORRECTOR! Would you like to high five me?\n> YES: enter 1, NO: enter 0" << std::endl;
+	std::cout << this->getName() << " says: HELLO CORRECTOR! Would you like to high five me?\n> YES: enter 1, NO: enter anything else" << std::endl;
 	std::cin >> i;
 
 	if (i != 1)

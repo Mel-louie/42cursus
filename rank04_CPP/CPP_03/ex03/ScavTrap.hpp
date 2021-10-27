@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 11:30:45 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/27 12:55:25 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/27 18:54:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ public:
 
 	//fonction de masquage
 	void	attack( std::string const& target );
+	void	setDefaultEnergy();
+	void	setDefaultHitPoint();
+	void	setDefaultAttackDamages();
 
 	//member function
 	void	guardGate();
