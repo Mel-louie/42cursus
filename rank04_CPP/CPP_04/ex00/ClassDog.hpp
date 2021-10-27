@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassAnimal.hpp                                    :+:      :+:    :+:   */
+/*   ClassDog.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 13:28:59 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/27 18:01:30 by louielouie       ###   ########.fr       */
+/*   Created: 2021/10/27 18:12:07 by louielouie        #+#    #+#             */
+/*   Updated: 2021/10/27 18:45:46 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
 
-# include <string>
-# include <iostream>
+#ifndef CLASSDOG_HPP
+# define CLASSDOG_HPP
 
-class Animal
+# include "ClassAnimal.hpp"
+
+class Dog: public Animal
 {
 public:
-	//canonical class
-	Animal();
-	Animal( Animal const& cpy );
-	virtual ~Animal();
+	Dog();
+	Dog( Dog const& cpy);
+	virtual ~Dog();
 
-	Animal&	operator=( Animal const& src );
-	//
-
-	//setter and getter
-	void	setType( std::string const& type );
-	std::string	getType( void ) const ;
+	Dog&	operator=( Dog const& src );
 
 	//member function
-	virtual void	makeSound( void ) const;
-
-protected:
-	std::string	_type;
+	void	makeSound( void ) const;
 };
 
 #endif

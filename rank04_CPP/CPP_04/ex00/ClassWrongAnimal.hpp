@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassAnimal.hpp                                    :+:      :+:    :+:   */
+/*   ClassWrongWrongAnimal.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:28:59 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/27 18:01:30 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/27 19:22:03 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WrongAnimal_HPP
+# define WrongAnimal_HPP
 
 # include <string>
 # include <iostream>
 
-class Animal
+/*
+ * in this class, makeSound() isn't a virtual function
+ * so dynamics links aren't possibles, and WrongCat does
+ * a wrong sound
+ */
+
+class WrongAnimal
 {
 public:
-	//canonical class
-	Animal();
-	Animal( Animal const& cpy );
-	virtual ~Animal();
+	WrongAnimal();
+	WrongAnimal( WrongAnimal const& cpy );
+	virtual ~WrongAnimal();
 
-	Animal&	operator=( Animal const& src );
-	//
+	WrongAnimal&	operator=( WrongAnimal const& src );
 
 	//setter and getter
 	void	setType( std::string const& type );
 	std::string	getType( void ) const ;
 
 	//member function
-	virtual void	makeSound( void ) const;
+	void	makeSound( void ) const;
 
 protected:
 	std::string	_type;

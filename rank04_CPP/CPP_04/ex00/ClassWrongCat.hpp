@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassAnimal.hpp                                    :+:      :+:    :+:   */
+/*   ClassWrongWrongCat.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 13:28:59 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/27 18:01:30 by louielouie       ###   ########.fr       */
+/*   Created: 2021/10/27 18:51:46 by louielouie        #+#    #+#             */
+/*   Updated: 2021/10/27 19:31:40 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CLASSWrongCat_HPP
+# define CLASSWrongCat_HPP
 
-# include <string>
-# include <iostream>
+# include "ClassWrongAnimal.hpp"
 
-class Animal
+class WrongCat: public WrongAnimal
 {
 public:
-	//canonical class
-	Animal();
-	Animal( Animal const& cpy );
-	virtual ~Animal();
-
-	Animal&	operator=( Animal const& src );
-	//
-
-	//setter and getter
-	void	setType( std::string const& type );
-	std::string	getType( void ) const ;
+	WrongCat();
+	WrongCat( WrongCat const& cpy);
+	virtual ~WrongCat();
+	
+	WrongCat&	operator=( WrongCat const& src );
 
 	//member function
-	virtual void	makeSound( void ) const;
-
-protected:
-	std::string	_type;
+	void	makeSound( void ) const;	
 };
 
 #endif

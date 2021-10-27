@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassAnimal.cpp                                    :+:      :+:    :+:   */
+/*   ClassWrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,48 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClassAnimal.hpp"
+#include "ClassWrongAnimal.hpp"
 
-Animal::Animal(): _type( "Animal" ) {
+WrongAnimal::WrongAnimal(): _type( "WrongAnimal" ) {
 	
-	std::cout << "Animal default constructor has been called" << std::endl;
+	std::cout << "WrongAnimal default constructor has been called" << std::endl;
 	return ;
 }
 
-Animal::Animal( Animal const& cpy ) {
+WrongAnimal::WrongAnimal( WrongAnimal const& cpy ) {
 	
-	std::cout << "Animal copy constructor has been called" << std::endl;
+	std::cout << "WrongAnimal copy constructor has been called" << std::endl;
 	this->_type = cpy.getType();
 	return ;
 }
 
-Animal::~Animal() {
+WrongAnimal::~WrongAnimal() {
 	
-	std::cout << "Animal destructor has been called" << std::endl;
+	std::cout << "WrongAnimal destructor has been called" << std::endl;
 	return ;
 }
 
-Animal&	Animal::operator=( Animal const& src ) {
+WrongAnimal&	WrongAnimal::operator=( WrongAnimal const& src ) {
 
-	std::cout << "Animal assigment operator has been called" << std::endl;
+	std::cout << "WrongAnimal assigment operator has been called" << std::endl;
 	if (this != &src)
 		this->_type = src.getType();
 	return (*this);
 }
 
-void	Animal::setType( std::string const& type ) {
+void	WrongAnimal::setType( std::string const& type ) {
 
 	this->_type = type;
 	return ;
 }
 
-std::string	Animal::getType( void ) const {
+std::string	WrongAnimal::getType( void ) const {
 	
 	return ( this->_type );
 }
 
-void	Animal::makeSound( void ) const {
+void	WrongAnimal::makeSound( void ) const {
 	
-	std::cout << "* weird noise, definitly from an animal *" << std::endl;
+	std::cout << "* weird noise, definitly from an WrongAnimal *" << std::endl;
 	return ;
 }
