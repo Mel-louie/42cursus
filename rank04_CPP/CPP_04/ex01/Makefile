@@ -29,7 +29,7 @@ OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 
 OBJS_DIR		= ./objs/
 
-CFLAGS			= -Wall -Wextra -Werror -Wshadow -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -std=c++98
 CC				= clang++
 
 all: launch
