@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:51:46 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/27 18:57:02 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/28 15:44:16 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CLASSCAT_HPP
 
 # include "ClassAnimal.hpp"
+# include "ClassBrain.hpp"
 
 class Cat: public Animal
 {
@@ -24,8 +25,15 @@ public:
 	
 	Cat&	operator=( Cat const& src );
 
+	//setters and getters
+	void	setBrain( Brain& brain );
+	Brain*	getBrain( void ) const;
+
 	//member function
-	void	makeSound( void ) const;	
+	void	makeSound( void ) const;
+
+private:
+	Brain*	_brain;
 };
 
 #endif

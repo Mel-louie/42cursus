@@ -6,14 +6,14 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:16:47 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/27 18:43:27 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/28 14:25:39 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClassDog.hpp"
 
-Dog::Dog(): Animal() {
+Dog::Dog(): Animal(), _brain( new Brain("i like bones!") ) {
 
 	std::cout << "Dog default constructor has been called" << std::endl;
 	Animal::setType("Dog");
@@ -24,12 +24,14 @@ Dog::Dog( Dog const& cpy) {
 
 	std::cout << "Dog copy constructor has been called" << std::endl;
 	this->_type = cpy.getType();
+	this->_brain = new Brain(*cpy._brain);
 	return ;
 }
 
 Dog::~Dog() {
 	
 	std::cout << "Dog destructor has been called" << std::endl;
+	delete this->_brain;
 	return ;
 }
 
@@ -46,3 +48,17 @@ void	Dog::makeSound( void ) const {
 	std::cout << "\"WAF WAF WAF\"" << std::endl;
 	return ;
 }
+
+void	Dog::setBrain( Brain& brain) {
+
+	delete this->_brain;
+
+	this->_brain = new Brain(brain);
+	return ;
+}
+
+Brain*	Dog::getBrain( void ) const {
+	
+	return (this->_brain);
+}
+

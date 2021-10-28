@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClassDog.hpp                                       :+:      :+:    :+:   */
+/*   ClassBrain.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 18:12:07 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/28 15:44:18 by louielouie       ###   ########.fr       */
+/*   Created: 2021/10/28 10:12:44 by louielouie        #+#    #+#             */
+/*   Updated: 2021/10/28 15:44:14 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CLASSBRAIN_HPP
+# define CLASSBRAIN_HPP
 
-#ifndef CLASSDOG_HPP
-# define CLASSDOG_HPP
+# include <iostream>
+# include <string>
 
-# include "ClassAnimal.hpp"
-# include "ClassBrain.hpp"
+class Brain {
 
-class Dog: public Animal
-{
 public:
-	Dog();
-	Dog( Dog const& cpy);
-	virtual ~Dog();
+	Brain();
+	Brain( Brain const& cpy );
+	Brain( std::string const& ideas );
+	virtual ~Brain();
 
-	Dog&	operator=( Dog const& src );
+	Brain&	operator=( Brain const& src );
 
-	//setters and getters
-	void	setBrain( Brain& brain );
-	Brain*	getBrain( void ) const;
+	//setters
+	void	setIdeas( std::string const& ideas);
 
-	//member function
-	void	makeSound( void ) const;
-
+	//display ideas
+	void	displayIdeas( void );
+	
 private:
-	Brain*	_brain;
+	std::string	_ideas[100];
 };
 
 #endif
