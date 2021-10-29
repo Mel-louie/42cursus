@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 09:48:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/29 09:58:35 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/29 11:05:01 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Ice: public AMateria
 public:
 	Ice( void );
 	Ice( Ice const& cpy );
+	Ice( std::string const& type );
 	
 	virtual ~Ice( void );
 
