@@ -36,6 +36,7 @@ If everythings went fine, an executable (<i>EXE_NAME</i>) has been created.
 <a href="https://www.youtube.com/watch?v=QebXGpNHF7I"></a>[day02] Conversion Float / Binaire "à la main" Facile ! - IEEE-754 Comprendre codage des réels avec exemple<br />
 <a href="https://www.youtube.com/watch?v=37sDEj5iMXo"></a>[day02] Conversion Float / Binaire. Précision, erreurs à éviter, pour coder un Real avec TIA Portal<br />
 <a href="https://www.youtube.com/channel/UClwtSrNs_BCRHGs_ZSg4GbQ/playlists"></a>MOOC EPFL Introduction à la programmation orientée objet (en C++)<br />
+<a href="https://www.youtube.com/watch?v=D12gsVK1y6g">Langage C++ #7 (virtualisation et abstraction)</a><br />
 
 <h3><div id=></div></h3>
 
