@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:27:25 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/28 15:42:43 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/29 15:35:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,12 @@ void deepCopyTest()
 	cat.getBrain()->setIdeas("Meow");
 	cat.getBrain()->displayIdeas();
 	std::cout << std::endl;
+
 	std::cout << std::endl;
 	dog.getBrain()->setIdeas("WAF");
 	dog.getBrain()->displayIdeas();
 	std::cout << std::endl;
+
 	std::cout << std::endl;
 	std::cout << "Begining of the scope --> {" << std::endl;
 	{
@@ -192,7 +194,7 @@ int main()
 	std::cout << std::endl;
 
 	//check leaks on macos
-	system("leaks animals");
+	// system("leaks animals");
 	
 	return (0);
 }

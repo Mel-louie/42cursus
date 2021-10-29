@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:27:25 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/28 15:56:31 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/29 15:58:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,7 @@ int main()
 	std::cout << std::endl;
 
 	//check leaks on macos
-	system("leaks animals");
+	// system("leaks animals");
 	
 	return (0);
 }

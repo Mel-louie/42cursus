@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:27:25 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/29 13:18:06 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/29 16:22:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@
 #include "../includes/Cure.hpp"
 #include "../includes/Ice.hpp"
 
-int main()
+void standardTests()
 {
+	std::cout << "<====================== STANDARD TESTS ======================>" << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	
 	IMateriaSource* src = new MateriaSource();
 	std::cout << std::endl;
 
@@ -62,9 +66,56 @@ int main()
 	delete me;
 	delete src;
 	std::cout << std::endl;
+	std::cout << "<==================================================================>" << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+}
+
+void	deepCopyTest()
+{
+	std::cout << "<====================== DEEP COPY TESTS ======================>" << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	Character me = Character("me");
+	
+	std::cout << std::endl;
+	std::cout << "My name is: " << me.getName();
+	std::cout << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "Begining of the scope --> {" << std::endl;
+	{
+		std::cout << std::endl;
+		std::cout << "[Init Character meCpy = me; and display is name:]";
+		std::cout << std::endl;
+
+		Character meCpy = me;
+		std::cout << "My name is: " << meCpy.getName();
+		std::cout << std::endl;
+		
+	}
+	std::cout << std::endl;
+	std::cout << "} <-- End of the scope" << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "My name is: " << me.getName();
+	std::cout << std::endl;
+	
+	std::cout << std::endl;
+}
+
+int main()
+{
+	standardTests();
+	deepCopyTest();
+	std::cout << "<==================================================================>" << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
 
 	//check leaks on macos
-	system("leaks materia");
-	
+	// system("leaks materia");
 	return (0);
 }

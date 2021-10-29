@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 16:06:16 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/29 09:56:05 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/29 15:50:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ protected:
 public:
 	AMateria( void );
 	AMateria( AMateria const& cpy );
-	AMateria( std::string const & type );
+	AMateria( std::string const& type );
 
 	virtual ~AMateria( void );
 	
