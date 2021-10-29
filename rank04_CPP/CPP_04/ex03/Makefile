@@ -23,7 +23,7 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= main.cpp AMateria.cpp
+SRCS_FILE		= main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
