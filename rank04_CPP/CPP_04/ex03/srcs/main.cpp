@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 13:27:25 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/28 23:27:27 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/10/29 11:22:50 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "../includes/AMateria.hpp"
 #include "../includes/ICharacter.hpp"
+#include "../includes/Cure.hpp"
+#include "../includes/Ice.hpp"
 
 int main()
 {
@@ -35,7 +37,7 @@ int main()
 	// delete src;
 
 	// //check leaks on macos
-	// system("leaks animals");
+	system("leaks materia");
 	
 	return (0);
 }
