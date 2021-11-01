@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 13:02:31 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/30 19:28:52 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/01 17:21:41 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "../includes/Bureaucrat.hpp"
 #include "../includes/AForm.hpp"
 #include "../includes/ShrubberyCreationForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
 
 void basicsTests( Bureaucrat& bob, Bureaucrat &bobbie )
 {
@@ -70,6 +72,68 @@ void	shrubberyCreationForm_tests( Bureaucrat& b1, Bureaucrat& b2 )
 	std::cout << std::endl;
 }
 
+void	robotomyRequestForm( Bureaucrat &b1, Bureaucrat &b2 )
+{
+	std::cout << "<----------- TEST RobotomyRequestForm ----------->" << std::endl;
+	std::cout << std::endl;
+
+	RobotomyRequestForm form1("Jean");
+	RobotomyRequestForm form2("Michel");
+	std::cout << std::endl;
+
+	std::cout << "Grade min to be signed: " << form1.getGradeToSign() << ", grade min to be execute: " << form1.getGradeToExe() << std::endl;
+	std::cout << std::endl;
+
+
+	std::cout << "form1:" << std::endl;
+	std::cout << std::endl;
+	b2.signForm(form1);
+	b2.executeForm(form1);
+	b1.executeForm(form1);
+	b1.signForm(form1);
+	b1.executeForm(form1);
+	std::cout << std::endl;
+
+	std::cout << "form2:" << std::endl;
+	std::cout << std::endl;
+	b2.signForm(form2);
+	b2.executeForm(form2);
+	std::cout << std::endl;
+
+	std::cout << std::endl;
+}
+
+void	presidentialPardonForm( Bureaucrat &b1, Bureaucrat &b2 )
+{
+	std::cout << "<---------- TEST PresidentialPardonForm ---------->" << std::endl;
+	std::cout << std::endl;
+
+	PresidentialPardonForm form1("Bumblebee");
+	PresidentialPardonForm form2("Tristan");
+	std::cout << std::endl;
+
+	std::cout << "Grade min to be signed: " << form1.getGradeToSign() << ", grade min to be execute: " << form1.getGradeToExe() << std::endl;
+	std::cout << std::endl;
+
+
+	std::cout << "form1:" << std::endl;
+	std::cout << std::endl;
+	b2.signForm(form1);
+	b2.executeForm(form1);
+	b1.executeForm(form1);
+	b1.signForm(form1);
+	b1.executeForm(form1);
+	std::cout << std::endl;
+
+	std::cout << "form2:" << std::endl;
+	std::cout << std::endl;
+	b2.signForm(form2);
+	b2.executeForm(form2);
+	std::cout << std::endl;
+
+	std::cout << std::endl;
+}
+
 int	main()
 {
 	Bureaucrat b1("Bob", 1);
@@ -83,27 +147,16 @@ int	main()
 	std::cout << "<------------------------------------------------>" << std::endl;
 	std::cout << std::endl;
 
+	robotomyRequestForm( b1, b2 );
+	std::cout << std::endl;
+	std::cout << "<------------------------------------------------>" << std::endl;
+	std::cout << std::endl;
 
+	presidentialPardonForm( b1, b2 );
+	std::cout << std::endl;
+	std::cout << "<------------------------------------------------>" << std::endl;
+	std::cout << std::endl;
 
-// 	std::cout << std::endl;
-// //	std::cout << "RobotomyRequestForm: \n";
-// //	b3.signForm(f2);
-// //	b4.signForm(f2);
-// //	b4.executeForm(f2);
-// //	b1.executeForm(f2);
-// //	b1.executeForm(f2);
-// 	//b1.execute(f2);
-// //	b1.executeForm(f2);
-// 	std::cout << std::endl;
-// //	std::cout << "PresidentialPardonForm: \n";
-// //	b3.signForm(f3);
-// //	b5.signForm(f3);
-// ///	b5.executeForm(f3);
-// 	//b1.executeForm(f3);
-
-
-
-	
 	operatorTest();
 	std::cout << std::endl;
 	std::cout << "<------------------------------------------------>" << std::endl;
