@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Forms
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -23,7 +23,7 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= main.cpp Bureaucrat.cpp AForm.cpp
+SRCS_FILE		= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))

@@ -51,4 +51,45 @@ std::string	ShrubberyCreationForm::getTarget( void ) const
 	return ( this->_target );
 }
 
+void	ShrubberyCreationForm::execute( Bureaucrat const& executor ) const
+{
+	if ( this->getIsSign() == false )
+		throw AForm::AFormNotSignedException();
+	if ( this->getGradeToExe() < executor.getGrade() )
+		throw AForm::GradeTooLowException();
+	else
+	{
+		std::ofstream	fshrubbery;
+		std::string	target = this->_target;
+		target.append("_shrubbery");
+		fshrubbery.open(target.c_str());
+		if (!fshrubbery.is_open())
+			throw ShrubberyCreationForm::FormNotOpenException();
+		else
+		{
+			std::cout << "Bureaucrat " << executor.getName() << ", grade " << executor.getGrade() << " executes Form " << this->getName() << std::endl;
+			fshrubbery << "            #  ## ###\n";
+			fshrubbery << "          # #### ######\n";
+			fshrubbery << "        ### \\/#|### |/####\n";
+			fshrubbery << "      ##\\/#/ \\||/##/_/##/_#\n";
+			fshrubbery << "     ###  \\/###|/ \\/ # ###\n";
+			fshrubbery << "   ##_\\_#\\_\\## | #/###_/_####\n";
+			fshrubbery << "  ## #### # \\ #| /  #### ##/##\n";
+			fshrubbery << "   __#_--###`  |{,###---###-~\n";
+			fshrubbery << "           #,#@@@#,#\n";
+			fshrubbery << "              @@@            \n";
+			fshrubbery << "              @@@            \n";
+			fshrubbery << "              @@@            \n";
+			fshrubbery << "              @@@            \n";
+			fshrubbery << "              @@@            \n";
+			fshrubbery << "              @@@            \n";
+			fshrubbery << "           _ _@@@_ _          \n";
+			fshrubbery.close();
+		}
+	}	
+}
 
+const char*	ShrubberyCreationForm::FormNotOpenException::what() const throw()
+{
+	return ("ShrubberyCreationForm can't be open!");
+}

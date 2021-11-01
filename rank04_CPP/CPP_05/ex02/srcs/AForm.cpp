@@ -100,12 +100,12 @@ const char*	AForm::GradeTooLowException::what() const throw()
 
 const char* AForm::AFormNotSignedException::what() const throw()
 {
-	return ("AForm isn't sign!");
+	return ("Form isn't sign!");
 }
 
 std::ostream&	operator<<( std::ostream& o, AForm const& src )
 {
-	o << src.getName() << " AForm is ";
+	o << src.getName() << ": Form is ";
 	if (src.getIsSign() == true)
 		o << "signed";
 	else

@@ -88,13 +88,25 @@ void	Bureaucrat::signForm( AForm &form )
 	try
 	{
 		form.beSigned( *this );
-		std::cout << "Bureaucrate " << this->getName() << " signed " << form.getName() << std::endl;
+		std::cout << "Bureaucrat " << this->getName() << " signed " << form.getName() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Bureaucrat " << this->_name << " cannot sign because : " << e.what() << std::endl;
+		std::cerr << "Bureaucrat " << this->_name << " cannot sign because: " << e.what() << std::endl;
 	}
 	
+}
+
+void Bureaucrat::executeForm( AForm const& form )
+{
+	try
+	{
+		form.execute( *this );
+	}
+	catch( std::exception &e )
+	{
+		std::cout << "Bureaucrat " << this->getName() << " can't excecute the form, because: " << e.what() << std::endl;
+	}
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()

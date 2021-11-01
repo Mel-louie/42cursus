@@ -16,7 +16,7 @@
 
 void basicsTests( Bureaucrat& bob )
 {
-	std::cout << "<------------ TEST CREATE AND DISPLAY BUREAUCRATE INFO ------------>" << std::endl;
+	std::cout << "<------------ TEST CREATE AND DISPLAY BUREAUCRAT INFO ------------>" << std::endl;
 	std::cout << std::endl;
 	
 	

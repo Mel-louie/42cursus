@@ -13,13 +13,11 @@
 #include <iostream>
 #include <string>
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/AForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
 
 void basicsTests( Bureaucrat& bob, Bureaucrat &bobbie )
 {
-	std::cout << "<------------ TEST CREATE AND DISPLAY BUREAUCRATE INFO ------------>" << std::endl;
-	std::cout << std::endl;
-	
-	
 	std::cout << "I'm a new Bureaucrat, my name is: " << bob.getName() << std::endl;
 	std::cout << "My grade is: " << bob.getGrade() << std::endl;
 	std::cout << std::endl;
@@ -27,103 +25,93 @@ void basicsTests( Bureaucrat& bob, Bureaucrat &bobbie )
 	std::cout << "I'm a new Bureaucrat, my name is: " << bobbie.getName() << std::endl;
 	std::cout << "My grade is: " << bobbie.getGrade() << std::endl;
 	std::cout << std::endl;
-
 }
 
 void	operatorTest( void )
 {
-	// std::cout << std::endl;
-	// std::cout << "<--------------- TEST << OPERATOR --------------->" << std::endl;
-	// std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "<--------------- TEST << OPERATOR --------------->" << std::endl;
+	std::cout << std::endl;
 
-	// AForm f("28B", 5, 5);
+	ShrubberyCreationForm f("Road");
+	std::cout << std::endl;
 	
-	// operator<<(std::cout, f);
+	std::cout << "operator<< "; operator<<(std::cout, f);
+}
+
+void	shrubberyCreationForm_tests( Bureaucrat& b1, Bureaucrat& b2 )
+{
+	std::cout << "<---------- TEST ShrubberyCreationForm ---------->" << std::endl;
+	std::cout << std::endl;
+
+	ShrubberyCreationForm form1("garden");
+	ShrubberyCreationForm form2("pool");
+	std::cout << std::endl;
+
+	std::cout << "Grade min to be signed: " << form1.getGradeToSign() << ", grade min to be execute: " << form1.getGradeToExe() << std::endl;
+	std::cout << std::endl;
+
+
+	std::cout << "form1:" << std::endl;
+	std::cout << std::endl;
+	b2.signForm(form1);
+	b2.executeForm(form1);
+	b1.executeForm(form1);
+	b1.signForm(form1);
+	b1.executeForm(form1);
+	std::cout << std::endl;
+
+	std::cout << "form2:" << std::endl;
+	std::cout << std::endl;
+	b2.signForm(form2);
+	b2.executeForm(form2);
+	std::cout << std::endl;
+
+	std::cout << std::endl;
 }
 
 int	main()
 {
 	Bureaucrat b1("Bob", 1);
-	Bureaucrat b2("Bobbie", 6);
+	Bureaucrat b2("Bobbie", 149);
+	std::cout << std::endl;
+	
+	basicsTests( b1, b2 );
+
+	shrubberyCreationForm_tests( b1, b2 );
+	std::cout << std::endl;
+	std::cout << "<------------------------------------------------>" << std::endl;
 	std::cout << std::endl;
 
-	// basicsTests( b1, b2 );
 
 
-	// std::cout << "<------------ CREATE A FORM 1 ------------>" << std::endl;
-	// std::cout << std::endl;
-	// try {
-	// 	AForm f1("28B", 5, 5);
-	// 	std::cout << f1 << std::endl;
-	
-	// 	b1.signForm(f1);
-	// 	f1.beSigned(b1);
-	// 	b2.signForm(f1);
-	// 	std::cout << f1 << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-	// std::cout << std::endl;
+// 	std::cout << std::endl;
+// //	std::cout << "RobotomyRequestForm: \n";
+// //	b3.signForm(f2);
+// //	b4.signForm(f2);
+// //	b4.executeForm(f2);
+// //	b1.executeForm(f2);
+// //	b1.executeForm(f2);
+// 	//b1.execute(f2);
+// //	b1.executeForm(f2);
+// 	std::cout << std::endl;
+// //	std::cout << "PresidentialPardonForm: \n";
+// //	b3.signForm(f3);
+// //	b5.signForm(f3);
+// ///	b5.executeForm(f3);
+// 	//b1.executeForm(f3);
 
 
-	// std::cout << "<------------ CREATE A FORM 2 ------------>" << std::endl;
-	// std::cout << std::endl;
-	// try {
-	// 	AForm f2("28C", 1, 150);
-	// 	std::cout << f2 << std::endl;
-
-	// 	b1.signForm(f2);
-	// 	f2.beSigned(b1);
-	// 	b2.signForm(f2);
-	// 	std::cout << f2 << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// std::cout << std::endl;
-	// std::cout << "<------------ CREATE A FORM 3 ------------>" << std::endl;
-	// std::cout << std::endl;
-	// try {
-	// 	AForm f3("28A", 0, 150);
-	// 	std::cout << f3 << std::endl;
-
-	// 	b1.signForm(f3);
-	// 	f3.beSigned(b1);
-	// 	b2.signForm(f3);
-	// 	std::cout << f3 << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// std::cout << std::endl;
-	// std::cout << "<------------ CREATE A FORM 4 ------------>" << std::endl;
-	// std::cout << std::endl;
-	// try {
-	// 	AForm f4("28D", 1, 151);
-	// 	std::cout << f4 << std::endl;
-
-	// 	b1.signForm(f4);
-	// 	f4.beSigned(b1);
-	// 	b2.signForm(f4);
-	// 	std::cout << f4 << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
-
-	// std::cout << std::endl;
 
 	
-	// operatorTest();
-	// std::cout << std::endl;
+	operatorTest();
+	std::cout << std::endl;
+	std::cout << "<------------------------------------------------>" << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
 	// // leaks macos
 	// // system("leaks Form");
+
 	return (0);
 }

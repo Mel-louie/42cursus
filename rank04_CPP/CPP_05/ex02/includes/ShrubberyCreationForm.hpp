@@ -15,6 +15,9 @@
 
 # include "Bureaucrat.hpp"
 # include "AForm.hpp"
+# include <fstream>
+#include <iostream>
+#include <stdio.h>
 
 class ShrubberyCreationForm: public AForm
 {
@@ -30,9 +33,9 @@ public:
 
 	std::string	getTarget( void ) const;
 
-	void	execute (Bureaucrat const& executor) const;
+	void	execute ( Bureaucrat const& executor ) const;
 
-	class FormNotSignedException: public std::exception
+	class FormNotOpenException: public std::exception
 	{
 	public:
 		virtual const char*	what() const throw();
