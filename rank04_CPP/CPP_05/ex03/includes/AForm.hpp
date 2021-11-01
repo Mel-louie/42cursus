@@ -31,7 +31,7 @@ public:
 	AForm( void );
 	AForm( std::string name, int gradeToSign, int gradeToExe );
 	AForm( AForm const& cpy );
-	~AForm( void );
+	virtual ~AForm( void );
 
 	AForm&	operator=( AForm const& src );
 

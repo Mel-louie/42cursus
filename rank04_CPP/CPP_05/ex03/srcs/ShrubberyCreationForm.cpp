@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 19:06:23 by louielouie        #+#    #+#             */
-/*   Updated: 2021/10/30 19:27:08 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/01 18:29:59 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,21 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm( void ): AForm("ShrubberyCreationForm", 145, 137), _target( "houseDefault" )
 {
-	std::cout << "ShrubberyCreationForm default constructor has been called" << std::endl;
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): AForm("ShrubberyCreationForm", 145, 137), _target( target )
 {
-	std::cout << "ShrubberyCreationForm constructor has been called" << std::endl;
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const& cpy ): AForm("ShrubberyCreationForm", 145, 137), _target(cpy.getTarget())
 {
-	std::cout << "ShrubberyCreationForm copy constructor has been called" << std::endl;
 	return ;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm( void )
 {
-	std::cout << "ShrubberyCreationForm destructor has been called" << std::endl;
 	return ;
 }
 
@@ -67,7 +63,7 @@ void	ShrubberyCreationForm::execute( Bureaucrat const& executor ) const
 			throw ShrubberyCreationForm::FormNotOpenException();
 		else
 		{
-			std::cout << "Bureaucrat " << executor.getName() << ", grade " << executor.getGrade() << " executes Form " << this->getName() << std::endl;
+			std::cout << "Bureaucrat " << executor.getName() << ", grade " << executor.getGrade() << ", executes Form " << this->getName() << std::endl;
 			fshrubbery << "            #  ## ###\n";
 			fshrubbery << "          # #### ######\n";
 			fshrubbery << "        ### \\/#|### |/####\n";

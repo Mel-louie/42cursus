@@ -44,3 +44,5 @@ If everythings went fine, an executable (<i>EXE_NAME</i>) has been created.
 <a href=""></a><br />
 <a href=""></a><br />
 <a href=""></a><br />
+
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes

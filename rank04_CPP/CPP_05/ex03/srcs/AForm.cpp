@@ -18,13 +18,11 @@
 
 AForm::AForm( void ): _name( "johnSmith" ), _isSign(false), _gradeToSign(1), _gradeToExe(1)
 {
-	std::cout << "AForm default constructor has been called" << std::endl;
 	return ;
 }
 
 AForm::AForm( std::string name, int gradeToSign, int gradeToExe ): _name( name ), _isSign(false), _gradeToSign(gradeToSign), _gradeToExe(gradeToExe)
 {
-	std::cout << "AForm constructor has been called" << std::endl;
 
 	if ( gradeToSign < 1 || gradeToExe < 1)
 		throw AForm::GradeTooHighException();
@@ -36,7 +34,6 @@ AForm::AForm( std::string name, int gradeToSign, int gradeToExe ): _name( name )
 
 AForm::AForm( AForm const& cpy ): _name(cpy.getName()), _isSign(false), _gradeToSign(cpy.getGradeToSign()), _gradeToExe(cpy.getGradeToExe())
 {
-	std::cout << "AForm copy constructor has been called" << std::endl;
 
 	if ( cpy.getGradeToSign() < 1 || cpy.getGradeToExe() < 1)
 		throw AForm::GradeTooHighException();
@@ -48,7 +45,6 @@ AForm::AForm( AForm const& cpy ): _name(cpy.getName()), _isSign(false), _gradeTo
 
 AForm::~AForm( void )
 {
-	std::cout << "AForm destructor has been called" << std::endl;
 	return ;
 }
 

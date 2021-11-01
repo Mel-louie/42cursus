@@ -16,25 +16,21 @@
 
 RobotomyRequestForm::RobotomyRequestForm( void ): AForm("RobotomyRequestForm", 72, 45), _target( "houseDefault" )
 {
-	std::cout << "RobotomyRequestForm default constructor has been called" << std::endl;
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target ): AForm("RobotomyRequestForm", 72, 45), _target( target )
 {
-	std::cout << "RobotomyRequestForm constructor has been called" << std::endl;
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const& cpy ): AForm("RobotomyRequestForm", 72, 45), _target(cpy.getTarget())
 {
-	std::cout << "RobotomyRequestForm copy constructor has been called" << std::endl;
 	return ;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm( void )
 {
-	std::cout << "RobotomyRequestForm destructor has been called" << std::endl;
 	return ;
 }
 
@@ -63,7 +59,7 @@ void	RobotomyRequestForm::execute( Bureaucrat const& executor ) const
 		throw AForm::GradeTooLowException();
 	else
 	{
-		std::cout << "Bureaucrat " << executor.getName() << ", grade " << executor.getGrade() << " executes Form " << this->getName() << std::endl;
+		std::cout << "Bureaucrat " << executor.getName() << ", grade " << executor.getGrade() << ", executes Form " << this->getName() << std::endl;
 		std::cout << "BzZZZZzzzzZzzzz... BzzzzZZZzzZZZzzzzzz... BBZZZZZzZZzzZZZZZZ... BBBZZZZZZZZZZZZZzzzzzz.Zz.." << std::endl;
 		
 		//pseudo-random number generator

@@ -23,7 +23,13 @@ B_WHITE		= "\033[1;37m"
 #	DETECT OS	#
 OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
-SRCS_FILE		= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRCS_FILE		= main.cpp \
+					Bureaucrat.cpp \
+					AForm.cpp \
+					ShrubberyCreationForm.cpp \
+					RobotomyRequestForm.cpp \
+					PresidentialPardonForm.cpp \
+					Intern.cpp
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
@@ -32,7 +38,7 @@ SRCS_DIR		= ./srcs/
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
 
-CFLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 CC				= clang++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
