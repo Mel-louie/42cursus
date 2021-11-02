@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 21:03:39 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/02 21:38:42 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/02 22:58:00 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ int	main( void )
 	std::cout << "dataTest adress after serialization then deserialization:\t" << deserialize(serialize(&dataTest)) << std::endl;
 	std::cout << std::endl;
 	std::cout << "resultDeserialized adress after deserialization:\t\t" << resultDeserialized << std::endl;
+
+	std::cout << std::endl;
+
+	std::cout << "<--- Test if dataTest and resultDeserialized are usables by asigned their int a value --->" << std::endl;
+	dataTest.intTest = 42;
+	std::cout << "dataTest.intTest = " << dataTest.intTest << std::endl;
+	resultDeserialized->intTest = 101;
+	std::cout << "resultDeserialized->intTest = " << dataTest.intTest << std::endl;
+	std::cout << "dataTest.intTest = " << dataTest.intTest << std::endl;
 
 	return (0);
 }
