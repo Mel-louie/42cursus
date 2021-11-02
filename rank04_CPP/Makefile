@@ -40,9 +40,10 @@ INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
 all: launch
 
 launch:
-	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
+	@printf "[ "$(B_GREEN)"building"$(_END) 
+	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
 	@$(MAKE) $(NAME)
-	@echo $(_END)$(B_WHITE)"[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\t"
+	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
 
 $(OBJS_DIR):
 	@mkdir $@
@@ -50,10 +51,11 @@ $(OBJS_DIR):
 $(NAME): $(OBJS_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
+$(OBJS): $(OBJS_DIR)%.o: %.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@printf $<
-	@printf "\r"
+#	@printf $<
+#	@printf "\r"
+	@printf $(BC_GREEN)"   "$(_END)
 
 clean:
 	@rm -rf $(OBJ)
