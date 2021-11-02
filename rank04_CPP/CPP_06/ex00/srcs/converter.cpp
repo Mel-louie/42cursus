@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:54:45 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/02 16:03:52 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/02 20:47:07 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	printChar( double value )
 	std::cout << std::endl;
 }
 
-
 void	printInt( double value )
 {
 	std::cout << "int: ";
@@ -32,5 +31,46 @@ void	printInt( double value )
 		std::cout << "impossible";
 	else
 		std::cout << static_cast<int>( value );
+	std::cout << std::endl;
+}
+
+void	printDouble( double value )
+{
+	std::cout << "double: ";
+	std::cout << value;
+	std::cout << std::endl;
+}
+
+int	floatPecision( char* str )
+{
+	int	ret = 0;
+	int i = 0;
+
+	if ( str[0] == '-' )
+		i++;
+	while ( i < (int)strlen( str ) && isdigit( str[i] ) != 0 && str[i] != '.' )
+		i++;
+	if ( str[i] == '.' )
+	{
+		i++;
+		if ( isdigit( str[i] ) != 0 )
+			ret = 0;
+		while ( i < (int)strlen( str ) && isdigit( str[i] ) != 0 )
+		{
+			ret++;
+			i++;
+		}
+	}
+	
+	return ( ret );
+}
+
+void	printFloat( double value, int precision )
+{
+	std::cout << "float: ";
+	std::cout.precision( precision );
+	std::cout.setf(std::ios::fixed, std::ios::floatfield);
+	std::cout << static_cast<float>( value );
+	std::cout << "f";
 	std::cout << std::endl;
 }
