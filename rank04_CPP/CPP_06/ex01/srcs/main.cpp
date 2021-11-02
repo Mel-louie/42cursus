@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 21:03:39 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/02 21:36:46 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/02 21:38:42 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ int	main( void )
 	Data*		resultDeserialized = deserialize(serializedData);
 	
 	std::cout << "dataTest adress:\t\t\t\t\t\t" << &dataTest << std::endl;
+	std::cout << std::endl;
 	std::cout << "dataTest adress after serialization:\t\t\t\t" << serializedData << std::endl;
 	std::cout << "dataTest adress after serialization then deserialization:\t" << deserialize(serialize(&dataTest)) << std::endl;
+	std::cout << std::endl;
 	std::cout << "resultDeserialized adress after deserialization:\t\t" << resultDeserialized << std::endl;
 
 	return (0);
