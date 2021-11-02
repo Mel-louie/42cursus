@@ -25,7 +25,7 @@ public:
 	WrongCat&	operator=( WrongCat const& src );
 
 	//member function
-	void	makeSound( void ) const;	
+	virtual void	makeSound( void ) const;	
 };
 
 #endif

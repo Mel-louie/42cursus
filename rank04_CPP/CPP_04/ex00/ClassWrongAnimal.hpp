@@ -36,7 +36,7 @@ public:
 	std::string	getType( void ) const ;
 
 	//member function
-	void	makeSound( void ) const;
+	virtual void	makeSound( void ) const;
 
 protected:
 	std::string	_type;
