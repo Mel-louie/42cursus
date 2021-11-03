@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   converter.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:55:15 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/02 20:36:12 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 00:08:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define CONVERTER_HPP
 
 # include <iostream>
-# include <string>
+# include <cstring>
 #include <cstdlib>
 #include <cmath>
 #include <cctype>
+#include <climits>
 
 /*
  * CONVERTERS
@@ -32,6 +33,5 @@ int	floatPecision( char* str );
  * UTILS
  */
 void	displayUsage( void );
-int	checkLitteraleValue( char* end );
 
 #endif

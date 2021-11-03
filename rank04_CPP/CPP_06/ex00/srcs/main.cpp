@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:51:10 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/02 20:55:23 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 00:08:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
+#include <cstring>
 #include "../includes/converter.hpp"
 
 int	main( int ac, char **av )
@@ -26,12 +26,6 @@ int	main( int ac, char **av )
 	}
 	
 	value = strtod( av[1], &end );
-
-	if ( checkLitteraleValue(end) )
-	{
-		std::cout << "error: the programm needs a literal value. Example: '42.0f'" << std::endl;
-		return (1);
-	}
 
 	if ( strlen(av[1]) == 1 && !isdigit(av[1][0]) )
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serialize.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 21:04:26 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/02 21:16:35 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 00:14:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 # include <string>
-# include <cstdint>
+# include <stdint.h>
 
 typedef struct s_data
 {
