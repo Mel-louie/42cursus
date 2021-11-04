@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:26:54 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/03 14:02:09 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 11:34:28 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 #include <cstring>
 #include "../includes/iter.hpp"
 
-void	printIntArr( int &i )
+class Basic
 {
-	std::cout << i << " "; 
+private:
+	int _nb;
+public:
+	Basic(void) : _nb( 1000 ) { return ; }
+	int getNb(void) const { return this->_nb; }
+};
+
+std::ostream & operator<<(std::ostream & o, const Basic& rhs)
+{
+	o << rhs.getNb();
+	return o;
 }
 
 void	plusOne( int &i )
@@ -24,15 +34,10 @@ void	plusOne( int &i )
 	std::cout << i + 1 << " ";
 }
 
-void	arrLen( char &c )
-{
-	std::cout << c; 
-}
-
 void	upper(char &c) {
 
 	c = toupper(c);
-	std::cout << c;
+	std::cout << c << " ";
 	return ;
 }
 
@@ -42,7 +47,7 @@ int	main( void )
 	char	string[] = "hello world!";
 	
 	std::cout << "Print array of ints:\t\t\t";
-	::iter( arrInt, 4, printIntArr );
+	::iter( arrInt, 4, printElem );
 	std::cout << std::endl;
 	
 	std::cout << "Array of ints +1 to every digits:\t";
@@ -50,7 +55,7 @@ int	main( void )
 	std::cout << std::endl;
 
 	std::cout << "Print array of chars:\t\t";
-	::iter( string, strlen( string ), arrLen );
+	::iter( string, strlen( string ), printElem );
 	std::cout << std::endl;
 
 	std::cout << "Print array of chars toUpper:\t";
@@ -62,8 +67,13 @@ int	main( void )
 	std::cout << "Array of int:" << std::endl;
 	::iter( arrInt, 4, ::plusTen );
 	std::cout << std::endl;
-	std::cout << "Array of char (ascii code):" << std::endl;
-	::iter( string, strlen( string ), ::plusTen );
+
+	std::cout << std::endl;
+	std::cout << "<--- Test with an array in a class --->" << std::endl;
+	std::cout << "arrayClass[5], fill with 1000:" << std::endl;
+	Basic arrayClass[5];
+
+	iter(arrayClass, 5, printElem);
 	std::cout << std::endl;
 	
 	return (0);

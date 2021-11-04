@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 19:14:59 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/03 20:58:40 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 11:24:29 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ Array<T>::Array( unsigned int n ): _array( new T[n] ), _arraySize( n ) {
 	{
 		this->_array[i] = T();
 	}
-	
 }
 
 template<typename T>

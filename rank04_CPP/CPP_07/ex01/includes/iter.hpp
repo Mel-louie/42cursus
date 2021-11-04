@@ -6,12 +6,18 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:52:31 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/03 14:02:00 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 11:31:01 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITER_HPP
 # define ITER_HPP
+
+template<typename T>
+void	printElem(  T& e )
+{
+	std::cout << e << " ";
+}
 
 template<typename T>
 void	plusTen( T& t)
