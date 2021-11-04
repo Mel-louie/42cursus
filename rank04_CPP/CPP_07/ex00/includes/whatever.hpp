@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:48:29 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/03 11:08:37 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 10:39:44 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@
 template<typename T>
 void	swap( T& a, T& b )
 {
-	T	tmp;
-
-	tmp = a;
+	T	tmp = a;
 	a = b;
 	b = tmp;
 }
