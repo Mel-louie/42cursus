@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 19:23:44 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/03 20:58:23 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/04 11:51:21 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,30 @@
 #include <iostream>
 #include <cstdlib>
 
+class Basic
+{
+private:
+	int _nb;
+public:
+	Basic(void) : _nb( 42 ) { return ; }
+	Basic&	operator=( Basic const& src ) {
+		if (this != &src )
+			this->_nb = src.getNb();
+		return ( *this );
+	}
+	void	setNb( int nb) { this->_nb = nb ;}
+	int getNb(void) const { return this->_nb; }
+};
+
+std::ostream & operator<<(std::ostream & o, const Basic& rhs)
+{
+	o << rhs.getNb();
+	return o;
+}
+
 int main() {
 
-	Array<int> arrayInt(5);
+	Array<int> arrayInt(10);
 
 	std::cout << "---------- ARRAY OF INT ----------";
 	std::cout << std::endl;
@@ -86,6 +107,30 @@ int main() {
 	std::cout << std::endl;
 	arrayEmpty = arrayInt;
 	std::cout << "arrayEmpty size:\t" << arrayEmpty.size();
+	
+	
+	std::cout << std::endl;
+	std::cout << std::endl;
+	Array<Basic> arrayClass(30);
+
+	std::cout << "---------- CLASS ARRAY ----------";
+	std::cout << std::endl;
+
+	
+	std::cout << "Before changing value (arrayClass[5]):\t";
+	displayElement(arrayClass, 5);
+	
+	arrayClass[5].setNb(24);
+	std::cout << std::endl;
+	std::cout << "After changing value (arrayClass[5]):\t";
+	displayElement(arrayClass, 5);
+	std::cout << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "arrayClass size:\t\t\t" << arrayClass.size();
+	std::cout << std::endl;
+	std::cout << "Index beyond limits (arrayClass[42]):\t";	
+	displayElement(arrayClass, 42);
 	
 	std::cout << std::endl;
 
