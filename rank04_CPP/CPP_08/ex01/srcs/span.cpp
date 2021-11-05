@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:23:52 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 17:21:34 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/05 18:14:47 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,46 +55,35 @@ void	Span::addNumber( int N )
 	this->_nbs.push_back( N );
 }
 
-void	Span::addNumber( std::vector<int>::iterator start, std::vector<int>::iterator end )
+void	Span::addNumbers( std::vector<int>::const_iterator start, std::vector<int>::const_iterator end)
 {
-	for ( std::vector<int>::iterator it = start; it != end; it++ )
+	for ( std::vector<int>::const_iterator it = start; it != end; ++it )
 	{
 		if ( this->getSize() == this->getSizeMax() )
 			throw Span::SpanIsFull();
-	
+
 		this->_nbs.push_back( *it );
 	}
 }
 
-// void	Span::addNumbers( std::vector<int>::const_iterator begin,
-// 						 std::vector<int>::const_iterator end )
-// {
-// 	for ( std::vector<int>::const_iterator it = begin;
-// 		  it != end;
-// 		  ++it )
-// 	{
-// 		if ( this->getSize() == this->getSizeMax() )
-// 			throw Span::SpanIsFull();
+void	Span::addVector( const std::vector<int>& v )
+{
+	try
+	{
+		addNumbers( v.begin(), v.end() );
+	}
+	catch ( Span::SpanIsFull& e )
+	{
+		std::cout << "Can't add more numbers because " << e.what() << std::endl;
+	}
+}
 
-// 		this->_nbs.push_back( *it );
-// 	}
-// }
-
-// /*
-//  * Add numbers using a vector
-//  */
-
-// void	Span::addVector( const std::vector<int>& vec )
-// {
-// 	try
-// 	{
-// 		addNumbers( vec.begin(), vec.end() );
-// 	}
-// 	catch ( Span::SpanIsFull& e )
-// 	{
-// 		std::cout << "Can't add more numbers because " << e.what() << std::endl;
-// 	}
-// }
+void	Span::displayNumber( void )
+{
+	for ( std::vector<int>::iterator it = this->_nbs.begin(); it != this->_nbs.end(); it++ )
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
 
 unsigned int Span::shortestSpan() {
 
@@ -124,10 +113,10 @@ unsigned int Span::longestSpan() {
 
 const char *Span::SpanIsFull::what() const throw () {
 
-	return (" the oject is full.");
+	return ("Exception: can't add another number, the oject is full.");
 }
 
 const char *Span::NoSpan::what() const throw () {
 
-	return (" no span to find.");
+	return ("exception, no span to find.");
 }

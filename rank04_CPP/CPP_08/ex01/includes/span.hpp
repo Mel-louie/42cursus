@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:30:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 17:21:22 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/05 18:13:05 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ public:
 
 	//member functions
 	void	addNumber( int N );
-	void	addNumber( std::vector<int>::iterator start, std::vector<int>::iterator end);
-	// void	addNumbers( std::vector<int>::const_iterator begin,
-	// 					 std::vector<int>::const_iterator end );
-	// void	addVector( const std::vector<int>& v );
+	void	addNumbers( std::vector<int>::const_iterator start, std::vector<int>::const_iterator end);
+	void	addVector( const std::vector<int>& v );
+
+	void	displayNumber( void );
 
 	unsigned int	shortestSpan( void );
 	unsigned int	longestSpan( void );
