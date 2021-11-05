@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:30:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 16:22:54 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/05 17:21:22 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,52 @@
 
 # include <algorithm>
 # include <vector>
+# include <iostream>
+#include <exception>
+
+class Span
+{
+private:
+	int	_sizeMax;
+	std::vector<int>	_nbs;
+
+public:
+	Span( void );
+	Span( unsigned int sizeMax );
+	Span( const Span& cpy );
+	~Span( void );
+
+	Span&	operator=( const Span& src );
+
+	//getters
+	int	getSizeMax( void ) const;
+	int	getSize( void ) const;
+	//setter
+	void	setSizeMax( unsigned int sizeMax);
+
+	//member functions
+	void	addNumber( int N );
+	void	addNumber( std::vector<int>::iterator start, std::vector<int>::iterator end);
+	// void	addNumbers( std::vector<int>::const_iterator begin,
+	// 					 std::vector<int>::const_iterator end );
+	// void	addVector( const std::vector<int>& v );
+
+	unsigned int	shortestSpan( void );
+	unsigned int	longestSpan( void );
+
+	//exceptions
+	class SpanIsFull: public std::exception
+	{
+	public:
+		const char*	what() const throw();
+	};
+	
+	class NoSpan: public std::exception
+	{
+	public:
+		const char*	what() const throw();
+	};
+};
+
 
 #endif
