@@ -1,4 +1,4 @@
-NAME = easyFind
+NAME = span
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -36,7 +36,7 @@ OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
 
 CFLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
-CC				= clang++
+CC				= c++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
 
@@ -58,7 +58,7 @@ $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 #	@printf $<
 #	@printf "\r"
-	@printf $(BK_GREEN)"                "$(_END)
+	@printf $(BK_GREEN)"       "$(_END)
 
 clean:
 	@rm -rf $(OBJ)

@@ -36,7 +36,7 @@ OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
 
 CFLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
-CC				= clang++
+CC				= c++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
 
