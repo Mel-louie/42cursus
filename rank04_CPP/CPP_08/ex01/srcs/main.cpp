@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:29:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 18:17:50 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/06 16:55:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,8 @@ int	main( void )
 	{
 		std::cout << e.what() << std::endl;
 	}
+	
+	// bigSpan.displayNumber();
+	
 	return ( 0 );
 }

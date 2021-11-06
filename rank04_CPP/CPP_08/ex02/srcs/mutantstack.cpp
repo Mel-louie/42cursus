@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mutantstack.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 12:58:20 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/06 14:33:37 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/06 16:58:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,6 @@ void	creatMutantStack( void )
 	}
 
 	std::cout << std::endl;
-	std::cout << "Swap copy and original, and display new copy:" << std::endl;
-	notEmpty.swap(mstack);
-	it2 = notEmpty.begin();
-	ite2 = notEmpty.end();
-	while (it2 != ite2)
-	{
-		std::cout << *it2 << " ";
-		++it2;
-	}
-	std::cout << std::endl;
 	std::cout << std::endl;
 }
 
@@ -165,16 +155,6 @@ void	creatList( void )
 		++it;
 	}
 
-	std::cout << std::endl;
-	std::cout << "Swap copy and original, and display new copy:" << std::endl;
-	notEmpty.swap(lst);
-	it = notEmpty.begin();
-	ite = notEmpty.end();
-	while (it != ite)
-	{
-		std::cout << *it << " ";
-		++it;
-	}
 	std::cout << std::endl;
 	std::cout << std::endl;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:30:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 18:13:05 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/06 16:50:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <algorithm>
 # include <vector>
 # include <iostream>
-#include <exception>
+# include <exception>
 
 class Span
 {
@@ -26,7 +26,7 @@ private:
 
 public:
 	Span( void );
-	Span( unsigned int sizeMax );
+	Span( unsigned int N );
 	Span( const Span& cpy );
 	~Span( void );
 
@@ -39,7 +39,7 @@ public:
 	void	setSizeMax( unsigned int sizeMax);
 
 	//member functions
-	void	addNumber( int N );
+	void	addNumber( int n );
 	void	addNumbers( std::vector<int>::const_iterator start, std::vector<int>::const_iterator end);
 	void	addVector( const std::vector<int>& v );
 

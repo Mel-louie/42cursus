@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:23:52 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 18:14:47 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/06 16:46:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Span::Span( void ): _sizeMax(0), _nbs() {}
 
-Span::Span( unsigned int sizeMax ): _sizeMax(sizeMax), _nbs() {}
+Span::Span( unsigned int N ): _sizeMax(N), _nbs() {}
 
 Span::Span( const Span& cpy ): _sizeMax(cpy._sizeMax), _nbs(cpy._nbs) {}
 
@@ -47,12 +47,12 @@ void	Span::setSizeMax( unsigned int sizeMax )
 	this->_sizeMax = sizeMax;
 }
 
-void	Span::addNumber( int N )
+void	Span::addNumber( int n )
 {
 	if ( this->getSize() == this->getSizeMax() )
 		throw Span::SpanIsFull();
 	
-	this->_nbs.push_back( N );
+	this->_nbs.push_back( n );
 }
 
 void	Span::addNumbers( std::vector<int>::const_iterator start, std::vector<int>::const_iterator end)
