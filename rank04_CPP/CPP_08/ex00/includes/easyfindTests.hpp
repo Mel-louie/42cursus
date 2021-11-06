@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:07:56 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 15:19:25 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/06 12:36:46 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	test( T& container, int toFind1, int toFind2, int toFind3 )
 	try
 	{
 		typename T::const_iterator	it = easyfind( container, toFind1 );
-		std::cout << std::endl << *it << " found in the container, at index : " << it - container.begin() << std::endl;
+		std::cout << std::endl << *it << " found in the container" << std::endl;
 		
 	}
 	catch(const std::exception& e)
@@ -71,7 +71,7 @@ void	test( T& container, int toFind1, int toFind2, int toFind3 )
 	try
 	{
 		typename T::const_iterator	it = easyfind( container, toFind2 );
-		std::cout << std::endl << *it << " found in the container, at index :" << it - container.begin() << std::endl;
+		std::cout << std::endl << *it << " found in the container" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -83,61 +83,7 @@ void	test( T& container, int toFind1, int toFind2, int toFind3 )
 	try
 	{
 		typename T::const_iterator	it = easyfind( container, toFind3 );
-		std::cout << std::endl << *it << " found in the container, at index :" << it - container.begin() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << std::endl;
-		std::cerr << e.what() << " catched. " << toFind3 << " not found." << std::endl;
-	}
-	
-}
-
-template<typename T>
-void	testWoIndex( T& container, int toFind1, int toFind2, int toFind3 )
-{
-	fillContainer( container );
-	displayContainer( container );
-
-//<--- Try to find toFind1 --->
-	try
-	{
-		typename T::const_iterator	it = easyfind( container, toFind1 );
-		std::cout << std::endl << *it << " found in the container"
-		<< "(std::list does not have access operator[] because std::list internally store elements in doubly linked list, so can't have the index)"
-		<< "(std::set is an associative container, which internally store elements in a balanced binary search tree and it doesn’t provide access operator [])"
-		<< std::endl;
-		
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << std::endl;
-		std::cerr << e.what() << " catched. " << toFind1 << " not found." << std::endl;
-	}
-
-//<--- Try to find toFind2 --->	
-	try
-	{
-		typename T::const_iterator	it = easyfind( container, toFind2 );
-		std::cout << std::endl << *it << " found in the container"
-		<< "(std::list does not have access operator[] because std::list internally store elements in doubly linked list, so can't have the index)"
-		<< "(std::set is an associative container, which internally store elements in a balanced binary search tree and it doesn’t provide access operator [])"
-		<< std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << std::endl;
-		std::cerr << e.what() << " catched. " << toFind2 << " not found." << std::endl;
-	}
-
-//<--- Try to find toFind2 --->
-	try
-	{
-		typename T::const_iterator	it = easyfind( container, toFind3 );
-		std::cout << std::endl << *it << " found in the container"
-		<< "(std::list does not have access operator[] because std::list internally store elements in doubly linked list, so can't have the index)"
-		<< "(std::set is an associative container, which internally store elements in a balanced binary search tree and it doesn’t provide access operator [])"
-		<< std::endl;
+		std::cout << std::endl << *it << " found in the container" << std::endl;
 	}
 	catch(const std::exception& e)
 	{

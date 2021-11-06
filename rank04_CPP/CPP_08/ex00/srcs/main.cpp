@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:29:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/05 15:18:25 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/06 12:36:08 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	main( void )
 	std::cout << "<---=================================================================--->\n" << std::endl;
 	
 	std::cout << "<--- TEST WITH AN INT ARRAY IN LIST CONTAINER, to find 15, 4 and 28 --->" << std::endl;
-	testWoIndex( contList, 15, 4, 28 ); std::cout << std::endl;
+	test( contList, 15, 4, 28 ); std::cout << std::endl;
 	std::cout << "<---================================================================--->\n" << std::endl;
 
 	std::cout << "<--- TEST WITH AN INT ARRAY IN SET CONTAINER, to find 7, 44, and 9 --->" << std::endl;
-	testWoIndex( contSet, 7, 44, 9 ); std::cout << std::endl;
+	test( contSet, 7, 44, 9 ); std::cout << std::endl;
 	std::cout << "<---=================================================================--->\n" << std::endl;
 	
 	return (0);
