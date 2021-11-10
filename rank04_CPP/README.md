@@ -1,4 +1,4 @@
-# C➕➕ POOl
+# C➕➕ POOl 100%
 
 <b>CPP pool at 42. Try to swim! 🏊</b>
 
@@ -9,7 +9,6 @@
 - Download, install and use
 	- <a href="#instal">Install</a>
 	- <a href="#play">Use</a>
-	- <a href="#bonus">Bonus</a>
 - Ressources
 	- <a href="#"></a>
 	- <a href="#"></a>
