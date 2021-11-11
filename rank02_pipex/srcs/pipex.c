@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:57:17 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/10 18:48:19 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/11 13:09:23 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	display_usages(void)
 int	main(int ac, char **av, char **envp)
 {
 	int		fd[2];
+	int		status;
 	pid_t	pid1;
+	pid_t	pid2;
 
 	if (ac != 5)
 	{
@@ -47,11 +49,16 @@ int	main(int ac, char **av, char **envp)
 		if (pid1 == -1)
 			error();
 		if (pid1 == 0)
-			child_process(av, envp, fd);
-		waitpid(pid1, NULL, 0);
-		parent_process(av, envp, fd);
+			child1(av, envp, fd);
+		pid2 = fork();
+		if (pid2 == -1)
+			error();
+		if (pid2 == 0)
+			child2(av, envp, fd);
 		close(fd[0]);
 		close(fd[1]);
+		waitpid(pid1, &status, 0);
+		waitpid(pid2, &status, 0);
 	}
 	return (0);
 }

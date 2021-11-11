@@ -37,65 +37,6 @@ as stdin for cmd1                                 as stdout for cmd2
 	- <a href="#thread"></a> -->
 
 
-# Tester
-
-Feel free to use and modify it.
-<div id=uset></div></a>
-Copy tester.sh in your project folder and then:
-
-```
-~> bash tester.sh
-
-```
-
-<div id=cheatsheet></div></a>Cheatsheet
-<table>
-    <tr>
-        <td><b>Test</b></td>
-        <td><b>Résultat attendu</b></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-
 # Download, install and use
 
 <div id=instal></div></a>To download and compile:
@@ -114,11 +55,6 @@ should be the same as ```  “< infile ls -l | wc -l > outfile ``` in bash
 or
 ``` ./pipex infile "grep a1" "wc -w" outfile```
 should be the same as ```  “< infile grep a1 | wc -w > outfile ``` in bash
-
-<div id=bonus></div><b>BONUS</b>
-
-- Handle multiple pipes;
-- Support << and >> when the first parameter is "here_doc"
 
 # Ressouces
 

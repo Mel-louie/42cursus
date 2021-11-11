@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:00:21 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/10 18:49:17 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/11/11 13:08:44 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # include <stdio.h>
+# include <string.h>
 # include <unistd.h>
 # include <errno.h>
 # include <stdlib.h>
@@ -25,8 +26,8 @@ void	error(void);
  * PROCESS
  */
 
-void		child_process(char **av, char **envp, int *fd);
-void		parent_process(char **argv, char **envp, int *fd);
+void		child1(char **av, char **envp, int *fd);
+void		child2(char **av, char **envp, int *fd);
 
 /*
  * EXECUTE
