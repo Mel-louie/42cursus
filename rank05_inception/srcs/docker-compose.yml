@@ -1,49 +1,31 @@
-#specifie to docker compose what version to used
-#3 is the most used at the moment
+#docker-compose version, the 3 is the most use
 version: '3'
 
-#all th containers have to be defined under the 'services' argument
 services:
+
 	mariadb:
-		build: ./mariadb
-		#a database is a stateful service, volumes keeps the db persistent on local host
+		build:
+			context: requirements/mariadb
+		container_name: mariadb
+		image: mariadb
+		restart: always
+		#copy db on the host disk, cause the db needs to be persistant
 		volumes:
 			- /data/mysql:/var/lib/mysql
-		restart: always
-		evironment:
-			MYSQL_ROOT_PASSWORD: mysql_root_password
-			MYSQL_DATABASE: db_name
-			MYSQL_USER: user_name
-			MYSQL_PASSWORD: user_password
-		expose:
-			- "3306"
+		env_file:
+			- ./.env
 
 	wordpress:
-		depends_on:
-			- mariadb
-		build: ./wordpress
+		build:
+			context: requirements/wordpress
+		container_name: wordpress
+		image: wordpress
+		restart: always
 		volumes:
 			- /data/html:/var/www/html
-		restart: always
-		#Make sure the WordPress environment variables MYSQL_ROOT_PASSWORD,
-		#WORDPRESS_DB_NAME, WORDPRESS_DB_USER, and WORDPRESS_DB_PASSWORD
-		#match exactly with the MariaDB environment variables MYSQL_ROOT_PASSWORD,
-		#MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD respectively.
-		#In case of any mismatch, the WordPress application would not be able to connect to the database.
-		evironment:
-			WORDPRESS_DB_HOST: mariadb
-			MYSQL_ROOT_PASSWORD: mysql_root_password
-			WORDPRESS_DB_NAME: db_name
-			WORDPRESS_DB_USER: user_name
-			WORDPRESS_DB_PASSWORD: user_password
-			WORDPRESS_TABLE_PREFIX: wp_
-		expose:
-			- "9000"		
-
-#	nginx:
-#		build: ./nginx
-#		volumes:
-#			- nginx:/etc/nginx/conf.d
-#			- /data/html:/var/www/html
-#		ports:
-#			- "443:443"
+		env_fils:
+			./.env
+		depends_on:
+			- mariadb
+		links:
+			- mariadb
