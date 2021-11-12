@@ -1,6 +1,6 @@
 NAME = microshell
 CC = clang
-FLAGS = #-Wall -Wextra -Werror
+FLAGS = -Wall -Wextra 
 
 SRC = main.c
 OBJ = $(SRC:.c=.o)

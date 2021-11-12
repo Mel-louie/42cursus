@@ -1,134 +1,202 @@
-#include <unistd.h>
-#include <stdio.h>
+include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <sys/wait.h>
 #include <string.h>
-#include <signal.h>
 
-int	ft_strlen(char *s)
+void ft_putchar_err(char c)
 {
-	int i = 0;
-
-	while (s[i])
-		i++;
-	return(i);
+	write(STDERR_FILENO, &c, 1);
 }
 
-void	error(char *str, char *arg)
+int error(char* str)
 {
-	write(STDERR_FILENO, str, ft_strlen(str));
-	if (arg)
-		write(STDERR_FILENO, arg, ft_strlen(arg));
-	write(STDERR_FILENO, "\n", 1);
-	kill(0, SIGINT);
+	while (*str)
+		ft_putchar_err(*str++);
+	return (1);
 }
 
-int	built_cd(int i, char **cmd)
+int fatal(char** free_ptr)
 {
-	int i_path = i + 1;
-
-	if (!cmd[i_path] || !strncmp(cmd[i_path], "-", 1))
-		error("error: cd: bad arguments", NULL);
-	if (chdir(cmd[i_path]) != 0)
-		error("error: cd: cannot change directory to ", cmd[i_path]);
-	return (0);
+	free(free_ptr);
+	exit(error("error: fatal\n"));
 }
 
-void	child(char **arg, int last, int *fd, int fd_in, char **envp)
+int size_cmd(char **cmd)
 {
-	if (dup2(fd_in, STDIN_FILENO) == -1)
-		error("error: fatal", NULL);
-	if (last == 0)
-		if (dup2(fd[1], STDOUT_FILENO) == -1)
-			error("error: fatal", NULL);
-	close(fd_in);
-	close(fd[0]);
-	close(fd[1]);
-	if (execve(arg[0], arg, envp) == -1)
-		error("error: cannot execute ", arg[0]);
-}
-
-int	ft_exe(char **arg, char **envp, int fd_in)
-{
-	pid_t pid;
-	int fd[2];
-	int i;
-	int last;
-
-	i = 0;
-	last = 0;
-	while (arg[i] && strcmp(arg[i], "|"))
-		++i;
-	if (!arg[i])
-		last = 1;
-	arg[i] = 0;
-	if (pipe(fd) == -1 || (pid = fork()) == -1)
-	    error("error: fatal", NULL);
-	else if (pid == 0)
-       child(arg, last, fd, fd_in, envp);
-	else
-	{
-		if (dup2(fd[0], fd_in) == -1)
-   		    error("error: fatal", NULL);
-		close(fd[0]);
-		close(fd[1]);
-	}
-	if (last == 0)
-		return (i + 1);
+	if (!cmd)
+		return (0);
+	int i = -1;
+	while (cmd[++i]);
 	return (i);
 }
 
-int	execute(char **arg, char **envp)
+// Return the size of **cmd until cmd[i] == str (useful for ";" and "|")
+int size_cmd_char(char **cmd, char *str)
 {
-	int i;
-	int status;
-	int count;
-	int fd_in;
+	if (!cmd)
+		return (0);
+	int i = -1;
+	while (cmd[++i])
+		if (!strcmp(cmd[i], str))
+			return (i);
+	return (i);
+}
 
-    if (!strcmp(arg[0], "cd"))
-			return (built_cd(0, arg));
-	if ((fd_in = dup(STDIN_FILENO)) == -1)
-	    error("error: fatal", NULL);
-	i = 0;
-	while (arg[i])
-	{
-		i += ft_exe(arg + i, envp, fd_in);
-		++count;
-	}
-	close(fd_in);
+// Return a **char pointing just after the first pipe the func will meet
+char** find_next_pipe(char **cmd)
+{
+	if (!cmd)
+		return (NULL);
+	int i = -1;
+	while (cmd[++i])
+		if (!strcmp(cmd[i], "|"))
+			return (&cmd[i + 1]);
+	return (NULL);
+}
 
-    /*
-    ** wait for all processes to terminated 
-    */
-	while (count > 0)
+// Return a **char containing a copy of av[i] until next ";"
+char** add_cmd(char **av, int *i)
+{
+	int size = size_cmd_char(&av[*i], ";"); // size of new **char until next ";". We start from i position
+	if (!size)
+		return (NULL); // case ";" ";" with nothing between them
+
+	char **tmp = NULL;
+	if (!(tmp = malloc(sizeof(*tmp) * (size + 1))))
+		fatal(NULL);
+
+	int j = -1;
+	while (++j < size)
+		tmp[j] = av[j + *i];
+	tmp[j] = NULL;
+	*i += size; // adds the number of elements copied, av[i] will be on the next ";"
+	return (tmp);
+}
+
+int builtin_cd(char **cmd)
+{
+	if (size_cmd(cmd) != 2)
+		return (error("error: cd: bad arguments\n"));
+	if (chdir(cmd[1]) < 0)
 	{
-		waitpid(-1, &status, 0);
-		--count;
+		error("error: cd: cannot change directory ");
+		error(cmd[1]);
+		error("\n");
 	}
 	return (0);
 }
 
-int	main(int ac, char **av, char **envp)
+// Executes a command and free free_ptr in the forked process if an error occured
+int exec_cmd(char **cmd, char **env, char **free_ptr)
 {
-	int	i = 1;
-	int start = 1;
+	pid_t pid;
 
-	if (ac < 2)
-		return (0);
-	while (av[i])
+	if ((pid = fork()) < 0)
+		fatal(free_ptr);
+	if (!pid) // son
 	{
-		if (strcmp(av[i], ";") == 0)
+		if (execve(cmd[0], cmd, env) < 0)
 		{
-			av[i] = 0;
-			execute(av + start, envp);
-			++i;
-			while (av[i] && av[i + 1] && strcmp(av[i], ";") == 0)
-				++i;
-			start = i;
+			error("error: cannot execute ");
+			error(cmd[0]);
+			free(free_ptr); // Freeing the char** cmd previously allocated
+			exit(error("\n"));
 		}
-		else
-			++i;
 	}
-	if (av[start])
-		execute(av + start, envp);
+	waitpid(0, NULL, 0);
+	return (0);
+}
+
+// Do the pipes and then execute only the part of the command before next pipe.
+// free_ptr is char** cmd previously allocated. char** tmp isn't allocated,
+// it's just a ptr to **cmd so no need to free it.
+int exec_son(char** free_ptr, char** env, char** tmp, int fd_in, int fd_pipe[2])
+{
+	if (dup2(fd_in, STDIN_FILENO) < 0)
+		fatal(free_ptr);
+	if (find_next_pipe(tmp) && dup2(fd_pipe[1], STDOUT_FILENO) < 0) // If there is still a pipe after this command
+		fatal(free_ptr);
+
+	// Closing all fds to avoid leaking files descriptors
+	close(fd_in);
+	close(fd_pipe[0]);
+	close(fd_pipe[1]);
+
+	// Replaces first pipe met with NULL (modifying **cmd in the son, **cmd in
+	// the parent is still the same!) then executing the command
+	tmp[size_cmd_char(tmp, "|")] = NULL;
+	exec_cmd(tmp, env, free_ptr);
+	
+	// Freeing char** cmd in the fork process (still exists in the parent!)
+	free(free_ptr);
+	exit(0);
+}
+
+int execute(char **cmd, char **env)
+{
+	/* CASE NO PIPES */
+	if (!find_next_pipe(cmd))
+		return (exec_cmd(cmd, env, cmd));
+
+	/* CASE PIPES */
+	int fd_in;
+	int fd_pipe[2];
+	char **tmp = cmd;
+	int nb_wait = 0;
+	pid_t pid;
+
+	if ((fd_in = dup(STDIN_FILENO)) < 0)
+		return (fatal(cmd));
+
+	while (tmp)
+	{
+		if (pipe(fd_pipe) < 0 || (pid = fork()) < 0)
+			fatal(cmd);
+			
+		// Son is executing commands
+		if (!pid)
+			exec_son(cmd, env, tmp, fd_in, fd_pipe);
+		
+		// Parent is just saving fd_pipe[0] for next son execution and correctly closing pipes
+		else
+		{
+			if (dup2(fd_pipe[0], fd_in) < 0)	// Really important to protect syscalls using fd,
+				fatal(cmd);						// tests with wrong fds will be done during grademe
+			close(fd_pipe[0]);
+			close(fd_pipe[1]);
+			++nb_wait;
+			tmp = find_next_pipe(tmp); // Goes to the next command to be executed, just after first pipe met
+		}
+	}
+
+	//closing last dup2 that happen in the last parent loop tour
+	close(fd_in); 
+
+	//waiting for each command launched to bed executed
+	while (nb_wait-- >= 0)
+		waitpid(0, NULL, 0);
+	return (0);
+}
+
+int main(int ac, char **av, char **env)
+{
+	char **cmd = NULL;
+	int i = 0;
+
+	while (++i < ac)
+	{
+		// cmd = command until next ";". i is increased of the size of cmd,
+		// av[i] will now be equal to next ";"
+		cmd = add_cmd(av, &i);
+		
+		if (cmd && !strcmp(cmd[0], "cd"))
+			builtin_cd(cmd);
+		else if (cmd)
+			execute(cmd, env);
+
+		free(cmd);
+		cmd = NULL;
+	}
 	return (0);
 }
