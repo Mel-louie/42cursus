@@ -4,6 +4,21 @@
 #include <sys/wait.h>
 #include <string.h>
 
+void ft_putchar_err(char c);
+int error(char* str);
+int fatal(char** free_ptr);
+int size_cmd(char **cmd);
+int size_cmd_char(char **cmd, char *str);
+char** find_next_pipe(char **cmd);
+char** add_cmd(char **av, int *i);
+int builtin_cd(char **cmd);
+int exec_cmd(char **cmd, char **env, char **free_ptr);
+int exec_child(char** free_ptr, char** env, char** tmp, int fd_in, int fd_pipe[2]);
+int execute(char **cmd, char **env);
+int main(int ac, char **av, char **env);
+
+
+
 void ft_putchar_err(char c)
 {
 	write(STDERR_FILENO, &c, 1);
@@ -31,7 +46,6 @@ int size_cmd(char **cmd)
 	return (i);
 }
 
-// Return the size of **cmd until cmd[i] == str (useful for ";" and "|")
 int size_cmd_char(char **cmd, char *str)
 {
 	if (!cmd)
@@ -43,7 +57,6 @@ int size_cmd_char(char **cmd, char *str)
 	return (i);
 }
 
-// Return a **char pointing just after the first pipe the func will meet
 char** find_next_pipe(char **cmd)
 {
 	if (!cmd)
@@ -55,12 +68,11 @@ char** find_next_pipe(char **cmd)
 	return (NULL);
 }
 
-// Return a **char containing a copy of av[i] until next ";"
 char** add_cmd(char **av, int *i)
 {
-	int size = size_cmd_char(&av[*i], ";"); // size of new **char until next ";". We start from i position
+	int size = size_cmd_char(&av[*i], ";");
 	if (!size)
-		return (NULL); // case ";" ";" with nothing between them
+		return (NULL);
 
 	char **tmp = NULL;
 	if (!(tmp = malloc(sizeof(*tmp) * (size + 1))))
@@ -70,7 +82,7 @@ char** add_cmd(char **av, int *i)
 	while (++j < size)
 		tmp[j] = av[j + *i];
 	tmp[j] = NULL;
-	*i += size; // adds the number of elements copied, av[i] will be on the next ";"
+	*i += size;
 	return (tmp);
 }
 
@@ -87,7 +99,6 @@ int builtin_cd(char **cmd)
 	return (0);
 }
 
-// Executes a command and free free_ptr in the forked process if an error occured
 int exec_cmd(char **cmd, char **env, char **free_ptr)
 {
 	pid_t pid;
@@ -100,7 +111,7 @@ int exec_cmd(char **cmd, char **env, char **free_ptr)
 		{
 			error("error: cannot execute ");
 			error(cmd[0]);
-			free(free_ptr); // Freeing the char** cmd previously allocated
+			free(free_ptr);
 			exit(error("\n"));
 		}
 	}
@@ -108,27 +119,20 @@ int exec_cmd(char **cmd, char **env, char **free_ptr)
 	return (0);
 }
 
-// Do the pipes and then execute only the part of the command before next pipe.
-// free_ptr is char** cmd previously allocated. char** tmp isn't allocated,
-// it's just a ptr to **cmd so no need to free it.
-int exec_son(char** free_ptr, char** env, char** tmp, int fd_in, int fd_pipe[2])
+int exec_child(char** free_ptr, char** env, char** tmp, int fd_in, int fd_pipe[2])
 {
 	if (dup2(fd_in, STDIN_FILENO) < 0)
 		fatal(free_ptr);
-	if (find_next_pipe(tmp) && dup2(fd_pipe[1], STDOUT_FILENO) < 0) // If there is still a pipe after this command
+	if (find_next_pipe(tmp) && dup2(fd_pipe[1], STDOUT_FILENO) < 0)
 		fatal(free_ptr);
 
-	// Closing all fds to avoid leaking files descriptors
 	close(fd_in);
 	close(fd_pipe[0]);
 	close(fd_pipe[1]);
-
-	// Replaces first pipe met with NULL (modifying **cmd in the son, **cmd in
-	// the parent is still the same!) then executing the command
+	
 	tmp[size_cmd_char(tmp, "|")] = NULL;
 	exec_cmd(tmp, env, free_ptr);
-	
-	// Freeing char** cmd in the fork process (still exists in the parent!)
+
 	free(free_ptr);
 	exit(0);
 }
@@ -154,26 +158,22 @@ int execute(char **cmd, char **env)
 		if (pipe(fd_pipe) < 0 || (pid = fork()) < 0)
 			fatal(cmd);
 			
-		// Son is executing commands
 		if (!pid)
-			exec_son(cmd, env, tmp, fd_in, fd_pipe);
+			exec_child(cmd, env, tmp, fd_in, fd_pipe);
 		
-		// Parent is just saving fd_pipe[0] for next son execution and correctly closing pipes
 		else
 		{
-			if (dup2(fd_pipe[0], fd_in) < 0)	// Really important to protect syscalls using fd,
-				fatal(cmd);						// tests with wrong fds will be done during grademe
+			if (dup2(fd_pipe[0], fd_in) < 0)
+				fatal(cmd);		
 			close(fd_pipe[0]);
 			close(fd_pipe[1]);
 			++nb_wait;
-			tmp = find_next_pipe(tmp); // Goes to the next command to be executed, just after first pipe met
+			tmp = find_next_pipe(tmp);
 		}
 	}
 
-	//closing last dup2 that happen in the last parent loop tour
 	close(fd_in); 
 
-	//waiting for each command launched to bed executed
 	while (nb_wait-- >= 0)
 		waitpid(0, NULL, 0);
 	return (0);
@@ -186,8 +186,7 @@ int main(int ac, char **av, char **env)
 
 	while (++i < ac)
 	{
-		// cmd = command until next ";". i is increased of the size of cmd,
-		// av[i] will now be equal to next ";"
+
 		cmd = add_cmd(av, &i);
 		
 		if (cmd && !strcmp(cmd[0], "cd"))
