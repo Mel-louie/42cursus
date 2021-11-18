@@ -9,7 +9,7 @@
 	- <a href="#instal">Install</a>
 	- <a href="#play">Use</a>
 
--  <a href="#">Ressources</a>
+-  <a href="#ressources">Ressources</a>
 
 
 # Download, install and use
@@ -24,9 +24,8 @@ If everythings went fine, an executable (<i>EXE_NAME</i>) has been created.
 
 ```./<i>EXE_NAME</i>```
 
-# Ressouces
+<div id=ressources></div># Ressouces
 
-<h3><div id=></div></h3>
 
 <a href="https://fr.wikibooks.org/wiki/Programmation_C%2B%2B/Les_r%C3%A9f%C3%A9rences#Pourquoi_utiliser_une_r%C3%A9f%C3%A9rence_?">Pourquoi utiliser des references ?</a><br />
 <a href="https://www.youtube.com/watch?v=ipEiSEqY8lY">Surcharge d'opérateurs</a><br />
@@ -35,8 +34,6 @@ If everythings went fine, an executable (<i>EXE_NAME</i>) has been created.
 <a href="https://www.youtube.com/channel/UClwtSrNs_BCRHGs_ZSg4GbQ/playlists">MOOC EPFL Introduction à la programmation orientée objet (en C++)</a><br />
 <a href="https://www.youtube.com/watch?v=D12gsVK1y6g">Langage C++ #7 (virtualisation et abstraction)</a><br />
 <a href="https://www.youtube.com/watch?v=P8m4xqBcuos">Langage C++ #10 (les exceptions)</a><br />
-
-<h3><div id=></div></h3>
 
 <a href=""></a><br />
 <a href=""></a><br />
