@@ -2,16 +2,14 @@
 
 <b>CPP pool at 42. Try to swim! 🏊</b>
 
-
 <img src=""
      alt="">
 
 - Download, install and use
 	- <a href="#instal">Install</a>
 	- <a href="#play">Use</a>
-- Ressources
-	- <a href="#"></a>
-	- <a href="#"></a>
+
+-  <a href="#">Ressources</a>
 
 
 # Download, install and use
