@@ -24,9 +24,9 @@ If everythings went fine, an executable (<i>EXE_NAME</i>) has been created.
 
 ```./<i>EXE_NAME</i>```
 
-<div id=ressources></div>
-# Ressouces
 
+# Ressouces
+<div id=ressources></div>
 
 <a href="https://fr.wikibooks.org/wiki/Programmation_C%2B%2B/Les_r%C3%A9f%C3%A9rences#Pourquoi_utiliser_une_r%C3%A9f%C3%A9rence_?">Pourquoi utiliser des references ?</a><br />
 <a href="https://www.youtube.com/watch?v=ipEiSEqY8lY">Surcharge d'opérateurs</a><br />
