@@ -3,29 +3,42 @@ version: '3'
 
 services:
 
-	mariadb:
-		build:
-			context: requirements/mariadb
-		container_name: mariadb
-		image: mariadb
-		restart: always
-		#copy db on the host disk, cause the db needs to be persistant
-		volumes:
-			- /data/mysql:/var/lib/mysql
-		env_file:
-			- ./.env
+    mariadb:
+        environment:
+          - MYSQL_DATABASE=${MYSQL_DATABASE}
+          - MYSQL_USER=${MYSQL_USER}
+          - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+          - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        container_name: mariadb
+        build: requirements/mariadb
+        image: mariadb
+        #copy db on the host disk, cause the db needs to be persistant
+        volumes:
+          - /data/mysql:/var/lib/mysql
+        networks:
+          - docker_network
+        ports:
+          - "3306:3306"
+        restart: always
 
-	wordpress:
-		build:
-			context: requirements/wordpress
-		container_name: wordpress
-		image: wordpress
-		restart: always
-		volumes:
-			- /data/html:/var/www/html
-		env_fils:
-			./.env
-		depends_on:
-			- mariadb
-		links:
-			- mariadb
+
+    wordpress:
+        environment:
+          - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+          - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+          - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+          - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+          - WORDPRESS_TABLE_PREFIX= ${WORDPRESS_TABLE_PREFIX}
+        container_name: wordpress
+        build: requirements/wordpress
+        image: wordpress
+        depends_on:
+            - mariadb
+        networks:
+          - docker_network
+        ports:
+          - "9000:9000"
+        volumes:
+            - /data/html:/var/www/html
+        restart: always
+

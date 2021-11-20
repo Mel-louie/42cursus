@@ -1,5 +1,16 @@
 # Inception 🚧
 
+## Set up your vm
+
+- edit your /etc/hosts to accept 127.0.0.1 [your login].42.fr
+- creat a new user named after your login:
+    - sudo adduser login
+    - sudo usermod -aG sudo login
+    - sudo usermod -aG docker login
+    - sudo usermod -aG vboxsf login
+    - change current user: su login
+    - see if you've the right user: echo $USERNAME
+
 ## Ressources
 
 <a href="https://wiki.alpinelinux.org/wiki/Nginx">Config nginx Alpine</a> github user andreiglesias<br >
@@ -17,6 +28,7 @@ https://www.howtoforge.com/tutorial/dockerizing-wordpress-with-nginx-and-php-fpm
 
 ## Docker commands memo
 ```
+
 docker image build .
 --tag <image repository>:<image tag>    : tag (name) an image at the build:
 docker image build --tag nginx:packaged .
