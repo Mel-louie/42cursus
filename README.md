@@ -14,13 +14,16 @@ Every folder got a README with some infos (mostly in French) on the project inst
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap"> PUSH_SWAP </a>
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap_tester"> A tester I coded for PUSH_SWAP </a>
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_so_long">SO_LONG </a>
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_pipex">PIPEX </a>
 - RANK03
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank03_exam">Exam rank 03 </a>
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank03_Philosophers">Philosophers </a>
 - RANK04
   -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_cub3D">cub3D (2020 vers.) </a>
-  -  <a href="">Exam rank 04 </a>🚧
+  -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_CPP">Modules CPP </a>
+  -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_exam_microshell">Exam rank 04 </a>
 - RANK05
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_inception">Inception </a>🚧
- - Outside COMMON CORE
-    - <a href="https://github.com/Mel-louie/42cursus/tree/main/rn_42_libasm">LIBASM </a>
+  - <a href="">Exam rank 05 </a>🚧
+- Outside COMMON CORE
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rn_42_libasm">LIBASM </a>
