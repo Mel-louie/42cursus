@@ -2,15 +2,14 @@
 version: '3'
 
 services:
-
     mariadb:
         environment:
-          - MYSQL_DATABASE=${MYSQL_DATABASE}
-          - MYSQL_USER=${MYSQL_USER}
-          - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-          - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+          - MYSQL_DATABASE=$${MYSQL_DATABASE}
+          - MYSQL_USER=$${MYSQL_USER}
+          - MYSQL_PASSWORD=$${MYSQL_PASSWORD}
+          - MYSQL_ROOT_PASSWORD=$${MYSQL_ROOT_PASSWORD}
         container_name: mariadb
-        build: requirements/mariadb
+       # build: requirements/mariadb
         image: mariadb
         #copy db on the host disk, cause the db needs to be persistant
         volumes:
@@ -21,16 +20,15 @@ services:
           - "3306:3306"
         restart: always
 
-
     wordpress:
         environment:
-          - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
-          - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
-          - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
-          - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
-          - WORDPRESS_TABLE_PREFIX= ${WORDPRESS_TABLE_PREFIX}
+          - WORDPRESS_DB_HOST=$${WORDPRESS_DB_HOST}
+          - WORDPRESS_DB_NAME=$${WORDPRESS_DB_NAME}
+          - WORDPRESS_DB_USER=$${WORDPRESS_DB_USER}
+          - WORDPRESS_DB_PASSWORD=$${WORDPRESS_DB_PASSWORD}
+          - WORDPRESS_TABLE_PREFIX= $${WORDPRESS_TABLE_PREFIX}
         container_name: wordpress
-        build: requirements/wordpress
+     #   build: requirements/wordpress
         image: wordpress
         depends_on:
             - mariadb
@@ -42,3 +40,21 @@ services:
             - /data/html:/var/www/html
         restart: always
 
+    nginx:
+        container_name: nginx
+        build: requirements/nginx
+        image: nginx
+        depends_on:
+          - wordpress
+        networks:
+          - docker_network
+        ports:
+          #- "80:80"
+          - "443:443"
+        volumes:
+          - wordpress_data:/var/www/html/wordpress
+        restart: always
+
+networks:
+  docker_network:
+    driver: bridge

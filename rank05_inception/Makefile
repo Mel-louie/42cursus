@@ -28,24 +28,21 @@ COMPOSE_FILE=./srcs/docker-compose.yml
 all: run
 
 run:
-	@printf $(B_CYAN)"Creating folders for volumes...\n"$(_END)
+	@printf $(B_CYAN)"Creating folders for volumes...\n\n"$(_END)
 	@sudo mkdir -p /home/mdesfont/data/database
 	@sudo mkdir -p /home/mdesfont/data/wordpress
-	@printf "|"$(BK_GREEN)"                "$(_END)"|\n"
 	@docker-compose -f $(COMPOSE_FILE) up --build
 
 up:
-	@printf $(B_CYAN)"Creating folders for volumes...\n"$(_END)
+	@printf $(B_CYAN)"Creating folders for volumes...\n\n"$(_END)
 	@sudo mkdir -p /home/mdesfont/data/database
 	@sudo mkdir -p /home/mdesfont/data/wordpress
-	@printf "|"$(BK_GREEN)"                "$(_END)"|\n"
 	@docker-compose -f $(COMPOSE_FILE) up -d --build
 
 debug:
-	@printf $(B_CYAN)"Creating folders for volumes...\n"$(_END)
+	@printf $(B_CYAN)"Creating folders for volumes...\n\n"$(_END)
 	@sudo mkdir -p /home/mdesfont/data/database
 	@sudo mkdir -p /home/mdesfont/data/wordpress
-	@printf "|"$(BK_GREEN)"                "$(_END)"|\n"
 	@docker-compose -f $(COMPOSE_FILE) --verbose up
 
 list:
@@ -58,7 +55,7 @@ list_volumes:
 
 clean:
 	@printf $(B_RED)"Stopping containers...\n"$(_END)
-	@docker-copose -f $(COMPOSE_FILE) down
+	@docker-compose -f $(COMPOSE_FILE) down
 	@-docker stop `docker ps -qa`
 	@-docker rm `docker ps -qa`
 	@printf $(B_RED)"Deleting images...\n"$(_END)
