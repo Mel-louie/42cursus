@@ -2,6 +2,7 @@
 #include "Fwoosh.hpp"
 #include "Dummy.hpp"
 
+
 int main()
 {
   Warlock richard("Richard", "the Titled");
@@ -16,4 +17,5 @@ int main()
 
   richard.forgetSpell("Fwoosh");
   richard.launchSpell("Fwoosh", bob);
+  return 0;
 }
