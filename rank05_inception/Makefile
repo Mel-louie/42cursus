@@ -25,9 +25,9 @@ COMPOSE_FILE=./srcs/docker-compose.yml
 
 all:
 	@printf $(B_CYAN)"Launch docker-compose...\n\n"$(_END)
-#@sudo mkdir -p /home/mdesfont/data/wordpress
-#@sudo mkdir -p /home/mdesfont/data/mariadb
-	@docker-compose -f $(COMPOSE_FILE) up -d --build
+	@sudo mkdir -p /home/mdesfont/data/wordpress
+	@sudo mkdir -p /home/mdesfont/data/mariadb
+	@docker-compose -f $(COMPOSE_FILE) up 
 
 list:
 	@printf $(B_CYAN)"Listing all containers:\n"$(_END)
