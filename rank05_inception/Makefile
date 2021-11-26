@@ -48,7 +48,5 @@ clean:
 	@sudo docker system prune -a --force
 	@sudo rm -Rf ../../data/mariadb
 	@sudo rm -Rf ../../data/wordpress
-	@sudo mkdir ../../data/mariadb
-	@sudo mkdir ../../data/wordpress
 
 .PHONY: all list list_volumes clean
