@@ -1,22 +1,22 @@
 # Pull image base to create the container
 FROM debian:buster
 
-# Install mariadb and necessary pachages
-# purge and re-create /var/lib/mysql with appropriate ownership
-# ensure that /var/run/mysqld (used for socket and lock files) is writable regardless of the UID our mysqld instance ends up having at runtime
-
-RUN apt-get update && apt-get -y install mariadb-server mariadb-client \
+RUN apt-get update && apt-get install mariadb-server -y \
 && rm -rf /var/lib/apt/lists/* \
+# purge and re-create /var/lib/mysql with appropriate ownership
 && mkdir -p /var/run/mysqld \
 && chown -R mysql:mysql /var/run/mysqld \
+# ensure that /var/run/mysqld (used for socket and lock files) is writable regardless of the UID our mysqld instance ends up having at runtime
 && chmod 777 /var/run/mysqld
+
+COPY ./my.cnf /etc/mysql/mariadb.conf.d/
+COPY ./wp.sql /
+
+RUN service mysql start && mysql < wp.sql
+
+RUN rm -f wp.sql
 
 EXPOSE 3306
 
-COPY ./create_db.sh /usr/local/bin/
-COPY ./wordpress.sql /usr/local/bin/
-ENTRYPOINT ["create_db.sh"]
-
-#Command to launch mariadb and enable the database to listen globally
-CMD ["mysqld", "--bind-address=0.0.0.0"]
-
+#Command to launch mariadb 
+CMD /usr/bin/mysqld_safe

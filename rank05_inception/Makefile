@@ -21,29 +21,13 @@ B_WHITE		= "\033[1;37m"
 #	background	#
 BK_GREEN	= "\033[42m"
 
-#@printf $(BK_GREEN)"                "$(_END)
-
 COMPOSE_FILE=./srcs/docker-compose.yml
 
-all: run
-
-run:
-	@printf $(B_CYAN)"Creating folders for volumes...\n\n"$(_END)
-	@sudo mkdir -p /home/mdesfont/data/database
-	@sudo mkdir -p /home/mdesfont/data/wordpress
-	@docker-compose -f $(COMPOSE_FILE) up --build
-
-up:
-	@printf $(B_CYAN)"Creating folders for volumes...\n\n"$(_END)
-	@sudo mkdir -p /home/mdesfont/data/database
-	@sudo mkdir -p /home/mdesfont/data/wordpress
+all:
+	@printf $(B_CYAN)"Launch docker-compose...\n\n"$(_END)
+#@sudo mkdir -p /home/mdesfont/data/wordpress
+#@sudo mkdir -p /home/mdesfont/data/mariadb
 	@docker-compose -f $(COMPOSE_FILE) up -d --build
-
-debug:
-	@printf $(B_CYAN)"Creating folders for volumes...\n\n"$(_END)
-	@sudo mkdir -p /home/mdesfont/data/database
-	@sudo mkdir -p /home/mdesfont/data/wordpress
-	@docker-compose -f $(COMPOSE_FILE) --verbose up
 
 list:
 	@printf $(B_CYAN)"Listing all containers:\n"$(_END)
@@ -54,19 +38,17 @@ list_volumes:
 	 docker volume ls
 
 clean:
-	@printf $(B_RED)"Stopping containers...\n"$(_END)
+	@printf $(B_RED)"Stopping containers, deleting images, volumes and network...\n"$(_END)
 	@docker-compose -f $(COMPOSE_FILE) down
-	@-docker stop `docker ps -qa`
-	@-docker rm `docker ps -qa`
-	@printf $(B_RED)"Deleting images...\n"$(_END)
-	@-docker rmi -i `docker images -qa`
-	@printf "$(B_RED)Deleting all volumes ... $(RESET)"
-	@-docker volume rm `docker volume ls -q`
-	@printf "$(B_RED)Deleting all network ... $(RESET)"
-	@-docker network rm `docker network ls -q`
-	@printf "$(B_RED)Deleting all data ... $(RESET)"
-	@sudo rm -rf /home/mdesfont/data/wordpress
-	@sudo rm -rf /home/mdesfont/data/database
-	@printf "$(B_RED)Deleting all $(RESET)"
+	@sudo docker rmi -f $(sudo docker images -qa)
+	@sudo docker rm -f $(sudo docker ps -qa)
+	@sudo docker rm -f $(sudo docker ps -ls)
+	@sudo docker volume rm $(sudo docker volume ls -q)
+	@sudo docker system prune -a --volume
+	@sudo docker system prune -a --force
+	@sudo rm -Rf ../../data/mariadb
+	@sudo rm -Rf ../../data/wordpress
+	@sudo mkdir ../../data/mariadb
+	@sudo mkdir ../../data/wordpress
 
-.PHONY: run up debug list list_volumes clean
+.PHONY: all list list_volumes clean
