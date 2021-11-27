@@ -1,9 +1,18 @@
--- Create a user to interact with the database, then create a database
+-- Create a database and then a user to interact with
 
-CREATE DATABASE IF NOT EXISTS `db_name`
+-- CREATE DATABASE IF NOT EXISTS wordpress;
+-- CREATE USER 'mel'@'mdesfont';
+-- SET PASSWORD FOR 'mel'@'mdesfont' = PASSWORD('password');
+-- GRANT ALL PRIVILEGES ON wordpress.* TO 'mel'@'mdesfont' IDENTIFIED BY 'password';
+-- GRANT ALL ON wordpress.* to 'mel'@'%' IDENTIFIED BY 'password';
+
+CREATE DATABASE IF NOT EXISTS wordpress
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE db_name;
+USE wordpress;
 
+-- --------------------------------------------------------
 
-CREATE USER 'user'@'%' IDENTIFIED BY 'user';
-GRANT ALL PRIVILEGES ON *.* TO 'user'@'%' WITH GRANT OPTION;
+CREATE USER 'mel'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'mel'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;

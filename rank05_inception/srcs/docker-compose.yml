@@ -1,73 +1,34 @@
-#docker-compose version, the 3 is the most use
-
-version: "3.5"
-
-networks:
-        localhost:
-                name: inception
-
-volumes:
-        wordpress:
-                name: wordpress
-                driver: local
-                driver_opts:
-                        device: /home/mdesfont/data/wordpress
-                        o: bind
-                        type: none
-        mariadb:
-                name: mariadb
-                driver: local
-                driver_opts:
-                        device: /home/mdesfont/data/mariadb
-                        o: bind
-                        type: none
-
+version: "3"
 
 services:
-        nginx:
-                # depends_on:
-                #         - wordpress
-                container_name: nginx
-                build: ./requirements/nginx
-                ports:
-                        - "443:443"
-                volumes:
-                        - wordpress:/var/www/wordpress
-                networks:
-                        - localhost
-                restart: always
+  mariadb:
+    build: ./requirements/mariadb/
+    restart: always
+    volumes:
+      - ${WEBROOT_PATH}/mariadb/:/var/db/mysql/
+    networks:
+      - default
 
-        mariadb:  
-                container_name: mariadb
-                environment:
-                  - MYSQL_DATABASE=$${MYSQL_DATABASE}
-                  - MYSQL_USER=$${MYSQL_USER}
-                  - MYSQL_PASSWORD=$${MYSQL_PASSWORD}
-                  - MYSQL_ROOT_PASSWORD=$${MYSQL_ROOT_PASSWORD}
-                build: ./requirements/mariadb
-                ports:
-                  - "3306:3306"
-                volumes:
-                        - mariadb:/var/lib/mysql
-                networks:
-                        - localhost
-                restart: always
+  wordpress:
+    build: ./requirements/wordpress/
+    volumes:
+      - ${WEBROOT_PATH}/:/var/www/
+    restart: always
+    networks:
+      - default
 
-        wordpress:
-                depends_on:
-                        - mariadb
-                container_name: wordpress
-                environment:
-                  - WORDPRESS_DB_HOST=$${WORDPRESS_DB_HOST}
-                  - WORDPRESS_DB_NAME=$${WORDPRESS_DB_NAME}
-                  - WORDPRESS_DB_USER=$${WORDPRESS_DB_USER}
-                  - WORDPRESS_DB_PASSWORD=$${WORDPRESS_DB_PASSWORD}
-                  - WORDPRESS_TABLE_PREFIX= $${WORDPRESS_TABLE_PREFIX}
-                build: ./requirements/wordpress
-                ports:
-                  - "9000:9000"
-                volumes:
-                        - wordpress:/var/www/wordpress
-                networks:
-                        - localhost
-                restart: always
+
+  nginx:
+    depends_on:
+      - wordpress
+    build: ./requirements/nginx/
+    ports:
+      - "443:443"
+    volumes:
+      - ${WEBROOT_PATH}/:/var/www/
+    restart: always
+    networks:
+      - default
+
+networks:
+  default:

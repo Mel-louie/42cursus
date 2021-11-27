@@ -23,30 +23,33 @@ BK_GREEN	= "\033[42m"
 
 COMPOSE_FILE=./srcs/docker-compose.yml
 
-all:
+all: up
+
+up:
 	@printf $(B_CYAN)"Launch docker-compose...\n\n"$(_END)
 	@sudo mkdir -p /home/mdesfont/data/wordpress
 	@sudo mkdir -p /home/mdesfont/data/mariadb
-	@docker-compose -f $(COMPOSE_FILE) up --build
+	@docker-compose -f $(COMPOSE_FILE) up --build --remove-orphans
+
+detatch:
+	@printf $(B_CYAN)"Launch docker-compose...\n\n"$(_END)
+	@docker-compose -f $(COMPOSE_FILE) up --build -d --remove-orphans
+
+down:
+	@printf $(B_RED)"Down docker-compose\n"$(_END)
+	@docker-compose -f $(COMPOSE_FILE) down
+
 
 list:
 	@printf $(B_CYAN)"Listing all containers:\n"$(_END)
-	 docker ps -a
+	@docker ps -a
 
 list_volumes:
 	@printf $(B_CYAN)"Listing all volumes:\n"$(_END)
-	 docker volume ls
+	@docker volume ls
 
 clean:
-	@printf $(B_RED)"Stopping containers, deleting images, volumes and network...\n"$(_END)
-	@docker-compose -f $(COMPOSE_FILE) down
-	@sudo docker rmi -f $(sudo docker images -qa)
-	@sudo docker rm -f $(sudo docker ps -qa)
-	@sudo docker rm -f $(sudo docker ps -ls)
-	@sudo docker volume rm $(sudo docker volume ls -q)
-	@sudo docker system prune -a --volume
-	@sudo docker system prune -a --force
-	@sudo rm -Rf ../../data/mariadb
-	@sudo rm -Rf ../../data/wordpress
+	@rm -rf /home/mdesfont/data/wordpress
+	@rm -rf /home/mdesfont/data/mariadb
 
-.PHONY: all list list_volumes clean
+.PHONY: up down list list_volumes clean

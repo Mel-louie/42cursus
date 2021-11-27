@@ -1,35 +1,31 @@
-# FROM debian:buster
-
-# RUN apt-get update && apt-get upgrade \
-# && apt-get -y install wget php7.3-fpm php7.3-mysql php-mbstring php-zip && \
-# rm -rf /var/lib/apt/lists/*
-
-# COPY www.conf /var/www/html/
-
-# COPY wordpress.sh /usr/local/bin
-
-# RUN mkdir /run/php
-
-# ENTRYPOINT [ "wordpress.sh" ]
-
-# #WORKDIR /var/www/html/
-
-# EXPOSE 9000
-
-# CMD [ "/usr/sbin/php-fpm7.3", "-F" ]
-
 FROM debian:buster
 
-RUN apt-get update && apt-get -y install wget php7.3 php-mysqli php-fpm mariadb-client \
-&& wget -c http://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && rm -rf latest.tar.gz
+RUN apt-get update && \
+	apt-get upgrade -y
 
-RUN rm -f /var/www/wordpress/wp-config-sample.php
+RUN apt-get install -y php-fpm php-mysql
 
-COPY ./wp-config.php ./var/www/wordpress/
+WORKDIR /tmp/
+ENV BUILDDIR=/tmp/build/
+RUN mkdir ${BUILDDIR}
+
+COPY srcs/ ${WORKDIR}
+
+RUN mkdir -p /run/php
+
+RUN tar xzf latest.tar.gz --directory ${BUILDDIR} && \
+	mv wp-config.php ${BUILDDIR} && \
+	mv index.php ${BUILDDIR}
 
 
-COPY ./www.conf /etc/php/7.3/fpm/pool.d
+RUN chmod -R 777 ${BUILDDIR}
 
-RUN mkdir ./run/php/
+EXPOSE 9000
+RUN sed 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 0.0.0.0:9000/' -i /etc/php/7.3/fpm/pool.d/www.conf
 
-CMD ./usr/sbin/php-fpm7.3 -F
+RUN chmod 777 wp-cli.phar && \
+	mv wp-cli.phar /usr/local/bin/wp-cli
+
+CMD cp -a ${BUILDDIR}. /var/www/ && \
+	wp-cli core install --allow-root --title="Wordpress" --admin_name="mel" --admin_password="password" --admin_email="coucou.coucou@coucou.com" --path="/var/www/wordpress/" --url="https://mdesfont.42.fr/wordpress" && \
+	php-fpm7.3 -F -R
