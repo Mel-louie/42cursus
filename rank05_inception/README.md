@@ -13,18 +13,26 @@
 
 ## Ressources
 
-<a href="https://wiki.alpinelinux.org/wiki/Nginx">Config nginx Alpine</a> github user andreiglesias<br >
-<a href="https://alpinelinux.org/releases/">Last Alpine Linux releases</a><br >
 <a href="https://www.freecodecamp.org/news/the-docker-handbook/">The Docker Handbook – 2021 Edition, freecodecamp</a><br >
 <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a>
-https://medium.com/swlh/wordpress-deployment-with-nginx-php-fpm-and-mariadb-using-docker-compose-55f59e5c1a
-https://openclassrooms.com/fr/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker/6211677-creez-un-fichier-docker-compose-pour-orchestrer-vos-conteneurs
-<br />
-<br />
-<br />
-https://github.com/mjstealey/wordpress-nginx-docker
-https://github.com/stevenliebregt/docker-compose-lemp-stack
-https://www.howtoforge.com/tutorial/dockerizing-wordpress-with-nginx-and-php-fpm/
+
+
+## Commands memo
+```
+* open bash and check the wordpress database:
+docker exec -it [database_container_name] bash
+mysql -u root -p
+
+* or:
+docker exec -it [database_container_name] mysql --user=superuser --password
+
+- show databases;
+- use [database_name]
+- show tables;
+
+```
+
+
 
 ## Docker commands memo
 ```

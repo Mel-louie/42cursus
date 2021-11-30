@@ -3,7 +3,11 @@ version: "3"
 services:
   mariadb:
     build: ./requirements/mariadb/
+    image: 42mariadb
+    container_name: mariadb
     restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - ${WEBROOT_PATH}/mariadb/:/var/db/mysql/
     networks:
@@ -11,6 +15,8 @@ services:
 
   wordpress:
     build: ./requirements/wordpress/
+    image: 42wordpress
+    container_name: wordpress
     volumes:
       - ${WEBROOT_PATH}/:/var/www/
     restart: always
@@ -22,6 +28,8 @@ services:
     depends_on:
       - wordpress
     build: ./requirements/nginx/
+    image: 42nginx
+    container_name: nginx
     ports:
       - "443:443"
     volumes:

@@ -52,4 +52,4 @@ clean:
 	@rm -rf /home/mdesfont/data/wordpress
 	@rm -rf /home/mdesfont/data/mariadb
 
-.PHONY: up down list list_volumes clean
+.PHONY: up detatch down list list_volumes clean

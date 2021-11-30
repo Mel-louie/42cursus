@@ -18,4 +18,4 @@ RUN sed 's/bind-address            = 127.0.0.1/bind-address            = 0.0.0.0
 
 EXPOSE 3306
 
-CMD mysqld
+CMD ["mysqld"]
