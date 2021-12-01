@@ -26,14 +26,22 @@ COMPOSE_FILE=./srcs/docker-compose.yml
 all: up
 
 up:
-	@printf $(B_CYAN)"Launch docker-compose...\n\n"$(_END)
+	@printf $(B_CYAN)"Launching docker-compose\n\n"$(_END)
 	@sudo mkdir -p /home/mdesfont/data/wordpress
 	@sudo mkdir -p /home/mdesfont/data/mariadb
 	@docker-compose -f $(COMPOSE_FILE) up --build --remove-orphans
 
 detatch:
-	@printf $(B_CYAN)"Launch docker-compose...\n\n"$(_END)
+	@printf $(B_CYAN)"Launching docker-compose detatch mode\n\n"$(_END)
 	@docker-compose -f $(COMPOSE_FILE) up --build -d --remove-orphans
+
+stop:
+	@printf $(B_RED)"Stoping containers\n"$(_END)
+	@docker-compose -f $(COMPOSE_FILE) stop
+
+start:
+	@printf $(B_GREEN)"Starting containers\n"$(_END)
+	@docker-compose -f $(COMPOSE_FILE) start
 
 down:
 	@printf $(B_RED)"Down docker-compose\n"$(_END)

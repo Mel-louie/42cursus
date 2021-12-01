@@ -3,7 +3,7 @@ version: "3"
 services:
   mariadb:
     build: ./requirements/mariadb/
-    image: 42mariadb
+    image: mariadb
     container_name: mariadb
     restart: always
     environment:
@@ -15,7 +15,7 @@ services:
 
   wordpress:
     build: ./requirements/wordpress/
-    image: 42wordpress
+    image: wordpress
     container_name: wordpress
     volumes:
       - ${WEBROOT_PATH}/:/var/www/
@@ -28,7 +28,7 @@ services:
     depends_on:
       - wordpress
     build: ./requirements/nginx/
-    image: 42nginx
+    image: nginx
     container_name: nginx
     ports:
       - "443:443"
