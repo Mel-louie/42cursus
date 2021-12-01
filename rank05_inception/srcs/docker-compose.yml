@@ -1,5 +1,19 @@
 version: "3"
 
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      device: /home/mdesfont/data/database
+      type: volume
+      o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      device: /home/mdesfont/data/wordpress
+      type: volume
+      o: bind
+
 services:
   mariadb:
     build: ./requirements/mariadb/
@@ -7,9 +21,9 @@ services:
     container_name: mariadb
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=$${MYSQL_ROOT_PASSWORD}
     volumes:
-      - ${WEBROOT_PATH}/mariadb/:/var/db/mysql/
+      - mariadb:/var/db/database/
     networks:
       - default
 
@@ -18,7 +32,7 @@ services:
     image: wordpress
     container_name: wordpress
     volumes:
-      - ${WEBROOT_PATH}/:/var/www/
+      - wordpress:/var/www/
     restart: always
     networks:
       - default
@@ -33,7 +47,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ${WEBROOT_PATH}/:/var/www/
+      - wordpress:/var/www/
     restart: always
     networks:
       - default

@@ -28,12 +28,12 @@ all: up
 up:
 	@printf $(B_CYAN)"Launching docker-compose\n\n"$(_END)
 	@sudo mkdir -p /home/mdesfont/data/wordpress
-	@sudo mkdir -p /home/mdesfont/data/mariadb
-	@docker-compose -f $(COMPOSE_FILE) up --build --remove-orphans
-
-detatch:
-	@printf $(B_CYAN)"Launching docker-compose detatch mode\n\n"$(_END)
+	@sudo mkdir -p /home/mdesfont/data/database
 	@docker-compose -f $(COMPOSE_FILE) up --build -d --remove-orphans
+
+nondetatch:
+	@printf $(B_CYAN)"Launching docker-compose detatch mode\n\n"$(_END)
+	@docker-compose -f $(COMPOSE_FILE) up --build --remove-orphans
 
 stop:
 	@printf $(B_RED)"Stoping containers\n"$(_END)
@@ -57,7 +57,7 @@ list_volumes:
 	@docker volume ls
 
 clean:
-	@rm -rf /home/mdesfont/data/wordpress
-	@rm -rf /home/mdesfont/data/mariadb
+	@sudo rm -rf /home/mdesfont/data/wordpress
+	@sudo rm -rf /home/mdesfont/data/database
 
-.PHONY: up detatch down list list_volumes clean
+.PHONY: up nondetatch down list list_volumes clean
