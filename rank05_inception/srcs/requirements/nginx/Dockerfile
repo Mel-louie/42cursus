@@ -20,7 +20,7 @@ RUN rm -rf /etc/nginx/sites-enabled/* && \
 	mv nginx.conf /etc/nginx/sites-available/nginx.conf && \
 	ln -fs /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
 
-RUN mv index.html ${BUILDDIR}
+RUN mv index.html ${BUILDDIR} && mv style.css ${BUILDDIR}
 
 EXPOSE 443
 
