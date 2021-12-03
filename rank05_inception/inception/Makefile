@@ -63,10 +63,9 @@ down: stop
 
 re:		down all
 
-prune:	down
-	@printf $(B_RED)"Docker prune and rm -rf persistents directories\n"$(_END)
-	@docker system prune --volumes --force --all
+volume:
+	@printf $(B_RED)"Docker rm -rf persistents directories\n"$(_END)
 	@sudo $(RM) $(WP_HOST_VOLUME_PATH)
 	@sudo $(RM) $(MYSQL_HOST_VOLUME_PATH)
 
-.PHONY: all build up stop down re prune start
+.PHONY: all build up stop down re volume start
