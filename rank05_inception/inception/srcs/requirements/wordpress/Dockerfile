@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.14
 
 RUN			apk update && apk upgrade && apk add --no-cache		\
 											php7				\
@@ -26,11 +26,11 @@ WORKDIR		/var/www/wordpress
 ENV			MYSQL_DATABASE="wordpress"			\
 			MYSQL_USER="wordpress"				\
 			MYSQL_PASSWORD="wordpress"			\
-			MYSQL_HOST="mariadb"					\
+			MYSQL_HOST="mariadb"				\
 			MYSQL_PORT=3306						\
-													\
+												\
 			WP_URL="mdesfont.42.fr"				\
-			WP_TITLE="inception"			\
+			WP_TITLE="inception"				\
 			WP_ADMIN_USER="mel"					\
 			WP_ADMIN_PWD="pass"					\
 			WP_ADMIN_EMAIL="mel@aaa.com"

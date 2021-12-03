@@ -5,11 +5,11 @@ services:
     depends_on:
       - mariadb
     build:
-      context: ./wordpress
+      context: ./requirements/wordpress
     networks:
       - default
     image: wordpress
-    container_name: "inception_wordpress"
+    container_name: "wordpress"
     environment:
       - WP_URL=https://${DOMAIN_NAME}
       - WP_DATABASE=${WP_DATABASE}
@@ -23,15 +23,15 @@ services:
       - MYSQL_PORT=${MYSQL_PORT}
       - PHP_FPM_PORT=${PHP_FPM_PORT}
     volumes:
-      - wordpress-volume:/var/www/wordpress
+      - wordpress:/var/www/wordpress
     restart: unless-stopped
 
   mariadb:
     build:
-      context: ./mariadb
+      context: ./requirements/mariadb
     networks:
       - default
-    container_name: "inception_mariadb"
+    container_name: "mariadb"
     image: mariadb
     environment:
       - MYSQL_USER=${MYSQL_USER}
@@ -39,15 +39,15 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_PORT=${MYSQL_PORT}
     volumes:
-      - mariadb-volume:/var/lib/mysql
+      - mariadb:/var/lib/mysql
     restart: unless-stopped 
 
   nginx:
     build:
-      context: ./nginx
+      context: ./requirements/nginx
     networks:
       - default
-    container_name: "inception_nginx"
+    container_name: "nginx"
     image: nginx
     ports:
       - "443:443"
@@ -60,22 +60,21 @@ services:
       - VIRTUAL_PORT=443
       - VIRTUAL_HOST=${DOMAIN_NAME}
     volumes:
-      - wordpress-volume:/var/www/wordpress
+      - wordpress:/var/www/wordpress
     restart: unless-stopped 
 
 networks:
   default:
-    external:
-      name: inception_network
+      name: inception
 
 volumes:
-  mariadb-volume:
+  mariadb:
     driver: local
     driver_opts:
       type: none
       device: ${MYSQL_HOST_VOLUME_PATH}
       o: bind
-  wordpress-volume:
+  wordpress:
     driver: local
     driver_opts:
       type: none
