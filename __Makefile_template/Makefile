@@ -1,4 +1,5 @@
 NAME = makefile_template
+SNAME = makefile_template
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -28,6 +29,7 @@ SRCS_FILE		= main.c
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
+SOBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
 #SRCS_BONUS		= $(addprefix $(SRCS_DIR_BONUS), $(SRCS_FILE_BONUS))
 #OBJS_BONUS		= $(addprefix $(OBJS_DIR_BONUS), $(SRCS_FILE_BONUS:.c=.o))
 
@@ -43,7 +45,8 @@ LIBFT			= $(LIBFT_DIR)libft.a
 #INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS) $(LIBFT_DIR)
 #HEADER_BONUS	= $(INCLUDES_DIR_BONUS)cub3d_bonus.h
 
-CFLAGS			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -O3 -g3
+SANIT			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
 CC				= clang
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
@@ -72,6 +75,30 @@ $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
 #	@printf $<
 #	@printf "\r"
 	@printf $(BC_GREEN)"   "$(_END)
+
+sanitize:
+	@$(MAKE) $(LIBFT)
+	@printf "[ "$(B_GREEN)"building"$(_END) 
+	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
+	@$(MAKE) $(SNAME)
+	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
+
+$(OBJS_DIR):
+	@mkdir $@
+
+$(LIBFT):
+	@$(MAKE) -sC $(LIBFT_DIR)
+	
+
+$(SNAME): $(OBJS_DIR) $(OBJS)
+	@$(CC) $(SANIT) $(OBJS) $(LIBFT) -o $(SNAME)
+
+$(SOBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
+	@$(CC) $(SANIT) $(INCLUDES) -c $< -o $@
+#	@printf $<
+#	@printf "\r"
+	@printf $(BC_GREEN)"   "$(_END)
+
 
 clean:
 	@$(MAKE) -sC $(LIBFT_DIR) clean
