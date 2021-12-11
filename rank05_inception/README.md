@@ -11,14 +11,23 @@
     - change current user: su login
     - see if you've the right user: echo $USERNAME
 
+- install/update docker-compose : https://docs.docker.com/compose/install/
+
+- stop nginx and mysql if they are set by default:
+    - sudo service nginx stop
+    - sudo service mysql stop
+
+- clean all before a correction: 
+    - docker stop $(docker ps -qa); docker rm $(docker ps -qa); docker rmi -f $(docker images -qa); docker volume rm $(docker volume ls -q); docker network rm $(docker network ls -q) 2>/dev/null
+
 ## Ressources
 
 <a href="https://www.freecodecamp.org/news/the-docker-handbook/">The Docker Handbook – 2021 Edition, freecodecamp</a><br >
 <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a>
 
-
-## Commands memo
+## Docker commands memo
 ```
+
 * open bash and check the wordpress database:
 docker exec -it [database_container_name] bash
 mysql -u root -p
@@ -29,13 +38,6 @@ docker exec -it [database_container_name] mysql --user=superuser --password
 - show databases;
 - use [database_name]
 - show tables;
-
-```
-
-
-
-## Docker commands memo
-```
 
 docker image build .
 --tag <image repository>:<image tag>    : tag (name) an image at the build:
