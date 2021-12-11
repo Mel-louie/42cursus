@@ -28,10 +28,8 @@ OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 
 SRCS_FILE		= main.cpp
 
-SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 
-SRCS_DIR		= ./srcs/
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
 
@@ -54,10 +52,8 @@ $(OBJS_DIR):
 $(NAME): $(OBJS_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
+$(OBJS): $(OBJS_DIR)%.o: %.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-#	@printf $<
-#	@printf "\r"
 	@printf $(BK_GREEN)"       "$(_END)
 
 clean:
