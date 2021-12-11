@@ -56,9 +56,7 @@ $(NAME): $(OBJS_DIR) $(OBJS)
 
 $(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-#	@printf $<
-#	@printf "\r"
-	@printf $(BK_GREEN)"       "$(_END)
+	@printf $(BK_GREEN)" "$(_END)
 
 clean:
 	@rm -rf $(OBJ)
