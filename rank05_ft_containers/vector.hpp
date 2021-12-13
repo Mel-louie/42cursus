@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/13 16:41:40 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/12/13 18:08:10 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 # define VECTOR_CPP
 
 # include <iostream>
+# include "vector_iterator.hpp"
 
-namespace ft
+class iterator;
+
+namespace	ft
 {
-	/**---------------------------------**/
-	/**				VECTOR				**/
-	/**---------------------------------**/
-
-    /*   @param T        Type of container's elements.				*/
-    /*   @param Alloc    Object used to manage the vector' storage.	*/
+	/*--------------------------------------------------------*/
+	/*---------------------- FT::VECTOR ----------------------*/
+	/*
+    *   @param T        Type of container's elements.
+    *   @param Alloc    Object used to manage the vector' storage.
+	*/
 
 	template <typename T, class Alloc = std::allocator<T> >
 	class Vector
 	{
 
-	/**				Attributes			**/
+	/*							Attributes					*/
 	private:
 		Alloc	_alloc;			// Copy of allocation type object
 		size_t _size;
@@ -37,26 +40,29 @@ namespace ft
 
     public:
 
-	/**				Aliases				**/
-	
+	/*							Aliases						*/
 	typedef	Alloc	allocator_type;
 	typedef	T		value_type;
 	typedef	size_t	size_type;
 
-	/**				Constructors		**/
-	/*   Default constructor							*/
-    /*   Construct an empty container with 0 element	*/
-	/*   @param alloc 		is use for the allocation	*/
+	/*							Constructors				*/
+	/*
+	*   Default constructor
+    *   Construct an empty container with 0 element		*
+	*   @param alloc 		is use for the allocation
+	*/
 		explicit	Vector(const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(0), _capacity(0)
 		{
 			_vector = _alloc.allocate(_capacity);
 		}
 
-	/*   Fill constructor									*/
-    /*   @param n		the number of elements to create	*/
-	/*   @param val 	the value used by default for init	*/
-	/*   @param alloc 	the allocation						*/
+	/*   
+	*	Fill constructor
+    *   @param n		the number of elements to create
+	*   @param val 	the value used by default for init
+	*   @param alloc 	the allocation
+	*/
 		explicit Vector (size_type n, const value_type& val = value_type(),
 			const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(n), _capacity(n)
@@ -67,10 +73,12 @@ namespace ft
 				_alloc.construct(&_vector[i], val);
 		}
 
-	/*   Range constructor									*/
-    /*   @param first		begining of the range			*/
-	/*   @param last 	end of the range					*/
-	/*   @param alloc 	the allocation						*/
+	/*
+	*	Range constructor
+    *   @param first	begining of the range
+	*   @param last 	end of the range
+	*   @param alloc 	the allocation
+	*/
 		template <class InputIterator>
 		Vector (InputIterator first, InputIterator last,
 			const allocator_type& alloc = allocator_type()):
@@ -88,8 +96,10 @@ namespace ft
 			
 		}
 
-	/*   Copy constructor									*/
-    /*   @param x	object to be copied						*/
+	/*
+	*	Copy constructor
+    *   @param x	object to be copied
+	*/
 		Vector	(const Vector &x): _alloc(x._alloc), _size(x._size),
 			_capacity(x._capacity)
 		{
@@ -99,10 +109,12 @@ namespace ft
 				_alloc.construct(&_vector[i], &x._vector[i]);
 		}
 
-	/*	Destuctor											*/
-	/*	destroys all container elements, and deallocates	*/
-	/*	all the storage capacity allocated by the vector	*/
-	/*	using its allocator									*/
+	/*
+	*	Destuctor
+	*	destroys all container elements, and deallocates
+	*	all the storage capacity allocated by the vector
+	*	using its allocator
+	*/
 		~Vector()
 		{
 			
