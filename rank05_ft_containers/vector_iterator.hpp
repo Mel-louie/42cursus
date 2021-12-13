@@ -6,7 +6,11 @@
 /*   By: mdesfont <mdesfont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:24:04 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/13 17:24:05 by mdesfont         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:30:11 by mdesfont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef VECTOR_ITERATOR_HPP
+# define VECTOR_ITERATOR_HPP
+
+#endif
