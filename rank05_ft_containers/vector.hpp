@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/14 11:36:32 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/14 12:30:42 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ namespace	ft
 	*/
 		~Vector()
 		{
-			
+			iterator_type *i;
+			(void)i;
 		}
 
 	/*

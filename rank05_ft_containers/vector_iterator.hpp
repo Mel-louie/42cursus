@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:24:04 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/14 12:17:05 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/14 12:32:46 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,30 @@
 # include <iostream>
 # include <string>
 
+/*--------------------------------------------------------*/
+/*----------------- FT::VECTOR_ITERATOR ------------------*/
+
 namespace	ft
 {
 	/*--------------------------------------------------------*/
-	/*----------------- FT::VECTOR_ITERATOR ------------------*/
+	/*---------------------- iterator ------------------------*/
 	/*
-    *   @param T        Type of container's elements.
-    *   @param Alloc    Object used to manage the vector' storage.
+	* To avoid code duplication, iterator class is a template
+	* class and can be parametrized by "value type" (see below):
+	* typedef	iterator<int*> iterator_type;
+	* typedef	iterator<const int*> const_iterator_type;
+	*
+	*	@param T        Type of container's elements.
 	*/
-
 	template <typename T>
 	class iterator
 	{
 
-	/*							Attributes					*/
+	/*							Attribute					*/
 	private:
 		T	*_ptr;
 
 	public:
-	/*							Aliases						*/
-		
-	
 	/*							Coplien's form				*/
 
 		iterator(int *x): _ptr(x) {}
@@ -100,8 +103,9 @@ namespace	ft
 			iterator newIt(x);
 			return (newIt -= nb);
 		}
-		
 	};
+	typedef	iterator<int*> iterator_type;
+	typedef	iterator<const int*> const_iterator_type;
 }
 
 #endif
