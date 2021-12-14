@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:23:52 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/06 16:46:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/12/14 12:59:22 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	Span::addNumbers( std::vector<int>::const_iterator start, std::vector<int>:
 	}
 }
 
-void	Span::addVector( const std::vector<int>& v )
+void	Span::addvector( const std::vector<int>& v )
 {
 	try
 	{

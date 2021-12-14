@@ -6,18 +6,18 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:24:04 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/14 12:32:46 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/14 13:18:18 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_ITERATOR_HPP
-# define VECTOR_ITERATOR_HPP
+#ifndef vector_ITERATOR_HPP
+# define vector_ITERATOR_HPP
 
 # include <iostream>
 # include <string>
 
 /*--------------------------------------------------------*/
-/*----------------- FT::VECTOR_ITERATOR ------------------*/
+/*----------------- FT::vector_ITERATOR ------------------*/
 
 namespace	ft
 {
@@ -104,8 +104,8 @@ namespace	ft
 			return (newIt -= nb);
 		}
 	};
-	typedef	iterator<int*> iterator_type;
-	typedef	iterator<const int*> const_iterator_type;
+	// typedef	iterator<int*> iterator_type;
+	// typedef	iterator<const int*> const_iterator_type;
 }
 
 #endif

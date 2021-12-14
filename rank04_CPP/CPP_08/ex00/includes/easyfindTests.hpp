@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfindTests.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:07:56 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/06 12:36:46 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/12/14 12:59:22 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

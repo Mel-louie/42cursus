@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/14 12:10:57 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/14 13:15:26 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main( void )
 {
-	ft::Vector<int>	Vtest(10, 42);
+	ft::vector<int>	Vtest(10, 42);
 	return ( 0 );
 }
 
@@ -102,7 +102,7 @@ int	main( void )
 // 		{
 // 			const int idx = rand() % COUNT;
 // 			vector_buffer.at(idx);
-// 			std::cerr << "Error: THIS VECTOR SHOULD BE EMPTY!!" <<std::endl;
+// 			std::cerr << "Error: THIS vector SHOULD BE EMPTY!!" <<std::endl;
 // 		}
 // 	}
 // 	catch(const std::exception& e)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:29:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/06 16:55:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/12/14 12:59:22 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main( void )
 
 	try
 	{
-		bigSpan.addVector(v); // add the vector of 20000nb in bigSpan
+		bigSpan.addvector(v); // add the vector of 20000nb in bigSpan
 		std::cout << "shortestSpan: ";
 		std::cout << bigSpan.shortestSpan() << std::endl;
 		std::cout << "longestSpan: ";

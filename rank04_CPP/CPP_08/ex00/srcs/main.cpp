@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:29:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/06 12:36:08 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/12/14 12:59:22 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 int	main( void )
 {	
 	std::deque<int>	contDeque;
-	std::vector<int>	contVector;
+	std::vector<int>	contvector;
 	std::list<int>	contList;
 	std::set<int>	contSet;
 
@@ -33,8 +33,8 @@ int	main( void )
 	test( contDeque, 1, 2, 42 ); std::cout << std::endl;
 	std::cout << "<---=================================================================--->\n" << std::endl;
 
-	std::cout << "<--- TEST WITH AN INT ARRAY IN VECTOR CONTAINER, to find 33, 3 and 26 --->" << std::endl;
-	test( contVector, 33, 3, 26 ); std::cout << std::endl;
+	std::cout << "<--- TEST WITH AN INT ARRAY IN vector CONTAINER, to find 33, 3 and 26 --->" << std::endl;
+	test( contvector, 33, 3, 26 ); std::cout << std::endl;
 	std::cout << "<---=================================================================--->\n" << std::endl;
 	
 	std::cout << "<--- TEST WITH AN INT ARRAY IN LIST CONTAINER, to find 15, 4 and 28 --->" << std::endl;

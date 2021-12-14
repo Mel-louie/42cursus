@@ -6,29 +6,29 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/14 12:30:42 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/14 13:26:06 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_HPP
-# define VECTOR_HPP
+#ifndef vector_HPP
+# define vector_HPP
 
 # include <iostream>
 # include "vector_iterator.hpp"
 
-class iterator;
+//class iterator;
 
 namespace	ft
 {
 	/*--------------------------------------------------------*/
-	/*---------------------- FT::VECTOR ----------------------*/
+	/*---------------------- FT::vector ----------------------*/
 	/*
     *   @param T        Type of container's elements.
     *   @param Alloc    Object used to manage the vector' storage.
 	*/
 
 	template <typename T, class Alloc = std::allocator<T> >
-	class Vector
+	class vector
 	{
 
 	/*							Attributes					*/
@@ -37,6 +37,16 @@ namespace	ft
 		size_t _size;
 		size_t _capacity;
 		T   *_vector;			// pointer to a dynamically allocated array
+
+		template <typename U>
+		void	swap(U &a, U &b)
+		{
+			U	tmp;
+
+			tmp = a;
+			a = b;
+			b = tmp;
+		}
 
     public:
 
@@ -51,7 +61,7 @@ namespace	ft
     *   Construct an empty container with 0 element		*
 	*   @param alloc 		is use for the allocation
 	*/
-		explicit	Vector(const allocator_type& alloc = allocator_type()):
+		explicit	vector(const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(0), _capacity(0)
 		{
 			_vector = _alloc.allocate(_capacity);
@@ -63,7 +73,7 @@ namespace	ft
 	*   @param val 	the value used by default for init
 	*   @param alloc 	the allocation
 	*/
-		explicit Vector (size_type n, const value_type& val = value_type(),
+		explicit vector (size_type n, const value_type& val = value_type(),
 			const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(n), _capacity(n)
 		{
@@ -80,7 +90,7 @@ namespace	ft
 	*   @param alloc 	the allocation
 	*/
 		template <class InputIterator>
-		Vector (InputIterator first, InputIterator last,
+		vector (InputIterator first, InputIterator last,
 			const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(0)
 		{
@@ -100,7 +110,7 @@ namespace	ft
 	*	Copy constructor
     *   @param x	object to be copied
 	*/
-		Vector	(const Vector &x): _alloc(x._alloc), _size(x._size),
+		vector	(const vector &x): _alloc(x._alloc), _size(x._size),
 			_capacity(x._capacity)
 		{
 			_vector = _alloc.allocate(_capacity);
@@ -115,20 +125,52 @@ namespace	ft
 	*	all the storage capacity allocated by the vector
 	*	using its allocator
 	*/
-		~Vector()
+		~vector()
 		{
-			iterator_type *i;
-			(void)i;
+			for (iterator<int *> it = begin() ; it != end() ; ++it )
+				_alloc.destroy(&(*it));
+			_alloc.deallocate(_vector, _capacity);
 		}
 
 	/*
 	*	Assignation operator
 	*	@param x 	the iteration that will be assigned
 	*/
-		Vector&	operator=(const Vector &x)
+		vector&	operator=(const vector &x)
 		{
-			(void)x;
+			vector	tmp(x);			//copy x
+			
+			swap(tmp);				//swap tmp with this
+			return (*this);
 		}
+
+	/*							Iterators					*/
+	/*	Return (const_)iterator to beginning						*/
+		iterator<int *>	begin() { return (iterator<int *>(_vector)); }
+		//iterator<const_int *>	begin() const { return (const_iterator(_vector)); }
+
+	/*	Return (const_)iterator to end						*/
+		iterator<int *>	end() { return (iterator<int *>(_vector + _size)); }
+		// const_iterator_type	end() const { return (const_iterator_type(_vector + _size)); }
+
+	
+		// rev_iterator_type	rbegin() { return (rev_iterator_type(_vector)); }
+		// rev_iterator_type	rend() { return (rev_iterator_type(_vector)); }
+
+	/*							Capacity					*/
+	/*							Element access				*/
+	/*							Modifiers					*/
+
+		void	swap(vector &x)
+		{
+			swap(_alloc, x._alloc);
+			swap(_capacity, x._capacity);
+			swap(_size, x._size);
+			swap(_vector, x._vector);
+		}
+	
+	/*							Allocator					*/
+	/*				Non-member function overloads			*/
 	};
 };
 

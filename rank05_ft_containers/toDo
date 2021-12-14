@@ -1,0 +1,54 @@
+🔘 wtf pointer?1
+
+🔘 rev_iterator to vector + rbegin and rends
+
+🔘 
+
+
+# vector Member functions
+
+# (constructor) ✅
+# (destructor)  ✅
+# operator=     ✅
+
+# Iterators:
+
+# begin         ✅
+# end           ✅
+# rbegin
+# rend
+
+# Capacity:
+
+# size
+# max_size
+# resize
+# capacity
+# empty
+# reserve
+
+# Element access:
+
+# operator[]
+# at
+# front
+# back
+
+# Modifiers:
+
+# assign
+# push_back
+# pop_back
+# insert
+# erase
+# swap          ✅
+# clear
+
+# Allocator:
+
+# get_allocator
+
+# Non-member function overloads
+
+# relational operators
+# swap

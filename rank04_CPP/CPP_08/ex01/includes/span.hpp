@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:30:36 by louielouie        #+#    #+#             */
-/*   Updated: 2021/11/06 16:50:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/12/14 12:59:22 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ public:
 	//member functions
 	void	addNumber( int n );
 	void	addNumbers( std::vector<int>::const_iterator start, std::vector<int>::const_iterator end);
-	void	addVector( const std::vector<int>& v );
+	void	addvector( const std::vector<int>& v );
 
 	void	displayNumber( void );
 
