@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:24:04 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/13 18:30:12 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/14 10:37:40 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ namespace	ft
 		T	*_ptr;
 
 	public:
+	
 	/*							Coplien's form				*/
 
 		iterator(int *x): _ptr(x) {}
@@ -44,16 +45,24 @@ namespace	ft
 	*	Assignation operator. Both iterator will point to the same T element
     *   @param x 	the itaration that will be assign
 	*/
-	iterator	(const iterator &x)
-	{
-		if (this != x._ptr)
-			this = x._ptr;
-		return (*this);
-	}
+		iterator	(const iterator &x)
+		{
+			if (this != x._ptr)
+				this = x._ptr;
+			return (*this);
+		}
 
-	bool operator==(const iterator &it) { return (it._ptr == _ptr); }
-	bool operator!=(const iterator &it) { return (it._ptr == _ptr); }
-		
+	/*							Operators overloads			*/
+		T&	operator*() const { return (*_ptr); }
+		T*	operator->() const { return (_ptr); }
+
+		bool operator==(const iterator &it) { return (it._ptr == _ptr); }
+		bool operator!=(const iterator &it) { return (it._ptr == _ptr); }
+		iterator&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
+		iterator	operator++(int) { iterator tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
+		iterator&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
+		iterator	operator--(int) { iterator tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
+	
 	};
 }
 
