@@ -6,12 +6,12 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/13 18:08:10 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/14 11:36:32 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_HPP
-# define VECTOR_CPP
+# define VECTOR_HPP
 
 # include <iostream>
 # include "vector_iterator.hpp"
@@ -118,6 +118,15 @@ namespace	ft
 		~Vector()
 		{
 			
+		}
+
+	/*
+	*	Assignation operator
+	*	@param x 	the iteration that will be assigned
+	*/
+		Vector&	operator=(const Vector &x)
+		{
+			(void)x;
 		}
 	};
 };
