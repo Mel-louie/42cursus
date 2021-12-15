@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/14 13:26:06 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/15 11:19:56 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <iostream>
 # include "vector_iterator.hpp"
 
-//class iterator;
+using namespace ft;
+
+class iterator;
 
 namespace	ft
 {
@@ -50,10 +52,15 @@ namespace	ft
 
     public:
 
+	
+
 	/*							Aliases						*/
 	typedef	Alloc	allocator_type;
 	typedef	T		value_type;
 	typedef	size_t	size_type;
+
+	typedef typename ft::iterator<int*>      iterator;
+    typedef typename ft::iterator<const int*>       const_iterator;
 
 	/*							Constructors				*/
 	/*
@@ -102,7 +109,7 @@ namespace	ft
 			_vector = _alloc.allocate(_capacity);
 
 			for (int i = 0 ; i < last ; ++i, ++first)
-				_alloc.construct(&_vector[i], first);
+				_alloc.construct(&_vector[i], &first);
 			
 		}
 
@@ -127,7 +134,7 @@ namespace	ft
 	*/
 		~vector()
 		{
-			for (iterator<int *> it = begin() ; it != end() ; ++it )
+			for (iterator it = begin() ; it != end() ; ++it )
 				_alloc.destroy(&(*it));
 			_alloc.deallocate(_vector, _capacity);
 		}
@@ -146,12 +153,12 @@ namespace	ft
 
 	/*							Iterators					*/
 	/*	Return (const_)iterator to beginning						*/
-		iterator<int *>	begin() { return (iterator<int *>(_vector)); }
-		//iterator<const_int *>	begin() const { return (const_iterator(_vector)); }
+		iterator	begin() { return (iterator(_vector)); }
+		const_iterator	begin() const { return (const_iterator(_vector)); }
 
 	/*	Return (const_)iterator to end						*/
-		iterator<int *>	end() { return (iterator<int *>(_vector + _size)); }
-		// const_iterator_type	end() const { return (const_iterator_type(_vector + _size)); }
+		iterator end() { return (iterator(_vector + _size)); }
+		const_iterator	end() const { return (const_iterator_type(_vector + _size)); }
 
 	
 		// rev_iterator_type	rbegin() { return (rev_iterator_type(_vector)); }

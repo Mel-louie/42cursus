@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 17:24:04 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/14 13:18:18 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/15 11:20:12 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,21 @@ namespace	ft
 	*
 	*	@param T        Type of container's elements.
 	*/
-	template <typename T>
+	template <typename V>
 	class iterator
 	{
 
+	/*							Aliases						*/
+	typedef V*	ptr;
+	
 	/*							Attribute					*/
 	private:
-		T	*_ptr;
+		ptr	_ptr;
 
 	public:
 	/*							Coplien's form				*/
 
-		iterator(int *x): _ptr(x) {}
+		iterator(ptr x ): _ptr(x) {}
 	/*
 	*	Copy constructor
 	*	@param cpy 	the object that will be copied
@@ -61,11 +64,11 @@ namespace	ft
 		}
 		
 	/*							Getter						*/
-		T*	getPtr() const { return (_ptr); }
+		V*	getPtr() const { return (_ptr); }
 
 	/*							Operators overloads			*/
-		T&	operator*() const { return (*_ptr); }
-		T*	operator->() const { return (_ptr); }
+		V&	operator*() const { return (*_ptr); }
+		V*	operator->() const { return (_ptr); }
 
 		bool operator==(const iterator &it) { return (it._ptr == this->_ptr); }
 		bool operator!=(const iterator &it) { return (it._ptr == this->_ptr); }
@@ -104,8 +107,6 @@ namespace	ft
 			return (newIt -= nb);
 		}
 	};
-	// typedef	iterator<int*> iterator_type;
-	// typedef	iterator<const int*> const_iterator_type;
 }
 
 #endif
