@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/15 13:32:56 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/15 18:54:11 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define vector_HPP
 
 # include <iostream>
-// # include "vector_iterator.hpp"
+# include <cmath>
 
 
 namespace	ft
@@ -42,7 +42,7 @@ namespace	ft
 	typedef	size_t	size_type;
 
 
-	/*							Constructors				*/
+/*							Constructors				*/
 	/*
 	*   Default constructor
     *   Construct an empty container with 0 element		*
@@ -117,7 +117,7 @@ namespace	ft
 			for (iterator it = begin() ; it != end() ; ++it )
 				_alloc.destroy(&(*it));
 			_alloc.deallocate(_vector, _capacity);
-			std::cout << "detruit :)" << std::endl;
+			// std::cout << "detruit :)" << std::endl;
 		}
 
 	/*
@@ -132,7 +132,7 @@ namespace	ft
 			return (*this);
 		}
 
-	/*							Iterators					*/
+/*							Iterators					*/
 	/*	Return (const_)iterator to beginning				*/
 		iterator	begin() { return (iterator(_vector)); }
 		const_iterator	begin() const { return (const_iterator(_vector)); }
@@ -148,12 +148,95 @@ namespace	ft
 	/*	Return (const_)iterator to reverse end				*/
 		reverse_iterator	rend() { return (reverse_iterator(_vector - 1)); }
 		const_reverse_iterator	rend() const { return (const_reverse_iterator(_vector - 1)); }
-	
-	
 
-	/*							Capacity					*/
-	/*							Element access				*/
-	/*							Modifiers					*/
+/*							Capacity					*/
+	/*
+	*	Returns the number of elements in the vector
+	*/
+		size_type size() const { return (_size); }
+	/*
+	*	Returns the maximum number of elements that the vector can hold
+	*	This is the maximum potential size the container can reach due
+	*	to known system or library implementation limitations
+	*/
+		size_type max_size() const
+		{
+			return (_alloc.max_size()) ;
+		}
+
+	/*
+	*	Resizes the container so that it contains n elements
+	*   @param n	new container size, n = number of elements
+	*   @param val 	Object whose content is copied to the added
+	*		elements in case that n is greater than the current
+	*		container size. If not specified, the default
+	*		constructor is used instead.
+	*/
+		void resize (size_type n, value_type val = value_type())
+		{
+			if (n > _capacity)
+				reallocate(n);
+			while (n > _size)
+				push_back(val);
+			while (n < _size)
+				pop_back();
+		}
+	/*
+	*	Return size of allocated storage capacity
+	*/
+		size_type capacity() const { return (_capacity); }
+	
+	/*
+	*	 Returns whether the vector is empty (i.e. whether its size is 0)
+	*/
+		bool empty() const	{ return (_size == 0); };
+	/*
+	*	Request a change in capacity
+	*/
+		void reserve (size_type n)
+		{
+			if (n > max_size)
+				std::length_error("not enough space");
+			if (n > _capacity)
+				reallocate(n);
+		}
+
+
+/*							Element access				*/
+
+		T&	operator[](size_type n)	{ return (_vector[n]); }
+
+/*							Modifiers					*/
+
+	/*
+	*	Add  new element at the end of the vector
+	*	When the capacity is exhausted and more is needed,
+	*	it is automatically expanded by the container
+	*	(reallocating it storage space). The theoretical
+	*	limit on the size of a vector is given by member max_size.
+	*/
+		void push_back (const value_type& val)
+		{
+			if (_size + 1 > _capacity)
+			{
+				if (!_capacity)
+					reallocate(1);
+				else
+					reallocate(_capacity * 2);
+			}
+			_alloc.construct(&_vector[_size++], val);
+		}
+	/*
+	*	Delete last element
+	*	Removes the last element in the vector, effectively
+	*	reducing the container size by one.
+	*	This destroys the removed element.
+	*/
+		void pop_back()
+		{
+			if (_size)
+				_alloc.destroy(&_vector[_size--] - 1);				
+		}
 
 		void	swap(vector &x)
 		{
@@ -163,10 +246,10 @@ namespace	ft
 			swap(_vector, x._vector);
 		}
 	
-	/*							Allocator					*/
-	/*				Non-member function overloads			*/
+/*							Allocator					*/
+/*				Non-member function overloads			*/
 
-	/*							Attributes					*/
+/*							Attributes					*/
 	private:
 		Alloc	_alloc;			// Copy of allocation type object
 		size_t _size;
@@ -181,6 +264,17 @@ namespace	ft
 			tmp = a;
 			a = b;
 			b = tmp;
+		}
+		
+		void	reallocate(size_type n)
+		{
+			T*	tmp = _alloc.allocate(n);
+
+			for (size_type i = 0 ; i < _size ; ++i )
+				_alloc.construct(&tmp[i], _vector[i]);
+			this->~vector();
+			_capacity = n;
+			_vector = tmp;
 		}
 		
 	/*--------------------------------------------------------*/
@@ -420,5 +514,22 @@ namespace	ft
 		};		
 	};
 };
+
+// Print the inside of a vector
+template<typename T>
+std::ostream& operator<< (std::ostream& out,  ft::vector<T>& v) {
+
+	
+    out << "{";
+    size_t last = v.size() - 1;
+    for(size_t i = 0; i < v.size(); ++i)
+	{
+        out << v[i];
+        if (i != last) 
+            out << ", ";
+    }
+    out << "}";
+    return out;
+}
 
 #endif

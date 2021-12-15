@@ -6,16 +6,89 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/15 12:04:04 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/15 18:43:16 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.hpp"
+#include <vector>
+#include <iostream>
+#include <iterator> // for ostream_iterator
 
 int	main( void )
 {
 	ft::vector<std::string> vector_str;
+	std::vector<int> vectorInt;
 	ft::vector<int> vector_int;
+	
+	std::cout << "std: " << vectorInt.max_size() << std::endl;
+	std::cout << "ft : " << vector_int.max_size() << std::endl;
+
+	ft::vector<char> c;
+	for (int ch = 'a'; ch <= 'z'; ++ch)
+    	c.push_back(ch);
+	
+	ft::vector<std::string>	s(1, "coucou");
+	s.push_back("first");
+	s.push_back("second");
+	s.push_back("third");
+	
+	ft::vector<bool>	b;
+	for (int i = 0 ; i < 5 ; ++ i)
+	{
+		b.push_back(true);
+		b.push_back(false);
+	}
+	
+	ft::vector<int>	o;
+	for (int i = 0 ; i < 10 ; ++i)
+		o.push_back(i);
+   
+	std::cout << std::endl;
+	std::cout << c << std::endl;
+	std::cout << s << std::endl;
+	std::cout << b << std::endl;
+	std::cout << o << std::endl;
+
+	std::cout << std::endl;
+
+	
+   	c.pop_back();
+   	c.pop_back();
+	
+	s.pop_back();
+	s.pop_back();
+	
+	b.pop_back();	
+	
+	o.pop_back();
+	o.pop_back();
+
+	std::cout << std::endl;
+	std::cout << c << std::endl;
+	std::cout << s << std::endl;
+	std::cout << b << std::endl;
+	std::cout << o << std::endl;
+
+	std::cout << std::endl;
+	std::cout << c.size() << std::endl;
+	c.resize(45, 'o');
+	std::cout << c << std::endl;
+	std::cout << c.size() << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << c.empty() << std::endl;
+	std::cout << std::endl;
+	ft::vector<char> c2;
+	std::cout << c2.empty() << std::endl;
+	
+	std::cout << std::endl;
+	
+	
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+
 	return ( 0 );
 }
 

@@ -1,5 +1,7 @@
 🔘 segv when fsanitize: ivalid read of size 8
 
+🔘 check le constructor fill qui ne semble pas bien marcher 
+
 🔘 adding aliases to the iterators
 
 🔘 operator[] in iterators
@@ -9,7 +11,7 @@
 
 # vector Member functions
 
-# (constructor) ✅
+# (constructor) 
 # (destructor)  ✅
 # operator=     ✅
 
@@ -22,16 +24,16 @@
 
 # Capacity:
 
-# size
-# max_size
-# resize
-# capacity
-# empty
-# reserve
+# size          ✅
+# max_size      ✅
+# resize        ✅
+# capacity      ✅
+# empty         ✅
+# reserve       
 
 # Element access:
 
-# operator[]
+# operator[]    ✅
 # at
 # front
 # back
@@ -39,8 +41,8 @@
 # Modifiers:
 
 # assign
-# push_back
-# pop_back
+# push_back     ✅
+# pop_back      ✅
 # insert
 # erase
 # swap          ✅
