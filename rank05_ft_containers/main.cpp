@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/15 11:00:08 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/15 12:04:04 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main( void )
 {
-	ft::vector<int*>	Vtest(10, 42);
+	ft::vector<std::string> vector_str;
+	ft::vector<int> vector_int;
 	return ( 0 );
 }
 

@@ -1,8 +1,10 @@
-🔘 wtf pointer?1
+🔘 segv when fsanitize: ivalid read of size 8
 
-🔘 rev_iterator to vector + rbegin and rends
+🔘 adding aliases to the iterators
 
-🔘 
+🔘 operator[] in iterators
+
+✅ reverse_iterator to vector + rbegin and rends
 
 
 # vector Member functions
@@ -15,8 +17,8 @@
 
 # begin         ✅
 # end           ✅
-# rbegin
-# rend
+# rbegin        ✅
+# rend          ✅
 
 # Capacity:
 
