@@ -30,9 +30,9 @@ public:
 
    void introduce( void ) const;
 
-    void learnSpell( ASpell* spell);
-    void forgetSpell( std::string spellName );
-    void launchSpell( std::string spellName, ATarget& target );
+    // void learnSpell( ASpell* spell);
+    // void forgetSpell( std::string spellName );
+    // void launchSpell( std::string spellName, ATarget& target );
 
 };
 
