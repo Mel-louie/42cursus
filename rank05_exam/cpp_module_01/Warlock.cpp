@@ -34,36 +34,36 @@ void    Warlock::introduce( void ) const
     std::cout << this->getName() << ": I am " << this->getName() << ", " << this->getTitle() << " !" << std::endl;
 }
 
-// void Warlock::learnSpell( ASpell* spell)
-// {
-//     if (spell)
-//     {
-//         for (std::vector<ASpell*>::const_iterator it = (this->spells).begin() ; it != (this->spells).end(); it++)
-//             if ((*it)->getName() == spell->getName())
-//                 return ;
-//     }
-//     this->spells.push_back(spell);
-// }
+void Warlock::learnSpell( ASpell* spell)
+{
+    if (spell)
+    {
+        for (std::vector<ASpell*>::const_iterator it = (this->spells).begin() ; it != (this->spells).end(); it++)
+            if ((*it)->getName() == spell->getName())
+                return ;
+    }
+    this->spells.push_back(spell);
+}
     
-// void Warlock::forgetSpell( std::string spellName )
-// {
-//     for (std::vector<ASpell*>::const_iterator it = (this->spells).begin() ; it != (this->spells). end() ; it++)
-//         {
-//             if ((*it)->getName() == spellName)
-//             {
-//                 delete (*it);
-//                 (this->spells).erase(it);
-//                 return ;
-//             }
-//         }
-// }
+void Warlock::forgetSpell( std::string spellName )
+{
+    for (std::vector<ASpell*>::const_iterator it = (this->spells).begin() ; it != (this->spells). end() ; it++)
+        {
+            if ((*it)->getName() == spellName)
+            {
+                delete (*it);
+                (this->spells).erase(it);
+                return ;
+            }
+        }
+}
     
-// void Warlock::launchSpell( std::string spellName, ATarget& target )
-// {
-//     for (std::vector<ASpell*>::const_iterator it = (this->spells).begin() ; it != (this->spells).end() ; it++)
-//     {
-//         if ((*it)->getName() == spellName)
-//             {target.getHitBySpell(*(*it));
-//             return;}
-//     }
-// }
+void Warlock::launchSpell( std::string spellName, ATarget& target )
+{
+    for (std::vector<ASpell*>::const_iterator it = (this->spells).begin() ; it != (this->spells).end() ; it++)
+    {
+        if ((*it)->getName() == spellName)
+            {target.getHitBySpell(*(*it));
+            return;}
+    }
+}
