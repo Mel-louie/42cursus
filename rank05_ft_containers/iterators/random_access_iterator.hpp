@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/17 16:13:47 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/17 17:09:26 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ namespace ft
 		bool operator<(const it_class &it) { return (it._ptr > this->_ptr); }
 		bool operator>(const it_class &it) { return (it._ptr < this->_ptr); }
 		
+        // conversion to constant
+        // operator randomAcess<const T*>() {return  pos_;}
+        
 		it_class&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
 		it_class	operator++(int) { it_class tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
 		it_class&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it

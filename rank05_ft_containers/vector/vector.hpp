@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/17 16:06:31 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/17 17:04:44 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,11 +251,11 @@ namespace	ft
 /*				Non-member function overloads			*/
 
 /*							Attributes					*/
-	private:
-		Alloc	_alloc;			// Copy of allocation type object
-		size_t _size;
-		size_t _capacity;
-		T   *_vector;			// pointer to a dynamically allocated array
+	protected:
+		allocator_type	_alloc;			// Copy of allocation type object
+		size_type	_size;
+		size_type	_capacity;
+		pointer		_vector;			// pointer to a dynamically allocated array
 
 		template <typename U>
 		void	swap(U &a, U &b)
