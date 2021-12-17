@@ -6,6 +6,8 @@
 
 🔘 operator[] in iterators
 
+🔘 faire un utils avec un overload pour print vector
+
 🔘 revoir iterateurs de comparaison (ckeck if (it1 == it2)
 		std::cout << "oki" << std::endl)
 

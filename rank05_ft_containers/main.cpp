@@ -6,42 +6,21 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/17 13:27:19 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/17 15:11:34 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.hpp"
+// #include "vector.hpp"
 #include <vector>
 #include <iostream>
-#include <iterator> // for ostream_iterator
+#include <iterator>
+#include "iterators/iterator_traits.hpp"
+#include "iterators/random_access_iterator.hpp"
+
 
 int	main( void )
 {
-	ft::vector<std::string> vector_str;
-	std::vector<int> vectorInt;
-	ft::vector<int> vector_int;
-	ft::vector<int> vector_int2;
-	// ft::vector<const int> vector_int3;
 	
-	
-	for (int i = 0 ; i < 10 ; ++i)
-		vector_int.push_back(i);
-	for (int i = 0 ; i < 10 ; ++i)
-		vector_int2.push_back(i);
-	
-	for (int i = 0 ; i < 10 ; ++i)
-		vectorInt.push_back(i);
-
-	ft::vector<int>::iterator it1 = vector_int.begin();
-	ft::vector<int>::iterator it2 = vector_int2.begin();
-	
-	
-	// ft::vector<const int>::const_it it3 = vector_int3.begin();
-// 
-   
-	if (it1 == it2)
-		std::cout << "oki" << std::endl;
-
 	return ( 0 );
 }
 
