@@ -6,6 +6,9 @@
 
 🔘 operator[] in iterators
 
+🔘 revoir iterateurs de comparaison (ckeck if (it1 == it2)
+		std::cout << "oki" << std::endl)
+
 ✅ reverse_iterator to vector + rbegin and rends
 
 

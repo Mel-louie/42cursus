@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/15 18:54:11 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/17 13:27:01 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ namespace	ft
 	typedef	Alloc	allocator_type;
 	typedef	T		value_type;
 	typedef	size_t	size_type;
+	typedef typename ft::vector<T>::iterator	it;
+	typedef typename ft::vector<const T>::const_iterator	const_it;
 
 
 /*							Constructors				*/
@@ -114,8 +116,8 @@ namespace	ft
 	*/
 		~vector()
 		{
-			for (iterator it = begin() ; it != end() ; ++it )
-				_alloc.destroy(&(*it));
+			for (it i = begin() ; i != end() ; ++i )
+				_alloc.destroy(&(*i));
 			_alloc.deallocate(_vector, _capacity);
 			// std::cout << "detruit :)" << std::endl;
 		}
@@ -134,12 +136,12 @@ namespace	ft
 
 /*							Iterators					*/
 	/*	Return (const_)iterator to beginning				*/
-		iterator	begin() { return (iterator(_vector)); }
-		const_iterator	begin() const { return (const_iterator(_vector)); }
+		it	begin() { return (it(_vector)); }
+		const_it	begin() const { return (const_it(_vector)); }
 
 	/*	Return (const_)iterator to end						*/
-		iterator end() { return (iterator(_vector + _size)); }
-		const_iterator	end() const { return (const_iterator_type(_vector + _size)); }
+		it end() { return (it(_vector + _size)); }
+		const_it	end() const { return (const_it(_vector + _size)); }
 
 	/*	Return (const_)iterator to reverse beginning		*/
 		reverse_iterator	rbegin() { return (reverse_iterator(_vector + _size - 1)); }
@@ -279,14 +281,68 @@ namespace	ft
 		
 	/*--------------------------------------------------------*/
 	/*----------------- FT::VECTOR_ITERATORS -----------------*/
-	public:
-	class iterator
+	private:
+	class iterators
 	{
-		private:
-			T*	_ptr;
+	protected:
+		T*	_ptr;
+	public:
+		iterators(T* x ): _ptr(x) {}
+		iterators	(const iterators &cpy) { _ptr = cpy.getPtr(); }
+		~iterators() {}
+		iterators&	operator=(const iterators &x)
+		{
+			if (this != x._ptr)
+				this = x._ptr;
+			return (*this);
+		}
+		T*	getPtr() const { return (_ptr); }
+		T&	operator*() const { return (*_ptr); }
+		T*	operator->() const { return (_ptr); }
+		bool operator==(const iterators &it) { return (it._ptr == this->_ptr); }
+		bool operator!=(const iterators &it) { return (it._ptr == this->_ptr); }
+		bool operator<=(const iterators &it) { return (it._ptr >= this->_ptr); }
+		bool operator>=(const iterators &it) { return (it._ptr <= this->_ptr); }
+		bool operator<(const iterators &it) { return (it._ptr > this->_ptr); }
+		bool operator>(const iterators &it) { return (it._ptr < this->_ptr); }
+		
+		iterators&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
+		iterators	operator++(int) { iterators tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
+		iterators&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
+		iterators	operator--(int) { iterators tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
+		
+		iterators&	operator+=(const iterators &y)
+		{
+			this->_ptr = this->_ptr + y._ptr;
+			return (*this);
+		}
+		
+		iterators&	operator-=(const iterators &y)
+		{
+			this->_ptr = this->_ptr + y._ptr;
+			return (*this); 
+		}
+	/*			Non-members operators overloads			*/
+		friend iterators	operator+(int nb, const iterators &x)
+		{
+			iterators newIt(x);
+			return (newIt += nb);
+		}
+		
+		friend iterators	operator-(int nb, const iterators &x)
+		{
+			iterators newIt(x);
+			return (newIt -= nb);
+		}
+	};
+	public:
+	class iterator: public iterators
+	{
+		// private:
+		// 	T*	_ptr;
 		public:
-			iterator(T* x ): _ptr(x) {}
-			iterator	(const iterator &cpy) { _ptr = cpy.getPtr(); }
+			iterator(T* x ): iterators(x) {  }
+		//	iterator	(const iterator &cpy) { iterators = cpy.getPtr(); }
 			~iterator() {}
 			iterator&	operator=(const iterator &x)
 			{
@@ -294,55 +350,53 @@ namespace	ft
 					this = x._ptr;
 				return (*this);
 			}
-			T*	getPtr() const { return (_ptr); }
-			T&	operator*() const { return (*_ptr); }
-			T*	operator->() const { return (_ptr); }
+		// 	T*	getPtr() const { return (_ptr); }
+		// 	T&	operator*() const { return (*_ptr); }
+		// 	T*	operator->() const { return (_ptr); }
 
-			bool operator==(const iterator &it) { return (it._ptr == this->_ptr); }
-			bool operator!=(const iterator &it) { return (it._ptr == this->_ptr); }
-			bool operator<=(const iterator &it) { return (it._ptr >= this->_ptr); }
-			bool operator>=(const iterator &it) { return (it._ptr <= this->_ptr); }
-			bool operator<(const iterator &it) { return (it._ptr > this->_ptr); }
-			bool operator>(const iterator &it) { return (it._ptr < this->_ptr); }
+		// 	bool operator==(const iterator &it) { return (it._ptr == this->_ptr); }
+		// 	bool operator!=(const iterator &it) { return (it._ptr == this->_ptr); }
+		// 	bool operator<=(const iterator &it) { return (it._ptr >= this->_ptr); }
+		// 	bool operator>=(const iterator &it) { return (it._ptr <= this->_ptr); }
+		// 	bool operator<(const iterator &it) { return (it._ptr > this->_ptr); }
+		// 	bool operator>(const iterator &it) { return (it._ptr < this->_ptr); }
 			
-			iterator&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
-			iterator	operator++(int) { iterator tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
-			iterator&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
-			iterator	operator--(int) { iterator tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
+		// 	iterator&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
+		// 	iterator	operator++(int) { iterator tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
+		// 	iterator&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
+		// 	iterator	operator--(int) { iterator tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
 			
-			iterator&	operator+=(const iterator &y)
-			{
-				this->_ptr = this->_ptr + y._ptr;
-				return (*this);
-			}
+		// 	iterator&	operator+=(const iterator &y)
+		// 	{
+		// 		this->_ptr = this->_ptr + y._ptr;
+		// 		return (*this);
+		// 	}
 			
-			iterator&	operator-=(const iterator &y)
-			{
-				this->_ptr = this->_ptr + y._ptr;
-				return (*this); 
-			}
+		// 	iterator&	operator-=(const iterator &y)
+		// 	{
+		// 		this->_ptr = this->_ptr + y._ptr;
+		// 		return (*this); 
+		// 	}
 
-			/*			Non-members operators overloads			*/
-			friend iterator	operator+(int nb, const iterator &x)
-			{
-				iterator newIt(x);
-				return (newIt += nb);
-			}
+		// 	/*			Non-members operators overloads			*/
+		// 	friend iterator	operator+(int nb, const iterator &x)
+		// 	{
+		// 		iterator newIt(x);
+		// 		return (newIt += nb);
+		// 	}
 			
-			friend iterator	operator-(int nb, const iterator &x)
-			{
-				iterator newIt(x);
-				return (newIt -= nb);
-			}
+		// 	friend iterator	operator-(int nb, const iterator &x)
+		// 	{
+		// 		iterator newIt(x);
+		// 		return (newIt -= nb);
+		// 	}
 		};
 	
-	class const_iterator
+	class const_iterator: public iterators
 	{
-		private:
-			T*	_ptr;
 		public:
-			const_iterator(T* x ): _ptr(x) {}
-			const_iterator	(const iterator &cpy) { _ptr = cpy.getPtr(); }
+			const_iterator(T* x ): iterators(x) {  }
+		//	iterator	(const iterator &cpy) { iterators = cpy.getPtr(); }
 			~const_iterator() {}
 			const_iterator&	operator=(const const_iterator &x)
 			{
@@ -350,46 +404,58 @@ namespace	ft
 					this = x._ptr;
 				return (*this);
 			}
-			T*	getPtr() const { return (_ptr); }
-			T&	operator*() const { return (*_ptr); }
-			T*	operator->() const { return (_ptr); }
+		// private:
+		// 	T*	_ptr;
+		// public:
+		// 	const_iterator(T* x ): _ptr(x) {}
+		// 	const_iterator	(const iterator &cpy) { _ptr = cpy.getPtr(); }
+		// 	~const_iterator() {}
+		// 	const_iterator&	operator=(const const_iterator &x)
+		// 	{
+		// 		if (this != x._ptr)
+		// 			this = x._ptr;
+		// 		return (*this);
+		// 	}
+		// 	T*	getPtr() const { return (_ptr); }
+		// 	T&	operator*() const { return (*_ptr); }
+		// 	T*	operator->() const { return (_ptr); }
 
-			bool operator==(const const_iterator &it) { return (it._ptr == this->_ptr); }
-			bool operator!=(const const_iterator &it) { return (it._ptr == this->_ptr); }
-			bool operator<=(const const_iterator &it) { return (it._ptr >= this->_ptr); }
-			bool operator>=(const const_iterator &it) { return (it._ptr <= this->_ptr); }
-			bool operator<(const const_iterator &it) { return (it._ptr > this->_ptr); }
-			bool operator>(const const_iterator &it) { return (it._ptr < this->_ptr); }
+		// 	bool operator==(const const_iterator &it) { return (it._ptr == this->_ptr); }
+		// 	bool operator!=(const const_iterator &it) { return (it._ptr == this->_ptr); }
+		// 	bool operator<=(const const_iterator &it) { return (it._ptr >= this->_ptr); }
+		// 	bool operator>=(const const_iterator &it) { return (it._ptr <= this->_ptr); }
+		// 	bool operator<(const const_iterator &it) { return (it._ptr > this->_ptr); }
+		// 	bool operator>(const const_iterator &it) { return (it._ptr < this->_ptr); }
 			
-			const_iterator&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
-			const_iterator	operator++(int) { iterator tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
-			const_iterator&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
-			const_iterator	operator--(int) { iterator tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
+		// 	const_iterator&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
+		// 	const_iterator	operator++(int) { iterator tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
+		// 	const_iterator&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
+		// 	const_iterator	operator--(int) { iterator tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
 			
-			const_iterator&	operator+=(const const_iterator &y)
-			{
-				this->_ptr = this->_ptr + y._ptr;
-				return (*this);
-			}
+		// 	const_iterator&	operator+=(const const_iterator &y)
+		// 	{
+		// 		this->_ptr = this->_ptr + y._ptr;
+		// 		return (*this);
+		// 	}
 			
-			const_iterator&	operator-=(const const_iterator &y)
-			{
-				this->_ptr = this->_ptr + y._ptr;
-				return (*this); 
-			}
+		// 	const_iterator&	operator-=(const const_iterator &y)
+		// 	{
+		// 		this->_ptr = this->_ptr + y._ptr;
+		// 		return (*this); 
+		// 	}
 
-			/*			Non-members operators overloads			*/
-			friend const_iterator	operator+(int nb, const const_iterator &x)
-			{
-				const_iterator newIt(x);
-				return (newIt += nb);
-			}
+		// 	/*			Non-members operators overloads			*/
+		// 	friend const_iterator	operator+(int nb, const const_iterator &x)
+		// 	{
+		// 		const_iterator newIt(x);
+		// 		return (newIt += nb);
+		// 	}
 			
-			friend const_iterator	operator-(int nb, const const_iterator &x)
-			{
-				const_iterator newIt(x);
-				return (newIt -= nb);
-			}
+		// 	friend const_iterator	operator-(int nb, const const_iterator &x)
+		// 	{
+		// 		const_iterator newIt(x);
+		// 		return (newIt -= nb);
+		// 	}
 		};
 	/*----------------- REVERSE_ITERATORS -----------------*/
 	/*			+---+---+---+---+---+---+---+
@@ -517,9 +583,8 @@ namespace	ft
 
 // Print the inside of a vector
 template<typename T>
-std::ostream& operator<< (std::ostream& out,  ft::vector<T>& v) {
-
-	
+std::ostream& operator<< (std::ostream& out,  ft::vector<T>& v)
+{
     out << "{";
     size_t last = v.size() - 1;
     for(size_t i = 0; i < v.size(); ++i)
