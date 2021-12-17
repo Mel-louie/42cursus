@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/17 16:07:13 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/17 18:05:40 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	main( void )
 {
 	ft::vector<int> i;
 
-	ft::vector<int>::iterator it1 = i.begin();
-	ft::vector<int>::const_iterator it2 = i.end();
+	// ft::vector<int>::iterator it1 = i.begin();
+	// ft::vector<int>::const_iterator it2 = i.end();
 
-	if (it1 == it2)
-		std::cout << "oki" << std::endl;
+	// if (it1 == it2)
+	// 	std::cout << "oki" << std::endl;
 
-	
+	std::vector<int>::const_iterator it = i.begin();
 	
 	return ( 0 );
 }

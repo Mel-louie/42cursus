@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/17 17:04:44 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/17 18:12:13 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ namespace	ft
 				_alloc.construct(&_vector[i], *first);
 			
 		}
-
 	/*
 	*	Copy constructor
     *   @param x	object to be copied
@@ -118,7 +117,6 @@ namespace	ft
 			for (iterator it = begin() ; it != end() ; ++it )
 				_alloc.destroy(&(*it));
 			_alloc.deallocate(_vector, _capacity);
-			// std::cout << "detruit :)" << std::endl;
 		}
 
 	/*
@@ -253,9 +251,9 @@ namespace	ft
 /*							Attributes					*/
 	protected:
 		allocator_type	_alloc;			// Copy of allocation type object
-		size_type	_size;
-		size_type	_capacity;
-		pointer		_vector;			// pointer to a dynamically allocated array
+		size_type		_size;
+		size_type		_capacity;
+		pointer			_vector;			// pointer to a dynamically allocated array
 
 		template <typename U>
 		void	swap(U &a, U &b)
