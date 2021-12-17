@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/17 13:10:08 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/17 13:27:19 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main( void )
 	std::vector<int> vectorInt;
 	ft::vector<int> vector_int;
 	ft::vector<int> vector_int2;
-	ft::vector<const int> vector_int3;
+	// ft::vector<const int> vector_int3;
 	
 	
 	for (int i = 0 ; i < 10 ; ++i)
@@ -36,8 +36,8 @@ int	main( void )
 	ft::vector<int>::iterator it2 = vector_int2.begin();
 	
 	
-	ft::vector<const int>::const_it it3 = vector_int3.begin();
-
+	// ft::vector<const int>::const_it it3 = vector_int3.begin();
+// 
    
 	if (it1 == it2)
 		std::cout << "oki" << std::endl;
