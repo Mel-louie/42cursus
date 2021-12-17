@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   random_access_iterator.hpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
+/*   Updated: 2021/12/17 16:13:47 by mel-louie        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RANDOM_ACCESS_ITERATOR_HPP
 # define RANDOM_ACCESS_ITERATOR_HPP
 
@@ -18,12 +30,13 @@ namespace ft
 		typedef	T&								reference;
 		typedef	std::random_access_iterator_tag	iterator_category;
         typedef	size_t	                        size_type;
+        typedef randomAcess<T>                  it_class;
 
 		randomAcess 	() { _ptr = NULL;}
 		randomAcess	    (pointer x ) { _ptr = x; }
 		randomAcess		(const randomAcess &cpy) { _ptr = cpy.getPtr(); }
 		~randomAcess	() {}
-		randomAcess	&	operator=(const randomAcess	 &x)
+		it_class&	operator=(const it_class &x)
 		{
 			if (this != x._ptr)
 				this = x._ptr;
@@ -33,25 +46,25 @@ namespace ft
         reference	operator*() const { return (*_ptr); }
 		pointer	    operator->() const { return (_ptr); }
 		
-        bool operator==(const randomAcess &it) { return (it._ptr == this->_ptr); }
-		bool operator!=(const randomAcess &it) { return (it._ptr == this->_ptr); }
-		bool operator<=(const randomAcess &it) { return (it._ptr >= this->_ptr); }
-		bool operator>=(const randomAcess &it) { return (it._ptr <= this->_ptr); }
-		bool operator<(const randomAcess &it) { return (it._ptr > this->_ptr); }
-		bool operator>(const randomAcess &it) { return (it._ptr < this->_ptr); }
+        bool operator==(const it_class &it) { return (it._ptr == this->_ptr); }
+		bool operator!=(const it_class &it) { return (it._ptr == this->_ptr); }
+		bool operator<=(const it_class &it) { return (it._ptr >= this->_ptr); }
+		bool operator>=(const it_class &it) { return (it._ptr <= this->_ptr); }
+		bool operator<(const it_class &it) { return (it._ptr > this->_ptr); }
+		bool operator>(const it_class &it) { return (it._ptr < this->_ptr); }
 		
-		randomAcess	&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
-		randomAcess		operator++(int) { randomAcess tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
-		randomAcess	&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
-		randomAcess		operator--(int) { randomAcess tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
+		it_class&	operator++() { _ptr++; return (*this); }									// prefix increment operator: --it
+		it_class	operator++(int) { it_class tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix increment operator: it--
+		it_class&	operator--() { _ptr--; return (*this); }									// prefix decrement operator: --it
+		it_class	operator--(int) { it_class tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix decrement operator: it--
 		
-		randomAcess	&	operator+=(const randomAcess &y)
+		it_class&	operator+=(const it_class &y)
 		{
 			this->_ptr = this->_ptr + y._ptr;
 			return (*this);
 		}
 		
-		randomAcess	&	operator-=(const randomAcess &y)
+		it_class	&	operator-=(const it_class &y)
 		{
 			this->_ptr = this->_ptr + y._ptr;
 			return (*this); 
@@ -61,15 +74,15 @@ namespace ft
 		pointer	    getPtr() const { return (_ptr); }
 
 	/*			Non-members operators overloads			*/
-		friend randomAcess		operator+(int nb, const randomAcess	 &x)
+		friend it_class		operator+(int nb, const it_class	 &x)
 		{
-			randomAcess	 newIt(x);
+			it_class	 newIt(x);
 			return (newIt += nb);
 		}
 		
-		friend randomAcess		operator-(int nb, const randomAcess	 &x)
+		friend it_class		operator-(int nb, const it_class	 &x)
 		{
-			randomAcess	 newIt(x);
+			it_class	 newIt(x);
 			return (newIt -= nb);
 		}
 	};
