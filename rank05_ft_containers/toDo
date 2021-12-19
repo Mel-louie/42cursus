@@ -1,17 +1,22 @@
-🔘 segv when fsanitize: ivalid read of size 8
+🔘 iterators_traits ✅ reverse_iterator ✅ enable_if, is_integral, equal/lexicographical
+compare, std::pair, std::make_pair
 
-🔘 check le constructor fill qui ne semble pas bien marcher 
-
-🔘 adding aliases to the iterators
-
-🔘 operator[] in iterators
+🔘 conflic between fill constructor and range constructor ??? enable if ?
+https://stackoverflow.com/questions/21042872/how-to-implement-fill-constructor-and-range-constructor-for-sequence-containers
+https://riptutorial.com/cplusplus/example/3777/enable-if
 
 🔘 faire un utils avec un overload pour print vector
 
-🔘 revoir iterateurs de comparaison (ckeck if (it1 == it2)
+✅ operator[] in iterators
+
+✅ segv when fsanitize: ivalid read of size 8
+
+✅ revoir iterateurs de comparaison (ckeck if (it1 == it2)
 		std::cout << "oki" << std::endl)
 
 ✅ reverse_iterator to vector + rbegin and rends
+
+✅ adding aliases to the iterators
 
 
 # vector Member functions
@@ -24,8 +29,8 @@
 
 # begin         ✅
 # end           ✅
-# rbegin
-# rend
+# rbegin		✅
+# rend			✅
 
 # Capacity:
 
@@ -34,30 +39,30 @@
 # resize        ✅
 # capacity      ✅
 # empty         ✅
-# reserve       
+# reserve       ✅
 
 # Element access:
 
 # operator[]    ✅
-# at
-# front
-# back
+# at			✅
+# front			✅
+# back			✅
 
 # Modifiers:
 
-# assign
+# assign		✅
 # push_back     ✅
 # pop_back      ✅
 # insert
 # erase
 # swap          ✅
-# clear
+# clear			✅
 
 # Allocator:
 
-# get_allocator
+# get_allocator	✅
 
 # Non-member function overloads
 
 # relational operators
-# swap
+# swap			✅

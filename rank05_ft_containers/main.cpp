@@ -6,11 +6,10 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/19 19:14:09 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/12/19 23:44:12 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "vector.hpp"
 #include <vector>
 #include <iostream>
 #include <iterator>
@@ -22,14 +21,21 @@
 
 int	main( void )
 {
-	ft::vector<int> i;
-	ft::vector<const int> i2;
+	ft::vector<int>	i;
+	// ft::vector<const int> i2;
 	
-	ft::vector<int>::rev_interator it1 = i.rbegin();
-	ft::vector<int>::const_rev_interator it2 = i2.rend();
+	ft::vector<int> o(10, 42);
+	
+	// ft::vector<int>::rev_interator it1 = i.rbegin();
+	// ft::vector<int>::const_rev_interator it2 = i2.rend();
 
-	// // if (it1 == it2)
-	// // 	std::cout << "oki" << std::endl;
+	ft::vector<int>::iterator	it1 = i.begin();
+	ft::vector<int>::iterator	it2 = i.begin();
+
+	if (it1 == it2)
+		std::cout << "oki" << std::endl;
+
+	std::cout << o << std::endl;
 
 	// std::vector<int>::const_iterator it = i.begin();
 	
