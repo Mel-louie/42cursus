@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   random_access_iterator.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/17 18:01:15 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/19 18:48:51 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 namespace ft
 {
     template <typename T>
-    class randomAcess
+    class randomAccess
 	{
 	protected:
 		T*	_ptr;
@@ -30,12 +30,12 @@ namespace ft
 		typedef	T&								reference;
 		typedef	std::random_access_iterator_tag	iterator_category;
         typedef	size_t	                        size_type;
-        typedef randomAcess<T>                  it_class;
+        typedef randomAccess<T>					it_class;
 
-		randomAcess 	() { _ptr = NULL;}
-		randomAcess	    (pointer x ) { _ptr = x; }
-		randomAcess		(const randomAcess &cpy) { _ptr = cpy.getPtr(); }
-		~randomAcess	() {}
+		randomAccess 	() { _ptr = NULL;}
+		randomAccess	    (pointer x ) { _ptr = x; }
+		randomAccess		(const randomAccess &cpy) { _ptr = cpy.getPtr(); }
+		~randomAccess	() {}
 		it_class&	operator=(const it_class &x)
 		{
 			if (this != x._ptr)
@@ -68,7 +68,7 @@ namespace ft
 		
 		it_class	&	operator-=(const it_class &y)
 		{
-			this->_ptr = this->_ptr + y._ptr;
+			this->_ptr = this->_ptr - y._ptr;
 			return (*this); 
 		}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/17 18:05:40 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/19 18:52:03 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@
 #include "vector/vector.hpp"
 #include "iterators/iterator_traits.hpp"
 #include "iterators/random_access_iterator.hpp"
+#include "iterators/reverse_iterators.hpp"
 
 
 int	main( void )
 {
-	ft::vector<int> i;
+	// ft::vector<int> i;
 
-	// ft::vector<int>::iterator it1 = i.begin();
-	// ft::vector<int>::const_iterator it2 = i.end();
+	// // ft::vector<int>::iterator it1 = i.begin();
+	// // ft::vector<int>::const_iterator it2 = i.end();
 
-	// if (it1 == it2)
-	// 	std::cout << "oki" << std::endl;
+	// // if (it1 == it2)
+	// // 	std::cout << "oki" << std::endl;
 
-	std::vector<int>::const_iterator it = i.begin();
+	// std::vector<int>::const_iterator it = i.begin();
 	
 	return ( 0 );
 }
