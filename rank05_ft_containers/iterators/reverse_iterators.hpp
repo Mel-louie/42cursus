@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/19 19:10:11 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/12/19 19:18:36 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define REVERSE_ITERATORS_HPP
 
 # include "iterator_traits.hpp"
-# include "random_access_iterator.hpp"
 # include <iterator>
 
 /*----------------- REVERSE_ITERATORS -----------------*/
@@ -32,7 +31,7 @@
 namespace ft
 {
     template <typename T>
-    class reverseIterator: public randomAccess<T>
+    class reverseIterator
 	{
 	protected:
 		T*	_ptr;
@@ -44,11 +43,62 @@ namespace ft
 		typedef	std::random_access_iterator_tag	iterator_category;
         typedef	size_t	                        size_type;
         typedef reverseIterator<T>				it_class;
+
+		reverseIterator() { _ptr = NULL;}
+		reverseIterator	    (pointer x ) { _ptr = x; }
+		reverseIterator		(const reverseIterator &cpy) { _ptr = cpy.getPtr(); }
+		~reverseIterator	() {}
+		it_class&	operator=(const it_class &x)
+		{
+			if (this != x._ptr)
+				this = x._ptr;
+			return (*this);
+		}
+		
+        reference	operator*() const { return (*_ptr); }
+		pointer	    operator->() const { return (_ptr); }
+		
+        
+        bool operator==(const it_class &it) { return (it._ptr == this->_ptr); }		
+        bool operator!=(const it_class &it) { return (it._ptr == this->_ptr); }
+		bool operator<=(const it_class &it) { return (it._ptr >= this->_ptr); }
+		bool operator>=(const it_class &it) { return (it._ptr <= this->_ptr); }
+		bool operator<(const it_class &it) { return (it._ptr > this->_ptr); }
+		bool operator>(const it_class &it) { return (it._ptr < this->_ptr); }
+
         
 		it_class&	operator++() { _ptr--; return (*this); }									// prefix increment operator: --it
 		it_class	operator++(int) { it_class tmp(this->_ptr); this->_ptr--; return (tmp); }	// postfix increment operator: it--
 		it_class&	operator--() { _ptr++; return (*this); }									// prefix decrement operator: --it
 		it_class	operator--(int) { it_class tmp(this->_ptr); this->_ptr++; return (tmp); }	// postfix decrement operator: it--
+		
+		it_class&	operator+=(const it_class &y)
+		{
+			this->_ptr = this->_ptr + y._ptr;
+			return (*this);
+		}
+		
+		it_class	&	operator-=(const it_class &y)
+		{
+			this->_ptr = this->_ptr - y._ptr;
+			return (*this); 
+		}
+
+	/*		            	Getter          			*/
+		pointer	    getPtr() const { return (_ptr); }
+
+	/*			Non-members operators overloads			*/
+		friend it_class		operator+(int nb, const it_class	 &x)
+		{
+			it_class	 newIt(x);
+			return (newIt += nb);
+		}
+		
+		friend it_class		operator-(int nb, const it_class	 &x)
+		{
+			it_class	 newIt(x);
+			return (newIt -= nb);
+		}
 	};
 };
 
