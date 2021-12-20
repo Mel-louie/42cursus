@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:49:18 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/20 16:14:54 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/20 16:18:27 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,20 @@ namespace ft
 			return (*this);
 		};
 	};
-	
-	template <class T1, class T2>
-  pair<T1,T2> make_pair (T1 x, T2 y);
+
+	/*--------------------------------------------------------*/
+	/*------------------- FT::MAKE_PAIR ----------------------*/
+	/*
+	*	constructs a pair object with its first element set to
+	*	x and its second element set to y
+	*	the template types can be implicitly deduced from the
+	*	arguments passed to make_pair
+	*/
+	template<class T1, class T2>
+	pair<T1,T2> make_pair (T1 x, T2 y)
+	{
+		return (pair<T1, T2>(x, y));
+	};
 };
 
 #endif
