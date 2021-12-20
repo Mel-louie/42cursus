@@ -1,6 +1,8 @@
 🔘 iterators_traits ✅ reverse_iterator ✅ enable_if ✅ is_integral ✅ equal ✅ lexicographical_compare ✅
 std::pair, std::make_pair
 
+🔘 relational operator pour pair ?????
+
 ✅ conflic between fill constructor and range constructor ??? enable if ?
 https://stackoverflow.com/questions/21042872/how-to-implement-fill-constructor-and-range-constructor-for-sequence-containers
 https://riptutorial.com/cplusplus/example/3777/enable-if
