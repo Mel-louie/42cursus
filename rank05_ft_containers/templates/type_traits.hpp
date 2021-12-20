@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   traits.hpp                                         :+:      :+:    :+:   */
+/*   type_traits.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 14:17:26 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/20 14:57:50 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/20 15:37:10 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TRAITS_HPP
-# define TRAITS_HPP
+#ifndef TYPES_TRAITS_HPP
+# define TYPES_TRAITS_HPP
 
 
 namespace ft
