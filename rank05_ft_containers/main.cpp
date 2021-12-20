@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/20 14:58:42 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/20 15:28:38 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "iterators/iterator_traits.hpp"
 #include "iterators/random_access_iterator.hpp"
 #include "iterators/reverse_iterators.hpp"
+#include "templates/algorithm.hpp"
 
 int	main( void )
 {

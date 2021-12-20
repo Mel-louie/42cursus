@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/20 15:04:59 by mel-louie         #+#    #+#             */
+/*   Updated: 2021/12/20 15:29:41 by mel-louie        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ALGORITHM_HPP
+# define ALGORITHM_HPP
+
+namespace ft
+{
+	/*--------------------------------------------------------*/
+	/*----------- FT::LEXICOGRAPHICAL_COMPARE ----------------*/
+/*
+*	Returns true if the range [first1,last1) compares lexicographically
+*	less than the range [first2,last2)
+*	@param comp	Binary function that accepts two arguments of the types pointed by the iterators, and returns a value convertible to bool. The value returned indicates whether the first argument is considered to go before the second in the specific strict weak ordering it defines.
+    The function shall not modify any of its arguments.
+    This can either be a function pointer or a function object.
+*/
+	template <class InputIterator1, class InputIterator2>
+	bool lexicographical_compare (InputIterator1 first1, InputIterator1 last1,
+                                InputIterator2 first2, InputIterator2 last2)
+	{
+		for (; first1 != last1 ; ++first1, ++first2)
+		{
+			if (first2 == last2 || *first2 < *first1)
+				return (false);
+			if (*first1 < *first2)
+				return (true);
+		}
+		return (first1 != last1);
+	}
+};
+
+#endif
