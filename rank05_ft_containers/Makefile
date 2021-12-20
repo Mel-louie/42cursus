@@ -33,7 +33,7 @@ OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
 
-CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-o3 -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror #-std=c++98 #-o3 -g3 -fsanitize=address
 CC				= c++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
