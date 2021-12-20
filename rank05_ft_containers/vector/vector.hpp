@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/19 23:44:07 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/12/20 14:11:16 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <cmath>
+# include <type_traits>
 # include "../iterators/random_access_iterator.hpp"
 # include "../iterators/reverse_iterators.hpp"
 
@@ -87,9 +88,9 @@ namespace	ft
 		// vector (InputIterator first, InputIterator last,
 		// 	const allocator_type& alloc = allocator_type()):
 		// 	_alloc(alloc), _size(0)																		//---> NOT OK
-		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
-            typename std::enable_if<!std::is_integral<InputIterator>::value >::type* = 0) :				//---> OK
-            _alloc(alloc), _size(0)
+		// vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
+        //     typename std::enable_if<!std::is_integral<InputIterator>::value >::type* = 0) :				//---> OK but cpp11 is needed
+        //     _alloc(alloc), _size(0)
 		{
 			InputIterator	tmp(first);
 			while (tmp != last)
