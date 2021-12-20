@@ -4,3 +4,4 @@ https://algorithmtutor.com/Data-Structures/
 https://quuxplusone.github.io/blog/2018/12/01/const-iterator-antipatterns/
 https://stackoverflow.com/questions/28611584/how-to-define-implicit-conversion-from-custom-iterator-to-custom-const-iterator
 https://stackoverflow.com/questions/57718018/how-do-i-convert-iterator-to-const-iterator-in-my-custom-list-iterator-class
+https://h-deb.clg.qc.ca/Sujets/TrucsScouts/Comprendre_enable_if.html
