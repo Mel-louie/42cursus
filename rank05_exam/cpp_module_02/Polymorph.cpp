@@ -1,11 +1,11 @@
-#include "Fwoosh.hpp"
+#include "Polymorph.hpp"
 
-Fwoosh::Fwoosh( void ): ASpell("Fwoosh", "fwooshed")
+Polymorph::Polymorph( void ): ASpell("Polymorph", "turned into a critter")
 {}
 
-Fwoosh::~Fwoosh( void ){}
+Polymorph::~Polymorph( void ){}
 
-ASpell* Fwoosh::clone( void ) const
+ASpell* Polymorph::clone( void ) const
 {
-    return (new Fwoosh);
+    return (new Polymorph);
 }
