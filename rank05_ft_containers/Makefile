@@ -1,4 +1,5 @@
-NAME = a.out
+NAME = ft_containers
+STL = stl_containers
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -29,18 +30,25 @@ OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 SRCS_FILE		= main.cpp
 
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
+OBJSSTL			= $(addprefix $(OBJS_DIRSTL), $(SRCS_FILE:.cpp=.o))
 
+OBJS_DIR		= ./objs/
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
 
-CFLAGS			= -Wall -Wextra -Werror #-std=c++98 #-o3 -g3 -fsanitize=address
-CC				= c++
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-o3 -g3 -fsanitize=address
+CC				= clang++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
 
-all: launch
+ft: launch_name
 
-launch:
+stl: launch_stl
+
+all: launch_name launch_stl
+
+#	NAME	#
+launch_name:
 	@printf "[ "$(B_GREEN)"building"$(_END) 
 	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
 	@$(MAKE) $(NAME)
@@ -56,6 +64,24 @@ $(OBJS): $(OBJS_DIR)%.o: %.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@printf $(BK_GREEN)"       "$(_END)
 
+#	STL		#
+launch_stl:
+	@printf "[ "$(B_GREEN)"building"$(_END) 
+	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
+	@$(MAKE) $(NAME)
+	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
+
+$(OBJS_DIR):
+	@mkdir $@
+
+$(NAME): $(OBJS_DIR) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJS): $(OBJS_DIR)%.o: %.cpp
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@printf $(BK_GREEN)"       "$(_END)
+
+#			#
 clean:
 	@rm -rf $(OBJ)
 	@rm -rf $(OBJS_DIR)

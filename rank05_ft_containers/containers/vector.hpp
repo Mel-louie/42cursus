@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 16:00:58 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 17:19:48 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,10 @@ namespace	ft
 	*   @param last 	end of the range
 	*   @param alloc 	the allocation
 	*/
+//https://stackoverflow.com/questions/56061096/whats-is-type-in-the-expression-stdenable-if
+//https://stackoverflow.com/questions/51785354/how-does-stdenabled-if-work-when-enabling-via-a-parameter
+//https://stackoverflow.com/questions/21042872/how-to-implement-fill-constructor-and-range-constructor-for-sequence-containers
+//https://riptutorial.com/cplusplus/example/3777/enable-if
 		template <class InputIterator>
 		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0):
@@ -360,18 +364,7 @@ namespace	ft
 	*/
 		allocator_type get_allocator() const { return (_alloc); }
 
-/*------------------------------------------------------*/
-/*				Non-member function overloads			*/
-	/*
-	*	Relational operators for vector
-	*	Performs the appropriate comparison operation between the vector
-	*	containers lhs and rhs.
-	*/
-		
-	/*
-	*	exchange contents of vectors
-	*/
-		void swap(ft::vector<T, Alloc>& x, ft::vector<T, Alloc>& y) { x.swap(y); }
+
 
 /*------------------------------------------------------*/
 /*							Attributes					*/
@@ -402,23 +395,19 @@ namespace	ft
 			_vector = tmp;
 		}
 	};
+/*------------------------------------------------------*/
+/*				Non-member function overloads			*/
+	/*
+	*	Relational operators for vector
+	*	Performs the appropriate comparison operation between the vector
+	*	containers lhs and rhs.
+	*/
+		
+	/*
+	*	exchange contents of vectors
+	*/
+	template <class T, class Alloc>
+	void swap(ft::vector<T, Alloc>& x, ft::vector<T, Alloc>& y) { x.swap(y); }
 };
 
-
-// Print the inside of a vector
-template<typename T>
-std::ostream& operator<< (std::ostream& out,  ft::vector<T>& v)
-{
-    out << "{";
-    size_t last = v.size() - 1;
-    for(size_t i = 0; i < v.size(); ++i)
-	{
-        out << v[i];
-        if (i != last) 
-            out << ", ";
-    }
-    out << "}";
-    return (out);
-}
-
-#endif
+#endif //namespace fr --- VECTOR_HPP

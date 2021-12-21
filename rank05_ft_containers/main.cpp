@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 14:41:33 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 17:17:29 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <iterator>
 #include "containers/vector.hpp"
+#include "containers/print_vector.hpp"
 #include "iterators/iterator_traits.hpp"
 #include "iterators/random_access_iterator.hpp"
 #include "iterators/reverse_iterators.hpp"
@@ -26,7 +27,7 @@ int	main( void )
 	// ft::vector<const int> i2;
 	
 	ft::vector<int> o(10, 42);
-	o[5] = 4;   // --
+	//o[5] = 4;   // --
 	
 	// ft::vector<int>::rev_interator it1 = i.rbegin();
 	// ft::vector<int>::const_rev_interator it2 = i2.rend();
@@ -37,7 +38,8 @@ int	main( void )
 	if (it1 == it2)
 		std::cout << "oki" << std::endl;
 
-	std::cout << o << std::endl;
+
+	print_vector(o);
 
 	// std::vector<int>::const_iterator it = i.begin();
 	
