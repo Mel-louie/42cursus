@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 18:34:59 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 18:49:11 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ namespace	ft
 		explicit	vector(const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(0), _capacity(0)
 		{
-			std::cout << "COUCOU" << std::endl;
+			// std::cout << "COUCOU" << std::endl;
 			_vector = _alloc.allocate(_capacity);
 		}
 
