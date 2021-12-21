@@ -35,11 +35,10 @@ INCLUDES_DIR	= ./includes/
 OBJSSTL			= $(addprefix $(OBJS_DIRSTL), $(SRCS_FILE:.cpp=.o))
 OBJS_DIRSTL		= ./objs_stl/
 
-CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-o3 -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 -DTESTED_NAMESPACE=ft #-o3 -g3 -fsanitize=address
 CC				= clang++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
-
 
 all: launch
 
