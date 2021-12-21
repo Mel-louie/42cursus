@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_vector.hpp                                   :+:      :+:    :+:   */
+/*   utilities.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_VECTOR_HPP
-# define PRINT_VECTOR_HPP
+#ifndef utilities_HPP
+# define utilities_HPP
 
 # include "vector.hpp"
 # include <iostream>
 # include <string>
 
 #ifndef TESTED_NAMESPACE
-# define TESTED_NAMESPACE ft //change to stl to change it
+# define TESTED_NAMESPACE  //change to stl to change it
 #endif
 
 const std::string _RED	= "\033[31m";
@@ -28,7 +28,7 @@ const std::string _BLU	= "\033[34m";
 const std::string _END	= "\033[0m";
 
 template<typename T>
-void    print_vector(TESTED_NAMESPACE::vector<T> &v)
+void    utilities(TESTED_NAMESPACE::vector<T> &v)
 {
 	std::cout << "{";
 	size_t  last = v.size() - 1;

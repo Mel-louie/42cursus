@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 18:03:41 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 18:38:07 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <iterator>
 #include "containers/vector.hpp"
-#include "containers/print_vector.hpp"
+#include "containers/utilities.hpp"
 #include "iterators/iterator_traits.hpp"
 #include "iterators/random_access_iterator.hpp"
 #include "iterators/reverse_iterators.hpp"
@@ -40,7 +40,7 @@ int	main( void )
 		std::cout << "oki" << std::endl;
 
 
-	print_vector(o);
+	utilities(o);
 
 	// std::vector<int>::const_iterator it = i.begin();
 	
