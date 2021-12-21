@@ -1,4 +1,4 @@
-NAME = ft_containers
+NAME = ft
 
 #	COLORS	#
 _BLACK		= "\033[30m"

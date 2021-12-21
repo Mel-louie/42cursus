@@ -12,7 +12,7 @@ rm -rf tests ft stl
 mkdir -p tests/
 
 echo "Compile ft"
-clang++ -Wall -Wextra -Werror -std=c++98 -DTESTED_NAMESPACE=ft -o ft main.cpp
+make
 
 echo "Compile stl"
 clang++ -Wall -Wextra -Werror -std=c++98 -DTESTED_NAMESPACE=std -o stl main.cpp
