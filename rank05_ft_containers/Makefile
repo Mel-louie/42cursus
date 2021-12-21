@@ -1,5 +1,4 @@
 NAME = ft_containers
-STL = stl_containers
 
 #	COLORS	#
 _BLACK		= "\033[30m"
@@ -41,14 +40,11 @@ CC				= clang++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
 
-ft: launch_ft
 
-stl: launch_stl
-
-all: launch_ft launch_stl
+all: launch
 
 #	NAME	#
-launch_ft:
+launch:
 	@printf "[ "$(B_GREEN)"building"$(_END) 
 	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
 	@$(MAKE) $(NAME)
@@ -64,24 +60,6 @@ $(OBJS): $(OBJS_DIR)%.o: %.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@printf $(BK_GREEN)"       "$(_END)
 
-#	STL		#
-launch_stl:
-	@printf "[ "$(B_GREEN)"building"$(_END) 
-	@printf " ] \t|" $(B_WHITE)"\t\t"$(STL)$(_END) 
-	@$(MAKE) $(STL)
-	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(STL)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
-
-$(OBJS_DIRSTL):
-	@mkdir $@
-
-$(STL): $(OBJS_DIRSTL) $(OBJSSTL)
-	@$(CC) $(CFLAGS) $(OBJSSTL) -o $(STL)
-
-$(OBJSSTL): $(OBJS_DIRSTL)%.o: %.cpp
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@printf $(BK_GREEN)"       "$(_END)
-
-#			#
 clean:
 	@rm -rf $(OBJ) $(OBJSSTL)
 	@rm -rf $(OBJS_DIR) $(OBJS_DIRSTL)

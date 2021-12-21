@@ -6,17 +6,12 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 17:44:07 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 17:46:41 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef vector_HPP
 # define vector_HPP
-
-// define namespace at compile time -----> where ton stock that ? :(
-#ifndef FT
-#define FT std
-#endif
 
 # include <iostream>
 # include <cmath>
@@ -64,6 +59,7 @@ namespace	ft
 		explicit	vector(const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(0), _capacity(0)
 		{
+			std::cout << "COUCOU" << std::endl;
 			_vector = _alloc.allocate(_capacity);
 		}
 
@@ -77,7 +73,6 @@ namespace	ft
 			const allocator_type& alloc = allocator_type()):
 			_alloc(alloc), _size(n), _capacity(n)
 		{
-			std::cout << "COUCOU" << std::endl;
 			_vector = _alloc.allocate(_capacity);
 
 			for (size_type i = 0 ; i < _size ; ++i)

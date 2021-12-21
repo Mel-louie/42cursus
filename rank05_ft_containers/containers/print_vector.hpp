@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 16:53:33 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/21 17:38:41 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 17:46:51 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ const std::string _BLU	= "\033[34m";
 const std::string _END	= "\033[0m";
 
 template<typename T>
-void    print_vector(FT::vector<T> &v)
+void    print_vector(ft::vector<T> &v)
 {
 	std::cout << "{";
 	size_t  last = v.size() - 1;
