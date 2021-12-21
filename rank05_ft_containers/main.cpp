@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/20 15:56:15 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 14:41:33 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main( void )
 	// ft::vector<const int> i2;
 	
 	ft::vector<int> o(10, 42);
+	o[5] = 4;   // --
 	
 	// ft::vector<int>::rev_interator it1 = i.rbegin();
 	// ft::vector<int>::const_rev_interator it2 = i2.rend();
