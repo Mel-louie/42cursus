@@ -30,25 +30,25 @@ OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
 SRCS_FILE		= main.cpp
 
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.cpp=.o))
-OBJSSTL			= $(addprefix $(OBJS_DIRSTL), $(SRCS_FILE:.cpp=.o))
-
-OBJS_DIR		= ./objs/
 OBJS_DIR		= ./objs/
 INCLUDES_DIR	= ./includes/
+
+OBJSSTL			= $(addprefix $(OBJS_DIRSTL), $(SRCS_FILE:.cpp=.o))
+OBJS_DIRSTL		= ./objs_stl/
 
 CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-o3 -g3 -fsanitize=address
 CC				= clang++
 
 INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
 
-ft: launch_name
+ft: launch_ft
 
 stl: launch_stl
 
-all: launch_name launch_stl
+all: launch_ft launch_stl
 
 #	NAME	#
-launch_name:
+launch_ft:
 	@printf "[ "$(B_GREEN)"building"$(_END) 
 	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
 	@$(MAKE) $(NAME)
@@ -67,28 +67,28 @@ $(OBJS): $(OBJS_DIR)%.o: %.cpp
 #	STL		#
 launch_stl:
 	@printf "[ "$(B_GREEN)"building"$(_END) 
-	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
-	@$(MAKE) $(NAME)
-	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
+	@printf " ] \t|" $(B_WHITE)"\t\t"$(STL)$(_END) 
+	@$(MAKE) $(STL)
+	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(STL)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
 
-$(OBJS_DIR):
+$(OBJS_DIRSTL):
 	@mkdir $@
 
-$(NAME): $(OBJS_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(STL): $(OBJS_DIRSTL) $(OBJSSTL)
+	@$(CC) $(CFLAGS) $(OBJSSTL) -o $(STL)
 
-$(OBJS): $(OBJS_DIR)%.o: %.cpp
+$(OBJSSTL): $(OBJS_DIRSTL)%.o: %.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@printf $(BK_GREEN)"       "$(_END)
 
 #			#
 clean:
-	@rm -rf $(OBJ)
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJ) $(OBJSSTL)
+	@rm -rf $(OBJS_DIR) $(OBJS_DIRSTL)
 	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\tobjects"$(_END)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(STL)
 	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 
 re:

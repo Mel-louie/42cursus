@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 17:17:29 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/21 17:44:56 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@
 
 int	main( void )
 {
-	ft::vector<int>	i;
+	FT::vector<int>	i;
 	// ft::vector<const int> i2;
+
+	FT::vector 
 	
-	ft::vector<int> o(10, 42);
+	FT::vector<int> o(10, 42);
 	//o[5] = 4;   // --
 	
 	// ft::vector<int>::rev_interator it1 = i.rbegin();
 	// ft::vector<int>::const_rev_interator it2 = i2.rend();
 
-	ft::vector<int>::iterator	it1 = i.begin();
-	ft::vector<int>::iterator	it2 = i.begin();
+	FT::vector<int>::iterator	it1 = i.begin();
+	FT::vector<int>::iterator	it2 = i.begin();
 
 	if (it1 == it2)
 		std::cout << "oki" << std::endl;
