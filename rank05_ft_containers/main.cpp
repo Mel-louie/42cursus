@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 12:58:31 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 13:39:04 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 
 int	main( void )
 {
-	
-	
+	std::cout << B_WHT << "<----- WELLCOME TO MY FT_CONTAINERS ----->" << std::endl;
+	std::cout << "You will launch the tests with: " << NAME << " namespace" << _END << std::endl;
+
 	return ( 0 );
 }
 

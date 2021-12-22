@@ -18,7 +18,12 @@
 # include <string>
 
 #ifndef TESTED_NAMESPACE
-# define TESTED_NAMESPACE  //change to ft or stl in the makefile to change it
+# define TESTED_NAMESPACE std  //change to ft or stl in the makefile to change it
+#endif
+# if TESTED_NAMESPACE == ft
+	# define NAME "ft"
+# else 
+	#define NAME "stl"
 #endif
 
 const std::string _RED	= "\033[31m";
@@ -26,14 +31,11 @@ const std::string _GRN	= "\033[32m";
 const std::string _YLW	= "\033[33m";
 const std::string _BLU	= "\033[34m";
 const std::string _END	= "\033[0m";
-const std::string B_BLACK		= "\033[1;30m"
-const std::string B_RED		= "\033[1;31m"
-const std::string B_GREEN		= "\033[1;32m"
-const std::string B_YELLOW	= "\033[1;33m"
-const std::string B_BLUE		= "\033[1;34m"
-const std::string B_PURPLE	= "\033[1;35m"
-B_CYAN		= "\033[1;36m"
-B_WHITE		= "\033[1;37m"
+const std::string B_RD	= "\033[1;31m";
+const std::string B_GRN	= "\033[1;32m";
+const std::string B_YLW	= "\033[1;33m";
+const std::string B_BLU	= "\033[1;34m";
+const std::string B_WHT	= "\033[1;37m";
 
 template<typename T>
 void    utilities(TESTED_NAMESPACE::vector<T> &v)
@@ -49,6 +51,6 @@ void    utilities(TESTED_NAMESPACE::vector<T> &v)
 	}
 	std::cout << _END;
 	std::cout << "}" << std::endl;
-}
+};
 
 #endif
