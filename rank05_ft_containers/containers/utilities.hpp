@@ -33,7 +33,7 @@ const std::string B_BLU	= "\033[1;34m";
 const std::string B_WHT	= "\033[1;37m";
 
 template<typename T>
-void    utilities(TESTED_NAMESPACE::vector<T> &v)
+void    printVec(TESTED_NAMESPACE::vector<T> &v)
 {
 	std::cout << "{";
 	size_t  last = v.size() - 1;

@@ -37,6 +37,7 @@ DIFF=$(diff tests/ft.txt tests/stl.txt)
 if [ "$DIFF" ]  
 then
 	echo "There was differences ❌"
+	touch test/diff.txt
 	diff tests/ft.txt tests/stl.txt > test/diff.txt
 	echo "Please check tests/diff.txt to find out about them"
 else

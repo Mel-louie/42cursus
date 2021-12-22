@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 16:39:18 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 16:58:45 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,25 +98,26 @@ namespace	ft
 			while (tmp != last)
 				_size++;
 			_capacity = _size;
-			_begin = _alloc.allocate(_capacity, this);
-			_end = _begin + _size;
 
-			for (size_type i = 0 ; i < _size ; i++, *first++)
-				_alloc.construct(_begin + i, *first);
+			_vector = _alloc.allocate(_capacity);
+
+			for (size_type i = 0 ; i < _size ; ++i, ++first)
+				_alloc.construct(&_vector[i], *first);
+
 		}
 
 	/*
 	*	Copy constructor
     *   @param x	object to be copied
 	*/
-		vector	(const vector &x): _alloc(x._alloc)
+		 vector	(const vector &x): _alloc(x._alloc), _size(x._size),
+		 	_capacity(x._capacity)
 		{
-			_begin = _alloc.allocate(x.capacity(), this);
-			_end = _begin + x.size();
-			_capacity = x.capacity();
-			_size = x.size();
-			for (size_type i = 0; i < x.size(); i++)
-				_alloc.construct(_begin + i, *(x._begin + i));
+			_vector = _alloc.allocate(_capacity);
+
+			for (size_type i = 0 ; i < _size ; ++i)
+				_alloc.construct(&_vector[i], x._vector[i]);
+			
 		}
 
 	/*
@@ -125,12 +126,11 @@ namespace	ft
 	*	all the storage capacity allocated by the vector
 	*	using its allocator
 	*/
-		// ~vector()
-		// {
-		// 	for (iterator it = begin() ; it != end() ; ++it )
-		// 		_alloc.destroy(&(*it));
-		// 	_alloc.deallocate(_vector, _capacity);
-		// }
+		~vector()
+		{
+			this->clear();
+			_alloc.deallocate(_vector, _capacity);
+		}
 
 	/*
 	*	Assignation operator
