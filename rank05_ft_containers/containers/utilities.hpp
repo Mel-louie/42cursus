@@ -26,6 +26,14 @@ const std::string _GRN	= "\033[32m";
 const std::string _YLW	= "\033[33m";
 const std::string _BLU	= "\033[34m";
 const std::string _END	= "\033[0m";
+const std::string B_BLACK		= "\033[1;30m"
+const std::string B_RED		= "\033[1;31m"
+const std::string B_GREEN		= "\033[1;32m"
+const std::string B_YELLOW	= "\033[1;33m"
+const std::string B_BLUE		= "\033[1;34m"
+const std::string B_PURPLE	= "\033[1;35m"
+B_CYAN		= "\033[1;36m"
+B_WHITE		= "\033[1;37m"
 
 template<typename T>
 void    utilities(TESTED_NAMESPACE::vector<T> &v)

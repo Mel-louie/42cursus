@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 18:38:07 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 12:58:31 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,12 @@
 
 int	main( void )
 {
-	TESTED_NAMESPACE::vector<int>	i;
-	// ft::vector<const int> i2;
-
 	
-	TESTED_NAMESPACE::vector<int> o(10, 42);
-	//o[5] = 4;   // --
-	
-	// ft::vector<int>::rev_interator it1 = i.rbegin();
-	// ft::vector<int>::const_rev_interator it2 = i2.rend();
-
-	TESTED_NAMESPACE::vector<int>::iterator	it1 = i.begin();
-	TESTED_NAMESPACE::vector<int>::iterator	it2 = i.begin();
-
-	if (it1 == it2)
-		std::cout << "oki" << std::endl;
-
-
-	utilities(o);
-
-	// std::vector<int>::const_iterator it = i.begin();
 	
 	return ( 0 );
 }
 
-
+/* --------------- 42school main test: --------------- */
 
 // #include <iostream>
 // #include <string>
