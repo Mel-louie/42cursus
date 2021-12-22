@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 15:39:41 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 15:59:47 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ namespace	ft
 	*   @param alloc 		is use for the allocation
 	*/
 		explicit	vector(const allocator_type& alloc = allocator_type()):
-			_alloc(alloc), _size(0), _capacity(0)
+			_alloc(alloc), _size(0), _capacity(0), _begin(NULL), _end(NULL)
 		{
 			// std::cout << "COUCOU" << std::endl;
 			_vector = _alloc.allocate(_capacity);
@@ -71,7 +71,7 @@ namespace	ft
 	*/
 		explicit vector (size_type n, const value_type& val = value_type(),
 			const allocator_type& alloc = allocator_type()):
-			_alloc(alloc), _size(n), _capacity(n)
+			_alloc(alloc), _size(n), _capacity(n), _begin(NULL), _end(NULL)
 		{
 			_vector = _alloc.allocate(_capacity);
 
@@ -92,17 +92,12 @@ namespace	ft
 		template <class InputIterator>
 		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0):
-			_alloc(alloc), _size(0)
+			_alloc(alloc), _size(0), _capacity(0), _begin(NULL), _end(NULL)
 		{
-			InputIterator	tmp(first);
-			while (tmp != last)
-				_size++;
-			_capacity = _size;
-
-			_vector = _alloc.allocate(_capacity);
-
-			// for (iterator i = 0 ; i < last ; ++i, ++first)
-			// 	_alloc.construct(&_vector[i], *first);
+			size_type n = last - first;
+			size_type capacity = ;
+			_begin = _alloc.allocate(n, this);
+			_end = _begin + n;
 		}
 
 	/*
@@ -111,16 +106,12 @@ namespace	ft
 	*/
 		vector	(const vector &x): _alloc(x.get_allocator())
 		{
-			// _vector = _alloc.allocate(_capacity);
-
-			// for (size_type i = 0 ; i < _size ; ++i)
-			// 	_alloc.construct(&_vector[i], &x._vector[i]);
-			 _begin = _alloc.allocate(x.capacity(), this);
-    _end = _begin + x.size();
-    _capacity = _begin + x.capacity();
-    for (size_type i = 0; i < x.size(); i++) {
-        _alloc.construct(_begin + i, *(x._begin + i));
-    }
+			_begin = _alloc.allocate(x.capacity(), this);
+			_end = _begin + x.size();
+			_capacity = x.capacity();
+			_size = x.size();
+			for (size_type i = 0; i < x.size(); i++)
+				_alloc.construct(_begin + i, *(x._begin + i));
 		}
 
 	/*
