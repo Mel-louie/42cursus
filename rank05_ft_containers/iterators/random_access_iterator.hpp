@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   random_access_iterator.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/19 23:33:24 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/12/22 14:18:32 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ namespace ft
 		
         reference	operator*() const { return (*_ptr); }
 		pointer	    operator->() const { return (_ptr); }
+		reference	operator[](size_type n) { return (*(_ptr + n)); }
 		
 		/*
 		*	Return a reference to vector_iterator + i
