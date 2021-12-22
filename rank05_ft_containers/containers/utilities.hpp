@@ -35,7 +35,7 @@ const std::string B_WHT	= "\033[1;37m";
 template<typename T>
 void    printVec(TESTED_NAMESPACE::vector<T> &v)
 {
-	std::cout << "{";
+	std::cout << _END << "{";
 	size_t  last = v.size() - 1;
 	std::cout << _GRN;
 	for (size_t i = 0 ; i < v.size() ; ++i)

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/22 16:18:49 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 17:26:43 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ namespace ft
 				this = x._ptr;
 			return (*this);
 		}
+		randomAccess operator+(difference_type n) const {
+        return randomAccess(_ptr + n);}
+		
+		size_type operator-(it_class it) const {
+    return _ptr - it._ptr;
+  }
+
+  it_class operator-(size_type n) const {
+    it_class tmp = *this;
+    tmp -= n;
+    return tmp;
+  }
 		
         reference	operator*() const { return (*_ptr); }
 		pointer	    operator->() const { return (_ptr); }

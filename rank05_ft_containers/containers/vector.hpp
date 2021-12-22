@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 16:58:45 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 17:34:34 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,13 @@ namespace	ft
 //https://riptutorial.com/cplusplus/example/3777/enable-if
 		template <class InputIterator>
 		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0):
-			_alloc(alloc), _size(0), _capacity(0), _begin(NULL), _end(NULL)
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0):
+			_alloc(alloc)
 		{
-			InputIterator	tmp(first);
-			while (tmp != last)
-				_size++;
-			_capacity = _size;
-
-			_vector = _alloc.allocate(_capacity);
-
-			for (size_type i = 0 ; i < _size ; ++i, ++first)
-				_alloc.construct(&_vector[i], *first);
+  			_size = last - first;
+  			_capacity = last - first;
+  			_vector = _alloc.allocate(_capacity);
+  			this->assign(first, last);
 
 		}
 
@@ -257,40 +252,24 @@ namespace	ft
 	*	@param first    an iterator pointing at the beginning of the range (will be included).
     *   @param last     an iterator pointing at the end of the range (will not be included)
 	*/
-		template <class InputIterator>
-		void assign (InputIterator first, InputIterator last)
+		void assign(iterator first, iterator last)
 		{
-			clear();
-
-			size_type n = static_cast<size_type>(last - first);
-			if (n > _capacity)
+			this->clear();
+			for (; first != last; ++first)
 			{
-				_alloc.deallocate(_vector, _capacity);
-				_vector = _alloc.allocate(n);
+				this->push_back(*first);
 			}
-						
-			size_type i = 0;
-			for (; first != last; ++i, ++first)
-				_alloc.construct(&_vector[i], *first);
-			_size = i;
 		}
 	/*
 	*	the new contents are n elements, each initialized to a copy of val
 	*	if a reallocation happens,the storage needed is allocated using the internal allocator.
 	*/
-		void assign (size_type n, const value_type& val)
+		template <class InputIterator>
+		void assign(size_type n, const value_type& val)
 		{
-			clear();
-
-			if (n > _capacity)
-			{
-				_alloc.deallocate(_vector, _capacity);
-				_vector = _alloc.allocate(n);
-			}
-						
-			for (size_type i = 0 ; i < n ; ++i)
-				_alloc.construct(&_vector[i], val);
-			_size = n;
+			this->clear();
+			for (size_type i = 0; i < n; i++)
+				this->push_back(val);
 		}
 
 	/*

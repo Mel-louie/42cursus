@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/22 16:45:46 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 17:37:49 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ void    vectorConstructors()
 {
 	TESTED_NAMESPACE::vector<int>   first;
 	TESTED_NAMESPACE::vector<int>   second(5, 42);
-	TESTED_NAMESPACE::vector<int>   third(second.begin(), second.end());
+//	TESTED_NAMESPACE::vector<int>   third(second.begin(), second.end());
 	TESTED_NAMESPACE::vector<int>   forth(second);
 
-	printVec(first);
-	printVec(second);
-	printVec(third);
-	printVec(forth);
+	std::cout << "first: "; printVec(first);
+	std::cout << "second: "; printVec(second);
+//	std::cout << "third: "; printVec(third);
+	std::cout << "forth: "; printVec(forth);
+//	std::cout << third.size() << std::endl;
 
 // 	int myints[] = {16,2,77,29};
 //   TESTED_NAMESPACE::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
