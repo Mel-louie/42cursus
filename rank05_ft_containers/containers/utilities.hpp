@@ -18,12 +18,7 @@
 # include <string>
 
 #ifndef TESTED_NAMESPACE
-# define TESTED_NAMESPACE std  //change to ft or stl in the makefile to change it
-#endif
-# if TESTED_NAMESPACE == ft
-	# define NAME "ft"
-# else 
-	#define NAME "stl"
+# define TESTED_NAMESPACE  //change to ft or stl in the makefile to change it
 #endif
 
 const std::string _RED	= "\033[31m";

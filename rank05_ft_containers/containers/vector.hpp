@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/21 18:49:11 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 13:59:53 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ namespace	ft
 
 			_vector = _alloc.allocate(_capacity);
 
-			for (int i = 0 ; i < last ; ++i, ++first)
+			for (iterator i = 0 ; i < last ; ++i, ++first)
 				_alloc.construct(&_vector[i], *first);
 		}
 
