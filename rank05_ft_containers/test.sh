@@ -20,13 +20,11 @@ mkdir -p tests/
 
 echo "make ft"
 make re
-printf "${_BWHITE}------------------------------------------------\n"${_END}
-
 echo
 echo "Compile stl"
 clang++ -Wall -Wextra -Werror -std=c++98 -DTESTED_NAMESPACE=std -o stl main.cpp
-printf "${_BWHITE}[ ${_BGREEN}stl ${_BWHITE}created with success ]\n"${_END}
-printf "${_BWHITE}------------------------------------------------\n"${_END}
+printf "${_BWHITE}[ ${_BGREEN}stl ${_BWHITE}created with success ]\n${_END}"
+printf "${_BWHITE}------------------------------------------------\n${_END}"
 
 echo
 
@@ -40,10 +38,11 @@ then
 	diff tests/ft.txt tests/stl.txt > tests/diff.txt
 	echo "Please check tests/diff.txt to find out about them"
 else
-	echo "There was no differences ✅"
+	printf "\n${_BWHITE}There was no differences ✅${_END}\n\n"
 	echo
+	printf "${_BWHITE}------------------------------------------------\n${_END}"
 	make fclean
 	rm -rf tests stl
-	printf "${_BWHITE}[ ${_BPURPLE}stl ${_BWHITE}deleted with success ]\n"${_END}
+	printf "${_BWHITE}[ ${_BPURPLE}stl ${_BWHITE}deleted with success ]\n${_END}"
 fi
 

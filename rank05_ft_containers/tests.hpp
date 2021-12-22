@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/22 17:37:49 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 17:40:22 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    vectorConstructors()
 //	TESTED_NAMESPACE::vector<int>   third(second.begin(), second.end());
 	TESTED_NAMESPACE::vector<int>   forth(second);
 
-	std::cout << "first: "; printVec(first);
+	std::cout << _END << "first: "; printVec(first);
 	std::cout << "second: "; printVec(second);
 //	std::cout << "third: "; printVec(third);
 	std::cout << "forth: "; printVec(forth);
