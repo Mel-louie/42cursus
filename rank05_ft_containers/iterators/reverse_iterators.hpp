@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_iterators.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/19 23:34:57 by louielouie       ###   ########.fr       */
+/*   Updated: 2021/12/22 16:13:58 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,8 @@ namespace ft
 		
         reference	operator*() const { return (*_ptr); }
 		pointer	    operator->() const { return (_ptr); }
+		reference	operator[](size_type n) { return (*(_ptr + n)); }
 		
-		/*
-		*	Return a reference to vector_iterator + i
-		*	Undefined behavior if the reference returned is out of container's range
-		*/
-		reference operator[](unsigned int &i) const
-		{
-			value_type *tmp(this->_ptr);
-
-			if (i < 0)
-                i *= -1;
-            for (; i > 0; --i)
-                tmp += i;
-			return (*tmp);
-		}
-        
         bool operator==(const it_class &it) { return (it._ptr == this->_ptr); }		
         bool operator!=(const it_class &it) { return (it._ptr == this->_ptr); }
 		bool operator<=(const it_class &it) { return (it._ptr >= this->_ptr); }

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:57 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/22 15:27:06 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 16:18:49 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,6 @@ namespace ft
         reference	operator*() const { return (*_ptr); }
 		pointer	    operator->() const { return (_ptr); }
 		reference	operator[](size_type n) { return (*(_ptr + n)); }
-		
-		// /*
-		// *	Return a reference to vector_iterator + i
-		// *	Undefined behavior if the reference returned is out of container's range
-		// */
-		// reference operator[](unsigned int &i) const
-		// {
-		// 	value_type *tmp(this->_ptr);
-
-		// 	if (i < 0)
-        //         i *= -1;
-        //     for (; i > 0; --i)
-        //         tmp += i;
-		// 	return (*tmp);
-		// }
-
 
         bool operator==(const it_class &it) { return (it._ptr == this->_ptr); }		
         bool operator!=(const it_class &it) { return (it._ptr == this->_ptr); }
@@ -82,7 +66,7 @@ namespace ft
 			return (*this);
 		}
 		
-		it_class	&	operator-=(const it_class &y)
+		it_class&	operator-=(const it_class &y)
 		{
 			this->_ptr = this->_ptr - y._ptr;
 			return (*this); 
@@ -92,13 +76,13 @@ namespace ft
 		pointer	    getPtr() const { return (_ptr); }
 
 	/*			Non-members operators overloads			*/
-		friend it_class		operator+(int nb, const it_class	 &x)
+		friend it_class		operator+(int nb, const it_class &x)
 		{
 			it_class	 newIt(x);
 			return (newIt += nb);
 		}
 		
-		friend it_class		operator-(int nb, const it_class	 &x)
+		friend it_class		operator-(int nb, const it_class &x)
 		{
 			it_class	 newIt(x);
 			return (newIt -= nb);

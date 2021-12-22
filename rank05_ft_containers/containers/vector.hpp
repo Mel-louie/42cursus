@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 15:59:47 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 16:39:18 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,22 @@ namespace	ft
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0):
 			_alloc(alloc), _size(0), _capacity(0), _begin(NULL), _end(NULL)
 		{
-			size_type n = last - first;
-			size_type capacity = ;
-			_begin = _alloc.allocate(n, this);
-			_end = _begin + n;
+			InputIterator	tmp(first);
+			while (tmp != last)
+				_size++;
+			_capacity = _size;
+			_begin = _alloc.allocate(_capacity, this);
+			_end = _begin + _size;
+
+			for (size_type i = 0 ; i < _size ; i++, *first++)
+				_alloc.construct(_begin + i, *first);
 		}
 
 	/*
 	*	Copy constructor
     *   @param x	object to be copied
 	*/
-		vector	(const vector &x): _alloc(x.get_allocator())
+		vector	(const vector &x): _alloc(x._alloc)
 		{
 			_begin = _alloc.allocate(x.capacity(), this);
 			_end = _begin + x.size();
@@ -120,12 +125,12 @@ namespace	ft
 	*	all the storage capacity allocated by the vector
 	*	using its allocator
 	*/
-		~vector()
-		{
-			for (iterator it = begin() ; it != end() ; ++it )
-				_alloc.destroy(&(*it));
-			_alloc.deallocate(_vector, _capacity);
-		}
+		// ~vector()
+		// {
+		// 	for (iterator it = begin() ; it != end() ; ++it )
+		// 		_alloc.destroy(&(*it));
+		// 	_alloc.deallocate(_vector, _capacity);
+		// }
 
 	/*
 	*	Assignation operator
