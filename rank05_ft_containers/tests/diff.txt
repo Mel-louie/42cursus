@@ -1,4 +1,0 @@
-3c3
-< myvector contains:
----
-> myvector contains: 1 2 3 4 5

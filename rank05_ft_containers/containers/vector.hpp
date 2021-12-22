@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 18:39:57 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 19:16:12 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ namespace	ft
 	class vector
 	{
     public:
+
 	/*							Aliases						*/
 	typedef	Alloc				allocator_type;
 	typedef	T					value_type;
@@ -182,12 +183,12 @@ namespace	ft
 	*/
 		void resize (size_type n, value_type val = value_type())
 		{
-			if (n > _capacity)
-				reallocate(n);
-			while (n > _size)
-				push_back(val);
-			while (n < _size)
-				pop_back();
+			if (n < _size)
+				for (size_type i = _size ; i > n ; i--)
+					this->pop_back();
+			else if (n > _size)
+				for (size_type i = _size ; i < n ; i++)
+					this->push_back(val);
 		}
 	/*
 	*	Return size of allocated storage capacity
@@ -201,13 +202,28 @@ namespace	ft
 	/*
 	*	Request a change in capacity
 	*/
-		void reserve (size_type n)
+		void reserve(size_type n)
 		{
 			if (n > max_size())
-				std::length_error("not enough space");
-			if (n > _capacity)
-				reallocate(n);
+				throw std::length_error("vector::reserve");
+			else if (n <= _capacity)
+				return;
+			else
+			{
+				pointer tmp = _alloc.allocate(n);
+				for (size_type i = 0; i < _size; i++)
+					_alloc.construct(&tmp[i], _vector[i]);
+				if (_vector)
+				{
+					for (size_type i = 0; i < _size; i++)
+						_alloc.destroy(&_vector[i]);
+					_alloc.deallocate(_vector, _capacity);
+				}
+				_vector = tmp;
+				_capacity = n;
+			}
 		}
+
 
 /*--------------------------------------------------------*/
 /*							Element access				*/
@@ -283,16 +299,12 @@ namespace	ft
 			if (_size == _capacity)
 			{
 				if (_size == 0)
-				{}
-			}
-			if (_size + 1 > _capacity)
-			{
-				if (!_capacity)
-					reallocate(1);
+					this->reserve(2);
 				else
-					reallocate(_capacity * 2);
+					this->reserve(_capacity * 2);
 			}
-			_alloc.construct(&_vector[_size++], val);
+			_alloc.construct(&_vector[_size], val);
+			_size++;
 		}
 	/*
 	*	Delete last element
@@ -368,17 +380,6 @@ namespace	ft
 			tmp = a;
 			a = b;
 			b = tmp;
-		}
-		
-		void	reallocate(size_type n)
-		{
-			T*	tmp = _alloc.allocate(n);
-
-			for (size_type i = 0 ; i < _size ; ++i )
-				_alloc.construct(&tmp[i], _vector[i]);
-			this->~vector();
-			_capacity = n;
-			_vector = tmp;
 		}
 	};
 /*------------------------------------------------------*/

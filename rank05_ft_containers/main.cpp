@@ -6,28 +6,19 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 18:16:58 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 19:15:24 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector>
-#include <iostream>
-#include <iterator>
-#include "containers/vector.hpp"
-#include "containers/utilities.hpp"
-#include "iterators/iterator_traits.hpp"
-#include "iterators/random_access_iterator.hpp"
-#include "iterators/reverse_iterators.hpp"
-#include "templates/algorithm.hpp"
-#include "templates/utility.hpp"
 #include "tests.hpp"
 
 int	main( void )
 {
 	std::cout << B_WHT << "<----- WELLCOME TO MY FT_CONTAINERS ----->" << _END << std::endl;
 	std::cout << std::endl;
-	
+
 	testVector();
+
 	return ( 0 );
 }
 

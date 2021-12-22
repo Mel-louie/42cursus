@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This tests needs -DTESTED_NAMESPACE
+# This tests needs -DTESTED_NAMESPACE when compil
 # You must have 
 #	#ifndef TESTED_NAMESPACE
 #	# define TESTED_NAMESPACE

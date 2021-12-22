@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/22 18:37:58 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 19:09:35 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,32 @@ void	vectorAssign()
 void	vectorBegin()
 {
 	TESTED_NAMESPACE::vector<int> myvector;
+
 	for (int i = 1 ; i <= 5; i++ )
 		myvector.push_back(i);
 
-	std::cout << "myvector contains:";
-	for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it)
-		std::cout << ' ' << *it;
-	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin();
+	std::cout << ' ' << *it << std::endl;
+}
+
+void	vectorEnd()
+{
+	TESTED_NAMESPACE::vector<int> myvector;
+
+	for (int i = 1 ; i <= 5; i++ )
+		myvector.push_back(i);
+
+	TESTED_NAMESPACE::vector<int>::iterator it = myvector.end();
+	--it;
+	std::cout << ' ' << *it << std::endl;
 }
 
 void    testVector()
 {
-  //  vectorConstructors();
-//	vectorAssign();
-	vectorBegin();
+	// vectorConstructors();
+	// vectorAssign();
+	// vectorBegin();
+	vectorEnd();
 }
 
 #endif
