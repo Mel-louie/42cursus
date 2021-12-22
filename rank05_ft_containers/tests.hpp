@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/22 17:40:22 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 18:37:58 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,58 @@
 
 void    vectorConstructors()
 {
-	TESTED_NAMESPACE::vector<int>   first;
-	TESTED_NAMESPACE::vector<int>   second(5, 42);
-//	TESTED_NAMESPACE::vector<int>   third(second.begin(), second.end());
-	TESTED_NAMESPACE::vector<int>   forth(second);
+	std::cout << "<----- VECTOR::CONSTRUCTORS ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int>	first;
+	TESTED_NAMESPACE::vector<int>	second(5, 42);
+//	TESTED_NAMESPACE::vector<int>	third(second.begin(), second.end());
+	TESTED_NAMESPACE::vector<int>	forth(second);
+
+// the iterator constructor can also be used to construct from arrays:
+	int intArr[] = {16,2,77,29};
+	TESTED_NAMESPACE::vector<int> fifth(intArr, intArr + sizeof(intArr) / sizeof(int) );
 
 	std::cout << _END << "first: "; printVec(first);
 	std::cout << "second: "; printVec(second);
 //	std::cout << "third: "; printVec(third);
 	std::cout << "forth: "; printVec(forth);
-//	std::cout << third.size() << std::endl;
+//	std::cout << "fifth: "; printVec(fifth);
+	std::cout << std::endl;
 
-// 	int myints[] = {16,2,77,29};
-//   TESTED_NAMESPACE::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
+}
 
-//   std::cout << "The contents of fifth are:";
-//   for (TESTED_NAMESPACE::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+void	vectorAssign()
+{
+	std::cout << "<----- VECTOR::OPERATOR=() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int>	first(3,0);
+	TESTED_NAMESPACE::vector<int>	second(5, 42);
+	
+	second = first;
+	first = TESTED_NAMESPACE::vector<int>();
 
+	std::cout << "Size of first: " << int(first.size()) << std::endl;
+	std::cout << "Size of second: " << int(second.size()) << std::endl;
+	std::cout << std::endl;
+}
+
+void	vectorBegin()
+{
+	TESTED_NAMESPACE::vector<int> myvector;
+	for (int i = 1 ; i <= 5; i++ )
+		myvector.push_back(i);
+
+	std::cout << "myvector contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
 }
 
 void    testVector()
 {
-    vectorConstructors();
+  //  vectorConstructors();
+//	vectorAssign();
+	vectorBegin();
 }
 
 #endif

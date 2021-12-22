@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 17:34:34 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 18:39:57 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ namespace	ft
 
 	/*
 	*	Destuctor
-	*	destroys all container elements, and deallocates
-	*	all the storage capacity allocated by the vector
+	*	deallocates all the storage capacity allocated by the vector
 	*	using its allocator
 	*/
 		~vector()
@@ -281,6 +280,11 @@ namespace	ft
 	*/
 		void push_back (const value_type& val)
 		{
+			if (_size == _capacity)
+			{
+				if (_size == 0)
+				{}
+			}
 			if (_size + 1 > _capacity)
 			{
 				if (!_capacity)
