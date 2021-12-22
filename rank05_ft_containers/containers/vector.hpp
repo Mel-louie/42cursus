@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 14:15:16 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/22 15:39:41 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,21 +101,26 @@ namespace	ft
 
 			_vector = _alloc.allocate(_capacity);
 
-			for (iterator i = 0 ; i < last ; ++i, ++first)
-				_alloc.construct(&_vector[i], *first);
+			// for (iterator i = 0 ; i < last ; ++i, ++first)
+			// 	_alloc.construct(&_vector[i], *first);
 		}
 
 	/*
 	*	Copy constructor
     *   @param x	object to be copied
 	*/
-		vector	(const vector &x): _alloc(x._alloc), _size(x._size),
-			_capacity(x._capacity)
+		vector	(const vector &x): _alloc(x.get_allocator())
 		{
-			_vector = _alloc.allocate(_capacity);
+			// _vector = _alloc.allocate(_capacity);
 
-			for (size_type i = 0 ; i < _size ; ++i)
-				_alloc.construct(&_vector[i], &x._vector[i]);
+			// for (size_type i = 0 ; i < _size ; ++i)
+			// 	_alloc.construct(&_vector[i], &x._vector[i]);
+			 _begin = _alloc.allocate(x.capacity(), this);
+    _end = _begin + x.size();
+    _capacity = _begin + x.capacity();
+    for (size_type i = 0; i < x.size(); i++) {
+        _alloc.construct(_begin + i, *(x._begin + i));
+    }
 		}
 
 	/*
@@ -373,6 +378,8 @@ namespace	ft
 		size_type		_size;
 		size_type		_capacity;
 		pointer			_vector;			// pointer to a dynamically allocated array
+		pointer			_begin;
+		pointer			_end;
 
 		template <typename U>
 		void	swap(U &a, U &b)
