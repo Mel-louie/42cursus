@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/29 16:31:16 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 17:34:33 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,26 +266,26 @@ namespace	ft
 	*	@param first    an iterator pointing at the beginning of the range (will be included).
     *   @param last     an iterator pointing at the end of the range (will not be included)
 	*/
-		void assign(iterator first, iterator last)
-		{
-			this->clear();
-			for (; first != last; ++first)
-			{
-				this->push_back(*first);
-			}
-		}
 	/*
 	*	the new contents are n elements, each initialized to a copy of val
 	*	if a reallocation happens,the storage needed is allocated using the internal allocator.
 	*/
 		template <class InputIterator>
-		void assign(size_type n, const value_type &val)
+		void assign(InputIterator first, InputIterator last,
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+					int>::type* = 0)
 		{
-			this->clear();
+			this->clear();for (; first != last; ++first)
+			{
+				this->push_back(*first);
+			}
+		}
+		void assign(size_type n, const value_type& val)
+		{
+			clear();
 			for (size_type i = 0; i < n; i++)
 				this->push_back(val);
 		}
-
 	/*
 	*	Add  new element at the end of the vector
 	*	When the capacity is exhausted and more is needed,

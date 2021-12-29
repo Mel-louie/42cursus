@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/29 17:16:03 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 17:35:57 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    vectorConstructors()
 
 }
 
-void	vectorAssign()
+void	vectorAssignation()
 {
 	std::cout << "<----- VECTOR::OPERATOR=() ----->" << std::endl;
 	std::cout << std::endl;
@@ -298,10 +298,33 @@ void	vectorBack()
 	std::cout << std::endl;
 }
 
+void	vectorAssign()
+{
+	std::cout << "<----- VECTOR::ASSIGN() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec1;
+	TESTED_NAMESPACE::vector<int> vec2;
+	TESTED_NAMESPACE::vector<int> vec3;
+
+	vec1.assign(7, 100);
+	printVec(vec1);
+
+	TESTED_NAMESPACE::vector<int>::iterator it = vec1.begin();
+
+	vec2.assign(it, vec1.end() - 1);	
+	printVec(vec2);
+
+	int	i[] = {15, 22, 4, 77};
+	vec3.assign(i + 1, i + 4);	// assign from array
+	printVec(vec3);
+
+	std::cout << std::endl;
+}
+
 void    testVector()
 {
 	// vectorConstructors();
-	// vectorAssign();
+	// vectorAssignation();
 	// vectorBegin();
 	// vectorEnd();
 	// vectorRbegin();
@@ -316,7 +339,18 @@ void    testVector()
 	// vectorAt();
 	// vectorFront();
 	// vectorBack();
-	
+	// vectorAssign();
 }
+
+
+// void	vector()
+// {
+// 	std::cout << "<----- VECTOR::() ----->" << std::endl;
+// 	std::cout << std::endl;
+// 	TESTED_NAMESPACE::vector<int> vec;
+
+// 	printVec(vec);
+// 	std::cout << std::endl;
+// }
 
 #endif
