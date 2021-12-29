@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/22 19:16:12 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 16:31:16 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,11 @@ namespace	ft
 	typedef	size_t				size_type;
 	typedef	std::ptrdiff_t		difference_type;	// ptrdiff_t: Result of pointer subtraction
 
-	typedef randomAccess<T>			iterator;
-	typedef randomAccess<const T>	const_iterator;
+	typedef standard_iterator< pointer, vector >       iterator;
+	typedef standard_iterator< const_pointer, vector > const_iterator;
 
-	typedef	reverseIterator<T>			rev_interator;
-	typedef	reverseIterator<const T>	const_rev_interator;
-
+	typedef reverse_iterator< const_iterator >         const_reverse_iterator;
+	typedef reverse_iterator< iterator >               reverse_iterator;
 
 /*--------------------------------------------------------*/
 /*							Constructors				*/
@@ -57,7 +56,7 @@ namespace	ft
     *   Construct an empty container with 0 element		*
 	*   @param alloc 		is use for the allocation
 	*/
-		explicit	vector(const allocator_type& alloc = allocator_type()):
+		explicit	vector(const allocator_type &alloc = allocator_type()):
 			_alloc(alloc), _size(0), _capacity(0), _begin(NULL), _end(NULL)
 		{
 			// std::cout << "COUCOU" << std::endl;
@@ -70,8 +69,8 @@ namespace	ft
 	*   @param val 	the value used by default for init
 	*   @param alloc 	the allocation
 	*/
-		explicit vector (size_type n, const value_type& val = value_type(),
-			const allocator_type& alloc = allocator_type()):
+		explicit vector (size_type n, const value_type &val = value_type(),
+			const allocator_type &alloc = allocator_type()):
 			_alloc(alloc), _size(n), _capacity(n), _begin(NULL), _end(NULL)
 		{
 			_vector = _alloc.allocate(_capacity);
@@ -91,7 +90,7 @@ namespace	ft
 //https://stackoverflow.com/questions/21042872/how-to-implement-fill-constructor-and-range-constructor-for-sequence-containers
 //https://riptutorial.com/cplusplus/example/3777/enable-if
 		template <class InputIterator>
-		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
+		vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = 0):
 			_alloc(alloc)
 		{
@@ -150,12 +149,12 @@ namespace	ft
 		const_iterator	end() const { return (const_iterator(_vector + _size)); }
 
 	/*	Return (const_)iterator to reverse beginning		*/
-		rev_interator	rbegin() { return (rev_interator(_vector + _size - 1)); }
-		const_rev_interator	rbegin() const { return (const_rev_interator(_vector + _size - 1)); }
+		reverse_iterator		rbegin() { return (reverse_iterator(end())); }
+		const_reverse_iterator	rbegin() const { return (const_reverse_iterator(end())); }
 	
 	/*	Return (const_)iterator to reverse end				*/
-		rev_interator	rend() { return (rev_interator(_vector - 1)); }
-		const_rev_interator	rend() const { return (const_rev_interator(_vector - 1)); }
+		reverse_iterator		rend() { return (reverse_iterator(begin())); }
+		const_reverse_iterator	rend() const { return (const_reverse_iterator(begin())); }
 
 /*--------------------------------------------------------*/
 /*							Capacity					*/
@@ -234,13 +233,13 @@ namespace	ft
 	*	Access an element at n index
 	*	If n is outside vector's range, throw an out_of_range exception
 	*/
-		T& at (size_type n)
+		T &at (size_type n)
 		{
 			if (!(n < _size))
 				std::out_of_range("out of range");
 			return (_vector[n]);
 		}
-		const T& at (size_type n) const
+		const T &at (size_type n) const
 		{
 			if (!(n < _size))
 				std::out_of_range("out of range");
@@ -249,12 +248,12 @@ namespace	ft
 	/*
 	*	 Returns a reference to the first element in the vector
 	*/
-		T& 			front() { return (_vector[0]); }
+		T &			front() { return (_vector[0]); }
 		const T&	front() const { return (_vector[0]); }
 	/*
 	*	 Returns a reference to the last element in the vector
 	*/
-		T& 			back() { return (_vector[_size - 1]); }
+		T &			back() { return (_vector[_size - 1]); }
 		const T&	back() const { return (_vector[_size - 1]); }
 
 /*------------------------------------------------------*/
@@ -280,7 +279,7 @@ namespace	ft
 	*	if a reallocation happens,the storage needed is allocated using the internal allocator.
 	*/
 		template <class InputIterator>
-		void assign(size_type n, const value_type& val)
+		void assign(size_type n, const value_type &val)
 		{
 			this->clear();
 			for (size_type i = 0; i < n; i++)
@@ -294,7 +293,7 @@ namespace	ft
 	*	(reallocating it storage space). The theoretical
 	*	limit on the size of a vector is given by member max_size.
 	*/
-		void push_back (const value_type& val)
+		void push_back (const value_type &val)
 		{
 			if (_size == _capacity)
 			{
@@ -317,6 +316,41 @@ namespace	ft
 			if (_size)
 				_alloc.destroy(&_vector[_size--] - 1);				
 		}
+
+	/*
+	* insert elements
+	*/
+		iterator insert (iterator position, const value_type& val)
+		{
+			size_type n = position - this->begin();
+			insert(position, 1, val);
+			return (iterator(&_vector[n]));
+		}
+
+	    void insert (iterator position, size_type n, const value_type& val)
+		{
+			vector tmp(position, this->end());
+			_size -= (this->end() - position);
+			for (size_type i = 0 ; i < n ; i++)
+				this->push_back(val);
+			for (iterator it = tmp.begin() ; it != tmp.end() ; ++it)
+				this->push_back(*it);
+		}
+
+		template <class InputIterator>
+		void insert (iterator position, InputIterator first, InputIterator last,
+						typename ft::enable_if<!is_integral<InputIterator>::value,
+						InputIterator>::type* = 0)
+		{
+			vector tmp(position, this->end());
+			_size -= (this->end() - position);
+			for (iterator it = first ; it != last ; ++it)
+				this->push_back(*it);
+			for (iterator it = tmp.begin() ; it != tmp.end() ; ++it)
+				this->push_back(*it);
+		}
+
+
 
 		/*
 		*	Removes from the vector a single element (position)
@@ -394,7 +428,7 @@ namespace	ft
 	*	exchange contents of vectors
 	*/
 	template <class T, class Alloc>
-	void swap(ft::vector<T, Alloc>& x, ft::vector<T, Alloc>& y) { x.swap(y); }
+	void swap(ft::vector<T, Alloc> &x, ft::vector<T, Alloc> &y) { x.swap(y); }
 };
 
 #endif //namespace fr --- VECTOR_HPP

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 14:17:26 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/20 15:37:10 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 15:58:10 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
 
 namespace ft
 {
+	// Ref: https://www.cplusplus.com/reference/type_traits/integral_constant/?kw=integral_constant
+	template <typename T, T Val>
+	struct integral_constant
+	{
+		typedef integral_constant	type;
+		typedef T					value_type;
+		enum { value = Val };
+	};
+	typedef integral_constant< bool, true >  true_type;
+	typedef integral_constant< bool, false > false_type;
+
+	// Ref: https://www.cplusplus.com/reference/type_traits/is_same/?kw=is_same
+	template < typename T, typename U > struct is_same : public false_type {};
+	template < typename T > struct is_same< T, T > : public true_type {};
 
 	/*--------------------------------------------------------*/
 	/*------------------- FT::ENABLE_IF ----------------------*/

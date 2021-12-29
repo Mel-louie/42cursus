@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:49:18 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/20 16:18:27 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 15:32:15 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ namespace ft
 		T1	first;
 		T2	second;
 
-/*					Consts & Dests					*/
+/*					Consts  &Dests					*/
 		pair(): first(), second() {};
 
 	/*
@@ -37,7 +37,7 @@ namespace ft
 	*	Initialization constructor
 	*	member first is constructed with a and member second with b
 	*/
-		pair	(const T1& a, const T2& b): first(a), second(b) {};
+		pair	(const T1 &a, const T2 &b): first(a), second(b) {};
 		
 		~pair();
 

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:50 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/17 15:34:51 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 15:23:24 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 namespace ft
 {
-	template <class Iterator> class iterator_traits
+	template <class Iterator> struct iterator_traits
 	{
 		typedef typename Iterator::difference_type		difference_type;
 		typedef typename Iterator::value_type			value_type;
@@ -46,7 +46,7 @@ namespace ft
 		typedef typename Iterator::iterator_category	iterator_category;
 	};
 
-	template <class T> class iterator_traits<T*>
+	template <class T> struct iterator_traits<T*>
 	{
 		typedef	std::ptrdiff_t							difference_type;	// ptrdiff_t: Result of pointer subtraction
 		typedef	T										value_type;
@@ -55,7 +55,7 @@ namespace ft
 		typedef	std::random_access_iterator_tag			iterator_category;
 	};
 
-	template <class T> class iterator_traits<const T*>
+	template <class T> struct iterator_traits<const T*>
 	{
 		typedef	std::ptrdiff_t							difference_type;	// ptrdiff_t: Result of pointer subtraction
 		typedef	T										value_type;
