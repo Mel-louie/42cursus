@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/29 17:35:57 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 18:31:47 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,6 +321,48 @@ void	vectorAssign()
 	std::cout << std::endl;
 }
 
+void	vectorPushPop()
+{
+	std::cout << "<----- VECTOR::PUSH/POP_BACK() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v;
+
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	printVec(v);
+
+	v.pop_back();
+	v.pop_back();
+	printVec(v);
+
+	v.push_back(42);
+	printVec(v);
+
+	std::cout << std::endl;
+}
+
+void	vectorInsert()
+{
+	std::cout << "<----- VECTOR::INSERT() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v(3, 100);
+	TESTED_NAMESPACE::vector<int>::iterator it;
+
+	it = v.begin();
+	it = v.insert(it, 200);
+	
+	v.insert(it, 2, 300);
+
+	it = v.begin();
+	
+	TESTED_NAMESPACE::vector<int> v2(2, 600);
+	v.insert(it + 2, v2.begin(), v2.end());
+
+	printVec(v);
+	std::cout << std::endl;
+}
+
 void    testVector()
 {
 	// vectorConstructors();
@@ -340,6 +382,8 @@ void    testVector()
 	// vectorFront();
 	// vectorBack();
 	// vectorAssign();
+	// vectorPushPop();
+	// vectorInsert();
 }
 
 
