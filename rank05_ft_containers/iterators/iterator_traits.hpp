@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:50 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/29 15:23:24 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/29 18:35:04 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 *		output_iterator_tag			Output Iterator
 *		forward_iterator_tag		Forward Iterator
 *		bidirectional_iterator_tag	Bidirectional Iterator
-*		random_access_iterator_tag	Random-access Iterator
+*		iterators_tag	Random-access Iterator
 * https://www.cplusplus.com/reference/iterator/iterator_traits/
 */
 
