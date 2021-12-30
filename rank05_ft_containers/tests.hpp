@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/29 18:34:22 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/30 13:22:25 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "containers/vector.hpp"
 #include "containers/utilities.hpp"
 #include "iterators/iterator_traits.hpp"
-// #include "iterators/iterators.hpp"
-// #include "iterators/reverse_iterators.hpp"
 #include "templates/algorithm.hpp"
 #include "templates/utility.hpp"
 
@@ -363,6 +361,147 @@ void	vectorInsert()
 	std::cout << std::endl;
 }
 
+void	vectorErase()
+{
+	std::cout << "<----- VECTOR::ERASE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec;
+
+	for (int i = 1 ; i != 10 ; ++i)
+		vec.push_back(i);
+	printVec(vec);
+	
+	// erase the 6th element
+	vec.erase(vec.begin() + 5);
+	printVec(vec);
+
+	// erase the first 3 elements
+	vec.erase(vec.begin(), vec.begin() + 3);
+
+	printVec(vec);
+	std::cout << std::endl;
+}
+
+
+void	vectorSwap()
+{
+	std::cout << "<----- VECTOR::SWAP() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<char> vec1;
+	TESTED_NAMESPACE::vector<char> vec2;
+
+	vec1.push_back('a');
+	vec1.push_back('a');
+	vec1.push_back('a');
+	vec1.push_back('a');
+
+	vec2.push_back('b');
+	vec2.push_back('b');
+	vec2.push_back('b');
+
+	std::cout << "Vector a before swap: "; printVec(vec1);
+	std::cout << "Vector b before swap: "; printVec(vec2);
+	std::cout << std::endl;
+
+	vec1.swap(vec2);
+
+	std::cout << "Vector a after swap: "; printVec(vec1);
+	std::cout << "Vector b after swap: "; printVec(vec2);
+	std::cout << std::endl;
+
+	vec2.swap(vec1);
+
+	std::cout << "Vector a after second swap: "; printVec(vec1);
+	std::cout << "Vector b after second swap: "; printVec(vec2);
+	std::cout << std::endl;
+}
+
+void	vectorClear()
+{
+	std::cout << "<----- VECTOR::CLEAR() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec;
+
+	for (int i = 100 ; i != 110 ; i++)
+		vec.push_back(i);
+	
+	std::cout << "Vector before clear: "; printVec(vec);
+	vec.clear();
+	std::cout << "Vector after clear: "; printVec(vec);
+
+	std::cout << std::endl;
+}
+
+void	vectorGetAllocator()
+{
+	std::cout << "<----- VECTOR::GETALLOCATOR() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
+	int * p;
+	unsigned int i;
+
+	// allocate an array with space for 5 elements using vector's allocator:
+	p = myvector.get_allocator().allocate(5);
+
+	for (i = 0 ; i < 5 ; i++)
+		myvector.push_back(i);
+
+	std::cout << "The allocated array contains: "; printVec(myvector);
+
+	// destroy and deallocate, if not, it leaks
+	for (i=0; i<5; i++) myvector.get_allocator().destroy(&p[i]);
+	myvector.get_allocator().deallocate(p,5);
+
+	std::cout << std::endl;
+}
+
+void	vectorSwapOverloads()
+{
+	std::cout << "<----- VECTOR::SWAP_OVERLOAD() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec1;
+	TESTED_NAMESPACE::vector<int> vec2;
+
+	vec1.push_back(1);
+	vec1.push_back(1);
+	vec1.push_back(1);
+	vec1.push_back(1);
+	vec1.push_back(1);
+
+	vec2.push_back(2);
+	vec2.push_back(2);
+	vec2.push_back(2);
+	
+	std::cout << "Vector a before swap: "; printVec(vec1);
+	std::cout << "Vector b before swap: "; printVec(vec2);
+	std::cout << std::endl;
+
+	vec1.swap(vec2);
+
+	std::cout << "Vector a after swap: "; printVec(vec1);
+	std::cout << "Vector b after swap: "; printVec(vec2);
+	std::cout << std::endl;
+
+	vec2.swap(vec1);
+
+	std::cout << "Vector a after second swap: "; printVec(vec1);
+	std::cout << "Vector b after second swap: "; printVec(vec2);
+	std::cout << std::endl;
+}
+
+void	vectorRelationalOperators()
+{
+	std::cout << "<----- VECTOR::RELATIONAL_OPERATORS() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v1(3, 100);
+	TESTED_NAMESPACE::vector<int> v2(2, 200);
+	
+	if (v1 == v2) std::cout << "v1 and v2 are equal" << std::endl;
+	if (v1 != v2) std::cout << "v1 and v2 aren't equal" << std::endl;
+
+	std::cout << std::endl;
+}
+
 void    testVector()
 {
 	// vectorConstructors();
@@ -384,6 +523,13 @@ void    testVector()
 	// vectorAssign();
 	// vectorPushPop();
 	// vectorInsert();
+	// vectorErase();
+	// vectorSwap();
+	// vectorClear();
+	// vectorGetAllocator();
+// non-member function overloads
+	vectorRelationalOperators();
+	// vectorSwapOverloads();
 }
 
 

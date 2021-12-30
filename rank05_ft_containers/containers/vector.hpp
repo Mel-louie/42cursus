@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/29 18:34:22 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/30 13:29:11 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../iterators/iterators.hpp"
 # include "../iterators/reverse_iterators.hpp"
 # include "../templates/type_traits.hpp"
+# include "../templates/algorithm.hpp"
 
 namespace	ft
 {
@@ -352,19 +353,27 @@ namespace	ft
 
 
 
-		/*
-		*	Removes from the vector a single element (position)
-		*	@param position	iterator pointing to a single element to be removed from the vector
-		*/
+	/*
+	*	Removes from the vector a single element (position)
+	*	@param position	iterator pointing to a single element to be removed from the vector
+	*/
 		iterator erase (iterator position) { return (erase(position, position + 1)); }
-		/*
-		*	Removes from the vector a range of elements ([first,last))
-		*	@param first	iterator first of the range to erase, that will be include
-		*	@param last		iterator last of the range to erase, that will not be include
-		*/
+	/*
+	*	Removes from the vector a range of elements ([first,last))
+	*	@param first	iterator first of the range to erase, that will be include
+	*	@param last		iterator last of the range to erase, that will not be include
+	*/
 		iterator erase (iterator first, iterator last)
 		{
-			(void) first, last;
+			iterator tmp(last);
+			while (last != this->end())
+			{
+				*first = *last;
+				++first;
+				++last;
+			}
+  			this->_size -= (last - first);
+			return (tmp);
 		}
 		/*
 		*	 Exchanges the content of the container by the content of x, which is another vector
@@ -423,7 +432,30 @@ namespace	ft
 	*	Performs the appropriate comparison operation between the vector
 	*	containers lhs and rhs.
 	*/
-		
+	template <class T, class Alloc>
+	bool operator==(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return (lhs.size() == rhs.size() &&
+				ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+	}
+	template <class T, class Alloc>
+	bool operator!=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return (!(lhs == rhs));
+	}
+	template <class T, class Alloc>
+	bool operator<(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return (lexicographical_compare(lhs.begin(), lhs.end(),
+					rhs.begin(), rhs.end()));
+	}
+	template <class T, class Alloc>
+	bool operator<=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return ();
+	}
+
+
 	/*
 	*	exchange contents of vectors
 	*/

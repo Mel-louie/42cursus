@@ -28,49 +28,43 @@ std::pair ✅ std::make_pair ✅
 
 
 # vector Member functions
-
-# (constructor) ✅
-# (destructor)  ✅
-# operator=     ✅
+# (constructor) 		
+# (destructor)			✅
+# operator=				✅
 
 # Iterators:
 
-# begin         ✅
-# end           ✅
-# rbegin		✅
-# rend			✅
+# begin					✅
+# end					✅
+# rbegin				✅
+# rend					✅
 
 # Capacity:
-
-# size          ✅
-# max_size      ✅
-# resize        ✅
-# capacity      ✅
-# empty         ✅
-# reserve       ✅
+# size					✅
+# max_size				✅
+# resize				✅
+# capacity				✅
+# empty					✅
+# reserve				✅
 
 # Element access:
-
-# operator[]    ✅
-# at			✅
-# front			✅
-# back			✅
+# operator[]			✅
+# at					✅
+# front					✅
+# back					✅
 
 # Modifiers:
-
-# assign		
-# push_back     ✅
-# pop_back      ✅
-# insert		✅
-# erase
-# swap          ✅
-# clear			✅
+# assign				✅
+# push_back 		    ✅
+# pop_back  		    ✅
+# insert				✅
+# erase					✅
+# swap					✅
+# clear					✅
 
 # Allocator:
+# get_allocator			✅
 
-# get_allocator	✅
-
-# Non-member function overloads
-
+# Non-member function overloads:
 # relational operators
-# swap			✅
+# swap					✅
