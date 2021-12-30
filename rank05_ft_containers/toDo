@@ -1,9 +1,7 @@
 
-🔘 relational operator pour pair ?????
+✅ relational operator pour pair ?????
 
-🔘 constructeur vecteur par range ne se remplie paaaaaaaaaas
-
-🔘 batterie tests templates
+✅ constructeur vecteur par range ne se remplie paaaaaaaaaas
 
 ✅ batterie tests vector
 
@@ -30,7 +28,7 @@ std::pair ✅ std::make_pair ✅
 
 
 # vector Member functions
-# (constructor) 		
+# (constructor) 		✅
 # (destructor)			✅
 # operator=				✅
 

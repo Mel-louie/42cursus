@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/30 15:01:04 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/30 18:18:31 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,27 @@
 #include "templates/algorithm.hpp"
 #include "templates/utility.hpp"
 
+/*---------------------------------- vector --------------------------------*/
+
 void    vectorConstructors()
 {
 	std::cout << "<----- VECTOR::CONSTRUCTORS ----->" << std::endl;
 	std::cout << std::endl;
 	TESTED_NAMESPACE::vector<int>	first;
 	TESTED_NAMESPACE::vector<int>	second(5, 42);
-//	TESTED_NAMESPACE::vector<int>	third(second.begin(), second.end());
+	TESTED_NAMESPACE::vector<int>	third(second.begin(), second.end());
 	TESTED_NAMESPACE::vector<int>	forth(second);
 
 // the iterator constructor can also be used to construct from arrays:
-//	int intArr[] = {16,2,77,29};
-//	TESTED_NAMESPACE::vector<int> fifth(intArr, intArr + sizeof(intArr) / sizeof(int) );
+	int intArr[] = {16,2,77,29};
+	TESTED_NAMESPACE::vector<int> fifth(intArr, intArr + sizeof(intArr) / sizeof(int) );
 
 	std::cout << _END << "first: "; printVec(first);
 	std::cout << "second: "; printVec(second);
-//	std::cout << "third: "; printVec(third);
+	std::cout << "third: "; printVec(third);
 	std::cout << "forth: "; printVec(forth);
-//	std::cout << "fifth: "; printVec(fifth);
+	std::cout << "fifth: "; printVec(fifth);
 	std::cout << std::endl;
-
 }
 
 void	vectorAssignation()
@@ -520,15 +521,61 @@ void    testVector()
 	vectorSwapNonMember();
 }
 
+/*---------------------------------- pair --------------------------------*/
 
-// void	vector()
-// {
-// 	std::cout << "<----- VECTOR::() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec;
+void	pairConstructor()
+{
+	std::cout << "<----- PAIR::CONSTRUCTORS ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::pair<std::string, double> p1;
+	TESTED_NAMESPACE::pair<std::string, double> p2("child1", 1.1);
+	TESTED_NAMESPACE::pair<std::string, double> p3(p2);
 
-// 	printVec(vec);
-// 	std::cout << std::endl;
-// }
+	p1 = TESTED_NAMESPACE::make_pair("child0", 0.1);
+
+	std::cout << "pair 1: " << p1.first << ", " << p1.second << std::endl;
+	std::cout << "pair 2: " << p2.first << ", " << p2.second << std::endl;
+	std::cout << "pair 3: " << p3.first << ", " << p3.second << std::endl;
+}
+
+void	pairAssignation()
+{
+	std::cout << "<----- PAIR::OPERATOR=() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::pair<std::string, int> planet, homeplanet;
+
+	planet = TESTED_NAMESPACE::make_pair("Earth", 2);
+
+	homeplanet = planet;
+
+	std::cout << "Homeplanet: " << homeplanet.first << std::endl;
+	std::cout << "Planet Timeline: " << homeplanet.second << std::endl;	
+}
+
+void	pairRelationalOperators()
+{	
+	std::cout << "<----- PAIR::RELATIONAL_OPERATORS() ----->" << std::endl;
+	std::cout << std::endl;
+	std::pair<int,char> foo (10,'z');
+	std::pair<int,char> bar (90,'a');
+
+	if (foo == bar) std::cout << "foo and bar are equal\n";
+	if (foo != bar) std::cout << "foo and bar are not equal\n";
+	if (foo < bar) std::cout << "foo is less than bar\n";
+	if (foo > bar) std::cout << "foo is greater than bar\n";
+	if (foo <= bar) std::cout << "foo is less than or equal to bar\n";
+	if (foo >= bar) std::cout << "foo is greater than or equal to bar\n";
+
+}
+
+void	testPair()
+{
+	pairConstructor();
+	pairAssignation();
+	pairRelationalOperators();
+}
+
+/*---------------------------------- stack --------------------------------*/
+
 
 #endif

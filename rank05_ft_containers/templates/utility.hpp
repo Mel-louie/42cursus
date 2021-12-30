@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:49:18 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/29 15:32:15 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/30 15:58:53 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,50 @@ namespace ft
 	*	member first is constructed with a and member second with b
 	*/
 		pair	(const T1 &a, const T2 &b): first(a), second(b) {};
-		
-		~pair();
 
 	/*
 	*	assigns pr as the new content for the pair object
 	*/
 		pair&	operator=(const pair &pr)
 		{
-			if (this != pr)
-			{
-				first = pr.first;
-				second = pr.second;
-			}
+			first = pr.first;
+			second = pr.second;
 			return (*this);
 		};
 	};
+
+	// non-member functions
+	template <class T1, class T2>
+	bool operator==(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	{
+		return (lhs.first == rhs.first && lhs.second == rhs.second);
+	}
+	template <class T1, class T2>
+	bool operator!= (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	{
+		return (!(lhs == rhs));
+	}
+	template <class T1, class T2>
+	bool operator<(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	{
+		return (lhs.first < rhs.first || (!(rhs.first < lhs.first) && lhs.second < rhs.second));
+	}
+	template <class T1, class T2>
+	bool operator<=(const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	{
+		return (!(rhs < lhs));
+	}
+
+	template <class T1, class T2>
+	bool operator>  (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	{ 
+		return (rhs < lhs);
+	}
+	template <class T1, class T2>
+	bool operator>= (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
+	{
+		return (!(lhs<rhs));
+	}
 
 	/*--------------------------------------------------------*/
 	/*------------------- FT::MAKE_PAIR ----------------------*/

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/30 14:47:14 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/30 17:58:16 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ namespace	ft
 	*/
 		~vector()
 		{
+			// std::cout<< "COUCOU" << std::endl;
 			this->clear();
 			_alloc.deallocate(_vector, _capacity);
 		}
