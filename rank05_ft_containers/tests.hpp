@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/30 14:49:03 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/30 15:01:04 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -387,32 +387,23 @@ void	vectorSwap()
 {
 	std::cout << "<----- VECTOR::SWAP() ----->" << std::endl;
 	std::cout << std::endl;
-	TESTED_NAMESPACE::vector<char> vec1;
-	TESTED_NAMESPACE::vector<char> vec2;
 
-	vec1.push_back('a');
-	vec1.push_back('a');
-	vec1.push_back('a');
-	vec1.push_back('a');
-
-	vec2.push_back('b');
-	vec2.push_back('b');
-	vec2.push_back('b');
-
-	std::cout << "Vector a before swap: "; printVec(vec1);
-	std::cout << "Vector b before swap: "; printVec(vec2);
+	TESTED_NAMESPACE::vector<int> foo(3, 100);
+	TESTED_NAMESPACE::vector<int> bar(5, 200);
+	std::cout << "foo contains:";
+	for (unsigned i = 0; i < foo.size(); i++) std::cout << ' ' << foo[i];
 	std::cout << std::endl;
-
-	vec1.swap(vec2);
-
-	std::cout << "Vector a after swap: "; printVec(vec1);
-	std::cout << "Vector b after swap: "; printVec(vec2);
+	std::cout << "bar contains:";
+	for (unsigned i = 0; i < bar.size(); i++) std::cout << ' ' << bar[i];
 	std::cout << std::endl;
+	std::cout << "[swap]" << std::endl; foo.swap(bar);
+	std::cout << "foo contains:";
+	for (unsigned i = 0; i < foo.size(); i++) std::cout << ' ' << foo[i];
+	std::cout << std::endl;
+	std::cout << "bar contains:";
+	for (unsigned i = 0; i < bar.size(); i++) std::cout << ' ' << bar[i];
 
-	vec2.swap(vec1);
-
-	std::cout << "Vector a after second swap: "; printVec(vec1);
-	std::cout << "Vector b after second swap: "; printVec(vec2);
+	std::cout << std::endl;
 	std::cout << std::endl;
 }
 
@@ -455,37 +446,30 @@ void	vectorGetAllocator()
 	std::cout << std::endl;
 }
 
-void	vectorSwapOverloads()
+void	vectorSwapNonMember()
 {
-	std::cout << "<----- VECTOR::SWAP_OVERLOAD() ----->" << std::endl;
-	std::cout << std::endl;
-	TESTED_NAMESPACE::vector<int> vec1;
-	TESTED_NAMESPACE::vector<int> vec2;
-
-	vec1.push_back(1);
-	vec1.push_back(1);
-	vec1.push_back(1);
-	vec1.push_back(1);
-	vec1.push_back(1);
-
-	vec2.push_back(2);
-	vec2.push_back(2);
-	vec2.push_back(2);
-	
-	std::cout << "Vector a before swap: "; printVec(vec1);
-	std::cout << "Vector b before swap: "; printVec(vec2);
+	std::cout << "<----- VECTOR::SWAP_NON_MEMBER() ----->" << std::endl;
 	std::cout << std::endl;
 
-	vec1.swap(vec2);
+	TESTED_NAMESPACE::vector<int> foo(3, 100);
+	TESTED_NAMESPACE::vector<int> bar(5, 200);
 
-	std::cout << "Vector a after swap: "; printVec(vec1);
-	std::cout << "Vector b after swap: "; printVec(vec2);
+	std::cout << "foo contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = foo.begin() ; it != foo.end() ; ++it)
+		std::cout << ' ' << *it;
 	std::cout << std::endl;
-
-	vec2.swap(vec1);
-
-	std::cout << "Vector a after second swap: "; printVec(vec1);
-	std::cout << "Vector b after second swap: "; printVec(vec2);
+	std::cout << "bar contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = bar.begin(); it != bar.end(); ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
+	std::cout << "[swap]" << std::endl; foo.swap(bar);
+	std::cout << "foo contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = foo.begin() ; it != foo.end() ; ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
+	std::cout << "bar contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = bar.begin(); it != bar.end(); ++it)
+		std::cout << ' ' << *it;
 	std::cout << std::endl;
 }
 
@@ -508,32 +492,32 @@ void	vectorRelationalOperators()
 
 void    testVector()
 {
-	// vectorConstructors();
-	// vectorAssignation();
-	// vectorBegin();
-	// vectorEnd();
-	// vectorRbegin();
-	// vectorRend();
-	// vectorSize();
-	// vectorMaxSize();
-	// vectorResize();
-	// vectorCapacity();
-	// vectorEmpty();
-	// vectorReserve();
-	// vectorBrackets();
-	// vectorAt();
-	// vectorFront();
-	// vectorBack();
-	// vectorAssign();
-	// vectorPushPop();
-	// vectorInsert();
-	// vectorErase();
-	// vectorSwap();
-	// vectorClear();
-	// vectorGetAllocator();
+	vectorConstructors();
+	vectorAssignation();
+	vectorBegin();
+	vectorEnd();
+	vectorRbegin();
+	vectorRend();
+	vectorSize();
+	vectorMaxSize();
+	vectorResize();
+	vectorCapacity();
+	vectorEmpty();
+	vectorReserve();
+	vectorBrackets();
+	vectorAt();
+	vectorFront();
+	vectorBack();
+	vectorAssign();
+	vectorPushPop();
+	vectorInsert();
+	vectorErase();
+	vectorSwap();
+	vectorClear();
+	vectorGetAllocator();
 // non-member function overloads
-	// vectorRelationalOperators();
-	// vectorSwapOverloads();
+	vectorRelationalOperators();
+	vectorSwapNonMember();
 }
 
 

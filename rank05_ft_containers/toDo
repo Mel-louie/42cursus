@@ -3,7 +3,9 @@
 
 🔘 constructeur vecteur par range ne se remplie paaaaaaaaaas
 
-🔘 batterie tests vector
+🔘 batterie tests templates
+
+✅ batterie tests vector
 
 ✅ r.base(), iterator : fonctions non membres
 
@@ -66,5 +68,5 @@ std::pair ✅ std::make_pair ✅
 # get_allocator			✅
 
 # Non-member function overloads:
-# relational operators
+# relational operators	✅
 # swap					✅
