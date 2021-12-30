@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/30 13:22:25 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/30 14:49:03 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -498,6 +498,10 @@ void	vectorRelationalOperators()
 	
 	if (v1 == v2) std::cout << "v1 and v2 are equal" << std::endl;
 	if (v1 != v2) std::cout << "v1 and v2 aren't equal" << std::endl;
+	if (v1 < v2) std::cout << "v1 is less than v2" << std::endl;
+	if (v1 > v2) std::cout << "v1 is greater than v2" << std::endl;
+	if (v1 <= v2) std::cout << "v1 is less than or equal to v2" << std::endl;
+	if (v1 >= v2) std::cout << "v1 is greater than or equal to v2" << std::endl;
 
 	std::cout << std::endl;
 }
@@ -528,7 +532,7 @@ void    testVector()
 	// vectorClear();
 	// vectorGetAllocator();
 // non-member function overloads
-	vectorRelationalOperators();
+	// vectorRelationalOperators();
 	// vectorSwapOverloads();
 }
 
