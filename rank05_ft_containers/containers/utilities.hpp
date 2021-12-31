@@ -14,9 +14,11 @@
 # define utilities_HPP
 
 # include "vector.hpp"
+# include "stack.hpp"
 # include <iostream>
 # include <string>
 # include <sys/time.h>
+# include <stack>
 
 #ifndef TESTED_NAMESPACE
 # define TESTED_NAMESPACE  //change to ft or stl in the makefile to change it
@@ -26,6 +28,7 @@ const std::string _RED	= "\033[31m";
 const std::string _GRN	= "\033[32m";
 const std::string _YLW	= "\033[33m";
 const std::string _BLU	= "\033[34m";
+const std::string _CYA	= "\033[36m";
 const std::string _END	= "\033[0m";
 const std::string B_RD	= "\033[1;31m";
 const std::string B_GRN	= "\033[1;32m";
@@ -36,9 +39,9 @@ const std::string B_WHT	= "\033[1;37m";
 template<typename T>
 void    printVec(TESTED_NAMESPACE::vector<T> &v)
 {
-	std::cout << "{";
 	size_t  last = v.size() - 1;
-	std::cout << _GRN;
+
+	std::cout << "{" << _GRN;
 	for (size_t i = 0 ; i < v.size() ; ++i)
 	{
 		std::cout << v[i];
@@ -47,6 +50,34 @@ void    printVec(TESTED_NAMESPACE::vector<T> &v)
 	}
 	std::cout << _END;
 	std::cout << "}" << std::endl;
+};
+
+template<typename T>
+void	printStack(TESTED_NAMESPACE::stack<T> &s)
+{
+	TESTED_NAMESPACE::stack<T> tmp;
+	size_t last = s.size();
+	size_t i = 1;
+
+	std::cout << "{" << _CYA;
+	while (!s.empty())
+	{
+		T	top = s.top();
+		s.pop();
+		std::cout << top;
+		if (i != last)
+			std::cout << ", ";
+		tmp.push(top);
+		i++;
+	}
+	std::cout << _END;
+	std::cout << "}" << std::endl;
+	while (!tmp.empty())
+	{
+		T	top = tmp.top();
+		tmp.pop();
+		s.push(top);
+	}
 };
 
 #endif

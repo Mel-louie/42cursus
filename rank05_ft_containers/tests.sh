@@ -19,7 +19,7 @@ rm -rf tests ft stl
 
 mkdir -p tests/
 
-printf "${_BWHITE}[ Compilation and lauching... ]\n${_END}"
+printf "${_BWHITE}[ Compilation and launching... ]\n${_END}"
 clang++ -Wall -Wextra -Werror -std=c++98 -DTESTED_NAMESPACE=std -g3 -fsanitize=address -o stl main.cpp
 clang++ -Wall -Wextra -Werror -std=c++98 -DTESTED_NAMESPACE=ft -g3 -fsanitize=address -o ft main.cpp
 

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/30 18:18:31 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/31 15:45:28 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define TESTS_HPP
 
 #include <vector>
+#include <stack>
 #include <iostream>
 #include <iterator>
 #include "containers/vector.hpp"
+#include "containers/stack.hpp"
 #include "containers/utilities.hpp"
 #include "iterators/iterator_traits.hpp"
 #include "templates/algorithm.hpp"
@@ -577,5 +579,154 @@ void	testPair()
 
 /*---------------------------------- stack --------------------------------*/
 
+void	stackConstructors()
+{
+	std::cout << "<----- STACK::CONSTRUCTORS() ----->" << std::endl;
+	std::cout << std::endl;
+//	std::deque<int> mydeque(3, 100);					// deque with 3 elements
+	TESTED_NAMESPACE::vector<int> myvector(2, 200);		// vector with 3 elements
+
+	TESTED_NAMESPACE::stack<int> first;					// empty stack
+	// TESTED_NAMESPACE::stack<int> second(mydeque);		// stack init to copy deque
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > third;	// empty stack using vector
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > forth(myvector);
+	
+	std::cout << "size of 1st stack: " << first.size() << std::endl;
+	// std::cout << "size of 2nd stack: " << second.size() << std::endl;
+	std::cout << "size of 3rd stack: " << third.size() << std::endl;
+	std::cout << "size of 4th stack: " << forth.size() << std::endl;
+
+	std::cout << std::endl;
+}
+
+// void	stackAssignation()
+// {
+// 	std::cout << "<----- STACK::OPERATOR=() ----->" << std::endl;
+// 	std::cout << std::endl;
+// 	TESTED_NAMESPACE::vector<int> myvector(2, 200);		// vector with 3 elements
+
+// 	TESTED_NAMESPACE::stack<int> s1;					// empty stack
+// 	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s2(myvector);
+	
+// 	s1 = s2;
+
+// 	std::cout << "stack 1: "; printStack(s1);
+// 	std::cout << "stack 2: "; printStack(s2);
+// 	std::cout << std::endl;
+// }
+
+void	stackEmpty()
+{
+	std::cout << "<----- STACK::EMPTY() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> s;
+	int sum (0);
+
+	for (int i = 0 ; i < 100 ; i++) s.push(i);
+
+	while (!s.empty())
+	{
+		sum++;
+		s.pop();
+	}
+	std::cout << "sum is increment until the stack is empty, total sum: " << sum <<  std::endl;
+
+	if (s.empty())
+	{
+		std::cout << "stack is empty: "; printStack(s);
+	}
+	std::cout << std::endl;
+}
+
+void	stackSize()
+{
+	std::cout << "<----- STACK::SIZE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> myints;
+	std::cout << "0. size: " << myints.size() <<  std::endl;
+
+	for (int i = 0 ; i < 10 ; i++) myints.push(i);
+	std::cout << "1. size: " << myints.size() <<  std::endl;
+	printStack(myints);
+
+	myints.pop();
+	std::cout << "2. size: " << myints.size() <<  std::endl;
+	printStack(myints);
+	std::cout << std::endl;
+}
+
+void	stackTop()
+{
+	std::cout << "<----- STACK::TOP() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> s;
+	
+	s.push(10);
+	s.push(42);
+	s.push(66);
+	std::cout << "the stack: "; printStack(s);
+	std::cout << "the top stack: " << s.top() << std::endl;
+	std::cout << std::endl;
+}
+
+void	stackPushPop()
+{
+	std::cout << "<----- STACK::PUSH/POP() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> s;
+	
+	s.push(10);
+	s.push(42);
+	s.push(66);
+	printStack(s);
+	
+	s.pop();
+	s.pop();
+	printStack(s);
+	
+	s.push(101);
+	s.push(102);
+	s.push(42);
+	printStack(s);
+
+	s.pop();
+	s.pop();
+	printStack(s);
+	
+	std::cout << std::endl;
+}
+
+void	stackRelationalOperators()
+{
+	std::cout << "<----- STACK::RELATIONAL_OPERATORS() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v1(3, 100);
+	TESTED_NAMESPACE::vector<int> v2(2, 200);
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s1(v1);
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s2(v2);
+
+	if (s1 == s2) std::cout << "s1 and s2 are equal" << std::endl;
+	if (s1 != s2) std::cout << "s1 and s2 aren't equal" << std::endl;
+	if (s1 < s2) std::cout << "s1 is less than s2" << std::endl;
+	if (s1 > s2) std::cout << "s1 is greater than s2" << std::endl;
+	if (s1 <= s2) std::cout << "s1 is less than or equal to s2" << std::endl;
+	if (s1 >= s2) std::cout << "s1 is greater than or equal to s2" << std::endl;
+
+	std::cout << std::endl;
+}
+
+void    testStack()
+{
+	stackConstructors();
+	stackEmpty();
+	stackSize();
+	stackTop();
+	stackPushPop();
+	
+ // non-member function overloads
+ 	stackRelationalOperators();
+
+	// stackAssignation();
+}
 
 #endif

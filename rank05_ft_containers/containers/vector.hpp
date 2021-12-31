@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/30 17:58:16 by mel-louie        ###   ########.fr       */
+/*   Updated: 2021/12/31 13:50:39 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ namespace	ft
 	/*--------------------------------------------------------*/
 	/*---------------------- FT::VECTOR ----------------------*/
 	/*
-    *   @param T        Type of container's elements.
-    *   @param Alloc    Object used to manage the vector' storage.
+	*	@param T		Type of container's elements.
+	*	@param Alloc	Object used to manage the vector' storage.
 	*/
 
 	template <class T, class Alloc = std::allocator<T> >
@@ -104,7 +104,7 @@ namespace	ft
 
 	/*
 	*	Copy constructor
-    *   @param x	object to be copied
+	*	@param x	object to be copied
 	*/
 		 vector	(const vector &x): _alloc(x._alloc), _size(x._size),
 		 	_capacity(x._capacity)
