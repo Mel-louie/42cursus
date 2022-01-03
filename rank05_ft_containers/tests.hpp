@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/31 15:45:28 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/03 19:15:49 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <iterator>
 #include "containers/vector.hpp"
 #include "containers/stack.hpp"
+#include "containers/map.hpp"
 #include "containers/utilities.hpp"
 #include "iterators/iterator_traits.hpp"
 #include "templates/algorithm.hpp"

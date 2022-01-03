@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/31 13:50:39 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/03 19:11:42 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ namespace	ft
 	typedef	size_t				size_type;
 	typedef	std::ptrdiff_t		difference_type;	// ptrdiff_t: Result of pointer subtraction
 
-	typedef standard_iterator< pointer, vector >       iterator;
-	typedef standard_iterator< const_pointer, vector > const_iterator;
+	typedef standard_iterator< pointer, vector >		iterator;
+	typedef standard_iterator< const_pointer, vector >	const_iterator;
 
-	typedef reverse_iterator< const_iterator >         const_reverse_iterator;
-	typedef reverse_iterator< iterator >               reverse_iterator;
+	typedef reverse_iterator< const_iterator >			const_reverse_iterator;
+	typedef reverse_iterator< iterator >				reverse_iterator;
 
 /*--------------------------------------------------------*/
 /*							Constructors				*/
@@ -408,7 +408,7 @@ namespace	ft
 
 /*------------------------------------------------------*/
 /*							Attributes					*/
-	protected:
+	private:
 		allocator_type	_alloc;			// Copy of allocation type object
 		size_type		_size;
 		size_type		_capacity;
