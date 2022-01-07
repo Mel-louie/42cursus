@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2021/12/31 16:03:38 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/07 18:30:37 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ int	main( void )
 	std::cout << B_WHT << "<----- WELLCOME TO MY FT_CONTAINERS ----->" << _END << std::endl;
 	std::cout << std::endl;
 
-// Tests pair
-	testPair();
+// // Tests pair
+// 	testPair();
 
-// Tests containers
-	testVector();
-	testStack();
+// // Tests containers
+// 	testVector();
+// 	testStack();
 
+	testsTRAITS();
+
+	testRBT();
 	return ( 0 );
 }
 
