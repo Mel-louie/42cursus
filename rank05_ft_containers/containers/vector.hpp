@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2022/01/03 19:11:42 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/10 14:03:21 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ namespace	ft
 	/*	Return (const_)iterator to reverse beginning		*/
 		reverse_iterator		rbegin() { return (reverse_iterator(end())); }
 		const_reverse_iterator	rbegin() const { return (const_reverse_iterator(end())); }
-	
+
 	/*	Return (const_)iterator to reverse end				*/
 		reverse_iterator		rend() { return (reverse_iterator(begin())); }
 		const_reverse_iterator	rend() const { return (const_reverse_iterator(begin())); }

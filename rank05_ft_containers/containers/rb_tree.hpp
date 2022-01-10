@@ -19,75 +19,132 @@
 *     of black nodes
 */
 
+enum Color { BLACK, RED };
+/* struct that represent a node in the tree */
+struct Node
+{
+	int _key; // hold the key
+	int color;
+	Node *parent;
+	Node *left;
+	Node *right;
+};
+typedef Node *node_ptr;
+/* Node struct end */
+
 namespace ft
 {
 	template<typename T, typename U>
 	class RBTree
 	{
-		struct Node
-		{
-			enum Color { BLACK, RED };
-			T     _key;
-			U     _val;
-			Color color;
-			Node* parent;
-			Node* left;
-			Node* right;
 
-			Node(T key, U val = U()) : _key(key), _val(val), color(BLACK), parent(), left(), right() {}
-			Node(Node const& src) { *this = src; }
-			~Node() {}
-			Node& operator=(Node const& rhs)
-			{
-				if (*this != rhs)
-				{
-					_key = rhs._key;
-					_val = rhs._val;
-					color = rhs.color;
-					parent = rhs.parent;
-					left = rhs.left;
-					right = rhs.right;
-				}
-				return (*this);
-			}
-		};/* Node struct END */
+	private:
+		/*--------------------------------------------------------------*/
+		/*						Attributes								*/
+		node_ptr root;
+		node_ptr TNULL;
 
 		/*--------------------------------------------------------------*/
-		/*							Attributes							*/
-	private:
-		Node	NIL_node;
-		Node	*NIL;
-		Node	*root;
+		/*				PRIVATE MEMBERS_FUNCTIONS						*/
+		void delete_tree(Node* node)
+		{
+			if (node == NULL)
+				return;
+			delete_tree(node->left);
+			delete_tree(node->right);
+			delete_node(node);
+		}
 
+		void delete_node(Node* node) { delete node; }
+
+		node_ptr search_tree_helper(node_ptr node, int key)
+		{
+			if (node == NULL || key == node->_key)
+				return (node);
+			if (key < node->_key)
+				return (search_tree_helper(node->left, key));
+			else
+				return (search_tree_helper(node->right, key));
+		}
+		
 	public:
 		/*--------------------------------------------------------------*/
 		/*						Constructors							*/
-		RBTree(): NIL_node(T(), U()), NIL(&NIL_node), root(NIL)
+		RBTree()
 		{
-			NIL->color = Node::BLACK;
-			NIL->left = NIL;
-			NIL->parent = NIL;
-			NIL->right = NIL;
+			TNULL = new Node;
+			TNULL->color = BLACK;
+			TNULL->left = NULL;
+			TNULL->right = NULL;
+			root = TNULL;
 			std::cout << "RBT created" << std::endl;
 		}
-		RBTree(const RBTree &src): NIL_node(T(), U(), NIL(&NIL_node), root(NIL))
+		RBTree(const RBTree &src)
 		{
 			*this = src;
 			std::cout << "RBT copied" << std::endl;
 		}
 			
-		~RBTree() { delete_tree(root); std::cout << "RBT destroyed" << std::endl; }
-
-
-		void delete_tree(Node* node)
+		~RBTree()
 		{
-			if (node == NIL)
+			delete_tree(root);
+			std::cout << "RBT destroyed" << std::endl;
+		}
+
+		// RBTree	&operator=(const RBTree &src)
+		// {
+		// 	if (*this != src)
+		// 		copy_tree()
+		// 	return (*this);
+		// }
+
+		/*--------------------------------------------------------------*/
+		/*						MEMBERS_FUNCTIONS						*/
+
+		/* search the tree for the key, and return the corresponding node */
+		node_ptr search_tree(int key) { return(search_tree_helper(this->root, key)); }
+
+		node_ptr minimum(node_ptr node)
+		{
+			if (node->left != TNULL)
+				node = node->left;
+			return (node);
+		}
+		node_ptr maximum(node_ptr node)
+		{
+			if (node->right != TNULL)
+				node = node->right;
+			return (node);
+		}
+
+		/* - if the right subtree isn't null, the successor is the leftmost node in the
+			right subtree
+			- else, the successor is the lowest ancestor of node, whose left child is
+			also a node's ancestor */
+		node_ptr successor(node_ptr x)
+		{
+			if (x->right != TNULL)
+				return (minimum(x->right));
+			node_ptr y = x->parent;
+			while (y != TNULL && x == y->right)
 			{
-				return;
+				x = y;
+				y = y->parent;
 			}
-			delete_tree(node->left);
-			delete_tree(node->right);
-			delete_tree(node);
+			return (y);
+		}
+		/* predecessor: the same as successor, but in symetry */
+		node_ptr predecessor(node_ptr x)
+		{
+			if (x->left != TNULL)
+				return (maximum(x->left));
+			node_ptr y = x->parent;
+			while (y != TNULL && x == y->left)
+			{
+				x = y;
+				y = y->parent;
+			}
+			return (y);
 		}
 	};
 }; // namespace ft

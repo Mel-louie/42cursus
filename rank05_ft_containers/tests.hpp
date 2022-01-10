@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/07 18:34:39 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/10 15:04:09 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -734,25 +734,27 @@
 // 	// stackAssignation();
 // }
 
-void testsTRAITS()
-{
-	typedef TESTED_NAMESPACE::iterator_traits< TESTED_NAMESPACE::vector< std::string >::iterator > traits;
-	if (typeid(traits::iterator_category) == typeid(std::random_access_iterator_tag))
-		std::cout << "standard_iterator is a random-access iterator" << std::endl;
-	if (typeid(traits::iterator_category) == typeid(std::bidirectional_iterator_tag))
-		std::cout << "standard_iterator is a bidirectional iterator" << std::endl;
+// void testsTRAITS()
+// {
+// 	typedef TESTED_NAMESPACE::iterator_traits< TESTED_NAMESPACE::vector< std::string >::iterator > traits;
+// 	if (typeid(traits::iterator_category) == typeid(std::random_access_iterator_tag))
+// 		std::cout << "standard_iterator is a random-access iterator" << std::endl;
+// 	if (typeid(traits::iterator_category) == typeid(std::bidirectional_iterator_tag))
+// 		std::cout << "standard_iterator is a bidirectional iterator" << std::endl;
 
-	typedef TESTED_NAMESPACE::iterator_traits< std::map< std::string, std::string >::iterator > traits2;
-	if (typeid(traits2::iterator_category) ==  typeid(std::random_access_iterator_tag))
-		std::cout << "map_iterator is a random-access iterator" << std::endl;
-	if (typeid(traits2::iterator_category) == typeid(std::bidirectional_iterator_tag))
-		std::cout << "map_iterator is a bidirectional iterator" << std::endl;
-}
+// 	typedef TESTED_NAMESPACE::iterator_traits< std::map< std::string, std::string >::iterator > traits2;
+// 	if (typeid(traits2::iterator_category) ==  typeid(std::random_access_iterator_tag))
+// 		std::cout << "map_iterator is a random-access iterator" << std::endl;
+// 	if (typeid(traits2::iterator_category) == typeid(std::bidirectional_iterator_tag))
+// 		std::cout << "map_iterator is a bidirectional iterator" << std::endl;
+// }
 
 void testRBT()
 {
 	std::cout << std::endl;
 	ft::RBTree<int, std::vector<int> >	a;
+
+	a.search_tree(12);
 }
 
 #endif
