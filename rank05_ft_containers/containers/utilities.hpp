@@ -24,6 +24,7 @@
 # define TESTED_NAMESPACE  //change to ft or stl in the makefile to change it
 #endif
 
+const std::string _BLCK	= "\033[30m";
 const std::string _RED	= "\033[31m";
 const std::string _GRN	= "\033[32m";
 const std::string _YLW	= "\033[33m";
@@ -35,6 +36,7 @@ const std::string B_GRN	= "\033[1;32m";
 const std::string B_YLW	= "\033[1;33m";
 const std::string B_BLU	= "\033[1;34m";
 const std::string B_WHT	= "\033[1;37m";
+const std::string BK_WI = "\033[47m";
 
 template<typename T>
 void    printVec(TESTED_NAMESPACE::vector<T> &v)

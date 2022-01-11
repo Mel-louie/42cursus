@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/11 11:44:56 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/11 14:13:41 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -736,6 +736,8 @@
 
 // void testsTRAITS()
 // {
+//	std::cout << "<----- TRAITS ----->" << std::endl;
+// 	std::cout << std::endl;	
 // 	typedef TESTED_NAMESPACE::iterator_traits< TESTED_NAMESPACE::vector< std::string >::iterator > traits;
 // 	if (typeid(traits::iterator_category) == typeid(std::random_access_iterator_tag))
 // 		std::cout << "standard_iterator is a random-access iterator" << std::endl;
@@ -751,14 +753,25 @@
 
 void testRBT()
 {
+	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
+	std::cout << std::endl;	
 	std::cout << std::endl;
-	ft::RBTree<int, std::vector<int> >	a;
+	ft::RBTree<int, std::vector<int> >	bst;
 	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
 	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
 
-	a.search_tree(12);
 
-	std::cout << a.get_root() << std::endl;
+	bst.insert(8);
+	bst.insert(18);
+	bst.insert(5);
+	bst.insert(15);
+	bst.insert(17);
+	bst.insert(25);
+	bst.insert(40);
+	bst.insert(80);
+	bst.insert(80);
+	bst.delete_node(25);
+	bst.printRBT();
 
 	std::cout << std::endl;
 }

@@ -1,6 +1,8 @@
 #ifndef RB_TREE_HPP
 # define RB_TREE_HPP
 
+# include "utilities.hpp"
+
 /*--------------------------------------------------------*/
 /*------------------ FT::RED_BLACK_TREE ------------------*/
 /*
@@ -19,42 +21,46 @@
 *     of black nodes
 */
 
-enum Color { BLACK, RED };
-/* struct that represent a node in the tree */
-struct Node
-{
-	int _key; // hold the key
-	int color;
-	Node *parent;
-	Node *left;
-	Node *right;
-};
-typedef Node *node_ptr;
-/* Node struct end */
-
 namespace ft
 {
+
+	enum Color { BLACK, RED };
+
+
+
+	/* struct that represent a node in the tree */
+	struct Node
+	{
+		int _key; // hold the key
+		int color;
+		Node *parent;
+		Node *left;
+		Node *right;
+	};
+	typedef Node *node_ptr;
+	/* Node struct end */
+
 	template<typename T, typename U>
 	class RBTree
 	{
 
 	private:
-		/*--------------------------------------------------------------*/
-		/*						Attributes								*/
+	// 	/*--------------------------------------------------------------*/
+	// 	/*						Attributes								*/
 		node_ptr root;
 		node_ptr TNULL;
 
 		/*--------------------------------------------------------------*/
 		/*				PRIVATE MEMBERS_FUNCTIONS						*/
-
+ 
 		// init a node
 		void initialize_node(node_ptr node, node_ptr parent)
 		{
 			node->_key = 0;
-			node->parent = parent;
-			node->left = NULL;
-			node->right = NULL;
-			node->color = BLACK;
+		node->parent = parent;
+		node->left = NULL;
+		node->right = NULL;
+		node->color = BLACK;
 		}
 
 		// // deepp copy of a tree
@@ -79,14 +85,14 @@ namespace ft
 		// 	return (copy);
 		// }
 
-		void delete_tree(Node* node)
-		{
-			if (node == NULL)
-				return;
-			delete_tree(node->left);
-			delete_tree(node->right);
-			delete node;
-		}
+		// void delete_tree(Node* node)
+		// {
+		// 	if (node == NULL)
+		// 		return;
+		// 	delete_tree(node->left);
+		// 	delete_tree(node->right);
+		// 	delete node;
+		// }
 
 		void preorder_traversal_helper(node_ptr node)
 		{
@@ -128,67 +134,66 @@ namespace ft
 				return (search_tree_helper(node->right, key));
 		}
 
-		void fix_insert(node_ptr node)
+		void fix_insert(node_ptr k)
 		{
-			// node parent is red, node too, it violated the RBT rules
-			node_ptr u; // uncle
-			while (node->parent->color == RED)
+			node_ptr u;
+			while (k->parent->color == 1)
 			{
-				if (node->parent == node->parent->parent->right)
+				if (k->parent == k->parent->parent->right)
 				{
-					u = node->parent->parent->left;
-					if (u->color == RED)
+					u = k->parent->parent->left; // uncle
+					if (u->color == 1)
 					{
-						// case 1
+						// case 1.1
 						u->color = BLACK;
-						node->parent->color = BLACK;
-						node->parent->parent->color = RED;
-						node = node->parent->parent;
+						k->parent->color = BLACK;
+						k->parent->parent->color = RED;
+						k = k->parent->parent;
 					}
 					else
 					{
-						if (node == node->parent->left)
+						if (k == k->parent->left)
 						{
-							// case 2.2
-							node = node->parent;
-							right_rotate(node);
+							// case 1.2
+							k = k->parent;
+							right_rotate(k);
 						}
-						// case 2.1
-						node->parent->color = BLACK;
-						node->parent->parent->color = RED;
-						left_rotate(node->parent->parent);
+						// case 1.1
+						k->parent->color = BLACK;
+						k->parent->parent->color = RED;
+						left_rotate(k->parent->parent);
 					}
 				}
-				else // same but miror
+				else
 				{
-					u = node->parent->parent->right;
-					if (u->color == RED)
+					u = k->parent->parent->right; // uncle
+
+					if (u->color == 1)
 					{
-						// miror case 1
+						// mirror case 1.1
 						u->color = BLACK;
-						node->parent->color = BLACK;
-						node->parent->parent->color = RED;
-						node = node->parent->parent;
-					}
-					else
-					{
-						if (node == node->parent->right)
+						k->parent->color = BLACK;
+						k->parent->parent->color = RED;
+						k = k->parent->parent;	
+					} else {
+						if (k == k->parent->right)
 						{
-							// mirror case 2.2
-							node = node->parent;
-							left_rotate(node);
+							// mirror case 1.2
+							k = k->parent;
+							left_rotate(k);
 						}
-						// mirror case 2.1
-						node->parent->color = 0;
-						node->parent->parent->color = 1;
-						right_rotate(node->parent->parent);
+						// mirror case 1.1
+						k->parent->color = BLACK;
+						k->parent->parent->color = RED;
+						right_rotate(k->parent->parent);
 					}
 				}
-				if (node == root)
-					break ;
+				if (k == root)
+					break;
 			}
 			root->color = BLACK;
 		}
+		
 
 		void fix_delete(node_ptr x)
 		{
@@ -338,6 +343,30 @@ namespace ft
 			if (y_original_color == BLACK)
 				fix_delete(x);
 		}
+
+		void print_helper(node_ptr root, std::string indent, bool last)
+		{
+			if (root != TNULL)
+			{
+				std::cout << indent;
+				if (last)
+				{
+					std::cout << "R----";
+					indent += "     ";
+				}
+				else
+				{
+					std::cout << "L----";
+					indent += "|    ";
+				}
+
+				std::string _COLO = root->color ? _RED : B_WHT;
+				std::cout << _COLO << root->_key << _END << std::endl;
+				print_helper(root->left, indent, false);
+				print_helper(root->right, indent, true);
+			}
+		}
+		
 		
 	public:
 		/*--------------------------------------------------------------*/
@@ -360,7 +389,7 @@ namespace ft
 			
 		~RBTree()
 		{
-			delete_tree(root);
+			// delete_tree(root);
 			std::cout << "RBT destroyed" << std::endl;
 		}
 
@@ -528,55 +557,67 @@ namespace ft
 		*	- check if the insertion violated the RBT properties, if
 		*	it did, we fix it
 		*/
-		void insert(int key)
-		{
-			// ordinary BST insertion
-			node_ptr node = new Node;
-			node->parent = NULL;
-			node->_key = key;
-			node->left = TNULL;
-			node->right = TNULL;
-			node->color = RED;
+		void insert(int key) {
+		// Ordinary Binary Search Insertion
+		node_ptr node = new Node;
+		node->parent = NULL;
+		node->_key = key;
+		node->left = TNULL;
+		node->right = TNULL;
+		node->color = RED; // new node must be red
 
-			node_ptr y = NULL;
-			node_ptr x = this->root;
+		node_ptr y = NULL;
+		node_ptr x = this->root;
 
-			while (x != TNULL)
-			{
-				// y saves x, to become the parent of x
-				y = x;
-				if (node->_key < x->_key)
-					x = x->left;
-				else
-					x = x->right;
+		while (x != TNULL) {
+			y = x;
+			if (node->_key < x->_key) {
+				x = x->left;
+			} else {
+				x = x->right;
 			}
-			node->parent = y; // since y is the parent of x
-			if (y == NULL) // x doesn't have parent, it's root
-				root = node;
-			else if (node->_key < y->_key)
-				y->left = node;
-			else
-				y->right = node;
-			
-			// if node is a root node
-			if (node->parent == NULL)
-			{
-				// change the color to black, a root is always black
-				node->color = BLACK;
-				return ;
-			}
-			// if the grandparent is null
-			if (node->parent->parent == NULL)
-				return ;
-
-			// fix the tree
-			fix_insert(node);
 		}
+
+		// y is parent of x
+		node->parent = y;
+		if (y == NULL) {
+			root = node;
+		} else if (node->_key < y->_key) {
+			y->left = node;
+		} else {
+			y->right = node;
+		}
+
+		// if new node is a root node, simply return
+		if (node->parent == NULL){
+			node->color = BLACK;
+			return;
+		}
+
+		// if the grandparent is null, simply return
+		if (node->parent->parent == NULL) {
+			return;
+		}
+
+		// Fix the tree
+		fix_insert(node);
+	}
 
 		void delete_node(int key)
 		{
 			delete_node_helper(this->root, key);
 		}
+
+		void printRBT()
+		{
+			if (root)
+			{
+				std::cout << std::endl;
+				print_helper(this->root, "", true);
+				std::cout << _END;
+			}
+		}
 	};
 }; // namespace ft
+
 #endif
