@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/10 15:04:09 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/11 11:44:56 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -753,8 +753,14 @@ void testRBT()
 {
 	std::cout << std::endl;
 	ft::RBTree<int, std::vector<int> >	a;
+	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
+	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
 
 	a.search_tree(12);
+
+	std::cout << a.get_root() << std::endl;
+
+	std::cout << std::endl;
 }
 
 #endif

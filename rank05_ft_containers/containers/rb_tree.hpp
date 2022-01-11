@@ -46,16 +46,77 @@ namespace ft
 
 		/*--------------------------------------------------------------*/
 		/*				PRIVATE MEMBERS_FUNCTIONS						*/
+
+		// init a node
+		void initialize_node(node_ptr node, node_ptr parent)
+		{
+			node->_key = 0;
+			node->parent = parent;
+			node->left = NULL;
+			node->right = NULL;
+			node->color = BLACK;
+		}
+
+		// // deepp copy of a tree
+		// node_ptr copy_tree(node_ptr src_root, node_ptr src_tnull)
+		// {
+		// 	if (src_root == src_tnull)
+		// 		return (TNULL);
+		// 	node_ptr copy = copy_node(src_root, src_tnull);
+		// 	copy->parent = TNULL;
+		// 	copy->left = copy_tree(src_root->left, src_tnull);
+		// 	copy->left->parent = copy;
+		// 	copy->right = copy_tree(src_root->right, src_tnull);
+		// 	copy->right->parent = copy;
+		// 	return (copy);
+		// }
+
+		// node_ptr copy_node(node_ptr const *src_node, node_ptr const *src_tnull)
+		// {
+		// 	if (src_node == src_tnull)
+		// 		return (TNULL);
+		// 	node_ptr copy = new node_ptr(src_node);
+		// 	return (copy);
+		// }
+
 		void delete_tree(Node* node)
 		{
 			if (node == NULL)
 				return;
 			delete_tree(node->left);
 			delete_tree(node->right);
-			delete_node(node);
+			delete node;
 		}
 
-		void delete_node(Node* node) { delete node; }
+		void preorder_traversal_helper(node_ptr node)
+		{
+			if (node != TNULL)
+			{
+				std::cout << node->_key << " ";
+				preorder_traversal_helper(node->left);
+				preorder_traversal_helper(node->right);
+			}			
+		}
+
+		void inorder_traversal_helper(node_ptr node)
+		{
+			if (node != TNULL)
+			{
+				inorder_traversal_helper(node->left);
+				std::cout << node->_key << " ";
+				inorder_traversal_helper(node->right);
+			}
+		}
+
+		void postorder_traversal_helper(node_ptr node)
+		{
+			if (node != TNULL)
+			{
+				postorder_traversal_helper(node->left);
+				postorder_traversal_helper(node->right);
+				std::cout << node->_key << " ";
+			}			
+		}
 
 		node_ptr search_tree_helper(node_ptr node, int key)
 		{
@@ -128,6 +189,155 @@ namespace ft
 			}
 			root->color = BLACK;
 		}
+
+		void fix_delete(node_ptr x)
+		{
+			node_ptr s;
+			while (x != root && x->color == BLACK)
+			{
+				if (x == x->parent->left)
+				{
+					s = x->parent->right;
+					if (s->color == RED)
+					{
+						// case 1.1
+						s->color = BLACK;
+						x->parent->color = RED;
+						left_rotate(x->parent);
+						s = x->parent->right;
+					}
+					if (s->left->color == BLACK && s->right->color == BLACK)
+					{
+						// case 1.2
+						s->color = RED;
+						x = x->parent;
+					}
+					else
+					{
+						if (s->right->color == BLACK)
+						{
+							// case 1.3
+							s->left->color = BLACK;
+							s->color = RED;
+							right_rotate(s);
+							s = x->parent->right;
+						}
+
+						// case 1.4
+						s->color = x->parent->color;
+						x->parent->color = BLACK;
+						s->right->color = BLACK;
+						left_rotate(x->parent);
+						x = root;
+					}
+				}
+				else
+				{
+					s = x->parent->left;
+					if (s->color == RED)
+					{
+						// case 1.1
+						s->color = BLACK;
+						x->parent->color = RED;
+						right_rotate(x->parent);
+						s = x->parent->left;
+					}
+					if (s->right->color == BLACK && s->right->color == BLACK)
+					{
+						// case 1.2
+						s->color = RED;
+						x = x->parent;
+					}
+					else
+					{
+						if (s->left->color == BLACK)
+						{
+							// case 1.3
+							s->right->color = BLACK;
+							s->color = RED;
+							left_rotate(s);
+							s = x->parent->left;
+						}
+
+						// case 1.4
+						s->color = x->parent->color;
+						x->parent->color = BLACK;
+						s->left->color = BLACK;
+						right_rotate(x->parent);
+						x = root;
+					}
+				}
+			}
+			x->color = BLACK;
+		}
+
+		void rb_transplant(node_ptr u, node_ptr v)
+		{
+			if (u->parent == NULL)
+				root = v;
+			else if (u == u->parent->left)
+				u->parent->left = v;
+			else
+				u->parent->right = v;
+			v->parent = u->parent;
+		}
+
+		void delete_node_helper(node_ptr node, int key)
+		{
+			// find the node containing the key
+			node_ptr z = TNULL;
+			node_ptr x, y;
+			while (node != TNULL)
+			{
+				if (node->_key == key)
+					z = node;
+				if (node->_key <= key)
+					node = node->right;
+				else
+					node = node->left;
+			}
+
+			if (z == TNULL)
+			{
+				std::cout << "Couldn't find the key in the tree" << std::endl;
+				return ;
+			}
+
+			y = z;
+			// save the color of the node at the begining
+			int y_original_color = y->color;
+			if (z->left == TNULL)
+			{
+				x = z->right;
+				rb_transplant(z, z->right);
+			}
+			else if (z->right == TNULL)
+			{
+				x = z->left;
+				rb_transplant(z, z->left);
+			}
+			else
+			{
+				y = minimum(z->right);
+				y_original_color = y->color;
+				x = y->right;
+				if (y->parent == z)
+					x->parent = y;
+				else
+				{
+					rb_transplant(y, y->right);
+					y->right = z->right;
+					y->right->parent = y;
+				}
+				rb_transplant(z, y);
+				y->left = z->left;
+				y->left->parent = y;
+				y->color = z->color;
+			}
+			delete z;
+			if (y_original_color == BLACK)
+				fix_delete(x);
+		}
 		
 	public:
 		/*--------------------------------------------------------------*/
@@ -141,6 +351,7 @@ namespace ft
 			root = TNULL;
 			std::cout << "RBT created" << std::endl;
 		}
+
 		RBTree(const RBTree &src)
 		{
 			*this = src;
@@ -155,13 +366,39 @@ namespace ft
 
 		// RBTree	&operator=(const RBTree &src)
 		// {
-		// 	if (*this != src)
-		// 		copy_tree()
+		// 	root = copy_tree(src.root, src.TNULL);
 		// 	return (*this);
 		// }
 
+		node_ptr get_root() { return (this->root); }
+
 		/*--------------------------------------------------------------*/
 		/*						MEMBERS_FUNCTIONS						*/
+
+
+		/*           1
+		*          /   \
+		*         2		3
+		*        / \
+		*       4   5
+		*
+		*	trees can be traversed in different ways which are generally those:
+		*	- preorder: Root, Left, Right: 1 2 4 5 3
+		*	- inorder: Left, Root, Right: 4 2 5 1 3
+		*	- postorder: Left, Right, Root: 4 5 2 3 1
+		*/
+		void preorder_traversal()
+		{
+			preorder_traversal_helper(this->root);
+		}
+		void inorder_traversal()
+		{
+			inorder_traversal_helper(this->root);
+		}
+		void postorder_traversal()
+		{
+			postorder_traversal_helper(this->root);
+		}
 
 		/* search the tree for the key, and return the corresponding node */
 		node_ptr search_tree(int key) { return(search_tree_helper(this->root, key)); }
@@ -179,10 +416,21 @@ namespace ft
 			return (node);
 		}
 
-		/* - if the right subtree isn't null, the successor is the leftmost node in the
-			right subtree
-			- else, the successor is the lowest ancestor of node, whose left child is
-			also a node's ancestor */
+		/*             50
+		*          /        \
+		*         30		 70
+		*       /    \         \
+		*     23      35        80
+		*    /  \    /  \      /  \
+		*  11   25  31   42   73   85
+		*
+		*	- if the right subtree isn't null, the successor is the leftmost node in the
+		*	right subtree. successor of 50 == 73
+		*	- else, the successor is the lowest ancestor of node, whose left child is
+		*	also a node's ancestor. for x = 25, y = 23
+		*	while (y != TNULL && x == y->right) -> x = 23, y = 30 -> 30 is its parent's left -> stop
+		*					successor of 25 == 30
+		*/
 		node_ptr successor(node_ptr x)
 		{
 			if (x->right != TNULL)
@@ -209,7 +457,17 @@ namespace ft
 			return (y);
 		}
 
-		// rotate left at node x
+		/*			|				   |
+		*           x				   y   
+		*         /   \				 /   \
+		*        a     y	-->		x     c
+		*             / \		   / \
+		*            b   c		  a   b
+		*
+		*	the left rotation at node x makes x goes down 
+		*	in the left direction and as a result, its 
+		*	right child goes up
+		*/
 		void left_rotate(node_ptr x)
 		{
 			node_ptr y = x->right;
@@ -231,7 +489,17 @@ namespace ft
 			x->parent = y;
 		}
 
-		// rotate right at node x
+		/*			|				   |
+		*           y   			   x
+		*         /   \				 /   \
+		*        x     c	-->		a     y
+		*       / \						 / \
+		*      a   b					b   c
+		*
+		*	the right rotation at node x makes x goes down 
+		*	in the right direction and as a result, its 
+		*	right child goes up
+		*/
 		void right_rotate(node_ptr x)
 		{
 			node_ptr y = x->left;
@@ -297,12 +565,17 @@ namespace ft
 				node->color = BLACK;
 				return ;
 			}
-			// if the grandparent is nuul
+			// if the grandparent is null
 			if (node->parent->parent == NULL)
 				return ;
 
 			// fix the tree
 			fix_insert(node);
+		}
+
+		void delete_node(int key)
+		{
+			delete_node_helper(this->root, key);
 		}
 	};
 }; // namespace ft
