@@ -57,10 +57,10 @@ namespace ft
 		void initialize_node(node_ptr node, node_ptr parent)
 		{
 			node->_key = 0;
-		node->parent = parent;
-		node->left = NULL;
-		node->right = NULL;
-		node->color = BLACK;
+			node->parent = parent;
+			node->left = NULL;
+			node->right = NULL;
+			node->color = BLACK;
 		}
 
 		// // deepp copy of a tree
@@ -80,19 +80,19 @@ namespace ft
 		// node_ptr copy_node(node_ptr const *src_node, node_ptr const *src_tnull)
 		// {
 		// 	if (src_node == src_tnull)
-		// 		return (TNULL);
+		// 		return (TNULL);f
 		// 	node_ptr copy = new node_ptr(src_node);
 		// 	return (copy);
 		// }
 
-		// void delete_tree(Node* node)
-		// {
-		// 	if (node == NULL)
-		// 		return;
-		// 	delete_tree(node->left);
-		// 	delete_tree(node->right);
-		// 	delete node;
-		// }
+		void delete_tree(Node* node)
+		{
+			if (node == TNULL)
+				return;
+			delete_tree(node->left);
+			delete_tree(node->right);
+			delete node;
+		}
 
 		void preorder_traversal_helper(node_ptr node)
 		{
@@ -289,6 +289,7 @@ namespace ft
 
 		void delete_node_helper(node_ptr node, int key)
 		{
+			
 			// find the node containing the key
 			node_ptr z = TNULL;
 			node_ptr x, y;
@@ -304,7 +305,7 @@ namespace ft
 
 			if (z == TNULL)
 			{
-				std::cout << "Couldn't find the key in the tree" << std::endl;
+				//std::cout << "Couldn't find the key in the tree " << key << std::endl;
 				return ;
 			}
 
@@ -339,6 +340,7 @@ namespace ft
 				y->left->parent = y;
 				y->color = z->color;
 			}
+			std::cout << z->_key << std::endl;
 			delete z;
 			if (y_original_color == BLACK)
 				fix_delete(x);
@@ -381,15 +383,16 @@ namespace ft
 			std::cout << "RBT created" << std::endl;
 		}
 
-		RBTree(const RBTree &src)
-		{
-			*this = src;
-			std::cout << "RBT copied" << std::endl;
-		}
+		// RBTree(const RBTree &src)
+		// {
+		// 	*this = src;
+		// 	std::cout << "RBT copied" << std::endl;
+		// }
 			
 		~RBTree()
 		{
-			// delete_tree(root);
+			delete_tree(root);
+		//	delete root;
 			std::cout << "RBT destroyed" << std::endl;
 		}
 
@@ -557,51 +560,52 @@ namespace ft
 		*	- check if the insertion violated the RBT properties, if
 		*	it did, we fix it
 		*/
-		void insert(int key) {
-		// Ordinary Binary Search Insertion
-		node_ptr node = new Node;
-		node->parent = NULL;
-		node->_key = key;
-		node->left = TNULL;
-		node->right = TNULL;
-		node->color = RED; // new node must be red
+		void insert(int key)
+		{
+			// Ordinary Binary Search Insertion
+			node_ptr node = new Node;
+			node->parent = NULL;
+			node->_key = key;
+			node->left = TNULL;
+			node->right = TNULL;
+			node->color = RED; // new node must be red
 
-		node_ptr y = NULL;
-		node_ptr x = this->root;
+			node_ptr y = NULL;
+			node_ptr x = this->root;
 
-		while (x != TNULL) {
-			y = x;
-			if (node->_key < x->_key) {
-				x = x->left;
-			} else {
-				x = x->right;
+			while (x != TNULL)
+			{
+				y = x;
+				if (node->_key < x->_key)
+					x = x->left;
+				else
+					x = x->right;
 			}
-		}
 
-		// y is parent of x
-		node->parent = y;
-		if (y == NULL) {
-			root = node;
-		} else if (node->_key < y->_key) {
-			y->left = node;
-		} else {
-			y->right = node;
-		}
+			// y is parent of x
+			node->parent = y;
+			if (y == NULL)
+				root = node;
+			else if (node->_key < y->_key)
+				y->left = node;
+			else
+				y->right = node;
 
-		// if new node is a root node, simply return
-		if (node->parent == NULL){
-			node->color = BLACK;
-			return;
-		}
+			// if new node is a root node, simply return
+			if (node->parent == NULL)
+			{
+				node->color = BLACK;
+				return ;
+			}
 
-		// if the grandparent is null, simply return
-		if (node->parent->parent == NULL) {
-			return;
+			// if the grandparent is null, simply return
+			if (node->parent->parent == NULL)
+			{
+				return ;
+			}
+			// Fix the tree
+			fix_insert(node);
 		}
-
-		// Fix the tree
-		fix_insert(node);
-	}
 
 		void delete_node(int key)
 		{

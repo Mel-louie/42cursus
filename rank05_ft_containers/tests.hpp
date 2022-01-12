@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/11 14:13:41 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/12 14:27:07 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -772,7 +772,7 @@ void testRBT()
 	bst.insert(80);
 	bst.delete_node(25);
 	bst.printRBT();
-
+	
 	std::cout << std::endl;
 }
 
