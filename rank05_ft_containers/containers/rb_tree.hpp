@@ -24,25 +24,22 @@
 namespace ft
 {
 
-	enum Color { BLACK, RED };
-
-
-
-	/* struct that represent a node in the tree */
-	struct Node
-	{
-		int _key; // hold the key
-		int color;
-		Node *parent;
-		Node *left;
-		Node *right;
-	};
-	typedef Node *node_ptr;
-	/* Node struct end */
-
-	template<typename T, typename U>
+	template<typename K, typename V>
 	class RBTree
 	{
+		enum Color { BLACK, RED };
+		/* struct that represent a node in the tree */
+		struct Node
+		{
+			K _key; // hold the key
+			V _val; // hold the value
+			int color;
+			Node *parent;
+			Node *left;
+			Node *right;
+		};
+		typedef Node *node_ptr;
+		/* Node struct end */
 
 	private:
 	// 	/*--------------------------------------------------------------*/
@@ -98,7 +95,7 @@ namespace ft
 		{
 			if (node != TNULL)
 			{
-				std::cout << node->_key << " ";
+				std::cout << node->_key << " " << node->_val << " | ";
 				preorder_traversal_helper(node->left);
 				preorder_traversal_helper(node->right);
 			}			
@@ -109,7 +106,8 @@ namespace ft
 			if (node != TNULL)
 			{
 				inorder_traversal_helper(node->left);
-				std::cout << node->_key << " ";
+				//std::cout << node->_key << " ";
+				std::cout << node->_key << " " << node->_val << " | ";
 				inorder_traversal_helper(node->right);
 			}
 		}
@@ -120,7 +118,8 @@ namespace ft
 			{
 				postorder_traversal_helper(node->left);
 				postorder_traversal_helper(node->right);
-				std::cout << node->_key << " ";
+				//std::cout << node->_key << " ";
+				std::cout << node->_key << " " << node->_val << " | ";
 			}			
 		}
 
@@ -363,7 +362,7 @@ namespace ft
 				}
 
 				std::string _COLO = root->color ? _RED : B_WHT;
-				std::cout << _COLO << root->_key << _END << std::endl;
+				std::cout << _COLO << root->_key << "-" << root->_val << _END << std::endl;
 				print_helper(root->left, indent, false);
 				print_helper(root->right, indent, true);
 			}
@@ -560,12 +559,13 @@ namespace ft
 		*	- check if the insertion violated the RBT properties, if
 		*	it did, we fix it
 		*/
-		void insert(int key)
+		void insert(const K &key, const V &val)
 		{
 			// Ordinary Binary Search Insertion
 			node_ptr node = new Node;
 			node->parent = NULL;
 			node->_key = key;
+			node->_val = val;
 			node->left = TNULL;
 			node->right = TNULL;
 			node->color = RED; // new node must be red
