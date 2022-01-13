@@ -42,8 +42,10 @@ namespace ft
 		/* Node struct end */
 
 	private:
-	// 	/*--------------------------------------------------------------*/
-	// 	/*						Attributes								*/
+		typedef ft::pair<K, V>	iter;
+		typedef size_t						size_type;
+	 	/*--------------------------------------------------------------*/
+	 	/*						Attributes								*/
 		node_ptr root;
 		node_ptr TNULL;
 
@@ -106,7 +108,6 @@ namespace ft
 			if (node != TNULL)
 			{
 				inorder_traversal_helper(node->left);
-				//std::cout << node->_key << " ";
 				std::cout << node->_key << " " << node->_val << " | ";
 				inorder_traversal_helper(node->right);
 			}
@@ -133,61 +134,63 @@ namespace ft
 				return (search_tree_helper(node->right, key));
 		}
 
-		void fix_insert(node_ptr k)
+		void fix_insert(node_ptr node)
 		{
 			node_ptr u;
-			while (k->parent->color == 1)
+			while (node->parent->color == 1)
 			{
-				if (k->parent == k->parent->parent->right)
+				if (node->parent == node->parent->parent->right)
 				{
-					u = k->parent->parent->left; // uncle
+					u = node->parent->parent->left; // uncle
 					if (u->color == 1)
 					{
 						// case 1.1
 						u->color = BLACK;
-						k->parent->color = BLACK;
-						k->parent->parent->color = RED;
-						k = k->parent->parent;
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						node = node->parent->parent;
 					}
 					else
 					{
-						if (k == k->parent->left)
+						if (node == node->parent->left)
 						{
 							// case 1.2
-							k = k->parent;
-							right_rotate(k);
+							node = node->parent;
+							right_rotate(node);
 						}
 						// case 1.1
-						k->parent->color = BLACK;
-						k->parent->parent->color = RED;
-						left_rotate(k->parent->parent);
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						left_rotate(node->parent->parent);
 					}
 				}
 				else
 				{
-					u = k->parent->parent->right; // uncle
+					u = node->parent->parent->right; // uncle
 
 					if (u->color == 1)
 					{
 						// mirror case 1.1
 						u->color = BLACK;
-						k->parent->color = BLACK;
-						k->parent->parent->color = RED;
-						k = k->parent->parent;	
-					} else {
-						if (k == k->parent->right)
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						node = node->parent->parent;	
+					}
+					else
+					{
+						if (node == node->parent->right)
 						{
 							// mirror case 1.2
-							k = k->parent;
-							left_rotate(k);
+							node = node->parent;
+							left_rotate(node);
 						}
 						// mirror case 1.1
-						k->parent->color = BLACK;
-						k->parent->parent->color = RED;
-						right_rotate(k->parent->parent);
+						node->parent->color = BLACK;
+						node->parent->parent->color = RED;
+						right_rotate(node->parent->parent);
 					}
 				}
-				if (k == root)
+				if (node == root)
 					break;
 			}
 			root->color = BLACK;
@@ -621,6 +624,28 @@ namespace ft
 				std::cout << _END;
 			}
 		}
+
+		node_ptr find_key(const K &key) const
+		{
+			node_ptr node = root;
+			while ( node != TNULL && node->_key != key)
+			{
+				if (key < node->_key)
+					node = node->left;
+				else
+					node = node->right;
+			}
+			return (node);
+		}
+
+		V &operator[](const K &key) const
+		{
+			node_ptr node = find_key(key);
+			if (node == TNULL)
+				throw std::out_of_range("Invalid key");
+			return (node->_val);
+		}
+
 	};
 }; // namespace ft
 

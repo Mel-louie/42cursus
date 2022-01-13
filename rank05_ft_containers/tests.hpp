@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/12 16:54:01 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/13 18:57:14 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -751,50 +751,74 @@
 // 		std::cout << "map_iterator is a bidirectional iterator" << std::endl;
 // }
 
-void testRBT()
+// void testRBT()
+// {
+// 	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
+// 	std::cout << std::endl;	
+// 	std::cout << std::endl;
+// 	ft::RBTree<int, std::string>	bst;
+// 	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
+// 	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
+
+
+// 	bst.insert(8, "lol");
+// 	bst.insert(18, "love");
+// 	bst.insert(5, "friend");
+// 	bst.insert(15, "world");
+// 	bst.insert(17, "Parrot");
+// 	bst.insert(25, "Mushroom");
+// 	bst.insert(40, "hat");
+// 	bst.insert(80, "Speed");
+// 	bst.insert(80, "42");
+
+// 	bst.printRBT();
+
+// 	std::cout << "\n preorder traversal: " ;
+// 	bst.preorder_traversal();
+// 	std::cout << std::endl;
+// 	std::cout << "\n inorder traversal: " ;
+// 	bst.inorder_traversal();
+// 	std::cout << std::endl;
+// 	std::cout << "\n postorder traversal: " ;
+// 	bst.postorder_traversal();
+// 	std::cout << std::endl;
+	
+// 	std::cout << std::endl;
+// 	std::cout << "bst.search_tree(8) ";
+// 	std::cout << bst.search_tree(8) << std::endl;
+// 	std::cout << "bst.search_tree(40) ";
+// 	std::cout << bst.search_tree(40) << std::endl;
+// 	std::cout << std::endl;
+	
+// 	bst.delete_node(25);
+// 	bst.insert(142, "oh oh");
+// 	bst.printRBT();
+	
+// 	std::cout << std::endl;
+// }
+
+
+void	mapConstructors()
 {
-	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
-	std::cout << std::endl;	
+	std::cout << "<----- MAP::CONSTRUCTORS ----->" << std::endl;
 	std::cout << std::endl;
-	ft::RBTree<int, std::string>	bst;
-	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
-	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
+	ft::map<char, int>	first;
 
-
-	bst.insert(8, "lol");
-	bst.insert(18, "love");
-	bst.insert(5, "friend");
-	bst.insert(15, "world");
-	bst.insert(17, "Parrot");
-	bst.insert(25, "Mushroom");
-	bst.insert(40, "hat");
-	bst.insert(80, "Speed");
-	bst.insert(80, "42");
-
-	bst.printRBT();
-
-	std::cout << "\n preorder traversal: " ;
-	bst.preorder_traversal();
-	std::cout << std::endl;
-	std::cout << "\n inorder traversal: " ;
-	bst.inorder_traversal();
-	std::cout << std::endl;
-	std::cout << "\n postorder traversal: " ;
-	bst.postorder_traversal();
-	std::cout << std::endl;
+	ft::pair<char, int> pair('a', 1);
 	
-	std::cout << std::endl;
-	std::cout << "bst.search_tree(8) ";
-	std::cout << bst.search_tree(8) << std::endl;
-	std::cout << "bst.search_tree(40) ";
-	std::cout << bst.search_tree(40) << std::endl;
-	std::cout << std::endl;
+	first.insert(pair);
 	
-	bst.delete_node(25);
-	bst.insert(142, "oh oh");
-	bst.printRBT();
-	
+	// first['a'] = 10;
+
 	std::cout << std::endl;
+}
+
+void    testMap()
+{
+	mapConstructors();
+	
+// non-member function overloads
+
 }
 
 #endif
