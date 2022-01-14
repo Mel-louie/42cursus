@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:49:18 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/30 15:58:53 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/14 18:29:55 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ namespace ft
 	template<class T1, class T2>
 	struct pair
 	{
-		T1	first;
-		T2	second;
+		// Member types
+		typedef T1  first_type;
+		typedef T2  second_type;
+
+		// Member variables
+		first_type  first;
+		second_type second;
 
 /*					Consts  &Dests					*/
 		pair(): first(), second() {};
@@ -92,7 +97,7 @@ namespace ft
 	*	arguments passed to make_pair
 	*/
 	template<class T1, class T2>
-	pair<T1,T2> make_pair (T1 x, T2 y)
+	pair<T1, T2> make_pair (T1 x, T2 y)
 	{
 		return (pair<T1, T2>(x, y));
 	};

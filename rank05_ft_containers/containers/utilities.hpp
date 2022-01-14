@@ -38,6 +38,30 @@ const std::string B_BLU	= "\033[1;34m";
 const std::string B_WHT	= "\033[1;37m";
 const std::string BK_WI = "\033[47m";
 
+
+
+# include <iostream>
+// Scott Meyers
+static class nullptr_t
+{
+	public:
+		template< class T>
+		operator T*() const {
+
+			return  (0);
+		}
+
+		template< class C, class T>
+		operator T C::*() const {
+
+			return (0);
+		}
+	
+	private:
+		void operator&() const;
+
+} my_nullptr = {};
+
 template<typename T>
 void    printVec(TESTED_NAMESPACE::vector<T> &v)
 {

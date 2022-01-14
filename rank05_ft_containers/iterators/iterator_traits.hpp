@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:50 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/29 18:35:04 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/14 19:03:48 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,33 +35,82 @@
 * https://www.cplusplus.com/reference/iterator/iterator_traits/
 */
 
-namespace ft
-{
-	template <class Iterator> struct iterator_traits
-	{
-		typedef typename Iterator::difference_type		difference_type;
-		typedef typename Iterator::value_type			value_type;
-		typedef typename Iterator::pointer				pointer;
-		typedef typename Iterator::reference			reference;
-		typedef typename Iterator::iterator_category	iterator_category;
+namespace ft {
+
+	struct	random_access_iterator_tag { };
+	struct	input_iterator_tag { };
+	struct	output_iterator_tag { };
+	struct	forward_iterator_tag { };
+	struct	bidirectional_iterator_tag{ };
+
+	/*
+	**	class iterator, basic class
+	**	used for iterator_traits, random_access_iterator, etc
+	*/
+	template<class iterator>
+	struct				iterator_traits {
+
+		// Member types
+		typedef typename iterator::difference_type		difference_type;
+		typedef typename iterator::value_type			value_type;
+		typedef typename iterator::pointer				pointer;
+		typedef typename iterator::reference			reference;
+		typedef typename iterator::iterator_category	iterator_category;
+	
 	};
 
-	template <class T> struct iterator_traits<T*>
-	{
-		typedef	std::ptrdiff_t							difference_type;	// ptrdiff_t: Result of pointer subtraction
-		typedef	T										value_type;
+	template<class T>
+	struct				iterator_traits<T*> {
+
+		// Member types
+		typedef std::ptrdiff_t								difference_type;
+		typedef T										value_type;
 		typedef T*										pointer;
-		typedef	T&										reference;
-		typedef	std::random_access_iterator_tag			iterator_category;
+		typedef T&										reference;
+		typedef ft::random_access_iterator_tag			iterator_category;
 	};
 
-	template <class T> struct iterator_traits<const T*>
-	{
-		typedef	std::ptrdiff_t							difference_type;	// ptrdiff_t: Result of pointer subtraction
-		typedef	T										value_type;
-		typedef const T*								pointer;
-		typedef	const T&								reference;
-		typedef	std::random_access_iterator_tag			iterator_category;
+	template<class T>
+	struct				iterator_traits<const T*> {
+
+		// Member types
+		typedef std::ptrdiff_t								difference_type;
+		typedef T										value_type;
+		typedef T*										pointer;
+		typedef T&										reference;
+		typedef ft::random_access_iterator_tag			iterator_category;
+	};
+
+	/*
+	**	std::distance():
+	**		Returns the number of hops from first to last.
+	*/
+	template<class InputIt>
+	typename ft::iterator_traits<InputIt>::difference_type	distance(InputIt first, InputIt last) {
+
+		typename ft::iterator_traits<InputIt>::difference_type count;
+
+		count = 0;
+		while (first != last)
+		{
+			first++;
+			count++;
+		}
+		return (count);
+	};
+
+	template<
+		class Category, class T, class Distance = long int,
+		class Pointer = T*, class Reference = T&>
+	class iterator {
+
+		public:
+			typedef Category			iterator_category;
+			typedef T					value_type;
+			typedef Distance			difference_type;
+			typedef Pointer				pointer;
+			typedef Reference			reference;
+
 	};
 }
 

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/13 18:57:14 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/14 19:08:09 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -782,14 +782,7 @@
 // 	std::cout << "\n postorder traversal: " ;
 // 	bst.postorder_traversal();
 // 	std::cout << std::endl;
-	
-// 	std::cout << std::endl;
-// 	std::cout << "bst.search_tree(8) ";
-// 	std::cout << bst.search_tree(8) << std::endl;
-// 	std::cout << "bst.search_tree(40) ";
-// 	std::cout << bst.search_tree(40) << std::endl;
-// 	std::cout << std::endl;
-	
+
 // 	bst.delete_node(25);
 // 	bst.insert(142, "oh oh");
 // 	bst.printRBT();
@@ -802,13 +795,13 @@ void	mapConstructors()
 {
 	std::cout << "<----- MAP::CONSTRUCTORS ----->" << std::endl;
 	std::cout << std::endl;
-	ft::map<char, int>	first;
+	ft::map< std::string, std::string > map1;
+//	ft::map< int, std::string > map2;
 
-	ft::pair<char, int> pair('a', 1);
-	
-	first.insert(pair);
-	
-	// first['a'] = 10;
+	map1["test1"]="ok test 1";
+	std::cout << map1["test1"] << std::endl;
+
+//	map2[1] = "ok test 2";
 
 	std::cout << std::endl;
 }
