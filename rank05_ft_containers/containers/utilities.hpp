@@ -42,7 +42,7 @@ const std::string BK_WI = "\033[47m";
 
 # include <iostream>
 // Scott Meyers
-static class nullptr_t
+static class my_nullptr
 {
 	public:
 		template< class T>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 18:54:13 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/14 19:21:11 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/17 19:56:11 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include "../templates/utility.hpp"
 # include "../iterators/iterator_traits.hpp"
-# include "../iterators/reverse_iterators.hpp"
 # include "../iterators/map_iterators.hpp"
 # include "rb_tree.hpp"
 # include "../containers/utilities.hpp"
@@ -255,7 +254,7 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			~map( void ) {
 
 				clear();
-				_tree.destroynull();
+				_tree.destroy_null();
 				return ;
 			}
 

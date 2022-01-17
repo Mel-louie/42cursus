@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/14 19:08:09 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/17 19:57:53 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -796,12 +796,13 @@ void	mapConstructors()
 	std::cout << "<----- MAP::CONSTRUCTORS ----->" << std::endl;
 	std::cout << std::endl;
 	ft::map< std::string, std::string > map1;
-//	ft::map< int, std::string > map2;
+	ft::map< int, std::string > map2;
 
 	map1["test1"]="ok test 1";
 	std::cout << map1["test1"] << std::endl;
 
-//	map2[1] = "ok test 2";
+	map2[1] = "ok test 2";
+	std::cout << map2[1] << std::endl;
 
 	std::cout << std::endl;
 }
