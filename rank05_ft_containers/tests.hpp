@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/18 09:39:40 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/18 10:06:44 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -505,7 +505,7 @@ void    testVector()
 	vectorBegin();
 	vectorEnd();
 	vectorRbegin();
-	vectorRend();
+	// vectorRend();
 	vectorSize();
 	vectorMaxSize();
 	vectorResize();

@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 18:54:13 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/17 19:56:11 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/18 10:08:18 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 # include "../iterators/map_iterators.hpp"
 # include "rb_tree.hpp"
 # include "../containers/utilities.hpp"
-# include "../iterators/random_access_iterator.hpp"
-# include "../iterators/reverse_random_access_iterator.hpp"
+# include "../iterators/reverse_map_iterators.hpp"
 
 namespace ft
 {
@@ -207,8 +206,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 		
 			typedef ft::bidir_iterator<value_type, ft::node<value_type> >		iterator;
 			typedef ft::bidir_iterator<const value_type, ft::node<value_type> >	const_iterator;
-			typedef ft::reverse_random_access_iterator<iterator>				reverse_iterator;
-			typedef ft::reverse_random_access_iterator<const_iterator>			const_reverse_iterator;
+			typedef ft::reverse_map_iterators<iterator>				reverse_iterator;
+			typedef ft::reverse_map_iterators<const_iterator>			const_reverse_iterator;
 
 		// typedef map_iterators<pointer, map>				iterator;
 		// typedef map_iterators<const pointer, map>		const_iterator;
