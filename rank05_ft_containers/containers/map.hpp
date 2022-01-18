@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 18:54:13 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/18 10:08:18 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/18 10:54:21 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,8 +220,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	Empty container constructor == default constructor
 			**	Constructs an empty container with no elements
 			*/
-			explicit map( const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type()) : _tree(value_compare(comp) ) {
-
+			explicit map( const key_compare &comp = key_compare(), const allocator_type &alloc = allocator_type()) : _tree(value_compare(comp) )
+{
 				( void )alloc;
 				return ;
 			}
@@ -231,8 +231,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**		Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range.
 			*/
 			template <class InputIterator>
-			map( InputIterator first, InputIterator last, const key_compare & comp = key_compare(), const allocator_type & alloc = allocator_type()) : _tree(value_compare(comp) ) {
-
+			map( InputIterator first, InputIterator last, const key_compare & comp = key_compare(), const allocator_type & alloc = allocator_type()) : _tree(value_compare(comp) )
+{
 				( void )alloc;
 				insert(first, last);
 				return ;
@@ -241,8 +241,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			/*
 			**	Copy Constructor
 			*/
-			map( const map &other ) : _tree(value_compare(key_compare())) {
-
+			map( const map &other ) : _tree(value_compare(key_compare()))
+{
 				insert(other.begin(), other.end());
 				return ;
 			}
@@ -250,8 +250,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			/*
 			**	Destructor
 			*/
-			~map( void ) {
-
+			~map( void )
+{
 				clear();
 				_tree.destroy_null();
 				return ;
@@ -260,8 +260,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			/*
 			**	Overload assignment operator
 			*/
-			map &operator=( const map &element ) {
-
+			map &operator=( const map &element )
+{
 				if (this != &element)
 				{
 					this->~map();
@@ -275,8 +275,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::begin():
 			**		Return iterator to the first element of the map container
 			*/
-			iterator 					begin( void ) {
-
+			iterator 					begin( void )
+{
 				return (iterator(_tree.get_root(), _tree.min_node(), _tree.get_null()));
 			}
 			
@@ -289,8 +289,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::end():
 			**		Return iterator to the last element of the map container
 			*/
-			iterator 									end( void ) {
-
+			iterator 									end( void )
+{
 				return (iterator(_tree.get_root(), _tree.get_null(), _tree.get_null()));
 			}
 
@@ -303,8 +303,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::rbegin()
 			**		Return reverse iterator to reverse beginning	==	return the last element.
 			*/
-			reverse_iterator 							rbegin( void ) {
-
+			reverse_iterator 							rbegin( void )
+{
 				return (reverse_iterator(end()));
 			}
 
@@ -317,8 +317,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::rend()
 			**		Return reverse iterator to reverse end	==	return the first element.
 			*/
-			reverse_iterator 							rend( void ) {
-
+			reverse_iterator 							rend( void )
+{
 				return (reverse_iterator(begin()));
 			}
 
@@ -357,8 +357,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::operator[]
 			**		Access element
 			*/
-			mapped_type 								&operator[]( const key_type & k ) {
-
+			mapped_type 								&operator[]( const key_type & k )
+{
 				return (insert(ft::make_pair(k, mapped_type())).first->second);
 			}
 
@@ -369,22 +369,22 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**		2) with hint
 			**		3) range
 			*/
-			ft::pair<iterator, bool>					insert( const value_type &val ) {
-
+			ft::pair<iterator, bool>					insert( const value_type &val )
+{
 				if (_tree.insert(val) == false)
 					return (ft::make_pair(find(val.first), false));
 				return (ft::make_pair(find(val.first), true));
 			}
 
-			iterator									insert( iterator position, const value_type &val ) {
-
+			iterator									insert( iterator position, const value_type &val )
+{
 				( void )position;
 				return (insert(val).first);
 			}
 
 			template <class InputIterator>
-			void										insert( InputIterator first, InputIterator last ) {
-
+			void										insert( InputIterator first, InputIterator last )
+{
 				while (first != last)
 				{
 					insert(*first++);
@@ -400,21 +400,21 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**		2) By key
 			**		3) By iterator == range
 			*/
-			void										erase( iterator position ) {
-
+			void										erase( iterator position )
+{
 				erase(position->first);
 				return ;
 			}
 
-			size_type 									erase( const key_type &k ) {
-
+			size_type 									erase( const key_type &k )
+{
 				if (_tree.deleteNode(ft::make_pair(k, mapped_type())) == false)
 					return (0);
 				return (1);
 			}
 
-			void										erase( iterator first, iterator last ) {
-
+			void										erase( iterator first, iterator last )
+{
 				while (first != last)
 				{
 					first = find(first->first);
@@ -427,8 +427,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::swap():
 			**		Swap content of the container
 			*/
-			void										swap( map &x ) {
-
+			void										swap( map &x )
+{
 				_tree.swap(x._tree);
 				return ;
 			}
@@ -437,8 +437,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::clear():
 			**		Clear content
 			*/
-			void										clear( void ) {
-
+			void										clear( void )
+{
 				_tree.destroy();
 				return ;
 			}
@@ -465,8 +465,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::find():
 			**		Get iterator to element
 			*/
-			iterator 									find( const key_type &k ) {
-
+			iterator 									find( const key_type &k )
+{
 				return (iterator(_tree.get_root(), _tree.search(ft::make_pair(k, mapped_type())), _tree.get_null()));
 			}
 
@@ -490,8 +490,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::lower_bound():
 			**		Return iterator to lower bound
 			*/
-			iterator 									lower_bound( const key_type &k ) {
-
+			iterator 									lower_bound( const key_type &k )
+{
 				return (iterator(_tree.get_root(),
 				_tree.lower_bound(ft::make_pair(k, mapped_type())), _tree.get_null()));
 			}
@@ -506,8 +506,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			**	map::upper_bound():
 			**		Return  iterator to upper bound
 			*/
-			iterator 									upper_bound( const key_type & k ) {
-
+			iterator 									upper_bound( const key_type & k )
+{
 				return (iterator(_tree.get_root(),
 				_tree.upper_bound(ft::make_pair(k, mapped_type())), _tree.get_null()));
 			}
@@ -527,8 +527,8 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 				return (ft::make_pair(this->lower_bound(k), this->upper_bound(k)));
 			}
 
-			ft::pair<iterator, iterator>				equal_range( const key_type &k ) {
-
+			ft::pair<iterator, iterator>				equal_range( const key_type &k )
+{
 				return (ft::make_pair(this->lower_bound(k), this->upper_bound(k)));
 			}
 
@@ -553,48 +553,48 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 	**	container objects.
 	*/
 	template <class Key, class T, class Compare, class Allocator>
-	bool operator==( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs ) {
-
+	bool operator==( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs )
+{
 		if (lhs.size() != rhs.size())
 			return (false);
 		return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
 	}
 
 	template <class Key, class T, class Compare, class Allocator>
-	bool operator!=( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs ) {
-
+	bool operator!=( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs )
+{
 		if (lhs.size() != rhs.size())
 			return (true);
 		return (!ft::equal(lhs.begin(), lhs.end(), rhs.begin())); 
 	}
 
 	template <class Key, class T, class Compare, class Allocator>
-	bool operator<( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs ) {
-
+	bool operator<( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs )
+{
 		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
 	}
 
 	template <class Key, class T, class Compare, class Allocator>
-	bool operator<=( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs ) {
-
+	bool operator<=( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs )
+{
 		return (!(rhs < lhs));
 	}
 
 	template <class Key, class T, class Compare, class Allocator>
-	bool operator>( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs ) {
-
+	bool operator>( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs )
+{
 		return (!(rhs >= lhs));
 	}
 
 	template <class Key, class T, class Compare, class Allocator>
-	bool operator>=( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs ) {
-
+	bool operator>=( const map<Key, T, Compare, Allocator> &lhs, const map<Key, T, Compare, Allocator> &rhs )
+{
 		return (!ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
 	}
 
 	template <class Key, class T, class Compare, class Allocator>
-	void swap( map<Key, T, Compare, Allocator> &x, map<Key, T, Compare, Allocator> &y ) {
-
+	void swap( map<Key, T, Compare, Allocator> &x, map<Key, T, Compare, Allocator> &y )
+{
 		return (x.swap(y));
 	}
 };

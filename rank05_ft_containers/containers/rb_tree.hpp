@@ -436,7 +436,7 @@ namespace ft
 					}
 
 					std::string _COLO = root->color ? _RED : B_WHT;
-					std::cout << _COLO << root->_key << "-" << root->_val << _END << std::endl;
+					std::cout << _COLO << "o" << _END << std::endl;
 					print_helper(root->left, indent, false);
 					print_helper(root->right, indent, true);
 				}
@@ -623,7 +623,7 @@ namespace ft
 			}
 
 			/*
-			*	Getters
+			*	getters
 			*/
 			pointer	get_root() const { return (_root); }
 

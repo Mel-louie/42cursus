@@ -8,7 +8,7 @@
 
 namespace ft
 {
-		template< class T, class Node>
+		template<class T, class Node>
 		class bidir_iterator : public ft::iterator<bidirectional_iterator_tag, T>
 		{
 		public:
@@ -20,55 +20,31 @@ namespace ft
 			typedef typename ft::iterator<bidirectional_iterator_tag, T>::iterator_category	iterator_category;
 			typedef Node*																	ptr_node;
 
-			/*
-			**	CONSTRUCTOR
-			*/
-			bidir_iterator( void ) : _root(my_nullptr), _node(my_nullptr), _null(my_nullptr) {
+			bidir_iterator( void ) : _root(my_nullptr), _node(my_nullptr), _null(my_nullptr) {}
 
-				return ;
-			}
+			bidir_iterator( ptr_node root, ptr_node node, ptr_node null ) : _root(root), _node(node), _null(null) {}
 
-			bidir_iterator( ptr_node root, ptr_node node, ptr_node null ) : _root(root), _node(node), _null(null) {
+			bidir_iterator( bidir_iterator const &src ) : _root(src._root), _node(src._node), _null(src._null) {}
 
-				return ;
-			}
+			~bidir_iterator( void ) {}
 
-			bidir_iterator( bidir_iterator const &src ) : _root(src._root), _node(src._node), _null(src._null) {
-			
-				return ;
-			}
-
-			~bidir_iterator( void ) {
-
-				return ;
-			}
-
-			/*
-			**	OVERLOAD OPERATORS
-			*/
-			bidir_iterator 		&operator=( bidir_iterator const &element ) {
-
-				if (this != &element)
+			bidir_iterator &operator=(const bidir_iterator &rhs )
+			{
+				if (this != &rhs)
 				{
-					this->_root = element._root;
-					this->_node = element._node;
-					this->_null = element._null;
+					this->_root = rhs._root;
+					this->_node = rhs._node;
+					this->_null = rhs._null;
 				}
 				return (*this);
 			}
 
-			reference 			operator*( void ) const {
+			reference operator*() const { return (this->_node->value); }
 
-				return (this->_node->value);
-			}
+			pointer operator->() const { return (&operator*()); }
 
-			pointer				operator->( void ) const {
-
-				return (&operator*());
-			}
-
-			bidir_iterator 		&operator++( void ) {
-
+			bidir_iterator &operator++() 
+			{
 				if (_node == max(_root))
 				{
 					_node = _null;
@@ -83,15 +59,15 @@ namespace ft
 				return (*this);
 			}
 
-			bidir_iterator 		operator++( int ) {
-
+			bidir_iterator operator++(int)
+			{
 				bidir_iterator tmp(_root, _node, _null);
 				operator++();
 				return (tmp);
 			}
 
-			bidir_iterator		&operator--( void ) {
-
+			bidir_iterator &operator--()
+			{
 				if (_node == _null)
 				{
 					_node = max(_root);
@@ -101,57 +77,45 @@ namespace ft
 				return (*this);
 			}
 
-			bidir_iterator		operator--( int ) {
-
+			bidir_iterator operator--(int)
+			{
 				bidir_iterator tmp(_root, _node, _null);
 				operator--();
 				return (tmp);
 			}
 
-			operator 			bidir_iterator<const T, Node>( void ) {
-
+			operator bidir_iterator<const T, Node>()
+			{
 				return (bidir_iterator<const T, Node>(_root, _node, _null));
 			}
 
-			/*
-			**	GETTERS
-			*/
-			ptr_node 			get_root( void ) const {
+			ptr_node get_root( void ) const { return (_root); }
 
-				return (_root);
-			}
+			ptr_node get_node( void ) const { return (_node); }
 
-			ptr_node 			get_node( void ) const {
-
-				return (_node);
-			}
-
-			ptr_node 			get_null( void ) const {
-
-				return (_null);
-			}
+			ptr_node get_null( void ) const { return (_null); }
 
 		private:
 			ptr_node 			_root;
 			ptr_node 			_node;
 			ptr_node 			_null;
 
-			ptr_node 			min( ptr_node node ) {
+			ptr_node min( ptr_node node ) {
 
 				while (node->left != _null)
 					node = node->left;
 				return (node);
 			}
 
-			ptr_node 			max( ptr_node node ) {
+			ptr_node max( ptr_node node ) {
 
 				while (node->right != _null)
 					node = node->right;
 				return (node);
 			}
 
-			ptr_node 			successor( ptr_node node ) {
-
+			ptr_node successor( ptr_node node )
+			{
 				if (node->right != _null)
 					return (min(node->right));
 				ptr_node tmp = node->parent;
@@ -163,8 +127,8 @@ namespace ft
 				return (tmp);
 			}
 
-			ptr_node 			predecessor( ptr_node node ) {
-
+			ptr_node predecessor( ptr_node node )
+			{
 				if (node->left != _null)
 					return (max(node->left));
 				ptr_node tmp = node->parent;
@@ -202,6 +166,5 @@ namespace ft
 	}
     
 } // namespace ft
-
 
 #endif

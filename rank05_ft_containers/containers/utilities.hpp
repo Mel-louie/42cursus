@@ -38,10 +38,9 @@ const std::string B_BLU	= "\033[1;34m";
 const std::string B_WHT	= "\033[1;37m";
 const std::string BK_WI = "\033[47m";
 
-
-
-# include <iostream>
-// Scott Meyers
+/* Scott Meyers 
+* Ref: https://stackoverflow.com/questions/46129024/some-questions-about-implementation-of-nullptr-in-effective-c-by-scott-meyers
+*/
 static class my_nullptr
 {
 	public:

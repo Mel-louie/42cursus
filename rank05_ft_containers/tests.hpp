@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/18 10:06:44 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/18 10:30:37 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,11 +134,9 @@ void	vectorRend()
 
 	TESTED_NAMESPACE::vector<std::string>::reverse_iterator rev_it = myvector.rend();
 
-	std::cout << *rev_it << std::endl;
 	--rev_it;
-	std::cout << *rev_it << std::endl;
+	std::cout << "rev_it: " << *rev_it << std::endl;
 
-	printVec(myvector);
 	std::cout << std::endl;
 }
 
@@ -500,32 +498,32 @@ void	vectorRelationalOperators()
 
 void    testVector()
 {
-	vectorConstructors();
-	vectorAssignation();
-	vectorBegin();
-	vectorEnd();
-	vectorRbegin();
-	// vectorRend();
-	vectorSize();
-	vectorMaxSize();
-	vectorResize();
-	vectorCapacity();
-	vectorEmpty();
-	vectorReserve();
-	vectorBrackets();
-	vectorAt();
-	vectorFront();
-	vectorBack();
-	vectorAssign();
-	vectorPushPop();
-	vectorInsert();
-	vectorErase();
-	vectorSwap();
-	vectorClear();
-	vectorGetAllocator();
-// non-member function overloads
-	vectorRelationalOperators();
-	vectorSwapNonMember();
+	// vectorConstructors();
+	// vectorAssignation();
+	// vectorBegin();
+	// vectorEnd();
+	// vectorRbegin();
+	vectorRend();
+// 	vectorSize();
+// 	vectorMaxSize();
+// 	vectorResize();
+// 	vectorCapacity();
+// 	vectorEmpty();
+// 	vectorReserve();
+// 	vectorBrackets();
+// 	vectorAt();
+// 	vectorFront();
+// 	vectorBack();
+// 	vectorAssign();
+// 	vectorPushPop();
+// 	vectorInsert();
+// 	vectorErase();
+// 	vectorSwap();
+// 	vectorClear();
+// 	vectorGetAllocator();
+// // non-member function overloads
+// 	vectorRelationalOperators();
+// 	vectorSwapNonMember();
 }
 
 // /*---------------------------------- pair --------------------------------*/
@@ -751,59 +749,57 @@ void    testVector()
 // 		std::cout << "map_iterator is a bidirectional iterator" << std::endl;
 // }
 
-// void testRBT()
-// {
-// 	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
-// 	std::cout << std::endl;	
-// 	std::cout << std::endl;
-// 	ft::RBTree<int, std::string>	bst;
-// 	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
-// 	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
+void testRBT()
+{
+	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
+	std::cout << std::endl;	
+	std::cout << std::endl;
+	ft::RBTree<int, std::string>	bst;
+	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
+	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
 
+	// bst.insert(8);
+	// bst.insert(18, "love");
+	// bst.insert(5, "friend");
+	// bst.insert(15, "world");
+	// bst.insert(17, "Parrot");
+	// bst.insert(25, "Mushroom");
+	// bst.insert(40, "hat");
+	// bst.insert(80, "Speed");
+	// bst.insert(80, "42");
 
-// 	bst.insert(8, "lol");
-// 	bst.insert(18, "love");
-// 	bst.insert(5, "friend");
-// 	bst.insert(15, "world");
-// 	bst.insert(17, "Parrot");
-// 	bst.insert(25, "Mushroom");
-// 	bst.insert(40, "hat");
-// 	bst.insert(80, "Speed");
-// 	bst.insert(80, "42");
+	// bst.printRBT();
 
-// 	bst.printRBT();
+	// std::cout << "\n preorder traversal: " ;
+	// bst.preorder_traversal();
+	// std::cout << std::endl;
+	// std::cout << "\n inorder traversal: " ;
+	// bst.inorder_traversal();
+	// std::cout << std::endl;
+	// std::cout << "\n postorder traversal: " ;
+	// bst.postorder_traversal();
+	// std::cout << std::endl;
 
-// 	std::cout << "\n preorder traversal: " ;
-// 	bst.preorder_traversal();
-// 	std::cout << std::endl;
-// 	std::cout << "\n inorder traversal: " ;
-// 	bst.inorder_traversal();
-// 	std::cout << std::endl;
-// 	std::cout << "\n postorder traversal: " ;
-// 	bst.postorder_traversal();
-// 	std::cout << std::endl;
-
-// 	bst.delete_node(25);
-// 	bst.insert(142, "oh oh");
-// 	bst.printRBT();
+	// bst.delete_node(25);
+	// bst.insert(142, "oh oh");
+	// bst.printRBT();
 	
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+}
 
 
 void	mapConstructors()
 {
 	std::cout << "<----- MAP::CONSTRUCTORS ----->" << std::endl;
 	std::cout << std::endl;
-	ft::map< std::string, std::string > map1;
-	ft::map< int, std::string > map2;
+	TESTED_NAMESPACE::map< std::string, std::string > map1;
+	TESTED_NAMESPACE::map< int, std::string > map2;
 
 	map1["test1"]="ok test 1";
 	std::cout << map1["test1"] << std::endl;
 
 	map2[1] = "ok test 2";
 	std::cout << map2[1] << std::endl;
-
 	std::cout << std::endl;
 }
 

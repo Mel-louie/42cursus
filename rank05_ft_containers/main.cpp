@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:29:00 by mdesfont          #+#    #+#             */
-/*   Updated: 2022/01/18 10:06:20 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/18 10:29:11 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main( void )
 // 	testPair();
 
 // // Tests containers
-	testVector();
+	// testVector();
 // 	testStack();
 
 	// testsTRAITS();
