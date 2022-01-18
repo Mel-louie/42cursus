@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/17 19:57:53 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/18 09:39:40 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,502 +31,502 @@
 
 /*---------------------------------- vector --------------------------------*/
 
-// void    vectorConstructors()
-// {
-// 	std::cout << "<----- VECTOR::CONSTRUCTORS ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int>	first;
-// 	TESTED_NAMESPACE::vector<int>	second(5, 42);
-// 	TESTED_NAMESPACE::vector<int>	third(second.begin(), second.end());
-// 	TESTED_NAMESPACE::vector<int>	forth(second);
+void    vectorConstructors()
+{
+	std::cout << "<----- VECTOR::CONSTRUCTORS ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int>	first;
+	TESTED_NAMESPACE::vector<int>	second(5, 42);
+	TESTED_NAMESPACE::vector<int>	third(second.begin(), second.end());
+	TESTED_NAMESPACE::vector<int>	forth(second);
 
-// // the iterator constructor can also be used to construct from arrays:
-// 	int intArr[] = {16,2,77,29};
-// 	TESTED_NAMESPACE::vector<int> fifth(intArr, intArr + sizeof(intArr) / sizeof(int) );
+// the iterator constructor can also be used to construct from arrays:
+	int intArr[] = {16,2,77,29};
+	TESTED_NAMESPACE::vector<int> fifth(intArr, intArr + sizeof(intArr) / sizeof(int) );
 
-// 	std::cout << _END << "first: "; printVec(first);
-// 	std::cout << "second: "; printVec(second);
-// 	std::cout << "third: "; printVec(third);
-// 	std::cout << "forth: "; printVec(forth);
-// 	std::cout << "fifth: "; printVec(fifth);
-// 	std::cout << std::endl;
-// }
+	std::cout << _END << "first: "; printVec(first);
+	std::cout << "second: "; printVec(second);
+	std::cout << "third: "; printVec(third);
+	std::cout << "forth: "; printVec(forth);
+	std::cout << "fifth: "; printVec(fifth);
+	std::cout << std::endl;
+}
 
-// void	vectorAssignation()
-// {
-// 	std::cout << "<----- VECTOR::OPERATOR=() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int>	first(3,0);
-// 	TESTED_NAMESPACE::vector<int>	second(5, 42);
+void	vectorAssignation()
+{
+	std::cout << "<----- VECTOR::OPERATOR=() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int>	first(3,0);
+	TESTED_NAMESPACE::vector<int>	second(5, 42);
 	
-// 	second = first;
-// 	first = TESTED_NAMESPACE::vector<int>();
+	second = first;
+	first = TESTED_NAMESPACE::vector<int>();
 
-// 	printVec(first);
-// 	std::cout << "Size of first: " << int(first.size()) << std::endl;
-// 	printVec(second);
-// 	std::cout << "Size of second: " << int(second.size()) << std::endl;
-// 	std::cout << std::endl;
-// }
+	printVec(first);
+	std::cout << "Size of first: " << int(first.size()) << std::endl;
+	printVec(second);
+	std::cout << "Size of second: " << int(second.size()) << std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorBegin()
-// {
-// 	std::cout << "<----- VECTOR::BEGIN() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myvector;
+void	vectorBegin()
+{
+	std::cout << "<----- VECTOR::BEGIN() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
 
-// 	for (int i = 1 ; i <= 5; i++ )
-// 		myvector.push_back(i);
+	for (int i = 1 ; i <= 5; i++ )
+		myvector.push_back(i);
 
-// 	TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin();
-// 	printVec(myvector);
-// 	std::cout << ' ' << *it << std::endl;
-// 	std::cout << std::endl;
-// }
+	TESTED_NAMESPACE::vector<int>::iterator it = myvector.begin();
+	printVec(myvector);
+	std::cout << ' ' << *it << std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorEnd()
-// {
-// 	std::cout << "<----- VECTOR::END() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myvector;
+void	vectorEnd()
+{
+	std::cout << "<----- VECTOR::END() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
 
-// 	for (int i = 1 ; i <= 5; i++ )
-// 		myvector.push_back(i);
+	for (int i = 1 ; i <= 5; i++ )
+		myvector.push_back(i);
 
-// 	TESTED_NAMESPACE::vector<int>::iterator it = myvector.end();
-// 	--it;
-// 	printVec(myvector);
-// 	std::cout << ' ' << *it << std::endl;
-// 	std::cout << std::endl;
-// }
+	TESTED_NAMESPACE::vector<int>::iterator it = myvector.end();
+	--it;
+	printVec(myvector);
+	std::cout << ' ' << *it << std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorRbegin()
-// {
-// 	std::cout << "<----- VECTOR::RBEGIN() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<std::string> myvector;
+void	vectorRbegin()
+{
+	std::cout << "<----- VECTOR::RBEGIN() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<std::string> myvector;
 	
-// 	myvector.push_back("Hello");
-// 	myvector.push_back("how");
-// 	myvector.push_back("are");
-// 	myvector.push_back("you?");
+	myvector.push_back("Hello");
+	myvector.push_back("how");
+	myvector.push_back("are");
+	myvector.push_back("you?");
 
-// 	TESTED_NAMESPACE::vector<std::string>::reverse_iterator rev_it = myvector.rbegin();
+	TESTED_NAMESPACE::vector<std::string>::reverse_iterator rev_it = myvector.rbegin();
 
-// 	std::cout << *rev_it << std::endl;
-// 	++rev_it;
-// 	std::cout << *rev_it << std::endl;
+	std::cout << *rev_it << std::endl;
+	++rev_it;
+	std::cout << *rev_it << std::endl;
 
-// 	printVec(myvector);
-// 	std::cout << std::endl;
-// }
+	printVec(myvector);
+	std::cout << std::endl;
+}
 
-// void	vectorRend()
-// {
-// 	std::cout << "<----- VECTOR::REND() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<std::string> myvector;
+void	vectorRend()
+{
+	std::cout << "<----- VECTOR::REND() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<std::string> myvector;
 	
-// 	myvector.push_back("Hello");
-// 	myvector.push_back("how");
-// 	myvector.push_back("are");
-// 	myvector.push_back("you?");
+	myvector.push_back("Hello");
+	myvector.push_back("how");
+	myvector.push_back("are");
+	myvector.push_back("you?");
 
-// 	TESTED_NAMESPACE::vector<std::string>::reverse_iterator rev_it = myvector.rend();
+	TESTED_NAMESPACE::vector<std::string>::reverse_iterator rev_it = myvector.rend();
 
-// 	std::cout << *rev_it << std::endl;
-// 	--rev_it;
-// 	std::cout << *rev_it << std::endl;
+	std::cout << *rev_it << std::endl;
+	--rev_it;
+	std::cout << *rev_it << std::endl;
 
-// 	printVec(myvector);
-// 	std::cout << std::endl;
-// }
+	printVec(myvector);
+	std::cout << std::endl;
+}
 
-// void	vectorSize()
-// {
-// 	std::cout << "<----- VECTOR::SIZE() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myints;
-// 	std::cout << "0. size: " << myints.size() <<  std::endl;
+void	vectorSize()
+{
+	std::cout << "<----- VECTOR::SIZE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myints;
+	std::cout << "0. size: " << myints.size() <<  std::endl;
 
-// 	for (int i=0; i<10; i++) myints.push_back(i);
-// 	std::cout << "1. size: " << myints.size() <<  std::endl;
+	for (int i=0; i<10; i++) myints.push_back(i);
+	std::cout << "1. size: " << myints.size() <<  std::endl;
 
-// 	myints.insert (myints.end(),10,100);
-// 	std::cout << "2. size: " << myints.size() <<  std::endl;
+	myints.insert (myints.end(),10,100);
+	std::cout << "2. size: " << myints.size() <<  std::endl;
 
-// 	myints.pop_back();
-// 	std::cout << "3. size: " << myints.size() <<  std::endl;
-// 	std::cout << std::endl;
-// }
+	myints.pop_back();
+	std::cout << "3. size: " << myints.size() <<  std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorMaxSize()
-// {
-// 	std::cout << "<----- VECTOR::MAXSIZE() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myvector;
+void	vectorMaxSize()
+{
+	std::cout << "<----- VECTOR::MAXSIZE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
 
-// 	// set some content in the vector:
-// 	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
-// 	std::cout << "max_size: " << myvector.max_size() <<  std::endl;
-// 	std::cout << std::endl;
-// }
+	// set some content in the vector:
+	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
+	std::cout << "max_size: " << myvector.max_size() <<  std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorResize()
-// {
-// 	std::cout << "<----- VECTOR::RESIZE() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myvector;
+void	vectorResize()
+{
+	std::cout << "<----- VECTOR::RESIZE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
 	
-// 	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
-// 	printVec(myvector);
-// 	myvector.resize(5);
-// 	printVec(myvector);
-// 	myvector.resize(8, 100);
-// 	printVec(myvector);
-// 	myvector.resize(12);
-// 	printVec(myvector);
-// 	std::cout << std::endl;
-// }
+	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
+	printVec(myvector);
+	myvector.resize(5);
+	printVec(myvector);
+	myvector.resize(8, 100);
+	printVec(myvector);
+	myvector.resize(12);
+	printVec(myvector);
+	std::cout << std::endl;
+}
 
-// void	vectorCapacity()
-// {
-// 	std::cout << "<----- VECTOR::CAPACITY() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myvector;
+void	vectorCapacity()
+{
+	std::cout << "<----- VECTOR::CAPACITY() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
 
-// 	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
-// 	std::cout << "capacity: " << myvector.capacity() << std::endl;
-// 	std::cout << std::endl;
-// }
+	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
+	std::cout << "capacity: " << myvector.capacity() << std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorEmpty()
-// {
-// 	std::cout << "<----- VECTOR::EMPTY() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myvector;
-// 	int sum (0);
+void	vectorEmpty()
+{
+	std::cout << "<----- VECTOR::EMPTY() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
+	int sum (0);
 
-// 	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
+	for (int i = 0 ; i < 100 ; i++) myvector.push_back(i);
 
-// 	while (!myvector.empty())
-// 	{
-// 		sum++;
-// 		myvector.pop_back();
-// 	}
-// 	std::cout << "sum is increment until myvector is empty, total sum: " << sum <<  std::endl;
-// 	std::cout << std::endl;
-// }
+	while (!myvector.empty())
+	{
+		sum++;
+		myvector.pop_back();
+	}
+	std::cout << "sum is increment until myvector is empty, total sum: " << sum <<  std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorReserve()
-// {
-// 	std::cout << "<----- VECTOR::RESERVE() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int>::size_type sz;
-// 	TESTED_NAMESPACE::vector<int> bar;
+void	vectorReserve()
+{
+	std::cout << "<----- VECTOR::RESERVE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int>::size_type sz;
+	TESTED_NAMESPACE::vector<int> bar;
 
-// 	sz = bar.capacity();
-// 	std::cout << "capacity at the begining: " << sz <<  std::endl;
+	sz = bar.capacity();
+	std::cout << "capacity at the begining: " << sz <<  std::endl;
 	
-// 	bar.reserve(100);
-// 	for (int i = 0 ; i < 100 ; ++i)
-// 	{
-// 	   	bar.push_back(i);
-// 		if (sz != bar.capacity())
-// 		{
-// 			sz = bar.capacity();
-//       		std::cout << "capacity at the end: " << sz <<  std::endl;
-// 		}
-// 	}
-// 	std::cout << std::endl;
-// }
+	bar.reserve(100);
+	for (int i = 0 ; i < 100 ; ++i)
+	{
+	   	bar.push_back(i);
+		if (sz != bar.capacity())
+		{
+			sz = bar.capacity();
+      		std::cout << "capacity at the end: " << sz <<  std::endl;
+		}
+	}
+	std::cout << std::endl;
+}
 
-// void	vectorBrackets()
-// {
-// 	std::cout << "<----- VECTOR::OPERATOR[]() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec(10); //vector of 10 elements, at 0
-// 	TESTED_NAMESPACE::vector<int>::size_type size = vec.size();
+void	vectorBrackets()
+{
+	std::cout << "<----- VECTOR::OPERATOR[]() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec(10); //vector of 10 elements, at 0
+	TESTED_NAMESPACE::vector<int>::size_type size = vec.size();
 
-// 	// assign some values
-// 	for (size_t i = 0 ; i < size ; i++) vec[i] = i;
+	// assign some values
+	for (size_t i = 0 ; i < size ; i++) vec[i] = i;
 	
-// 	// reverse vector, using operator[]
-// 	for (size_t i = 0 ; i < size / 2 ; i++)
-// 	{
-// 		int tmp;
-// 		tmp = vec[size - 1 - i];
-// 		vec[size - 1 - i] = vec[i];
-// 		vec[i] = tmp;
-// 	}
-// 	printVec(vec);
-// 	std::cout << std::endl;
-// }
+	// reverse vector, using operator[]
+	for (size_t i = 0 ; i < size / 2 ; i++)
+	{
+		int tmp;
+		tmp = vec[size - 1 - i];
+		vec[size - 1 - i] = vec[i];
+		vec[i] = tmp;
+	}
+	printVec(vec);
+	std::cout << std::endl;
+}
 
-// void	vectorAt()
-// {
-// 	std::cout << "<----- VECTOR::AT() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec(10); //vector of 10 elements, at 0
-// 	TESTED_NAMESPACE::vector<int>::size_type size = vec.size();
+void	vectorAt()
+{
+	std::cout << "<----- VECTOR::AT() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec(10); //vector of 10 elements, at 0
+	TESTED_NAMESPACE::vector<int>::size_type size = vec.size();
 
-// 	// assign some values
-// 	for (size_t i = 0 ; i < size ; i++) vec.at(i) = i;
-// 	printVec(vec);
-// 	std::cout << std::endl;
-// }
+	// assign some values
+	for (size_t i = 0 ; i < size ; i++) vec.at(i) = i;
+	printVec(vec);
+	std::cout << std::endl;
+}
 
-// void	vectorFront()
-// {
-// 	std::cout << "<----- VECTOR::FRONT() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec;
-// 	printVec(vec);
+void	vectorFront()
+{
+	std::cout << "<----- VECTOR::FRONT() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec;
+	printVec(vec);
 
-// 	vec.push_back(42);
-// 	vec.push_back(21);
-// 	std::cout << vec.front() << std::endl;
-// 	printVec(vec);
-// 	std::cout << std::endl;
-// }
+	vec.push_back(42);
+	vec.push_back(21);
+	std::cout << vec.front() << std::endl;
+	printVec(vec);
+	std::cout << std::endl;
+}
 
-// void	vectorBack()
-// {
-// 	std::cout << "<----- VECTOR::BACK() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec;
-// 	printVec(vec);
+void	vectorBack()
+{
+	std::cout << "<----- VECTOR::BACK() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec;
+	printVec(vec);
 
-// 	vec.push_back(42);
-// 	vec.push_back(21);
-// 	std::cout << vec.back() << std::endl;
-// 	printVec(vec);
-// 	std::cout << std::endl;
-// }
+	vec.push_back(42);
+	vec.push_back(21);
+	std::cout << vec.back() << std::endl;
+	printVec(vec);
+	std::cout << std::endl;
+}
 
-// void	vectorAssign()
-// {
-// 	std::cout << "<----- VECTOR::ASSIGN() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec1;
-// 	TESTED_NAMESPACE::vector<int> vec2;
-// 	TESTED_NAMESPACE::vector<int> vec3;
+void	vectorAssign()
+{
+	std::cout << "<----- VECTOR::ASSIGN() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec1;
+	TESTED_NAMESPACE::vector<int> vec2;
+	TESTED_NAMESPACE::vector<int> vec3;
 
-// 	vec1.assign(7, 100);
-// 	printVec(vec1);
+	vec1.assign(7, 100);
+	printVec(vec1);
 
-// 	TESTED_NAMESPACE::vector<int>::iterator it = vec1.begin();
+	TESTED_NAMESPACE::vector<int>::iterator it = vec1.begin();
 
-// 	vec2.assign(it, vec1.end() - 1);	
-// 	printVec(vec2);
+	vec2.assign(it, vec1.end() - 1);	
+	printVec(vec2);
 
-// 	int	i[] = {15, 22, 4, 77};
-// 	vec3.assign(i + 1, i + 4);	// assign from array
-// 	printVec(vec3);
+	int	i[] = {15, 22, 4, 77};
+	vec3.assign(i + 1, i + 4);	// assign from array
+	printVec(vec3);
 
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+}
 
-// void	vectorPushPop()
-// {
-// 	std::cout << "<----- VECTOR::PUSH/POP_BACK() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> v;
+void	vectorPushPop()
+{
+	std::cout << "<----- VECTOR::PUSH/POP_BACK() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v;
 
-// 	v.push_back(1);
-// 	v.push_back(2);
-// 	v.push_back(3);
-// 	printVec(v);
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	printVec(v);
 
-// 	v.pop_back();
-// 	v.pop_back();
-// 	printVec(v);
+	v.pop_back();
+	v.pop_back();
+	printVec(v);
 
-// 	v.push_back(42);
-// 	printVec(v);
+	v.push_back(42);
+	printVec(v);
 
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+}
 
-// void	vectorInsert()
-// {
-// 	std::cout << "<----- VECTOR::INSERT() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> v(3, 100);
-// 	TESTED_NAMESPACE::vector<int>::iterator it;
+void	vectorInsert()
+{
+	std::cout << "<----- VECTOR::INSERT() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v(3, 100);
+	TESTED_NAMESPACE::vector<int>::iterator it;
 
-// 	it = v.begin();
-// 	it = v.insert(it, 200);
+	it = v.begin();
+	it = v.insert(it, 200);
 	
-// 	v.insert(it, 2, 300);
+	v.insert(it, 2, 300);
 
-// 	it = v.begin();
+	it = v.begin();
 	
-// 	TESTED_NAMESPACE::vector<int> v2(2, 600);
-// 	v.insert(it + 2, v2.begin(), v2.end());
+	TESTED_NAMESPACE::vector<int> v2(2, 600);
+	v.insert(it + 2, v2.begin(), v2.end());
 
-// 	printVec(v);
-// 	std::cout << std::endl;
-// }
+	printVec(v);
+	std::cout << std::endl;
+}
 
-// void	vectorErase()
-// {
-// 	std::cout << "<----- VECTOR::ERASE() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec;
+void	vectorErase()
+{
+	std::cout << "<----- VECTOR::ERASE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec;
 
-// 	for (int i = 1 ; i != 10 ; ++i)
-// 		vec.push_back(i);
-// 	printVec(vec);
+	for (int i = 1 ; i != 10 ; ++i)
+		vec.push_back(i);
+	printVec(vec);
 	
-// 	// erase the 6th element
-// 	vec.erase(vec.begin() + 5);
-// 	printVec(vec);
+	// erase the 6th element
+	vec.erase(vec.begin() + 5);
+	printVec(vec);
 
-// 	// erase the first 3 elements
-// 	vec.erase(vec.begin(), vec.begin() + 3);
+	// erase the first 3 elements
+	vec.erase(vec.begin(), vec.begin() + 3);
 
-// 	printVec(vec);
-// 	std::cout << std::endl;
-// }
+	printVec(vec);
+	std::cout << std::endl;
+}
 
 
-// void	vectorSwap()
-// {
-// 	std::cout << "<----- VECTOR::SWAP() ----->" << std::endl;
-// 	std::cout << std::endl;
+void	vectorSwap()
+{
+	std::cout << "<----- VECTOR::SWAP() ----->" << std::endl;
+	std::cout << std::endl;
 
-// 	TESTED_NAMESPACE::vector<int> foo(3, 100);
-// 	TESTED_NAMESPACE::vector<int> bar(5, 200);
-// 	std::cout << "foo contains:";
-// 	for (unsigned i = 0; i < foo.size(); i++) std::cout << ' ' << foo[i];
-// 	std::cout << std::endl;
-// 	std::cout << "bar contains:";
-// 	for (unsigned i = 0; i < bar.size(); i++) std::cout << ' ' << bar[i];
-// 	std::cout << std::endl;
-// 	std::cout << "[swap]" << std::endl; foo.swap(bar);
-// 	std::cout << "foo contains:";
-// 	for (unsigned i = 0; i < foo.size(); i++) std::cout << ' ' << foo[i];
-// 	std::cout << std::endl;
-// 	std::cout << "bar contains:";
-// 	for (unsigned i = 0; i < bar.size(); i++) std::cout << ' ' << bar[i];
+	TESTED_NAMESPACE::vector<int> foo(3, 100);
+	TESTED_NAMESPACE::vector<int> bar(5, 200);
+	std::cout << "foo contains:";
+	for (unsigned i = 0; i < foo.size(); i++) std::cout << ' ' << foo[i];
+	std::cout << std::endl;
+	std::cout << "bar contains:";
+	for (unsigned i = 0; i < bar.size(); i++) std::cout << ' ' << bar[i];
+	std::cout << std::endl;
+	std::cout << "[swap]" << std::endl; foo.swap(bar);
+	std::cout << "foo contains:";
+	for (unsigned i = 0; i < foo.size(); i++) std::cout << ' ' << foo[i];
+	std::cout << std::endl;
+	std::cout << "bar contains:";
+	for (unsigned i = 0; i < bar.size(); i++) std::cout << ' ' << bar[i];
 
-// 	std::cout << std::endl;
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+	std::cout << std::endl;
+}
 
-// void	vectorClear()
-// {
-// 	std::cout << "<----- VECTOR::CLEAR() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> vec;
+void	vectorClear()
+{
+	std::cout << "<----- VECTOR::CLEAR() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> vec;
 
-// 	for (int i = 100 ; i != 110 ; i++)
-// 		vec.push_back(i);
+	for (int i = 100 ; i != 110 ; i++)
+		vec.push_back(i);
 	
-// 	std::cout << "Vector before clear: "; printVec(vec);
-// 	vec.clear();
-// 	std::cout << "Vector after clear: "; printVec(vec);
+	std::cout << "Vector before clear: "; printVec(vec);
+	vec.clear();
+	std::cout << "Vector after clear: "; printVec(vec);
 
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+}
 
-// void	vectorGetAllocator()
-// {
-// 	std::cout << "<----- VECTOR::GETALLOCATOR() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> myvector;
-// 	int * p;
-// 	unsigned int i;
+void	vectorGetAllocator()
+{
+	std::cout << "<----- VECTOR::GETALLOCATOR() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> myvector;
+	int * p;
+	unsigned int i;
 
-// 	// allocate an array with space for 5 elements using vector's allocator:
-// 	p = myvector.get_allocator().allocate(5);
+	// allocate an array with space for 5 elements using vector's allocator:
+	p = myvector.get_allocator().allocate(5);
 
-// 	for (i = 0 ; i < 5 ; i++)
-// 		myvector.push_back(i);
+	for (i = 0 ; i < 5 ; i++)
+		myvector.push_back(i);
 
-// 	std::cout << "The allocated array contains: "; printVec(myvector);
+	std::cout << "The allocated array contains: "; printVec(myvector);
 
-// 	// destroy and deallocate, if not, it leaks
-// 	for (i=0; i<5; i++) myvector.get_allocator().destroy(&p[i]);
-// 	myvector.get_allocator().deallocate(p,5);
+	// destroy and deallocate, if not, it leaks
+	for (i=0; i<5; i++) myvector.get_allocator().destroy(&p[i]);
+	myvector.get_allocator().deallocate(p,5);
 
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+}
 
-// void	vectorSwapNonMember()
-// {
-// 	std::cout << "<----- VECTOR::SWAP_NON_MEMBER() ----->" << std::endl;
-// 	std::cout << std::endl;
+void	vectorSwapNonMember()
+{
+	std::cout << "<----- VECTOR::SWAP_NON_MEMBER() ----->" << std::endl;
+	std::cout << std::endl;
 
-// 	TESTED_NAMESPACE::vector<int> foo(3, 100);
-// 	TESTED_NAMESPACE::vector<int> bar(5, 200);
+	TESTED_NAMESPACE::vector<int> foo(3, 100);
+	TESTED_NAMESPACE::vector<int> bar(5, 200);
 
-// 	std::cout << "foo contains:";
-// 	for (TESTED_NAMESPACE::vector<int>::iterator it = foo.begin() ; it != foo.end() ; ++it)
-// 		std::cout << ' ' << *it;
-// 	std::cout << std::endl;
-// 	std::cout << "bar contains:";
-// 	for (TESTED_NAMESPACE::vector<int>::iterator it = bar.begin(); it != bar.end(); ++it)
-// 		std::cout << ' ' << *it;
-// 	std::cout << std::endl;
-// 	std::cout << "[swap]" << std::endl; foo.swap(bar);
-// 	std::cout << "foo contains:";
-// 	for (TESTED_NAMESPACE::vector<int>::iterator it = foo.begin() ; it != foo.end() ; ++it)
-// 		std::cout << ' ' << *it;
-// 	std::cout << std::endl;
-// 	std::cout << "bar contains:";
-// 	for (TESTED_NAMESPACE::vector<int>::iterator it = bar.begin(); it != bar.end(); ++it)
-// 		std::cout << ' ' << *it;
-// 	std::cout << std::endl;
-// }
+	std::cout << "foo contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = foo.begin() ; it != foo.end() ; ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
+	std::cout << "bar contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = bar.begin(); it != bar.end(); ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
+	std::cout << "[swap]" << std::endl; foo.swap(bar);
+	std::cout << "foo contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = foo.begin() ; it != foo.end() ; ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
+	std::cout << "bar contains:";
+	for (TESTED_NAMESPACE::vector<int>::iterator it = bar.begin(); it != bar.end(); ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
+}
 
-// void	vectorRelationalOperators()
-// {
-// 	std::cout << "<----- VECTOR::RELATIONAL_OPERATORS() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> v1(3, 100);
-// 	TESTED_NAMESPACE::vector<int> v2(2, 200);
+void	vectorRelationalOperators()
+{
+	std::cout << "<----- VECTOR::RELATIONAL_OPERATORS() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v1(3, 100);
+	TESTED_NAMESPACE::vector<int> v2(2, 200);
 	
-// 	if (v1 == v2) std::cout << "v1 and v2 are equal" << std::endl;
-// 	if (v1 != v2) std::cout << "v1 and v2 aren't equal" << std::endl;
-// 	if (v1 < v2) std::cout << "v1 is less than v2" << std::endl;
-// 	if (v1 > v2) std::cout << "v1 is greater than v2" << std::endl;
-// 	if (v1 <= v2) std::cout << "v1 is less than or equal to v2" << std::endl;
-// 	if (v1 >= v2) std::cout << "v1 is greater than or equal to v2" << std::endl;
+	if (v1 == v2) std::cout << "v1 and v2 are equal" << std::endl;
+	if (v1 != v2) std::cout << "v1 and v2 aren't equal" << std::endl;
+	if (v1 < v2) std::cout << "v1 is less than v2" << std::endl;
+	if (v1 > v2) std::cout << "v1 is greater than v2" << std::endl;
+	if (v1 <= v2) std::cout << "v1 is less than or equal to v2" << std::endl;
+	if (v1 >= v2) std::cout << "v1 is greater than or equal to v2" << std::endl;
 
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+}
 
-// void    testVector()
-// {
-// 	vectorConstructors();
-// 	vectorAssignation();
-// 	vectorBegin();
-// 	vectorEnd();
-// 	vectorRbegin();
-// 	vectorRend();
-// 	vectorSize();
-// 	vectorMaxSize();
-// 	vectorResize();
-// 	vectorCapacity();
-// 	vectorEmpty();
-// 	vectorReserve();
-// 	vectorBrackets();
-// 	vectorAt();
-// 	vectorFront();
-// 	vectorBack();
-// 	vectorAssign();
-// 	vectorPushPop();
-// 	vectorInsert();
-// 	vectorErase();
-// 	vectorSwap();
-// 	vectorClear();
-// 	vectorGetAllocator();
-// // non-member function overloads
-// 	vectorRelationalOperators();
-// 	vectorSwapNonMember();
-// }
+void    testVector()
+{
+	vectorConstructors();
+	vectorAssignation();
+	vectorBegin();
+	vectorEnd();
+	vectorRbegin();
+	vectorRend();
+	vectorSize();
+	vectorMaxSize();
+	vectorResize();
+	vectorCapacity();
+	vectorEmpty();
+	vectorReserve();
+	vectorBrackets();
+	vectorAt();
+	vectorFront();
+	vectorBack();
+	vectorAssign();
+	vectorPushPop();
+	vectorInsert();
+	vectorErase();
+	vectorSwap();
+	vectorClear();
+	vectorGetAllocator();
+// non-member function overloads
+	vectorRelationalOperators();
+	vectorSwapNonMember();
+}
 
 // /*---------------------------------- pair --------------------------------*/
 

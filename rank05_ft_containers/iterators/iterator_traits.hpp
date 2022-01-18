@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterator_traits.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:34:50 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/14 19:03:48 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/18 09:56:54 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ namespace ft {
 		// Member types
 		typedef std::ptrdiff_t								difference_type;
 		typedef T										value_type;
-		typedef T*										pointer;
-		typedef T&										reference;
+		typedef const T*										pointer;
+		typedef const T&										reference;
 		typedef ft::random_access_iterator_tag			iterator_category;
 	};
 
