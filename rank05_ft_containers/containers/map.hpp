@@ -6,7 +6,7 @@
 /*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 18:54:13 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/18 10:54:21 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/19 16:28:26 by louielouie       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,153 +25,8 @@ namespace ft
 {
     /*--------------------------------------------------------*/
 	/*----------------------- FT::MAP ----------------------*/
-	/*
-    *   @param T        	
-	*	@param T
-	*	@param Compare
-	*	@param Alloc
-	*/
 
-//     template < class Key,											// map::key_type
-//             class T,												// map::mapped_type
-//             class Compare = std::less<Key>,							// map::key_compare
-//             class Alloc = std::allocator<ft::pair<const Key, T> >	// map::allocator_type
-//             >
-//     class map
-// 	{
-
-// 	public:
-	
-// 		/*							Aliases						*/
-        
-//         typedef Key										key_type;
-//         typedef T										mapped_type;
-// 		typedef	ft::pair<const key_type, mapped_type>	value_type;
-//         typedef Compare									key_compare;
-// 		typedef Alloc									allocator_type;
-// 		typedef value_type&								reference;
-// 		typedef const value_type&						const_reference;
-// 		typedef value_type*								pointer;
-// 		typedef const value_type*						const_pointer;
-// 		typedef size_t									size_type;
-// 		typedef std::ptrdiff_t							difference_type;
-	
-// 		typedef map_iterators<pointer, map>				iterator;
-// 		typedef map_iterators<const pointer, map>		const_iterator;
-
-// 		typedef reverse_iterator<const_iterator>		const_reverse_iterator;
-// 		typedef reverse_iterator<iterator>				reverse_iterator;
-
-// 		typedef RBTree<key_type, mapped_type>			tree_type;
-		
-
-// /*--------------------------------------------------------------*/
-// /*							Constructors						*/
-// 	/*
-// 	*	default constructor
-// 	*	constructs an empty container, with no elements
-//     *   @param comp		binary predicate that, taking two element
-// 	* 					keys as argument, returns true if the first
-// 	*					argument goes before the second argument in
-// 	*					the strict weak ordering it defines, and false
-// 	*					otherwise. This shall be a function pointer
-// 	*					or a function object.
-// 	*	@param alloc	allocator object.
-// 	*					The container keeps and uses an internal
-// 	*					copy of this allocator.
-// 	*/
-// 		explicit map (const key_compare& comp = key_compare(),
-// 			const allocator_type& alloc = allocator_type()): _alloc(alloc), _key_compare(comp), _tree() {}
-
-// 	/*
-// 	*	range constructor
-//     *	constructs a container with as many elements as the range
-// 	*	[first,last), with each element constructed from its
-// 	*	corresponding element in that range
-// 	*/
-// 		template <class InputIterator>
-// 		map (InputIterator first, InputIterator last,
-// 			const key_compare& comp = key_compare(),
-// 			const allocator_type& alloc = allocator_type());//: _alloc(alloc), _key_compare(comp)
-// 		// {
-// 		// 	insert(first, last);
-// 		// }
-
-// 	/*
-// 	*	Copy constructor
-//     *   @param x	object to be copied
-// 	*/
-// 		map(const map &x);
-// 	/*
-// 	*	Destuctor
-// 	*/
-// 		~map() {}
-
-// 	/*
-// 	*	Assignation operator
-//     *   @param x	object to be copied
-// 	*/
-// 		//map &operator=(const map &copy);
-		
-
-// /*--------------------------------------------------------------*/
-// /*						Element access							*/
-	
-// 		mapped_type &operator[](const key_type &key)
-// 		{
-// 			// typename RBTree<Key, T>::Node *node;
-// 			// try
-// 			// {
-// 			// 	node = _tree.find_key(key);
-// 			// 	return (node->_val);
-// 			// }
-// 			// catch(const std::out_of_range &e)
-// 			// {
-// 			// 	std::cerr << e.what() << std::endl;
-// 			// 	_tree.insert(key, "");
-// 			// }
-// 			// node = _tree.find_key(node->_val);
-// 			// return (node->_val);
-// 			// ft::pair<iterator, bool> node = insert(ft::make_pair(key, T()));
-// 			// return (node.first->second);
-// 			return (insert(ft::make_pair(key, mapped_type())).first->second);
-// 		}
-	
-// /*--------------------------------------------------------------*/
-// 	/*							Modifiers							*/
-// 		ft::pair<iterator, bool>					insert( const value_type &val ) {
-
-// 				if (_tree.insert(val) == false)
-// 					return (ft::make_pair(find(val.first), false));
-// 				return (ft::make_pair(find(val.first), true));
-// 			}
-
-// 	// iterator insert (iterator position, const value_type &val)
-// 	// {
-// 	// 	return 
-// 	// }
-
-
-// 	// template <class InputIterator>
-// 	// void insert (InputIterator first, InputIterator last);
-
-// 		iterator find(const key_type &key)
-// 		{
-// 			return (iterator(_tree.find_key(key)));
-// 		}
-// 		const iterator find(const key_type &key) const
-// 		{
-// 			return (const_iterator(_tree.find_key(key)));
-// 		}
-
-// /*--------------------------------------------------------------*/
-// /*							Attribute							*/
-// 	private:
-// 		allocator_type	_alloc;
-// 		key_compare		_key_compare;
-// 		tree_type		_tree;
-// 	};
-template < class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator< ft::pair<const Key, T> > >
+	template < class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator< ft::pair<const Key, T> > >
 	class map {
 		
 		public :
@@ -186,7 +41,7 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 			typedef typename allocator_type::pointer							pointer;
 			typedef typename allocator_type::const_pointer						const_pointer;
 			typedef typename std::size_t										size_type;
-			typedef std::ptrdiff_t													difference_type;
+			typedef std::ptrdiff_t												difference_type;
 			class value_compare : public std::binary_function<value_type, value_type, bool>
 			{
 				friend class map;
@@ -206,16 +61,11 @@ template < class Key, class T, class Compare = std::less<Key>, class Alloc = std
 		
 			typedef ft::bidir_iterator<value_type, ft::node<value_type> >		iterator;
 			typedef ft::bidir_iterator<const value_type, ft::node<value_type> >	const_iterator;
-			typedef ft::reverse_map_iterators<iterator>				reverse_iterator;
-			typedef ft::reverse_map_iterators<const_iterator>			const_reverse_iterator;
+			typedef ft::reverse_map_iterators<iterator>							reverse_iterator;
+			typedef ft::reverse_map_iterators<const_iterator>					const_reverse_iterator;
 
-		// typedef map_iterators<pointer, map>				iterator;
-		// typedef map_iterators<const pointer, map>		const_iterator;
-
-		// typedef reverse_iterator<const_iterator>		const_reverse_iterator;
-		// typedef reverse_iterator<iterator>				reverse_iterator;
-
-			/////////////////// CONSTRUCTORS ///////////////////
+		/*----------------------------------------------------------*/
+		/*							Constructors					*/
 			/*
 			**	Empty container constructor == default constructor
 			**	Constructs an empty container with no elements
