@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2022/01/20 12:51:54 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/20 16:44:23 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,14 +237,14 @@ namespace	ft
 	*/
 		T &at (size_type n)
 		{
-			if (!(n < _size))
-				std::out_of_range("out of range");
+			if (n >= _size)
+				throw std::out_of_range ("Cannot access out of range element.");
 			return (_vector[n]);
 		}
 		const T &at (size_type n) const
 		{
-			if (!(n < _size))
-				std::out_of_range("out of range");
+			if (n >= _size)
+				throw std::out_of_range ("Cannot access out of range element.");
 			return (_vector[n]);
 		}
 	/*
@@ -277,7 +277,8 @@ namespace	ft
 				typename ft::enable_if<!ft::is_integral<InputIterator>::value,
 					int>::type* = 0)
 		{
-			this->clear();for (; first != last; ++first)
+			this->clear();
+			for (; first != last; ++first)
 			{
 				this->push_back(*first);
 			}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rb_tree.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/20 18:07:25 by mel-louie         #+#    #+#             */
+/*   Updated: 2022/01/20 18:07:26 by mel-louie        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RB_TREE_HPP
 # define RB_TREE_HPP
 
@@ -428,9 +440,8 @@ namespace ft
 						std::cout << "L----";
 						indent += "|    ";
 					}
-
 					std::string _COLO = root->color ? _RED : B_WHT;
-					std::cout << _COLO << "o" << _END << std::endl;
+					std::cout << _COLO << root->value.first << " - " << root->value.second << _END << std::endl;
 					print_helper(root->left, indent, false);
 					print_helper(root->right, indent, true);
 				}

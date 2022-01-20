@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 18:54:13 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/20 14:46:45 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/20 18:22:27 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #ifndef MAP_HPP
 # define MAP_HPP
 
-# include "../templates/utility.hpp"
+# include "../iterators/reverse_map_iterators.hpp"
 # include "../iterators/iterator_traits.hpp"
 # include "../iterators/map_iterators.hpp"
-# include "rb_tree.hpp"
 # include "../containers/utilities.hpp"
-# include "../iterators/reverse_map_iterators.hpp"
+# include "../templates/utility.hpp"
+# include "rb_tree.hpp"
 
 namespace ft
 {
@@ -264,9 +264,13 @@ namespace ft
 				return (allocator_type());
 			}
 
+			void	print()
+			{
+				_tree.printRBT();
+			}
+
 		private :
 			ft::RBTree<value_type, value_compare>			_tree;
-
 	};
 
 	/*

@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/20 15:21:50 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/20 18:30:41 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -524,6 +524,12 @@ void    testVector()
 // non-member function overloads
 	vectorRelationalOperators();
 	vectorSwapNonMember();
+
+	ft::vector<int> vec;
+	ft::vector<int>::iterator it = vec.begin();
+	ft::vector<int>::const_iterator it2 = vec.begin();
+	if (it == it2)
+		std::cout << std::endl << _RED << "coucou" << _END << std::endl;
 }
 
 /*---------------------------------- pair --------------------------------*/
@@ -725,65 +731,37 @@ void    testStack()
 	stackSize();
 	stackTop();
 	stackPushPop();
-	
  // non-member function overloads
  	stackRelationalOperators();
 }
 
-// void testsTRAITS()
-// {
-// 	std::cout << "<----- TRAITS ----->" << std::endl;
-// 	std::cout << std::endl;	
-// 	typedef TESTED_NAMESPACE::iterator_traits< TESTED_NAMESPACE::vector< std::string >::iterator > traits;
-// 	if (typeid(traits::iterator_category) == typeid(std::random_access_iterator_tag))
-// 		std::cout << "standard_iterator is a random-access iterator" << std::endl;
-// 	if (typeid(traits::iterator_category) == typeid(std::bidirectional_iterator_tag))
-// 		std::cout << "standard_iterator is a bidirectional iterator" << std::endl;
+void testRBT()
+{
+	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
+	std::cout << std::endl;	
 
-// 	typedef TESTED_NAMESPACE::iterator_traits< std::map< std::string, std::string >::iterator > traits2;
-// 	if (typeid(traits2::iterator_category) ==  typeid(std::random_access_iterator_tag))
-// 		std::cout << "map_iterator is a random-access iterator" << std::endl;
-// 	if (typeid(traits2::iterator_category) == typeid(std::bidirectional_iterator_tag))
-// 		std::cout << "map_iterator is a bidirectional iterator" << std::endl;
-// }
+	ft::map<int, std::string> map;
 
-// void testRBT()
-// {
-// 	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
-// 	std::cout << std::endl;	
-// 	std::cout << std::endl;
-// 	ft::RBTree<int, std::string>	bst;
-// 	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
-// 	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
+	map[18] = "love";
+	map[5] = "friend";
+	map[15] = "world";
+	map[17] = "parrot";
+	map[25] = "mushroom";
+	map[40] = "hat";
+	map[35] = "doctor";
+	map[80] = "speed";
+	map[2] = "42";
+	map[0] = "river";
+	map[150] = "pond";
 
-// 	// bst.insert(8);
-// 	// bst.insert(18, "love");
-// 	// bst.insert(5, "friend");
-// 	// bst.insert(15, "world");
-// 	// bst.insert(17, "Parrot");
-// 	// bst.insert(25, "Mushroom");
-// 	// bst.insert(40, "hat");
-// 	// bst.insert(80, "Speed");
-// 	// bst.insert(80, "42");
+	map.print();
 
-// 	// bst.printRBT();
+	map.erase(25);
+	map[142] = "oh oh oh";
+	map.print();
 
-// 	// std::cout << "\n preorder traversal: " ;
-// 	// bst.preorder_traversal();
-// 	// std::cout << std::endl;
-// 	// std::cout << "\n inorder traversal: " ;
-// 	// bst.inorder_traversal();
-// 	// std::cout << std::endl;
-// 	// std::cout << "\n postorder traversal: " ;
-// 	// bst.postorder_traversal();
-// 	// std::cout << std::endl;
-
-// 	// bst.delete_node(25);
-// 	// bst.insert(142, "oh oh");
-// 	// bst.printRBT();
-	
-// 	std::cout << std::endl;
-// }
+	std::cout << std::endl;
+}
 
 bool fncomp (char lhs, char rhs) {return lhs<rhs;}
 
