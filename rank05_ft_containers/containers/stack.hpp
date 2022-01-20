@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 13:33:58 by mel-louie         #+#    #+#             */
-/*   Updated: 2021/12/31 16:01:43 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/20 15:31:15 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ namespace ft
     *   @param cntr	the type of the underlying container type (defined
 	* 				as an alias of the second class template param, Container)
 	*/
-		explicit stack(const container_type &cntr = container_type()): _container(cntr) {}
+		explicit stack(const container_type &cntr = container_type()): c(cntr) {}
 	/*
 	*	Copy constructor
     *   @param x	object to be copied
 	*/
-		stack(const stack<T, Container> &x): _container(x._container) {}
+		stack(const stack<T, Container> &x): c(x.c) {}
 		
 	/*
 	*	Destuctor
@@ -63,11 +63,11 @@ namespace ft
 	/*
 	*	 Returns whether the stack is empty (i.e. whether its size is 0)
 	*/
-		bool empty() const	{ return (_container.empty()); };
+		bool empty() const	{ return (c.empty()); };
 	/*
 	*	Returns the number of elements in the stack
 	*/
-		size_type size() const	{ return (_container.size()); }
+		size_type size() const	{ return (c.size()); }
 	/*
 	*	Returns a reference to the top element in the stack
 	*	Since stacks are last-in first-out containers, the
@@ -75,16 +75,16 @@ namespace ft
 	*	This member function effectively calls member back of
 	*	the underlying container object
 	*/
-		value_type	&top() { return (_container.back()); }
-		const value_type	&top() const { return (_container.back()); }
+		value_type	&top() { return (c.back()); }
+		const value_type	&top() const { return (c.back()); }
 	/*
 	*	Inserts a new element at the top of the stack
 	*/
-		void	push(const value_type &val) { _container.push_back(val); }
+		void	push(const value_type &val) { c.push_back(val); }
 	/*
 	*	Removes a new element at the top of the stack
 	*/
-		void	pop() { _container.pop_back(); }
+		void	pop() { c.pop_back(); }
 
 /*------------------------------------------------------*/
 /*				To access private attributes in			*/
@@ -109,8 +109,8 @@ namespace ft
 
 /*--------------------------------------------------------------*/
 /*							Attribute							*/
-	private:
-		container_type	_container;
+//	private:
+		container_type	c;
 	};
 /*------------------------------------------------------*/
 /*				Non-member function overloads			*/
@@ -123,32 +123,32 @@ namespace ft
 	template <class T, class Container>
 	bool operator==(const stack<T,Container>& lhs, const stack<T,Container>& rhs)
 	{
-		return (lhs._container == rhs._container);
+		return (lhs.c == rhs.c);
 	}
 	template <class T, class Container>
 	bool operator!=(const stack<T,Container>& lhs, const stack<T,Container>& rhs)
 	{
-		return (lhs._container != rhs._container);
+		return (lhs.c != rhs.c);
 	}
 	template <class T, class Container>
 	bool operator<(const stack<T,Container>& lhs, const stack<T,Container>& rhs)
 	{
-		return (lhs._container < rhs._container);
+		return (lhs.c < rhs.c);
 	}
 	template <class T, class Container>
 	bool operator<=(const stack<T,Container>& lhs, const stack<T,Container>& rhs)
 	{
-		return (lhs._container <= rhs._container);
+		return (lhs.c <= rhs.c);
 	}
 	template <class T, class Container>
 	bool operator>(const stack<T,Container>& lhs, const stack<T,Container>& rhs)
 	{
-		return (lhs._container > rhs._container);
+		return (lhs.c > rhs.c);
 	}
 	template <class T, class Container>
 	bool operator>=(const stack<T,Container>& lhs, const stack<T,Container>& rhs)
 	{
-		return (lhs._container >= rhs._container);
+		return (lhs.c >= rhs.c);
 	}
 };
 
