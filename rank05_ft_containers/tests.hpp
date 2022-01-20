@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louielouie <louielouie@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 13:06:28 by mel-louie         #+#    #+#             */
-/*   Updated: 2022/01/18 10:30:37 by louielouie       ###   ########.fr       */
+/*   Updated: 2022/01/20 15:21:50 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -498,243 +498,241 @@ void	vectorRelationalOperators()
 
 void    testVector()
 {
-	// vectorConstructors();
-	// vectorAssignation();
-	// vectorBegin();
-	// vectorEnd();
-	// vectorRbegin();
+	vectorConstructors();
+	vectorAssignation();
+	vectorBegin();
+	vectorEnd();
+	vectorRbegin();
 	vectorRend();
-// 	vectorSize();
-// 	vectorMaxSize();
-// 	vectorResize();
-// 	vectorCapacity();
-// 	vectorEmpty();
-// 	vectorReserve();
-// 	vectorBrackets();
-// 	vectorAt();
-// 	vectorFront();
-// 	vectorBack();
-// 	vectorAssign();
-// 	vectorPushPop();
-// 	vectorInsert();
-// 	vectorErase();
-// 	vectorSwap();
-// 	vectorClear();
-// 	vectorGetAllocator();
-// // non-member function overloads
-// 	vectorRelationalOperators();
-// 	vectorSwapNonMember();
+	vectorSize();
+	vectorMaxSize();
+	vectorResize();
+	vectorCapacity();
+	vectorEmpty();
+	vectorReserve();
+	vectorBrackets();
+	vectorAt();
+	vectorFront();
+	vectorBack();
+	vectorAssign();
+	vectorPushPop();
+	vectorInsert();
+	vectorErase();
+	vectorSwap();
+	vectorClear();
+	vectorGetAllocator();
+// non-member function overloads
+	vectorRelationalOperators();
+	vectorSwapNonMember();
 }
 
-// /*---------------------------------- pair --------------------------------*/
+/*---------------------------------- pair --------------------------------*/
 
-// void	pairConstructor()
+void	pairConstructor()
+{
+	std::cout << "<----- PAIR::CONSTRUCTORS ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::pair<std::string, double> p1;
+	TESTED_NAMESPACE::pair<std::string, double> p2("child1", 1.1);
+	TESTED_NAMESPACE::pair<std::string, double> p3(p2);
+
+	p1 = TESTED_NAMESPACE::make_pair("child0", 0.1);
+
+	std::cout << "pair 1: " << p1.first << ", " << p1.second << std::endl;
+	std::cout << "pair 2: " << p2.first << ", " << p2.second << std::endl;
+	std::cout << "pair 3: " << p3.first << ", " << p3.second << std::endl;
+}
+
+void	pairAssignation()
+{
+	std::cout << "<----- PAIR::OPERATOR=() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::pair<std::string, int> planet, homeplanet;
+
+	planet = TESTED_NAMESPACE::make_pair("Earth", 2);
+
+	homeplanet = planet;
+
+	std::cout << "Homeplanet: " << homeplanet.first << std::endl;
+	std::cout << "Planet Timeline: " << homeplanet.second << std::endl;	
+}
+
+void	pairRelationalOperators()
+{	
+	std::cout << "<----- PAIR::RELATIONAL_OPERATORS() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::pair<int,char> foo (10,'z');
+	TESTED_NAMESPACE::pair<int,char> bar (90,'a');
+
+	if (foo == bar) std::cout << "foo and bar are equal\n";
+	if (foo != bar) std::cout << "foo and bar are not equal\n";
+	if (foo < bar) std::cout << "foo is less than bar\n";
+	if (foo > bar) std::cout << "foo is greater than bar\n";
+	if (foo <= bar) std::cout << "foo is less than or equal to bar\n";
+	if (foo >= bar) std::cout << "foo is greater than or equal to bar\n";
+
+}
+
+void	testPair()
+{
+	pairConstructor();
+	pairAssignation();
+	pairRelationalOperators();
+}
+
+/*---------------------------------- stack --------------------------------*/
+
+void	stackConstructors()
+{
+	std::cout << "<----- STACK::CONSTRUCTORS() ----->" << std::endl;
+	std::cout << std::endl;
+//	std::deque<int> mydeque(3, 100);					// deque with 3 elements
+	TESTED_NAMESPACE::vector<int> myvector(2, 200);		// vector with 3 elements
+
+	TESTED_NAMESPACE::stack<int> first;					// empty stack
+	// TESTED_NAMESPACE::stack<int> second(mydeque);		// stack init to copy deque
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > third;	// empty stack using vector
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > forth(myvector);
+	
+	std::cout << "size of 1st stack: " << first.size() << std::endl;
+	// std::cout << "size of 2nd stack: " << second.size() << std::endl;
+	std::cout << "size of 3rd stack: " << third.size() << std::endl;
+	std::cout << "size of 4th stack: " << forth.size() << std::endl;
+
+	std::cout << std::endl;
+}
+
+// void	stackAssignation()
 // {
-// 	std::cout << "<----- PAIR::CONSTRUCTORS ----->" << std::endl;
+// 	std::cout << "<----- STACK::OPERATOR=() ----->" << std::endl;
 // 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::pair<std::string, double> p1;
-// 	TESTED_NAMESPACE::pair<std::string, double> p2("child1", 1.1);
-// 	TESTED_NAMESPACE::pair<std::string, double> p3(p2);
-
-// 	p1 = TESTED_NAMESPACE::make_pair("child0", 0.1);
-
-// 	std::cout << "pair 1: " << p1.first << ", " << p1.second << std::endl;
-// 	std::cout << "pair 2: " << p2.first << ", " << p2.second << std::endl;
-// 	std::cout << "pair 3: " << p3.first << ", " << p3.second << std::endl;
-// }
-
-// void	pairAssignation()
-// {
-// 	std::cout << "<----- PAIR::OPERATOR=() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::pair<std::string, int> planet, homeplanet;
-
-// 	planet = TESTED_NAMESPACE::make_pair("Earth", 2);
-
-// 	homeplanet = planet;
-
-// 	std::cout << "Homeplanet: " << homeplanet.first << std::endl;
-// 	std::cout << "Planet Timeline: " << homeplanet.second << std::endl;	
-// }
-
-// void	pairRelationalOperators()
-// {	
-// 	std::cout << "<----- PAIR::RELATIONAL_OPERATORS() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	std::pair<int,char> foo (10,'z');
-// 	std::pair<int,char> bar (90,'a');
-
-// 	if (foo == bar) std::cout << "foo and bar are equal\n";
-// 	if (foo != bar) std::cout << "foo and bar are not equal\n";
-// 	if (foo < bar) std::cout << "foo is less than bar\n";
-// 	if (foo > bar) std::cout << "foo is greater than bar\n";
-// 	if (foo <= bar) std::cout << "foo is less than or equal to bar\n";
-// 	if (foo >= bar) std::cout << "foo is greater than or equal to bar\n";
-
-// }
-
-// void	testPair()
-// {
-// 	pairConstructor();
-// 	pairAssignation();
-// 	pairRelationalOperators();
-// }
-
-// /*---------------------------------- stack --------------------------------*/
-
-// void	stackConstructors()
-// {
-// 	std::cout << "<----- STACK::CONSTRUCTORS() ----->" << std::endl;
-// 	std::cout << std::endl;
-// //	std::deque<int> mydeque(3, 100);					// deque with 3 elements
 // 	TESTED_NAMESPACE::vector<int> myvector(2, 200);		// vector with 3 elements
 
-// 	TESTED_NAMESPACE::stack<int> first;					// empty stack
-// 	// TESTED_NAMESPACE::stack<int> second(mydeque);		// stack init to copy deque
-// 	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > third;	// empty stack using vector
-// 	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > forth(myvector);
+// 	TESTED_NAMESPACE::stack<int> s1;					// empty stack
+// 	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s2(myvector);
 	
-// 	std::cout << "size of 1st stack: " << first.size() << std::endl;
-// 	// std::cout << "size of 2nd stack: " << second.size() << std::endl;
-// 	std::cout << "size of 3rd stack: " << third.size() << std::endl;
-// 	std::cout << "size of 4th stack: " << forth.size() << std::endl;
+// 	s1 = s2;
 
+// 	std::cout << "stack 1: "; printStack(s1);
+// 	std::cout << "stack 2: "; printStack(s2);
 // 	std::cout << std::endl;
 // }
 
-// // void	stackAssignation()
-// // {
-// // 	std::cout << "<----- STACK::OPERATOR=() ----->" << std::endl;
-// // 	std::cout << std::endl;
-// // 	TESTED_NAMESPACE::vector<int> myvector(2, 200);		// vector with 3 elements
+void	stackEmpty()
+{
+	std::cout << "<----- STACK::EMPTY() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> s;
+	int sum (0);
 
-// // 	TESTED_NAMESPACE::stack<int> s1;					// empty stack
-// // 	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s2(myvector);
+	for (int i = 0 ; i < 100 ; i++) s.push(i);
+
+	while (!s.empty())
+	{
+		sum++;
+		s.pop();
+	}
+	std::cout << "sum is increment until the stack is empty, total sum: " << sum <<  std::endl;
+
+	if (s.empty())
+	{
+		std::cout << "stack is empty: "; printStack(s);
+	}
+	std::cout << std::endl;
+}
+
+void	stackSize()
+{
+	std::cout << "<----- STACK::SIZE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> myints;
+	std::cout << "0. size: " << myints.size() <<  std::endl;
+
+	for (int i = 0 ; i < 10 ; i++) myints.push(i);
+	std::cout << "1. size: " << myints.size() <<  std::endl;
+	printStack(myints);
+
+	myints.pop();
+	std::cout << "2. size: " << myints.size() <<  std::endl;
+	printStack(myints);
+	std::cout << std::endl;
+}
+
+void	stackTop()
+{
+	std::cout << "<----- STACK::TOP() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> s;
 	
-// // 	s1 = s2;
+	s.push(10);
+	s.push(42);
+	s.push(66);
+	std::cout << "the stack: "; printStack(s);
+	std::cout << "the top stack: " << s.top() << std::endl;
+	std::cout << std::endl;
+}
 
-// // 	std::cout << "stack 1: "; printStack(s1);
-// // 	std::cout << "stack 2: "; printStack(s2);
-// // 	std::cout << std::endl;
-// // }
-
-// void	stackEmpty()
-// {
-// 	std::cout << "<----- STACK::EMPTY() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::stack<int> s;
-// 	int sum (0);
-
-// 	for (int i = 0 ; i < 100 ; i++) s.push(i);
-
-// 	while (!s.empty())
-// 	{
-// 		sum++;
-// 		s.pop();
-// 	}
-// 	std::cout << "sum is increment until the stack is empty, total sum: " << sum <<  std::endl;
-
-// 	if (s.empty())
-// 	{
-// 		std::cout << "stack is empty: "; printStack(s);
-// 	}
-// 	std::cout << std::endl;
-// }
-
-// void	stackSize()
-// {
-// 	std::cout << "<----- STACK::SIZE() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::stack<int> myints;
-// 	std::cout << "0. size: " << myints.size() <<  std::endl;
-
-// 	for (int i = 0 ; i < 10 ; i++) myints.push(i);
-// 	std::cout << "1. size: " << myints.size() <<  std::endl;
-// 	printStack(myints);
-
-// 	myints.pop();
-// 	std::cout << "2. size: " << myints.size() <<  std::endl;
-// 	printStack(myints);
-// 	std::cout << std::endl;
-// }
-
-// void	stackTop()
-// {
-// 	std::cout << "<----- STACK::TOP() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::stack<int> s;
+void	stackPushPop()
+{
+	std::cout << "<----- STACK::PUSH/POP() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::stack<int> s;
 	
-// 	s.push(10);
-// 	s.push(42);
-// 	s.push(66);
-// 	std::cout << "the stack: "; printStack(s);
-// 	std::cout << "the top stack: " << s.top() << std::endl;
-// 	std::cout << std::endl;
-// }
-
-// void	stackPushPop()
-// {
-// 	std::cout << "<----- STACK::PUSH/POP() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::stack<int> s;
+	s.push(10);
+	s.push(42);
+	s.push(66);
+	printStack(s);
 	
-// 	s.push(10);
-// 	s.push(42);
-// 	s.push(66);
-// 	printStack(s);
+	s.pop();
+	s.pop();
+	printStack(s);
 	
-// 	s.pop();
-// 	s.pop();
-// 	printStack(s);
+	s.push(101);
+	s.push(102);
+	s.push(42);
+	printStack(s);
+
+	s.pop();
+	s.pop();
+	printStack(s);
 	
-// 	s.push(101);
-// 	s.push(102);
-// 	s.push(42);
-// 	printStack(s);
+	std::cout << std::endl;
+}
 
-// 	s.pop();
-// 	s.pop();
-// 	printStack(s);
+void	stackRelationalOperators()
+{
+	std::cout << "<----- STACK::RELATIONAL_OPERATORS() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::vector<int> v1(3, 100);
+	TESTED_NAMESPACE::vector<int> v2(2, 200);
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s1(v1);
+	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s2(v2);
+
+	if (s1 == s2) std::cout << "s1 and s2 are equal" << std::endl;
+	if (s1 != s2) std::cout << "s1 and s2 aren't equal" << std::endl;
+	if (s1 < s2) std::cout << "s1 is less than s2" << std::endl;
+	if (s1 > s2) std::cout << "s1 is greater than s2" << std::endl;
+	if (s1 <= s2) std::cout << "s1 is less than or equal to s2" << std::endl;
+	if (s1 >= s2) std::cout << "s1 is greater than or equal to s2" << std::endl;
+
+	std::cout << std::endl;
+}
+
+void    testStack()
+{
+	stackConstructors();
+	stackEmpty();
+	stackSize();
+	stackTop();
+	stackPushPop();
 	
-// 	std::cout << std::endl;
-// }
-
-// void	stackRelationalOperators()
-// {
-// 	std::cout << "<----- STACK::RELATIONAL_OPERATORS() ----->" << std::endl;
-// 	std::cout << std::endl;
-// 	TESTED_NAMESPACE::vector<int> v1(3, 100);
-// 	TESTED_NAMESPACE::vector<int> v2(2, 200);
-// 	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s1(v1);
-// 	TESTED_NAMESPACE::stack<int, TESTED_NAMESPACE::vector<int> > s2(v2);
-
-// 	if (s1 == s2) std::cout << "s1 and s2 are equal" << std::endl;
-// 	if (s1 != s2) std::cout << "s1 and s2 aren't equal" << std::endl;
-// 	if (s1 < s2) std::cout << "s1 is less than s2" << std::endl;
-// 	if (s1 > s2) std::cout << "s1 is greater than s2" << std::endl;
-// 	if (s1 <= s2) std::cout << "s1 is less than or equal to s2" << std::endl;
-// 	if (s1 >= s2) std::cout << "s1 is greater than or equal to s2" << std::endl;
-
-// 	std::cout << std::endl;
-// }
-
-// void    testStack()
-// {
-// 	stackConstructors();
-// 	stackEmpty();
-// 	stackSize();
-// 	stackTop();
-// 	stackPushPop();
-	
-//  // non-member function overloads
-//  	stackRelationalOperators();
-
-// 	// stackAssignation();
-// }
+ // non-member function overloads
+ 	stackRelationalOperators();
+}
 
 // void testsTRAITS()
 // {
-//	std::cout << "<----- TRAITS ----->" << std::endl;
+// 	std::cout << "<----- TRAITS ----->" << std::endl;
 // 	std::cout << std::endl;	
 // 	typedef TESTED_NAMESPACE::iterator_traits< TESTED_NAMESPACE::vector< std::string >::iterator > traits;
 // 	if (typeid(traits::iterator_category) == typeid(std::random_access_iterator_tag))
@@ -749,44 +747,50 @@ void    testVector()
 // 		std::cout << "map_iterator is a bidirectional iterator" << std::endl;
 // }
 
-void testRBT()
-{
-	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
-	std::cout << std::endl;	
-	std::cout << std::endl;
-	ft::RBTree<int, std::string>	bst;
-	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
-	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
+// void testRBT()
+// {
+// 	std::cout << "<----- RED-BLACK TREE ----->" << std::endl;
+// 	std::cout << std::endl;	
+// 	std::cout << std::endl;
+// 	ft::RBTree<int, std::string>	bst;
+// 	// ft::RBTree<int, std::vector<int> >	b (a);	// if i want them to work:
+// 	// ft::RBTree<int, std::vector<int> >	b = a;	// need to do an operator= -> deep copy
 
-	// bst.insert(8);
-	// bst.insert(18, "love");
-	// bst.insert(5, "friend");
-	// bst.insert(15, "world");
-	// bst.insert(17, "Parrot");
-	// bst.insert(25, "Mushroom");
-	// bst.insert(40, "hat");
-	// bst.insert(80, "Speed");
-	// bst.insert(80, "42");
+// 	// bst.insert(8);
+// 	// bst.insert(18, "love");
+// 	// bst.insert(5, "friend");
+// 	// bst.insert(15, "world");
+// 	// bst.insert(17, "Parrot");
+// 	// bst.insert(25, "Mushroom");
+// 	// bst.insert(40, "hat");
+// 	// bst.insert(80, "Speed");
+// 	// bst.insert(80, "42");
 
-	// bst.printRBT();
+// 	// bst.printRBT();
 
-	// std::cout << "\n preorder traversal: " ;
-	// bst.preorder_traversal();
-	// std::cout << std::endl;
-	// std::cout << "\n inorder traversal: " ;
-	// bst.inorder_traversal();
-	// std::cout << std::endl;
-	// std::cout << "\n postorder traversal: " ;
-	// bst.postorder_traversal();
-	// std::cout << std::endl;
+// 	// std::cout << "\n preorder traversal: " ;
+// 	// bst.preorder_traversal();
+// 	// std::cout << std::endl;
+// 	// std::cout << "\n inorder traversal: " ;
+// 	// bst.inorder_traversal();
+// 	// std::cout << std::endl;
+// 	// std::cout << "\n postorder traversal: " ;
+// 	// bst.postorder_traversal();
+// 	// std::cout << std::endl;
 
-	// bst.delete_node(25);
-	// bst.insert(142, "oh oh");
-	// bst.printRBT();
+// 	// bst.delete_node(25);
+// 	// bst.insert(142, "oh oh");
+// 	// bst.printRBT();
 	
-	std::cout << std::endl;
-}
+// 	std::cout << std::endl;
+// }
 
+bool fncomp (char lhs, char rhs) {return lhs<rhs;}
+
+struct classcomp {
+  bool operator() (const char& lhs, const char& rhs) const
+  {return lhs < rhs;}
+};
 
 void	mapConstructors()
 {
@@ -801,14 +805,500 @@ void	mapConstructors()
 	map2[1] = "ok test 2";
 	std::cout << map2[1] << std::endl;
 	std::cout << std::endl;
+
+	TESTED_NAMESPACE::map<char,int> first;
+
+	first['a']=10;
+	first['b']=30;
+	first['c']=50;
+	first['d']=70;
+
+	TESTED_NAMESPACE::map<char,int> second (first.begin(),first.end());
+
+	TESTED_NAMESPACE::map<char,int> third (second);
+
+	TESTED_NAMESPACE::map<char,int,classcomp> fourth;                 // class as Compare
+	bool(*fn_pt)(char,char) = fncomp;
+	
+	TESTED_NAMESPACE::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer
+	
+	std::cout << first['a'] << std::endl;
+	std::cout << second['b'] << std::endl;
+	std::cout << third['c'] << std::endl;
+	std::cout << fourth['a'] << std::endl;
+	std::cout << std::endl;	
+}
+
+void mapAssignation()
+{
+	std::cout << "<----- MAP::OPERATOR=() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> first;
+	TESTED_NAMESPACE::map<char,int> second;
+
+	first['x']=8;
+	first['y']=16;
+	first['z']=32;
+
+	second=first;								// second now contains 3 ints
+	first=TESTED_NAMESPACE::map<char,int>();	// and first is now empty
+
+	std::cout << "Size of first: " << first.size() << std::endl;
+	std::cout << "Size of second: " << second.size() << std::endl;
+	std::cout << std::endl;	
+}
+
+void mapBegin()
+{
+	std::cout << "<----- MAP::BEGIN() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['b'] = 100;
+	mymap['a'] = 200;
+	mymap['c'] = 300;
+
+	// show content:
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << std::endl;
+	std::cout << std::endl;	
+}
+
+void mapEnd()
+{
+	std::cout << "<----- MAP::END() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['b'] = 100;
+	mymap['a'] = 200;
+	mymap['c'] = 300;
+
+  // show content:
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << std::endl;
+	std::cout << std::endl;
+}
+
+void mapRbegin()
+{
+	std::cout << "<----- MAP::RBEGIN() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['x'] = 100;
+	mymap['y'] = 200;
+	mymap['z'] = 300;
+
+
+  // show content:
+	for (TESTED_NAMESPACE::map<char,int>::reverse_iterator it=mymap.rbegin(); it!=mymap.rend(); ++it)
+		std::cout << it->first << " => " << it->second << std::endl;
+	std::cout << std::endl;
+}
+
+void mapRend()
+{
+	std::cout << "<----- MAP::REND() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['x'] = 100;
+	mymap['y'] = 200;
+	mymap['z'] = 300;
+
+
+  // show content:
+	for (TESTED_NAMESPACE::map<char,int>::reverse_iterator it=mymap.rbegin(); it!=mymap.rend(); ++it)
+		std::cout << it->first << " => " << it->second << std::endl;
+	std::cout << std::endl;
+}
+
+void mapEmpty()
+{
+	std::cout << "<----- MAP::EMPTY() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['a']=10;
+	mymap['b']=20;
+	mymap['c']=30;
+
+	while (!mymap.empty())
+	{
+		std::cout << mymap.begin()->first << " => " << mymap.begin()->second << std::endl;
+		mymap.erase(mymap.begin());
+	}
+	std::cout << std::endl;
+}
+
+void mapSize()
+{
+	std::cout << "<----- MAP::SIZE() ----->" << std::endl;
+	std::cout << std::endl;
+	
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['a']=101;
+	mymap['b']=202;
+	mymap['c']=302;
+
+	std::cout << "mymap.size() is " << mymap.size() << std::endl;
+
+	std::cout << std::endl;
+}
+
+void mapMaxSize()
+{
+	std::cout << "<----- MAP::MAXSIZE() ----->" << std::endl;
+	std::cout << std::endl;
+
+	int i;
+	TESTED_NAMESPACE::map<int,int> mymap;
+
+// Here, member max_size is used to check beforehand whether the map will allow for 1000 elements to be inserted.
+	if (mymap.max_size()>1000)
+	{
+		for (i=0; i<1000; i++) mymap[i]=0;
+		std::cout << "The map contains 1000 elements" << std::endl;
+	}
+	else std::cout << "The map could not hold 1000 elements" << std::endl;
+	std::cout << std::endl;
+}
+
+void mapAccessOperator()
+{
+	std::cout << "<----- MAP::OPERATOR[]() ----->" << std::endl;
+	std::cout << std::endl;
+
+	TESTED_NAMESPACE::map<char,std::string> mymap;
+
+	mymap['a']="an element";
+	mymap['b']="another element";
+	mymap['c']=mymap['b'];
+
+	std::cout << "mymap['a'] is " << mymap['a'] << '\n';
+	std::cout << "mymap['b'] is " << mymap['b'] << '\n';
+	std::cout << "mymap['c'] is " << mymap['c'] << '\n';
+	std::cout << "mymap['d'] is " << mymap['d'] << '\n';
+
+	std::cout << "mymap now contains " << mymap.size() << " elements" << std::endl;
+	std::cout << "\nNotice how the last access (to element 'd') inserts a new element in the map with that key and\ninitialized to its default value (an empty string) even though it is accessed only to retrieve its value.\nMember function map::find() does not produce this effect." << std::endl;
+	std::cout << std::endl;
+}
+
+void mapInsert()
+{
+	std::cout << "<----- MAP::INSERT() ----->" << std::endl;
+	std::cout << std::endl;
+
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+  // first insert function version (single parameter):
+	mymap.insert ( TESTED_NAMESPACE::pair<char,int>('a',100) );
+	mymap.insert ( TESTED_NAMESPACE::pair<char,int>('z',200) );
+
+	TESTED_NAMESPACE::pair<TESTED_NAMESPACE::map<char,int>::iterator,bool> ret;
+	ret = mymap.insert ( TESTED_NAMESPACE::pair<char,int>('z',500) );
+	if (ret.second==false)
+	{
+		std::cout << "element 'z' already existed";
+		std::cout << " with a value of " << ret.first->second << '\n';
+	}
+
+  // second insert function version (with hint position):
+	TESTED_NAMESPACE::map<char,int>::iterator it = mymap.begin();
+	mymap.insert (it, TESTED_NAMESPACE::pair<char,int>('b',300));  // max efficiency inserting
+	mymap.insert (it, TESTED_NAMESPACE::pair<char,int>('c',400));  // no max efficiency inserting
+
+  // third insert function version (range insertion):
+	TESTED_NAMESPACE::map<char,int> anothermap;
+	anothermap.insert(mymap.begin(),mymap.find('c'));
+
+  // showing contents:
+	std::cout << "mymap contains:\n";
+	for (it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+
+	std::cout << "anothermap contains:\n";
+	for (it=anothermap.begin(); it!=anothermap.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+	
+	std::cout << std::endl;
+}
+
+void mapErase()
+{
+	std::cout << "<----- MAP::ERASE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+	TESTED_NAMESPACE::map<char,int>::iterator it;
+
+  // insert some values:
+	mymap['a']=10;
+	mymap['b']=20;
+	mymap['c']=30;
+	mymap['d']=40;
+	mymap['e']=50;
+	mymap['f']=60;
+
+	it=mymap.find('b');
+	mymap.erase (it);                   // erasing by iterator
+
+	mymap.erase ('c');                  // erasing by key
+
+	it=mymap.find ('e');
+	mymap.erase ( it, mymap.end() );    // erasing by range
+
+  // show content:
+	for (it=mymap.begin(); it!=mymap.end(); ++it)
+	std::cout << it->first << " => " << it->second << '\n';
+	std::cout << std::endl;
+}
+
+void mapSwap()
+{
+	std::cout << "<----- MAP::SWAP() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> foo,bar;
+
+	foo['x']=100;
+	foo['y']=200;
+
+	bar['a']=11;
+	bar['b']=22;
+	bar['c']=33;
+
+	std::cout << "foo contains:\n";
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=foo.begin(); it!=foo.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+
+	std::cout << "bar contains:\n";
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=bar.begin(); it!=bar.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+
+	std::cout << "[swap]\n";
+	foo.swap(bar);
+
+	std::cout << "foo contains:\n";
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=foo.begin(); it!=foo.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+
+	std::cout << "bar contains:\n";
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=bar.begin(); it!=bar.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+	std::cout << std::endl;
+}
+
+void mapClear()
+{
+	std::cout << "<----- MAP::CLEAR() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['x']=100;
+	mymap['y']=200;
+	mymap['z']=300;
+
+	std::cout << "mymap contains:\n";
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+	std::cout << it->first << " => " << it->second << '\n';
+	
+	std::cout << "[clear]\n";
+	mymap.clear();
+	mymap['a']=1101;
+	mymap['b']=2202;
+
+	std::cout << "after refill, mymap contains:\n";
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+	std::cout << it->first << " => " << it->second << '\n';
+	std::cout << std::endl;
+}
+
+void mapKeyComp()
+{
+	std::cout << "<----- MAP::KEY_COMP() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	TESTED_NAMESPACE::map<char,int>::key_compare mycomp = mymap.key_comp();
+
+	mymap['a']=100;
+	mymap['b']=200;
+	mymap['c']=300;
+
+	std::cout << "mymap contains:\n";
+
+	char highest = mymap.rbegin()->first;     // key value of last element
+
+	TESTED_NAMESPACE::map<char,int>::iterator it = mymap.begin();
+	do {
+		std::cout << it->first << " => " << it->second << '\n';
+	} while ( mycomp((*it++).first, highest) );
+	std::cout << std::endl;
+}
+
+void mapValueComp()
+{
+	std::cout << "<----- MAP::VALUE_COMP() ----->" << std::endl;
+	std::cout << std::endl;
+
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['x']=1001;
+	mymap['y']=2002;
+	mymap['z']=3003;
+
+	std::cout << "mymap contains:\n";
+
+	TESTED_NAMESPACE::pair<char,int> highest = *mymap.rbegin();          // last element
+
+	TESTED_NAMESPACE::map<char,int>::iterator it = mymap.begin();
+	do {
+		std::cout << it->first << " => " << it->second << '\n';
+	} while ( mymap.value_comp()(*it++, highest) );
+	
+	std::cout << std::endl;
+}
+
+void mapFind()
+{
+	std::cout << "<----- MAP::FIND() ----->" << std::endl;
+	std::cout << std::endl;
+
+	TESTED_NAMESPACE::map<char,int> mymap;
+	TESTED_NAMESPACE::map<char,int>::iterator it;
+
+	mymap['a']=50;
+	mymap['b']=100;
+	mymap['c']=150;
+	mymap['d']=200;
+
+	it = mymap.find('b');
+	if (it != mymap.end())
+		mymap.erase (it);
+
+	// print content:
+	std::cout << "elements in mymap:" << '\n';
+	std::cout << "a => " << mymap.find('a')->second << '\n';
+	std::cout << "c => " << mymap.find('c')->second << '\n';
+	std::cout << "d => " << mymap.find('d')->second << '\n';
+	
+	std::cout << std::endl;
+}
+
+void mapCount()
+{
+	std::cout << "<----- MAP::COUNT() ----->" << std::endl;
+	std::cout << std::endl;
+
+	TESTED_NAMESPACE::map<char,int> mymap;
+	char c;
+
+	mymap ['a']=101;
+	mymap ['c']=202;
+	mymap ['f']=303;
+
+	for (c='a'; c<'h'; c++)
+	{
+		std::cout << c;
+		if (mymap.count(c)>0)
+			std::cout << " is an element of mymap.\n";
+		else 
+		std::cout << " is not an element of mymap.\n";
+	}
+	
+	std::cout << std::endl;
+}
+
+void mapLowerBound()
+{
+	std::cout << "<----- MAP::LOWER/UPPER_BOUND() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+	TESTED_NAMESPACE::map<char,int>::iterator itlow,itup;
+
+	mymap['a']=20;
+	mymap['b']=40;
+	mymap['c']=60;
+	mymap['d']=80;
+	mymap['e']=100;
+
+	itlow=mymap.lower_bound ('b');	// itlow points to b
+	itup=mymap.upper_bound ('d');	// itup points to e (not d!)
+
+	mymap.erase(itlow,itup);		// erases [itlow,itup)
+
+	// print content:
+	for (TESTED_NAMESPACE::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+		std::cout << it->first << " => " << it->second << '\n';
+	std::cout << std::endl;
+}
+
+void mapEqualRange()
+{
+	std::cout << "<----- MAP::EQUAL_RANGE() ----->" << std::endl;
+	std::cout << std::endl;
+	TESTED_NAMESPACE::map<char,int> mymap;
+
+	mymap['a']=10;
+	mymap['b']=20;
+	mymap['c']=30;
+
+	TESTED_NAMESPACE::pair<TESTED_NAMESPACE::map<char,int>::iterator,TESTED_NAMESPACE::map<char,int>::iterator> ret;
+	ret = mymap.equal_range('b');
+
+	std::cout << "lower bound points to: ";
+	std::cout << ret.first->first << " => " << ret.first->second << '\n';
+
+	std::cout << "upper bound points to: ";
+	std::cout << ret.second->first << " => " << ret.second->second << '\n';
+	std::cout << std::endl;
+}
+
+void mapAllocator()
+{
+	std::cout << "<----- MAP::ALLOCATOR() ----->" << std::endl;
+	std::cout << std::endl;
+	int psize;
+	TESTED_NAMESPACE::map<char,int> mymap;
+	TESTED_NAMESPACE::pair<const char,int>* p;
+
+  // allocate an array of 5 elements using mymap's allocator:
+	p=mymap.get_allocator().allocate(5);
+
+  // assign some values to array
+	psize = sizeof(TESTED_NAMESPACE::map<char,int>::value_type)*5;
+
+	std::cout << "The allocated array has a size of " << psize << " bytes.\n";
+
+	mymap.get_allocator().deallocate(p,5);
+	std::cout << std::endl;
 }
 
 void    testMap()
 {
 	mapConstructors();
-	
-// non-member function overloads
-
+	mapAssignation();
+	mapBegin();
+	mapEnd();
+	mapRbegin();
+	mapRend();
+	mapEmpty();
+	mapSize();
+	mapMaxSize();
+	mapAccessOperator();
+	mapInsert();
+	mapErase();
+	mapSwap();
+	mapClear();
+	mapKeyComp();
+	mapValueComp();
+	mapFind();
+	mapCount();
+	mapLowerBound();
+	mapEqualRange();
+	mapAllocator();
 }
 
 #endif

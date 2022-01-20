@@ -6,7 +6,7 @@
 /*   By: mel-louie <mdesfont@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:27:10 by mdesfont          #+#    #+#             */
-/*   Updated: 2022/01/14 19:19:55 by mel-louie        ###   ########.fr       */
+/*   Updated: 2022/01/20 12:51:54 by mel-louie        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,6 +432,8 @@ namespace	ft
 	*	Relational operators for vector
 	*	Performs the appropriate comparison operation between the vector
 	*	containers lhs and rhs.
+	*	Each of these operator overloads calls the same operator on the underlying
+	*	container objects.
 	*/
 	template <class T, class Alloc>
 	bool operator==(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)

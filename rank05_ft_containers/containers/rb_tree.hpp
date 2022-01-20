@@ -93,7 +93,6 @@ namespace ft
 				clear(root->right);
 				_alloc_test.destroy(root);
 				_alloc_test.deallocate(root, 1);
-				return ;
 			}
 
 			void preorder_traversal_helper(pointer node)
@@ -186,7 +185,6 @@ namespace ft
 
 				y->left = x;
 				x->parent = y;
-				return ;
 			}
 
 		/*			|				   |
@@ -219,7 +217,6 @@ namespace ft
 
 				y->right = x;
 				x->parent = y;
-				return ;
 			}
 
 			void	fix_insert( pointer node )
@@ -275,7 +272,6 @@ namespace ft
 						break ;
 				}
 				_root->color = BLACK;
-				return ;
 			}
 
 			void	fix_delete(pointer node)
@@ -347,7 +343,6 @@ namespace ft
 					}
 				}
 				node->color = BLACK;
-				return ;
 			}
 
 			void	transplant(pointer node, pointer to_transplant)
@@ -359,7 +354,6 @@ namespace ft
 				else
 					node->parent->right = to_transplant;
 				to_transplant->parent = node->parent;
-				return ;
 			}
 
 			bool	delete_node_helper(pointer node, const value_type &key)
@@ -450,7 +444,6 @@ namespace ft
 				_null = _alloc_test.allocate(1);
 				_alloc_test.construct(_null, node_type());
 				_root = _null;
-				return ;
 			}
 
 			~RBTree() {}
@@ -463,18 +456,18 @@ namespace ft
 
 			pointer max_node( void ) const { return (max_node(_root)); }
 
-			// void	swap(RBTree &x)
-			// {
-			// 	pointer tmp_r = _root;
-			// 	pointer tmp_n = _null;
-			// 	size_type tmp_s = _size;
-			// 	_root = x.get_root();
-			// 	_null = x.get_null();
-			// 	_size = x.get_size();
-			// 	x._root = tmp_r;
-			// 	x._null = tmp_n;
-			// 	x._size = tmp_s;
-			// }
+			void	swap(RBTree &x)
+			{
+				pointer tmp_r = _root;
+				pointer tmp_n = _null;
+				size_type tmp_s = _size;
+				_root = x.get_root();
+				_null = x.get_null();
+				_size = x.get_size();
+				x._root = tmp_r;
+				x._null = tmp_n;
+				x._size = tmp_s;
+			}
 
 		/*
 		*	To insert a new node in a RTB we need to:
@@ -543,14 +536,12 @@ namespace ft
 				_size = 0;
 				clear(_root);
 				_root = _null;
-				return ;
 			}
 
 			void destroy_null()
 			{
 				allocator_type().destroy(_null);
 				allocator_type().deallocate(_null, 1);
-				return ;
 			}
 
 		/*             50
@@ -620,6 +611,30 @@ namespace ft
 			void postorder_traversal()
 			{
 				postorder_traversal_helper(this->_root);
+			}
+
+			pointer lower_bound(value_type const & val) const
+			{
+				pointer begin = min_node();
+				while (begin != _null)
+				{
+					if (_cmp(begin->value, val) == false)
+						break ;
+					begin = successor(begin);
+				}
+				return (begin);
+			}
+
+			pointer upper_bound(value_type const & val) const
+			{
+				pointer begin = min_node();
+				while (begin != _null)
+				{
+					if (_cmp(val, begin->value) == true)
+						break ;
+					begin = successor(begin);
+				}
+				return (begin);
 			}
 
 			/*
