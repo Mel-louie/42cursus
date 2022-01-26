@@ -1,148 +1,71 @@
-NAME = makefile_template
-SNAME = makefile_template
+################################################################################
+#
+# WEBSERV
+#
+NAME		= webserv
 
-#	COLORS	#
-_BLACK		= "\033[30m"
-_RED		= "\033[31m"
-_GREEN		= "\033[32m"
-_YELLOW		= "\033[33m"
-_BLUE		= "\033[34m"
-_PURPLE		= "\033[35m"
-_CYAN		= "\033[36m"
-_WHITE		= "\033[37m"
-_END		= "\033[0m"
-#	bold	#
-B_BLACK		= "\033[1;30m"
-B_RED		= "\033[1;31m"
-B_GREEN		= "\033[1;32m"
-B_YELLOW	= "\033[1;33m"
-B_BLUE		= "\033[1;34m"
-B_PURPLE	= "\033[1;35m"
-B_CYAN		= "\033[1;36m"
-B_WHITE		= "\033[1;37m"
+# source files
+include srcs.mk
 
-#	DETECT OS	#
-OS_NAME = $(_PURPLE) $(shell uname -s | tr A-Z a-z) $(_END)
+# SRCS = main.cpp
 
-SRCS_FILE		= main.c
-#SRCS_FILE_BONUS = bonus.c \
+# compilation parameters
+CC			= clang++
+CCFLAGS		= -Wall -Werror -Wextra -std=c++98
+INC			= -Iinclude/
 
-SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
-OBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
-SOBJS			= $(addprefix $(OBJS_DIR), $(SRCS_FILE:.c=.o))
-#SRCS_BONUS		= $(addprefix $(SRCS_DIR_BONUS), $(SRCS_FILE_BONUS))
-#OBJS_BONUS		= $(addprefix $(OBJS_DIR_BONUS), $(SRCS_FILE_BONUS:.c=.o))
+SRCDIR		=	srcs/
 
-SRCS_DIR		= ./srcs/
-OBJS_DIR		= ./objs/
-INCLUDES_DIR	= ./includes/
-HEADER			= $(INCLUDES_DIR)main.h
-LIBFT_DIR		= ./libft/
-LIBFT			= $(LIBFT_DIR)libft.a
-#SRCS_DIR_BONUS	= ./bonus/srcs_bonus/
-#OBJS_DIR_BONUS	= ./bonus/objs_bonus/
-#INCLUDES_DIR_BONUS = ./bonus/includes_bonus/
-#INCLUDES_BONUS	= $(addprefix -I, $(INCLUDES_DIR_BONUS) $(LIBFT_DIR)
-#HEADER_BONUS	= $(INCLUDES_DIR_BONUS)cub3d_bonus.h
+# objects
+OBJDIR = obj/
+OBJ = $(addprefix $(OBJDIR),$(SRCS:.cpp=.o))
 
-CFLAGS			= -Wall -Wextra -Werror -O3 -g3
-SANIT			= -Wall -Wextra -Werror -O3 -g3 -fsanitize=address
-CC				= clang
+################################################################################
 
-INCLUDES	= $(addprefix -I, $(INCLUDES_DIR) $(LIBFT_DIR))
-
-all: launch
-
-launch:
-	@$(MAKE) $(LIBFT)
+all:
 	@printf "[ "$(B_GREEN)"building"$(_END) 
 	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
 	@$(MAKE) $(NAME)
 	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
 
-$(OBJS_DIR):
-	@mkdir $@
 
-$(LIBFT):
-	@$(MAKE) -sC $(LIBFT_DIR)
-	
+$(NAME): $(OBJDIR) $(OBJ)
+	$(CC) $(CCFLAGS) $(INC) $(OBJ) -o $(NAME)
 
-$(NAME): $(OBJS_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+# create an obj/ directory with all the *.o files
+$(OBJDIR):
+	mkdir -p $@
+	mkdir -p $@subDir
 
-$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-#	@printf $<
-#	@printf "\r"
-	@printf $(BC_GREEN)"   "$(_END)
-
-sanitize:
-	@$(MAKE) $(LIBFT)
-	@printf "[ "$(B_GREEN)"building"$(_END) 
-	@printf " ] \t|" $(B_WHITE)"\t\t"$(NAME)$(_END) 
-	@$(MAKE) $(SNAME)
-	@printf $(_END)$(B_WHITE)"| \n[ "$(B_GREEN)$(NAME)$(_END)$(B_WHITE)" created with success ]\n"$(_END)
-
-$(OBJS_DIR):
-	@mkdir $@
-
-$(LIBFT):
-	@$(MAKE) -sC $(LIBFT_DIR)
-	
-
-$(SNAME): $(OBJS_DIR) $(OBJS)
-	@$(CC) $(SANIT) $(OBJS) $(LIBFT) -o $(SNAME)
-
-$(SOBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
-	@$(CC) $(SANIT) $(INCLUDES) -c $< -o $@
-#	@printf $<
-#	@printf "\r"
-	@printf $(BC_GREEN)"   "$(_END)
-
+# compile the *.o
+$(OBJDIR)%.o: $(SRCDIR)%.cpp
+	$(CC) $(CCFLAGS) $(INC) -c $< -o $@
+	@printf $(BK_GREEN)" "$(_END)
 
 clean:
-	@$(MAKE) -sC $(LIBFT_DIR) clean
-	@rm -rf $(OBJ)
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJDIR)
 	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\tobjects"$(_END)
 
 fclean: clean
-	@$(MAKE) -sC $(LIBFT_DIR) fclean
-	@rm -f $(NAME)
+	@rm -rf $(NAME)
 	@echo "[ "$(B_PURPLE)"deleted"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
 
 re:
 	@$(MAKE) -s fclean
 	@$(MAKE) -s
 
-norminette :
-	@echo "\033[1;37m"
-	@norminette --version
-	@echo "\nNorming...\033[0m\n"
-	@echo "SRCS:"
-	@norminette srcs/
-	@echo "\nINCLUDES:"
-	@norminette includes/
-	@echo "\nLIBFT:"
-	@norminette libft/srcs/
+find_srcs:
+	@./find_srcs.sh
 
-#bonus:
-#	@echo "BONUS"
-#	@$(MAKE) $(LIBFT)
-#	@echo "[ "$(B_GREEN)"building"$(_END) "]" $(B_WHITE)"\t\t"$(NAME)$(_END)
-#	@$(MAKE) $(NAME)
-#	@echo $(_END)$(B_WHITE)"[ created with success]\t\t" $(B_GREEN)$(NAME)$(_END)
+.PHONY		: all clean re
 
-#normibonus :
-#	@echo "\033[1;37m"
-#	@norminette --version
-#	@echo "\nNorming...\033[0m\n"
-#	@echo "SRCS_BONUS:"
-#	@norminette ./bonus/srcs_bonus/*.c
-#	@echo "\nINCLUDES_BONUS:"
-#	@norminette ./bonus/includes_bonus/*.h
+#	COLORS	#
+_END		= "\033[0m"
+#	bold	#
+B_GREEN		= "\033[1;32m"
+B_PURPLE	= "\033[1;35m"
+B_WHITE		= "\033[1;37m"
+#	background	#
+BK_GREEN	= "\033[42m"
 
-os:
-	@echo $(OS_NAME)
-
-.PHONY: all clean fclean re
+################################################################################
