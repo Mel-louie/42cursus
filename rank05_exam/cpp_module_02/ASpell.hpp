@@ -1,13 +1,14 @@
 #ifndef ASPELL_HPP
 # define ASPELL_HPP
 
-# include <string>
 #include "ATarget.hpp"
+#include <iostream>
+
 class ATarget;
 
-class ASpell
+class	ASpell
 {
-private:
+	private:
 		std::string	name;
 		std::string	effects;
 	
@@ -25,5 +26,7 @@ private:
 		std::string const &	getName(void)		const;
 		std::string const &	getEffects(void)	const;
 };
+
+
 
 #endif

@@ -5,11 +5,12 @@
 
 class Fireball: public ASpell
 {
-public:
-    Fireball( void );
-    virtual ~Fireball( void );
+	public:
+		Fireball();
+		virtual ~Fireball();
 
-    ASpell*  clone( void ) const ;
+		virtual ASpell *	clone(void) const;
 };
+
 
 #endif
