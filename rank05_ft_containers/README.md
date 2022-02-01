@@ -34,18 +34,18 @@ the outputs of my ft_containers and stl's containers will be compared, then some
 
 # Ressources
 
-<div id=general></div>General ressources on containers and C++
+- <div id=general></div>General ressources on containers and C++
 
-- <a href="https://www.cplusplus.com/">cplusplus.com</a>
-- <a href="https://en.cppreference.com/w/">cppreference.com</a>
+    - <a href="https://www.cplusplus.com/">cplusplus.com</a>
+    - <a href="https://en.cppreference.com/w/">cppreference.com</a>
 
-<div id=ite></div>Iterators and type traits
+- <div id=ite></div>Iterators and type traits
 
-<a href="https://stackoverflow.com/questions/3582608/how-to-correctly-implement-custom-iterators-and-const-iterators">How to correctly implement custom iterators and const_iterators?</a>
-<a href="https://quuxplusone.github.io/blog/2018/12/01/const-iterator-antipatterns/">Pitfalls and decision points in implementing const_iterator</a>
-<a href="https://www.internalpointers.com/post/quick-primer-type-traits-modern-cpp">A quick primer on type traits in modern C++</a>
-<a href="https://h-deb.clg.qc.ca/Sujets/TrucsScouts/Comprendre_enable_if.html">Comprendre enable_if</a>
+    - <a href="https://stackoverflow.com/questions/3582608/how-to-correctly-implement-custom-iterators-and-const-iterators">How to correctly implement custom iterators and const_iterators?</a>
+    - <a href="https://quuxplusone.github.io/blog/2018/12/01/const-iterator-antipatterns/">Pitfalls and decision points in implementing const_iterator</a>
+    - <a href="https://www.internalpointers.com/post/quick-primer-type-traits-modern-cpp">A quick primer on type traits in modern C++</a>
+    - <a href="https://h-deb.clg.qc.ca/Sujets/TrucsScouts/Comprendre_enable_if.html">Comprendre enable_if</a>
 
 <div id=algo></div>Red Black Tree (fot map implementation)
 
-<a href="https://algorithmtutor.com/Data-Structures/Tree/Red-Black-Trees/">Red Black Trees (with implementation in C++, Java, and Python)</a>
+    - <a href="https://algorithmtutor.com/Data-Structures/Tree/Red-Black-Trees/">Red Black Trees (with implementation in C++, Java, and Python)</a>
