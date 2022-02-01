@@ -46,6 +46,6 @@ the outputs of my ft_containers and stl's containers will be compared, then some
     - <a href="https://www.internalpointers.com/post/quick-primer-type-traits-modern-cpp">A quick primer on type traits in modern C++</a>
     - <a href="https://h-deb.clg.qc.ca/Sujets/TrucsScouts/Comprendre_enable_if.html">Comprendre enable_if</a>
 
-<div id=algo></div>Red Black Tree (fot map implementation)
+- <div id=algo></div>Red Black Tree (fot map implementation)
 
     - <a href="https://algorithmtutor.com/Data-Structures/Tree/Red-Black-Trees/">Red Black Trees (with implementation in C++, Java, and Python)</a>
