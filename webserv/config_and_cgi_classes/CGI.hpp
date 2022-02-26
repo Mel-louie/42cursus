@@ -11,8 +11,8 @@
 #ifndef CGI_HPP
 # define CGI_HPP
 
-# include "../include/common.hpp"
-#include "../include/Request.hpp"
+# include "common.hpp"
+#include "Request.hpp"
 
 class CGI
 {
@@ -27,11 +27,11 @@ class CGI
 
     private:
         str_t _binary;
-        unsigned int _type;
-		// str_t _body;
+        // unsigned int _type;
+		str_t _body;
     //    str_t _input;
         
         char **build_cgi_env(strMap headers, unsigned int type);
-}
+};
 
 #endif
