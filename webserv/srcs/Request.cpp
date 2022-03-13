@@ -1,7 +1,6 @@
 #include "Request.hpp"
 #include "str_manips.hpp"
 #include "find_nocase.hpp"
-#include "config_and_cgi_classes/CGI.hpp"
 
 Request::Request(str_t input, int fd, size_t nl_head, size_t nl_body)
 : _fd((fd)), _nl_headers(nl_head), _nl_body(nl_body)
@@ -75,6 +74,7 @@ int	Request::parse_TopLine(str_t &input)
 	static	str_t	strTypes[3] = {"GET", "POST", "DELETE"};
 
 	str_t line = newLine(input);
+	std::cout << "---------top line = " << line << std::endl;
 	for (size_t i = R_GET; i <= R_DELETE; i++)
 	{
 		if (line.find(strTypes[i]) != line.npos)
@@ -101,9 +101,7 @@ unsigned int Request::type()
 
 int	Request::parse(str_t input)
 {
-	//int					ret;
 	str_t				line;
-	//int					sum = 0;
 	size_t					check = 0;
 	int ret;
 	
@@ -152,15 +150,11 @@ int	Request::parse(str_t input)
 	}
 	std::cout << "----------\n";
 
-	CGI cgi;
-
-// set binary (path) for the cgi
-	cgi.set_binary("binary name");
-// execute cgi
-	cgi.exec_cgi("CGI ARG", _headers, _body, _type);
-
 	return (EXIT_SUCCESS);
 }
 
 strMap	&Request::headers()
 { return (_headers); }
+
+std::vector<str_t>	&Request::body()
+{ return (_body); }

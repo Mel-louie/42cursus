@@ -3,6 +3,9 @@
 
 #include "common.hpp"
 #include "Request.hpp"
+#include "Config.hpp"
+#include "Location.hpp"
+#include "CGI.hpp"
 
 enum 
 {
@@ -32,22 +35,48 @@ enum
 // OR WIKIPEDIA
 };
 
+#define RES_LOCATED 	1
+#define RES_ISCGI		2
+#define RES_ISINDEX 	4
+#define RES_INDEXDEF	8
+
 class Response
 {
 	public:
-		Response(Request req);
+		Response(Request &req, Config *conf);
 		//Response(const Response &ref);
 		//Response	&operator=(const Response &ref);
 		~Response(void);
 		void 			set_status(unsigned int s);
 		unsigned int	status();
 		void			send();
+		static	strMap							_mimeTypes;
+		static	std::map<unsigned int, str_t>	_codes;
+		static	str_t							_error_page[2];
+		str_t exceCGI(Request req);
 	private:
+		void	upload_file(Request &req);
+		void	select_location(Request &req);
+		void	set_body_ress(Request &req, Config *conf);
+		void	set_headers(str_t path);
+		void	add_header(str_t key, str_t val);
+		void	get_error_page();
+		//bool	find_ressource();
+		bool	cgi_match(str_t uri);
+		str_t	add_head();
+
 		Response(void);
+		Config									*_conf;
+		str_t								_route;
+		FLAGS									_flags;
+		Location								*_loc;
 		unsigned int							_status;
 		int										_fd;
-		static	std::map<unsigned int, str_t>	_messages;
-		void									*_body;
+		strMap									_headers;
+		
+		str_t									_index;
+		str_t									_head;
+		str_t									_body;
 };
 
 #endif

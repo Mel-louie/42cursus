@@ -4,7 +4,7 @@
 
 ☑️ creer un object Config non vide
 
-🔘 port 80 moins moche
+☑️ port 80 moins moche
 
 🔘 checker le nombre de {}
 
@@ -12,13 +12,17 @@
 
 <--- CGI --->
 
-🔘 recuperer les meta-variables depuis la request pour set l env
+🔘 recuperer les meta-variables depuis la request pour set l env ----> need more reading, header
 
-🔘 recuperer le body dans request
+🔘 recuperer le body dans request ----> need to check why that's doesn't work well
 
-🔘 recuperer les variables send par le client
+🔘 recuperer les variables send par le client ->>>>>> hmm
 
-🔘 need un get_method dans resquest pour savoir s'il s'agit de POST ou GET pour le CGI
+☑️ need un get_method dans resquest pour savoir s'il s'agit de POST ou GET pour le CGI
+
+<--- opti --->
+
+opti notament le trop grand nombre de write()
 
 
 

@@ -219,6 +219,7 @@ void Config::set_location(str_t line)
 	{
 		it = tmp.begin();
 		block = line.substr(tmp[0], (tmp[1] - tmp[0]));
+		std::cout << block;
 		Location new_location(block);
 		this->_location.push_back(new_location);
 		tmp.erase(tmp.begin(), tmp.begin() + 2);
@@ -241,11 +242,11 @@ size_t Config::client_max() const { return (this->_client_max_body_size); }
 
 str_t Config::root() const { return (this->_root); }
 
-std::list<str_t> Config::index() const { return (this->_index); }
+std::list<str_t> &Config::index() { return (this->_index); }
 
 str_t Config::autoindex() const { return (this->_autoindex); }
 
-std::vector<Location> Config::location() const { return (this->_location); }
+location_v &Config::location() { return (this->_location); }
 
 /*
 * Member functions
@@ -339,40 +340,42 @@ std::vector<size_t> Config::search_location(str_t config)
 
 std::ostream& operator<<(std::ostream& os, Config const& src)
 {
-	os << std::endl;
-	os << "<----- CONFIGURATION ----->" << std::endl << std::endl;
+	// os << std::endl;
+	// os << "<----- CONFIGURATION ----->" << std::endl << std::endl;
 
-	os << "host: " << src.host() << std::endl;
+	// os << "host: " << src.host() << std::endl;
 	
-	os << "ports: " << std::endl;
-	std::vector<int> ports = src.ports();
-	for (std::vector<int>::iterator it = ports.begin() ; it != ports.end() ; ++it)
-		os << "\t- " << *it << std::endl;
+	// os << "ports: " << std::endl;
+	// std::vector<int> ports = src.ports();
+	// for (std::vector<int>::iterator it = ports.begin() ; it != ports.end() ; ++it)
+	// 	os << "\t- " << *it << std::endl;
 	
-	os << "server_name: " << std::endl;
-	std::vector<std::string> names = src.server_name();
-	for (std::vector<std::string>::iterator it = names.begin() ; it != names.end() ; ++it)
-		os << "\t- " << *it << std::endl;
+	// os << "server_name: " << std::endl;
+	// std::vector<std::string> names = src.server_name();
+	// for (std::vector<std::string>::iterator it = names.begin() ; it != names.end() ; ++it)
+	// 	os << "\t- " << *it << std::endl;
 	
-	os << "error_page: " << std::endl;
-	strMap error_pages = src.error_page();
-	if (error_pages.empty() == false)
-		for (strMap::const_iterator it = error_pages.begin() ; it != error_pages.end() ; ++it)
-			os << "\t- " << it->first << " " << it->second << std::endl;
+	// os << "error_page: " << std::endl;
+	// strMap error_pages = src.error_page();
+	// if (error_pages.empty() == false)
+	// 	for (strMap::const_iterator it = error_pages.begin() ; it != error_pages.end() ; ++it)
+	// 		os << "\t- " << it->first << " " << it->second << std::endl;
 
-	os << "client_max_body_size: " << src.client_max() << std::endl;
+	// os << "client_max_body_size: " << src.client_max() << std::endl;
 	
-	os << "root: " << src.root() << std::endl;
+	// os << "root: " << src.root() << std::endl;
 	
-	os << "index: " << std::endl;
-	std::list<std::string> index = src.index();
-	for (std::list<std::string>::iterator it = index.begin() ; it != index.end() ; ++it)
-		os << "\t- " << *it << std::endl;
+	// os << "index: " << std::endl;
+	// std::list<std::string> index = src.index();
+	// for (std::list<std::string>::iterator it = index.begin() ; it != index.end() ; ++it)
+	// 	os << "\t- " << *it << std::endl;
 	
-	os << "location: " << std::endl;
-	std::vector<Location> location = src.location();
-	for (std::vector<Location>::iterator it = location.begin() ; it != location.end() ; ++it)
-		os << *it << std::endl;
+	// os << "location: " << std::endl;
+	// location_v location = src.location();
+	// for (location_v::iterator it = location.begin() ; it != location.end() ; ++it)
+	// 	os << *it << std::endl;
+
+	(void)src;
 	
 	return (os);
 }

@@ -74,31 +74,18 @@ void	EvMa::init_epoll()
 	
 }
 
-// void enable_keepalive(int sock) {
-//     int yes = 1;
-//     setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, &yes, sizeof(int));
-
-//     int idle = 1;
-//     setsockopt(sock, IPPROTO_TCP, TCP_KEEPIDLE, &idle, sizeof(int));
-
-//     int interval = 1;
-//     setsockopt(sock, IPPROTO_TCP, TCP_KEEPINTVL, &interval, sizeof(int));
-
-//     int maxpkt = 10;
-//     setsockopt(sock, IPPROTO_TCP, TCP_KEEPCNT, &maxpkt, sizeof(int));
-// }
-
 void	EvMa::add_to_interest(int fd, Server *serv)
 {
 	unlock_socket(fd);
 	//enable_keepalive(fd);
 	_event.data.fd = fd;
-	_event.events = EPOLLIN | EPOLLET;
+	_event.events = EPOLLIN | EPOLLOUT;
 	if (epoll_ctl(_epoll_fd, EPOLL_CTL_ADD, fd, &_event) == -1)
 		fatal("failed to add incoming connection to interest list.");
 	//expiry ex = std::make_pair(fd, time_in_ms() + 5000);
 	//_clients.push_back(ex);
-	_clients[fd] = Client(fd, serv->id());
+	Client tmp(fd, serv);
+	_clients[fd] = tmp;
 	_clients[fd].touch();
 	std::cout << "added connection. fd is: " << fd << std::endl;
 }
@@ -159,6 +146,7 @@ Client	&EvMa::find_by_fd(int fd)
 		if (_clients[i].fd() == fd)
 			return (_clients[i]);
 	}
+	//throw exception
 	return (_clients[0]);
 }
 
@@ -222,7 +210,7 @@ void	EvMa::loop()
 	for (;;)
 	{
 		_event_nb = epoll_wait(_epoll_fd, _events, MAXCONN, timeout()); //-1 for timeout means it will block unedfinitely. check if that's the behaviour we want.
-		std::cout << "event_nb = "<<  _event_nb << "\n";
+		//std::cout << "event_nb = "<<  _event_nb << "\n";
 		for (int i = 0; i < _event_nb; i++)
 		{
 			int fd = _events[i].data.fd;
@@ -237,19 +225,21 @@ void	EvMa::loop()
 					if ((*ex)->fd() == fd)
 						disconnect_socket(ex);
 			}
-			else if (ev & EPOLLIN)
-			{
-				assert(is_connected(fd), "read/ could not find fd");
-				Client			&client = find_by_fd(_events[i].data.fd);
-				update_expiry(i);
-				if (client.add_data())
-					client.respond();
-			}
-			else if (ev & EPOLLOUT)
+			else if (find_by_fd(fd).isReady() && ev & EPOLLOUT)
 			{
 				assert(is_connected(fd), "write/ could not find fd");
 				write_data(i);
 			}
+			else if (ev & EPOLLIN)
+			{
+				assert(is_connected(fd), "read/ could not find fd");
+				Client			&client = find_by_fd(fd);
+				update_expiry(i);
+				client.add_data();
+				//shutdown(fd, 0);
+				//	client.respond();
+			}
+			
 		}
 		if (!_clients.size())
 			continue;

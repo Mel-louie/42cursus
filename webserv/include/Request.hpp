@@ -22,7 +22,9 @@ class Request
 		unsigned int type();
 		str_t					_ressource;		//should maybe be called _route...
 
-		strMap	&headers();
+		strMap				&headers();
+		std::vector<str_t>	&body();
+
 	private:
 
 		int			parse_QueryString(size_t start);
