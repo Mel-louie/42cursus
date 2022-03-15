@@ -23,10 +23,10 @@ Response::~Response(void)
 str_t Response::exceCGI(Request req)
 {
 	CGI cgi;
-    cgi.exec_cgi("/home/louielouie/webserv/www/cgi/index.php", req);
+    cgi.exec_cgi("/home/louielouie/42cursus/webserv2/www/cgi/hello.py", req);
 
 	_body = cgi.body();
-	std::cout << "\n\nbody:  " <<_body << std::endl;
+//	std::cout << "\n\nbody:  " <<_body << std::endl;
 	return (_body);
 }
 

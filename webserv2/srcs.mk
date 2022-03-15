@@ -3,6 +3,7 @@ Location.cpp\
 Request.cpp\
 mime_types.cpp\
 Client.cpp\
+test.cpp\
 resp_codes.cpp\
 parse_config.cpp\
 time_in_ms.cpp\

@@ -1,7 +1,7 @@
 #include "CGI.hpp"
 #include "Config.hpp"
 
-// the caacity of a pipe
+// the capacity of a pipe
 // https://man7.org/linux/man-pages/man7/pipe.7.html
 #define CGI_BUF_SIZE 65536
 
@@ -54,7 +54,7 @@ str_t CGI::get_body(Request req)
 
 void CGI::exec_cgi(str_t target, Request req)
 {
-set_binary("/usr/bin/php-cgi");
+set_binary("/usr/bin/python3");
 	char **args = NULL;
     char **env = NULL;
     int ret = 1;
@@ -76,7 +76,7 @@ set_binary("/usr/bin/php-cgi");
 	// std::cout << "FIN\n" << std::endl;
 // add request to build a complete env
     env = build_cgi_env(req, _body.size());
-    //display_cgi_env(env, args);
+    // display_cgi_env(env, args);
 
 
     pid_t pid;
@@ -131,14 +131,6 @@ set_binary("/usr/bin/php-cgi");
         dup2(save_stdout, STDOUT_FILENO);
     }
     free_cgi(args, env);
-
- //  char **env = NULL;
-
-   // // add request to build a complete env
-//     env = build_cgi_env(req, _body.size());
- //   // display_cgi_env(env, args);
-
-   
 }
 
 /*
@@ -205,9 +197,9 @@ char **CGI::build_cgi_env(Request req, size_t body_size)
     envMap["PATH_TRANSLATED"] = ""; // need request location and uri
     envMap["SCRIPT_NAME"] = ""; // need from request
     envMap["CONTENT_LENGTH"] = to_string(body_size); // body size
-    envMap["QUERY_STRING"] = ""; // "
-    envMap["CONTENT_TYPE"] = ""; // content type from req
-    envMap["REDIRECT_STATUS"] = "200"; //
+    envMap["QUERY_STRING"] = "first_name=ZARA&last_name=ALI"; // "
+    // envMap["CONTENT_TYPE"] = ""; // content type from req
+    // envMap["REDIRECT_STATUS"] = "200"; //
     // envMap["REMOTE_ADDR"] = ""; // client ip
 
     /* Request headers pass to CGI */
