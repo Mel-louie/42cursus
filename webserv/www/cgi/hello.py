@@ -12,7 +12,7 @@ print ('<h2>Hello World! This is my first CGI program</h2>')
 print ('<h3>Hello World! This is my first CGI program</h3>')
 print ('<h4>Hello World! This is my first CGI program</h4>')
 print ('<h5>Hello World! This is my first CGI program</h5>')
-# print ('<p>I am just a little python script uwu</p>')
+print ('<p>I am just a little python script</p>')
 print ('<p>Here, check the environement variables of the CGI, pass with execve() (c++):</p>')
 
 for i, j in os.environ.items():

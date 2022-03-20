@@ -91,20 +91,37 @@ void Location::set_index(str_t line)
 
 void Location::set_methods(str_t line)
 {
-	size_t space;
+	size_t	space_pos;
+	str_t	method;
 
+	space_pos = line.find(" ");
 	if (line == "")
-		return ;
-	space = line.find(" ");
-	while (space != str_t::npos)
 	{
-		if (line.find(" ", space + 1) != str_t::npos)
-			this->_methods.push_back(line.substr(space + 1, line.find(' ', space + 1) - space - 1));
-		else
-			this->_methods.push_back(line.substr(space + 1));
-		space = line.find(' ', space + 1);
-		_flags |= LOC_METHOD;
+		this->_methods["GET"] = true;
+		this->_methods["POST"] = false;
+		this->_methods["DELETE"] = false;
 	}
+	else
+	{
+		this->_methods["GET"] = false;
+		this->_methods["POST"] = false;
+		this->_methods["DELETE"] = false;
+		space_pos = line.find(" ");
+		while (space_pos != str_t::npos)
+		{
+			if (line.find(" ", space_pos + 1) != str_t::npos)
+				method = line.substr(space_pos + 1, line.find(' ', space_pos + 1) - space_pos - 1);
+			else
+				method = line.substr(space_pos + 1);
+			if (method == "get")
+				this->_methods["GET"] = true;
+			else if (method == "post")
+				this->_methods["POST"] = true;
+			else if (method == "delete")
+				this->_methods["DELETE"] = true;
+			space_pos = line.find(' ', space_pos + 1);
+        }
+    }
 }
 
 void Location::set_cgi_path(str_t line)
@@ -154,7 +171,7 @@ void Location::set_upload_path(str_t line)
 
 std::list<str_t> &Location::index() { return (_index); }
 
-std::list<str_t> &Location::methods() { return (_methods); }
+std::map<str_t, bool> Location::methods() const { return (this->_methods); }
 
 str_t Location::cgi_path() const { return (this->_cgi_path); }
 
@@ -212,12 +229,13 @@ str_t Location::search_config(str_t config, str_t key)
 
 std::ostream& operator<<(std::ostream& os, Location &src)
 {
-	os << "{" << std::endl;
-	std::list<std::string> index = src.index();
+	// os << "{" << std::endl;
+	// std::list<std::string> index = src.index();
 
-	for (std::list<std::string>::iterator it = index.begin() ; it != index.end() ; ++it)
-		os << "\t\t- " << *it << std::endl;
+	// for (std::list<std::string>::iterator it = index.begin() ; it != index.end() ; ++it)
+	// 	os << "\t\t- " << *it << std::endl;
 
-	os << "}" << std::endl;
+	// os << "}" << std::endl;
+	(void)src;
 	return (os);
 }

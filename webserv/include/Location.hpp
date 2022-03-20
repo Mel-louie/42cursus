@@ -9,7 +9,6 @@
 #define LOC_ROOT	4
 #define LOC_CGI		8
 #define	LOC_UPLOAD	16
-#define	LOC_METHOD	32
 
 class Location
 {
@@ -19,26 +18,26 @@ class Location
 		Location &operator=(const Location &ref);
 		~Location();
 
-		str_t 				autoindex() const;
-		std::list<str_t>	&index();
-		std::list<str_t>	&methods();
-		str_t				root() const;
-		str_t				cgi_path() const;
-		str_t				cgi_extension() const ;
-		str_t				route() const ;
-		str_t				upload_path() const ;
-		FLAGS				flags() const;
+		str_t 					autoindex() const;
+		std::list<str_t>		&index();
+		std::map<str_t, bool>	methods() const;
+		str_t					root() const;
+		str_t					cgi_path() const;
+		str_t					cgi_extension() const ;
+		str_t					route() const ;
+		str_t					upload_path() const ;
+		FLAGS					flags() const;
 
 		str_t search_config(str_t config, str_t key);
 
 	private:
-		std::list<str_t>	_index;
-		str_t				_root;
-		str_t				_route;
-		str_t				_cgi_path;
-		str_t				_cgi_extension;
-		str_t				_upload_path;
-		std::list<str_t>	_methods;
+		std::list<str_t>		_index;
+		str_t					_root;
+		str_t					_route;
+		str_t					_cgi_path;
+		str_t					_cgi_extension;
+		str_t					_upload_path;
+		std::map<str_t, bool>	_methods;
 
 		FLAGS				_flags;
 		

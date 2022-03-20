@@ -26,7 +26,6 @@ class CGI
 		void	set_binary(str_t path);
 		void	set_script_name(str_t script_name);
 		void	exec_cgi(str_t target, Request req, strMap headers_resp);
-		str_t	get_body(Request req);
 		str_t 	body();
 		str_t	binary();
 		str_t	script_name();

@@ -14,7 +14,7 @@ WORK_DIR	= -D DIR=\"$(shell pwd)\"
 
 # compilation parameters
 CC			= clang++
-CCFLAGS		= -Wall -Werror -Wextra -std=c++98 -g
+CCFLAGS		= -Wall -Werror -Wextra -std=c++98 -g #-fsanitize=address
 INC			= -Iinclude/
 
 SRCDIR		=	srcs/

@@ -157,8 +157,6 @@ void	Response::set_headers(str_t path)
 	}
 
 	add_header("content-length", to_string<size_t>(_body.size()));
-	// add_header("content-length", "1500");
-	// std::cout << "\n\n\n\nCONTENT: " << _body.size() << std::endl;
 }
 
 unsigned int	Response::status()
@@ -309,5 +307,7 @@ str_t Response::exceCGI(Request req)
     cgi.exec_cgi(target, req, this->headers());
 
 	_body = cgi.body();
+	add_header("content-length", to_string<size_t>(_body.size()));
+
 	return (_body);
 }
