@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <title>Webserv Upload</title>
+    <script>
+            async function uploadFile()
+            {
+                let formData = new FormData();           
+                formData.append("file", inputOne.files[0]);
+                formData.append("file", inputTwo.files[0]);
+                formData.append("file", inputThree.files[0]);
+                console.log(formData);
+                await fetch('/upload',
+                {
+                    method: "POST", 
+                    body: formData
+                });    
+                alert('The file has been uploaded successfully.');
+            }
+    </script>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data"></form>
+        <label for="input">Add file:</label>
+        <input type="file" id="inputOne"></input>
+        <input type="file" id="inputTwo"></input>
+        <input type="file" id="inputThree"></input>
+        <button id="send" onclick="uploadFile()">Send</button>
+    </form>
+</body>
+</html>
