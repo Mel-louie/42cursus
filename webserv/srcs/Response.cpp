@@ -31,30 +31,24 @@ Response::Response(Request &req, Config *conf) : _conf(conf), _flags(0), _fd(req
 	select_location(req);
 	if (_flags & RES_LOCATED)
 	{
-		// std::cout << "\n\n\n3xx" << std::endl;
 		//	cgi_match(req._ressource);
 		//if (_flags & RES_ISCGI)
 		//	set_body_cgi()
-		if (req.type() == R_POST && (_loc->flags() & LOC_UPLOAD))			//please note that in this state we cannot upload on the default route. this is intentional.
-			upload_file(req);
 		if (_loc->flags() & LOC_REDIR)
 		{
-			_status = 301;
-		//	_loc->root() = _loc->redir().second;
+			_status = strtol(_loc->redir().first.c_str(), NULL, 10);
+			if (_status < 300 || _status > 310)
+				std::cout << "Redirection status should be between 300 and 310" << std::endl;
 		}
+		if (req.type() == R_POST && (_loc->flags() & LOC_UPLOAD))			//please note that in this state we cannot upload on the default route. this is intentional.
+			upload_file(req);
 	}
-	//else if
-
-	// std::cout << "\n\n\n\nindex lol : " << _index << std::endl;
-
 	if (_status >= 300 && _status <= 308)
-		set_body_redir(req, conf);
-	
-
-	// if (!(_flags & RES_ISCGI))
-	// 	set_body_ress(req, conf);
-	// if (_status < 200 || _status > 299)
-	// 	get_error_page();
+			set_redir();
+	if (!(_flags & RES_ISCGI))
+		set_body_ress(req, conf);
+	if (_status < 200 || _status > 299)
+		get_error_page();
 }
 
 void			Response::set_status(unsigned int s)
@@ -76,92 +70,10 @@ void			Response::add_header(str_t key, str_t val)
 	_headers[key] = val;
 }
 
-void			Response::set_body_redir(Request &req, Config *conf)
+void			Response::set_redir()
 {
-	str_t path;
-	str_t filename;
-
-// std::cout << "\n\n\n\n" << _loc->redir().second << "     " << _status << std::endl;
-
-	str_t redir = _loc->redir().second;
-	
-
-	if (_flags & RES_LOCATED)
-	{
-		str_t root;
-		if (redir != "")
-			root = redir;
-		else
-			fatal("wrong redir");
-
-	// std::cout << "\n\n\n\nroot: " << root << std::endl;
-	// std::cout << "\n\n\n\nindex: " << _index << std::endl;
-		
-		if (_flags & RES_ISINDEX)
-		{
-				std::cout << "laaaaaa: " << path << std::endl;
-
-			if (_flags & RES_INDEXDEF)
-				path = root + _index;	//i think it's just this because at this point we check that root was INCLUDED AT THE START of ressource.
-			else
-			{
-				for (std::list<str_t>::iterator lit = _loc->index().begin(); lit != _loc->index().end(); lit++)
-				{
-					str_t tmp = root + *lit;
-					if (!access( tmp.c_str(), F_OK ))
-					{
-						path = tmp;
-						break;
-					}
-					else
-						set_status(404);
-				}		
-			}
-		}
-		else
-			path = redir + req._ressource.substr(_loc->route().size(), req._ressource.npos);
-	}
-	// else if (_flags & RES_ISINDEX)
-	// {
-	// 	for (std::list<str_t>::iterator lit = conf->index().begin(); lit != conf->index().end(); lit++)
-	// 	{
-	// 		str_t tmp = conf->root() + *lit;
-	// 		std::cout << tmp  << std::endl;
-	// 		if (!access( tmp.c_str(), F_OK ))
-	// 		{
-	// 			path = tmp;
-	// 			break;
-	// 		}
-	// 		else
-	// 			set_status(404);
-	// 	}	
-	// }
-	// else
-	// {
-	// 	path = conf->root() + req._ressource;
-	// 	if (access(path.c_str(), F_OK))
-	// 	{
-	// 		set_status(404);
-	// 		return;
-	// 	}
-	// }
-	(void)conf;
-	std::ifstream       page;
-    std::stringstream   buf;
-
-
-	page.open (path.c_str(), std::ifstream::in);
-	
-	
-  //  {
-		buf << page.rdbuf();
-		std::cout << path;
-		std::cout << _body;
-		//_body << page;
-		//std::cout << buf.str();
-		_body = buf.str();
-		set_headers(path);
-//	}
+	add_header("location", _loc->redir().second);
+	set_status(200);
 }
 
 void			Response::set_body_ress(Request &req, Config *conf)
@@ -258,8 +170,6 @@ void	Response::set_headers(str_t path)
 	}
 
 	add_header("content-length", to_string<size_t>(_body.size()));
-	// add_header("content-length", "1500");
-	// std::cout << "\n\n\n\nCONTENT: " << _body.size() << std::endl;
 }
 
 unsigned int	Response::status()

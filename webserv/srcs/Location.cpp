@@ -173,8 +173,8 @@ void Location::set_redir(std::string line)
             throw std::string("Error: Wrong number argument for return");
         this->_redir.first = line.substr(space_pos + 1, (space_pos_bis - space_pos - 1));
         this->_redir.second = line.substr(space_pos_bis + 1);
+		_flags |= LOC_REDIR;
     }
-	_flags |= LOC_REDIR;
 }
 
 /*
