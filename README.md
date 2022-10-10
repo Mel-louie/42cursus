@@ -28,6 +28,6 @@ Every folder got a README with some infos (mostly in French) on the project inst
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_ft_containers">Exam rank 05 </a>
   - <a href="https://github.com/Mel-louie/webserv">Webserv</a>, group project, we were two to program an HTTP server, in C++
 - RANK06
-  - <a href="https://github.com/Mel-louie/ft_transcendence">FT_TRANSCENDENCE</a>, group project, we were 5 to develop a website where users can compete in Pong games.
+  - <a href="https://github.com/fyusuf-a/ft_transcendence">FT_TRANSCENDENCE</a>, group project, we were 5 to develop a website where users can compete in Pong games.
 - Outside COMMON CORE
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rn_42_libasm">LIBASM </a>
