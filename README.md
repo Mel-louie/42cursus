@@ -10,7 +10,7 @@ Every folder got a README with some infos (mostly in French) on the project inst
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank01_ft_printf">FT_PRINTF (2019 vers.) </a> C
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank01_get_next_line">GET_NEXT_LINE (2019 vers.) </a> C
 - RANK02
-  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02OLD_ft_server">FT_SERVER (no longer a project since July 2021) </a>
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02OLD_ft_server">FT_SERVER (no longer a project since July 2021) </a> Docker
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap"> PUSH_SWAP </a> C
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_push_swap_tester"> A tester I coded for PUSH_SWAP </a> Shell
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank02_so_long">SO_LONG </a> C
@@ -23,9 +23,9 @@ Every folder got a README with some infos (mostly in French) on the project inst
   -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_CPP">Modules CPP </a> C++
   -  <a href="https://github.com/Mel-louie/42cursus/tree/main/rank04_exam_microshell">Exam rank 04 </a> C
 - RANK05
-  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_inception">Inception </a>
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_inception">Inception </a> Docker
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_ft_containers">ft_containers </a> C++
-  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_ft_containers">Exam rank 05 </a> c++
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_ft_containers">Exam rank 05 </a> C++
   - <a href="https://github.com/Mel-louie/webserv">Webserv</a>, group project, we were two to program an HTTP server, in C++
 - RANK06
   - <a href="https://github.com/fyusuf-a/ft_transcendence">FT_TRANSCENDENCE</a>, group project, we were 5 to develop a website where users can compete in Pong games. NestJS, Vue.js 3, Vuetify 3, in TypeScript
