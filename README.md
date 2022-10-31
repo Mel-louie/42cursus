@@ -25,7 +25,7 @@ Every folder got a README with some infos (mostly in French) on the project inst
 - RANK05
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_inception">Inception </a> Docker
   - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_ft_containers">ft_containers </a> C++
-  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_ft_containers">Exam rank 05 </a> C++
+  - <a href="https://github.com/Mel-louie/42cursus/tree/main/rank05_exam">Exam rank 05 </a> C++
   - <a href="https://github.com/Mel-louie/webserv">Webserv</a>, group project, we were two to program an HTTP server, in C++
 - RANK06
   - <a href="https://github.com/fyusuf-a/ft_transcendence">FT_TRANSCENDENCE</a>, group project, we were 5 to develop a website where users can compete in Pong games. NestJS, Vue.js 3, Vuetify 3, in TypeScript
